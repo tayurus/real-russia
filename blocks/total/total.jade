@@ -1,19 +1,24 @@
 .total
     .d-flex
-        .mr-3
+        .mr-4
             .total__label Currency
             select.total__select
                 option(value="gbp") £ - GBP
                 option(value="gbp") $ - USD
                 option(value="gbp") € - EUR
                 
-        .mr-3
-            .total__label Currency
+        div
+            .total__label Language
             select.total__select
-                option(value="gbp") £ - GBP
-                option(value="gbp") $ - USD
-                option(value="gbp") € - EUR
+                option(value="eng") 
+                    span English
     
-    .d-flex
-        .total__label_big Total pr
+    .total__result
+        .total__label.total__label_big.mr-1 Total price
+        .total__sum
+            span.total__currency £
+            | 15.30
+            
+    .total__label.total__label_small Prices are shown in different currencies for your convenience, however payment will be made in British Pounds at the prevailing bank rate.
+
                 
