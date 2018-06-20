@@ -1,6 +1,6 @@
-.total
-    .d-flex
-        .mr-4
+.total.pl-0.pl-sm-4
+    .d-flex.flex-column.flex-sm-row
+        .mr-4.mb-2.mb-sm-0
             .total__label Currency
             select.total__select
                 option(value="gbp") £ - GBP
@@ -9,9 +9,7 @@
                 
         div
             .total__label Language
-            select.total__select
-                option(value="eng") 
-                    span English
+            input.total__select.total__country(type="text", readonly) 
     
     .total__result
         .total__label.total__label_big.mr-1 Total price
