@@ -1,0 +1,23 @@
+.radio-buttons
+    display: flex;
+    align-items: center;
+
+.radio-buttons__wrapper
+    position: relative
+    margin: 10px;
+
+.radio-buttons__view
+    user-select: none;
+    font-family "Open Sans"
+    cursor: pointer
+    font-size 17px
+    padding: 10px 40px
+    border 1px solid #b0b0b0
+    transition: 0.4s
+
+.radio-buttons__radio
+    display: none
+
+.radio-buttons__radio:checked + .radio-buttons__view
+    background: #8ac43f;
+    color: #fff;
