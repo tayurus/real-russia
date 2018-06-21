@@ -1,9 +1,18 @@
 .steps
-    .steps__item 1
-        .steps__item-icon
-            img(src="img/check.png")
-    .steps__item 2
+    .steps__item
+        .steps__item-step 1
+          .steps__item-icon
+              img(src="img/check.png")
+        .steps__item-text service details
+    .steps__item
+      .steps__item-step 2
         .steps__item-icon.steps__item-icon_warning !
-    .steps__item.steps__item_active 3
-    .steps__item.steps__item_disabled 4
+      .steps__item-text personal details
+    .steps__item
+      .steps__item-step.steps__item-step_active 3
+      .steps__item-text.steps__item-text_active your visit
+    .steps__item
+      .steps__item-step.steps__item-step_disabled 4
+      .steps__item-text.steps__item-text_disabled payment
     .steps__line
+    .steps__line.steps__line_grey
