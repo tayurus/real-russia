@@ -1,0 +1,118 @@
+doctype html
+html(lang="ru")
+    include ../blocks/head/head.jade
+    body
+
+        main
+            .container
+                .d-flex.flex-wrap.align-items-center.justify-content-between
+                    div
+                        .title Russian Tourist Visa Support Application
+                        include ../blocks/steps/steps.jade
+                    
+                    include ../blocks/total/total.jade 
+                    
+            .container.bg-gray
+                .d-flex.align-items-center
+                    div.d-flex
+                        button.button.button_accept.mr-3 RETRIEVE SAVED APPLICATION
+                        button.button.button_accept save progress
+                    button.button.button_prev-step I AM A RETURNING CLIENT
+                    
+                .step
+                    h2.step__title Personal details
+                    .step__description
+                        img.mr-4(src="img/user.png", alt="")
+                        .step__text
+                            b Let us know a bit about yourself -
+                            br
+                            span Just the key details we need to collect from you and your group to proceed with our application. You can add up to a further 5 people below by just clicking on the ‘Add another person’ button.
+                    
+                    .step__subtitle
+                        .step__subtitle-text Visitor 1
+                        .step__subtitle-icon
+                    
+                    .step__subtitle-content        
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label First name
+                                input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
+                            .input__error-label This field cannot be empty
+                            
+                            
+                        .input
+                            .input__wrapper
+                                label.input__label Middle name
+                                input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
+                            .input__error-label This field cannot be empty
+                            
+                            
+                        .input
+                            .input__wrapper
+                                label.input__label Surname
+                                input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
+                            .input__error-label This field cannot be empty
+                            
+                        .radio-buttons
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", name="someName", id="yes")
+                                label.radio-buttons__view(for="yes") Male
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", name="someName", id="no")
+                                label.radio-buttons__view(for="no") Female
+                                
+                        .input
+                            .input__wrapper
+                                label.input__label Date of birth
+                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                                include ../blocks/datepicker/datepicker.jade
+                            .input__error-label This field cannot be empty
+                            
+                        .input.mb-4
+                            .input__wrapper
+                                label.input__label Citizenship
+                                br
+                                input.input__select.total__select.total__country(type="text", readonly, pattern="/^[a-z]{3,}%/gi") 
+                                
+                        .input
+                            .input__wrapper
+                                label.input__label Passport number
+                                input.input__field(type="text", name="", required, pattern="/^[0-9]{3,}$/gi")
+                            .input__error-label This field cannot be empty
+                            
+                        .input
+                            .input__wrapper
+                                label.input__label Date passport issued
+                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                                include ../blocks/datepicker/datepicker.jade
+                            .input__error-label This field cannot be empty
+                            
+                        .input
+                            .input__wrapper
+                                label.input__label Date passport expires
+                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                                include ../blocks/datepicker/datepicker.jade
+                            .input__error-label This field cannot be empty
+                            
+                        .input
+                            .input__wrapper
+                                label.input__label Date passport expires
+                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                                include ../blocks/datepicker/datepicker.jade
+                            .input__error-label This field cannot be empty
+                            
+                        .input
+                            .input__wrapper
+                                label.input__label Email address
+                                input.input__field(type="text", name="", required, pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/gi")
+                            .input__error-label This field cannot be empty
+                            
+                        .input
+                            .input__wrapper
+                                label.input__label Telephone
+                                input.input__field(id="phone" type="tel", required)
+                            .input__error-label This field cannot be empty
+                                    
+                            
+
+                            
