@@ -1,7 +1,12 @@
 .datepicker
+    z-index: 1;
     width: 260px
     border: 10px solid #e2e2e2
     outline: 1px solid #acacac;
+    position: absolute;
+    bottom: -214px;
+    left: 50px;
+    background: #fff
 
 .datepicker__month
     width: 100%
@@ -31,3 +36,6 @@
 .datepicker__days
     width: 100%;
     text-align: center;
+
+.datepicker__days td
+    cursor: pointer;
