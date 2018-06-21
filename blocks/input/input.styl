@@ -6,6 +6,7 @@
     border 1px solid rgba(0, 0, 0, 0.31)
     background-color #fefefe
     border-radius 5px;
+    position: relative;
 
 .input__label
     color #000000
@@ -18,12 +19,51 @@
     border: none;
     width: 100%
     outline: none;
-    font-size: 20px
+    color: #000000;
+    font-family: "Open Sans";
+    line-height: 20px;
+    transition: 0.5s
+
+.input__wrapper_error input
+    background-color: #fbe3e3;
+
+.input__wrapper_error
+    background-color: #fbe3e3;
+    border: 1px solid #cc091d;
+
+.input__wrapper_error:after
+    position: absolute;
+    content: "!";
+    color: #cc091d;
+    font-family: "Open Sans";
+    font-size: 25px;
+    font-weight: 700;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+
+.input__wrapper_error + .input__error-label
+    visibility: visible;
 
 .input__error-label
+    visibility: hidden;
     text-align: right;
     color #cc091d
     font-family "Open Sans"
     font-size 12px
     line-height 20px
     margin-bottom: 7px
+
+
+.input__wrapper_correct
+    border: 1px solid #8ac43f;
+
+.input__wrapper_correct:after
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 14px;
+    background: url('img/ok.png') no-repeat center / contain;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);

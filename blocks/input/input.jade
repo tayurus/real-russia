@@ -1,5 +1,5 @@
 .input
     .input__wrapper
         label.input__label First name
-        input.input__field(type="text", name="", required)
+        input.input__field(type="text", name="", required, pattern="/[a-z]{2,5}/gi")
     .input__error-label This field cannot be empty
