@@ -4,7 +4,7 @@
 
 .radio-buttons__wrapper
     position: relative
-    margin: 10px;
+    margin: 0px 10px 10px 0px;
 
 .radio-buttons__view
     user-select: none;
@@ -22,3 +22,9 @@
 .radio-buttons__radio:checked + .radio-buttons__view
     background: #8ac43f;
     color: #fff;
+
+@media (max-width:380px),(max-device-width:380px) {
+    .radio-buttons__view{
+        padding: 10px 20px
+    }
+}

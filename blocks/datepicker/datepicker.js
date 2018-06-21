@@ -1,14 +1,15 @@
-{
+$(".datepicker").each((index, item) => {
+
     let currentDate = new Date();
     let days =  Array(42).fill(0);
 
     function initializeDatePicker(){
         table = matrixify(fillDays(), 6,7);
         console.log(table);
-        $(".datepicker__current").text(formateDate(currentDate));
+        $(item).find(".datepicker__current").text(formateDate(currentDate));
         for (let week = 1; week <= 6; week++)
             for (let day = 0; day < 7; day++)
-                $(".datepicker__days tr:eq("+week+") td:eq("+day+")").text(table[week - 1][day])
+                $(item).find(".datepicker__days tr:eq("+week+") td:eq("+day+")").text(table[week - 1][day])
     }
 
     //fill array of visible days
@@ -59,7 +60,8 @@
    }
 
     //change current date's month (+-1)
-    function changeMonth(operation) {
+    function changeMonth(e,operation) {
+        e.stopPropagation()
         if (operation == "+")
             currentDate.setMonth(currentDate.getMonth() + 1);
         else
@@ -79,14 +81,17 @@
    };
 
     //Add event listeners for next-prev arrow
-    $(".datepicker__prev").click(() => changeMonth("-"))
-    $(".datepicker__next").click(() => changeMonth("+"))
-    $(".datepicker .datepicker__days td").click(function(e){
+    $(item).find(".datepicker__prev").click((e) => changeMonth(e,"-"))
+    $(item).find(".datepicker__next").click((e) => changeMonth(e,"+"))
+    $(item).find(".datepicker__days td").click(function(e){
         e.stopPropagation();
         let res = $(this).text() + " " + formateDate(currentDate);
-        $(this).parent().parent().parent().parent().prev().val(res)
-        $(this).closest(".datepicker").hide()
+        console.log($(item).prev());
+        $(item).prev().val(res)
+        $(item).prev().trigger('click');
+        $(item).hide()
     })
 
     initializeDatePicker()
-}
+    $(item).hide();
+})

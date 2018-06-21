@@ -1,12 +1,14 @@
-$(".input__field").on("blur propertychange change keyup input paste", function() {
+$(".input__field").on("blur propertychange click change keyup input paste", function() {
     //extract value and pattern from input
-    if ($(this).attr('pattern') !== ""){
+    if (typeof $(this).attr('pattern') !== "undefined"){
+
         let value = $(this).val();
         let pattern = $(this).attr('pattern');
-
+        console.log(pattern);
         //create a regex from pattern
         let flags = pattern.replace(/.*\/([gimy]*)$/, '$1');
         let regexBody = pattern.replace(new RegExp('^/(.*?)/'+flags+'$'), '$1');
+        console.log("REGEXBODY = " +regexBody);
         let regex = new RegExp(regexBody, flags);
 
         //check if input's value correct
@@ -29,8 +31,31 @@ $(".input__field").on("blur propertychange change keyup input paste", function()
 $(".input").click(function(){
     if ($(this).has(".input__field_calendar").length >= 1){
         // console.log($(this).find('.input__wrapper').find('.datepicker'));
-        $(this).find('.datepicker').toggle()
+        // $(this).find('.datepicker').toggle()
+        $(this).find('.datepicker').show()
     }
+})
 
-
+$(document).ready(function () {
+    $("#phone").intlTelInput({
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: "body",
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+      // hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      separateDialCode: true
+    });
 })
