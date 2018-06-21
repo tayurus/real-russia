@@ -27,6 +27,7 @@ $(".input__field").on("blur propertychange change keyup input paste", function()
 })
 
 $(".input").click(function(){
+
     if ($(this).has(".input__field_calendar").length >= 1){
         // console.log($(this).find('.input__wrapper').find('.datepicker'));
         $(this).find('.datepicker').toggle()

@@ -8,16 +8,37 @@ html(lang="ru")
                 .d-flex.flex-wrap.align-items-center.justify-content-between
                     div
                         .title Russian Tourist Visa Support Application
-                        include ../blocks/steps/steps.jade
+                        .steps.mt-30
+                            .steps__item
+                                .steps__item-step.steps__item-step_active 1
+                                .steps__item-text.steps__item-text_active service details
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 2
+                              .steps__item-text.steps__item-text_disabled.top-22.l-30 personal details
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 3
+                              .steps__item-text.steps__item-text_disabled your visit
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 4
+                              .steps__item-text.steps__item-text_disabled.top-22 payment
+                            .steps__line
+                            .steps__line.steps__line_grey
                     
                     include ../blocks/total/total.jade 
                     
-            .container.bg-gray
+            .container.bg-gray.pb-30
                 .d-flex.align-items-center
-                    div.d-flex
-                        button.button.button_accept.mr-3 RETRIEVE SAVED APPLICATION
-                        button.button.button_accept save progress
-                    button.button.button_prev-step I AM A RETURNING CLIENT
+                    div.d-flex.jc-sb.pt-27.pl-10
+                      div.d-flex.flex-grow-1
+                        div
+                          button.button.m retrieve saved application
+                          .button__text CONTINUE a saved existing application.
+                        div
+                          button.button save progress
+                          .button__text SAVE your current progress.
+                      div
+                        button.button.border-red.color-red.bg-white I AM A RETURNING CLIENT
+                        .button__text Recover your personal details quickly to pre-fill your application.
                     
                 .step
                     h2.step__title Personal details
@@ -83,4 +104,7 @@ html(lang="ru")
                             select.input__select(type="text", readonly)
                                 option(value="") By email - original not required
                                 option(value="") Another option
-                            
+            div.container
+              div.d-flex.jc-sb.mw-710.mt-19.mb-35
+                button.button Save progress
+                button.button.button_red next step >
