@@ -1,0 +1,86 @@
+doctype html
+html(lang="ru")
+    include ../blocks/head/head.jade
+    body
+
+        main
+            .container
+                .d-flex.flex-wrap.align-items-center.justify-content-between
+                    div
+                        .title Russian Tourist Visa Support Application
+                        include ../blocks/steps/steps.jade
+                    
+                    include ../blocks/total/total.jade 
+                    
+            .container.bg-gray
+                .d-flex.align-items-center
+                    div.d-flex
+                        button.button.button_accept.mr-3 RETRIEVE SAVED APPLICATION
+                        button.button.button_accept save progress
+                    button.button.button_prev-step I AM A RETURNING CLIENT
+                    
+                .step
+                    h2.step__title Personal details
+                    .step__description
+                        img.mr-4(src="img/portfolio.png", alt="")
+                        .step__text
+                            b Let’s start with the basics -
+                            br
+                            span We need to find out first a little about your upcoming visit.
+                            
+                    .input
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Group Size
+                            select.input__select
+                                option(value="") 1
+                                option(value="") 2
+                                option(value="") 3
+                                
+                    .input.mt-5
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Number of entries
+                            select.input__select
+                                option(value="") Single entry visa
+                                option(value="") Double entry visa
+                                option(value="") Multi entry visa
+                                option(value="") Mo-mo-mo-nster entry visa
+                                
+                    .input.mt-5
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Purpose of visit
+                            select.input__select
+                                option(value="") Meet old friends
+                                option(value="") Working
+                                option(value="") I'm a Syrian terrorist.
+                                
+                    .input.mt-5
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Registration
+                            select.input__select
+                                option(value="") What
+                                option(value="") should
+                                option(value="") I
+                                option(value="") insert
+                                option(value="") there?
+                                
+                    .input.mt-5
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Country applying in
+                            br
+                            input.input__select.total__select.total__country(type="text", readonly) 
+
+                        
+                    .step__note
+                        b CONSULAR NOTES
+                        .step__note-text The Russian consulate in United Kingdom have currently no special conditions that we are aware of and accept an email copy of the visa support documents as well as group visa supports.
+                            | However, this is subject to change so please confirm the current requirements directly with the consulate before submitting your application.
+                            | If necessary we can arrange to courier the original visa support document to you from Moscow, please feel free to contact our visa team at visas@realrussia.co.uk who will be happy to help.
+                        
+                    .input.mt-5
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Delivery option
+                            br
+                            select.input__select(type="text", readonly)
+                                option(value="") By email - original not required
+                                option(value="") Another option
+                            

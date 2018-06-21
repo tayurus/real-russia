@@ -32,18 +32,18 @@
         let filler = 1;
 
         let daysInMonth = new Date(yearIndex, monthIndex + 1, 0).getDate();
-            console.log("CURRENT MONTH = " + monthIndex + " yearIndex = " + yearIndex + "daysInMonth = " + daysInMonth);
+        console.log("CURRENT MONTH = " + monthIndex + " yearIndex = " + yearIndex + "daysInMonth = " + daysInMonth);
         let daysInPrevMonth = new Date(yearIndex, monthIndex, 0).getDate();
         let newDays = days.map((item, index) => {
             let day = 0;
             if (index < firstDayOfWeek)
                 day = daysInPrevMonth - firstDayOfWeek + 1 + index;
 
-            if (index >= firstDayOfWeek && filler <= daysInMonth)
+            else if (index >= firstDayOfWeek && filler <= daysInMonth)
                 day = filler++;
 
             /*fill array to the end of next-month's days*/
-            if (filler > daysInMonth)
+            else if (filler > daysInMonth)
                 day = filler++ - daysInMonth;
 
                 return day;
@@ -60,14 +60,12 @@
 
     //change current date's month (+-1)
     function changeMonth(operation) {
-        console.log("SUJA");
         if (operation == "+")
             currentDate.setMonth(currentDate.getMonth() + 1);
         else
             currentDate.setMonth(currentDate.getMonth() - 1);
 
         initializeDatePicker()
-        console.log(currentDate);
     }
 
     function matrixify(arr, rows, cols) {
@@ -83,6 +81,12 @@
     //Add event listeners for next-prev arrow
     $(".datepicker__prev").click(() => changeMonth("-"))
     $(".datepicker__next").click(() => changeMonth("+"))
+    $(".datepicker .datepicker__days td").click(function(e){
+        e.stopPropagation();
+        let res = $(this).text() + " " + formateDate(currentDate);
+        $(this).parent().parent().parent().parent().prev().val(res)
+        $(this).closest(".datepicker").hide()
+    })
 
     initializeDatePicker()
 }
