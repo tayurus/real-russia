@@ -1,0 +1,77 @@
+.hint
+  width: 397px
+  &__header
+    display: flex;
+    justify-content: space-between;
+    &-icon
+      width: 28px;
+      height: 29px;
+      border: 2px solid #ffffff;
+      border-radius: 50%
+      color: #ffffff;
+      font-family: "Open Sans";
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 11.25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    &-text
+      color: #010000;
+      font-family: "Open Sans";
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 21px;
+  &__tab
+    width: 198px;
+    height: 42px
+    cursor: pointer;
+    background-color: #f9e2a9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 9px 0 25px
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    &_active
+      background-color: #fcd370;
+      .hint__header-text
+        font-weight: 400
+  &__body
+    background-color: #fcd370;
+    padding: 30px
+    display: none;
+    &.active
+      display: block;
+    &-text
+      color: #000000;
+      font-family: "Open Sans";
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 21px;
+  &__action
+    display: flex;
+    align-items: center;
+    margin-top:  17px
+    &-icon
+      width: 25px;
+      height: 25px;
+      background-color: #cc091d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 7px
+      border-radius: 50%
+      img
+        width: 14px
+        height: 14px
+    &-text
+      color: #cc091d;
+      font-family: "Open Sans";
+      font-size: 21px;
+      font-weight: 700;
+      line-height: 26px;
+      &_black
+        color: #000
+      &_grey
+        color: #353535;
