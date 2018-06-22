@@ -1,9 +1,11 @@
+//- input for text
 .input
     .input__wrapper
         label.input__label First name
         input.input__field(type="text", name="", required, pattern="/[a-z]{2,5}/gi")
     .input__error-label This field cannot be empty
     
+//- input-select
 .input
     .input__wrapper
         label.input__label First name
@@ -11,10 +13,25 @@
             option(value="") 1
             option(value="") 2
             option(value="") 3
-        
+
+//- input-datepicker         
 .input
     .input__wrapper
         label.input__label First name
         input.input__field.input__field_calendar(type="text", readonly, name="", required)
         include ../datepicker/datepicker.jade
+    .input__error-label This field cannot be empty
+    
+//- input with two datepickers
+.input_double-dates
+    .input__wrapper
+        label.input__label First name
+        .d-flex.align-items-center
+            .input
+                input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                include ../blocks/datepicker/datepicker.jade
+            span.input__label_gray.ml-3.mr-1 to
+            .input
+                input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                include ../blocks/datepicker/datepicker.jade
     .input__error-label This field cannot be empty

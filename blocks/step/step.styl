@@ -53,12 +53,12 @@
     transform: rotate(180deg);
 
 .step__subtitle_close .step__subtitle-icon{
-    transform: none;    
+    transform: none;
 }
 
 .step__note
     max-width: 626px;
-    margin: 10px auto;
+    margin: 10px 0px;
     background: #f2f2f2
     padding: 16px 26px 20px 14px
 
@@ -67,4 +67,8 @@
     font-family: "Open Sans";
     font-size: 13px;
     line-height: 21px;
-    text-decoration: underline;
+
+
+@media (max-width:400px), (max-device-width:400px)
+    .step
+        padding 10px
