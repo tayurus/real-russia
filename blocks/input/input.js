@@ -37,7 +37,9 @@ $(".input").click(function(){
     }
 });
 
-$(".input__select").focusin(function() {
+
+
+$(".input__select, .input__field").on('focusin',function() {
   $(".hint").each((i, item) => {
     $(item).removeClass('active');
   });
@@ -46,14 +48,15 @@ $(".input__select").focusin(function() {
     $(item).removeClass('focus');
   });
 
-  $(".input__highlight").each((i, item) => {
-    $(item).removeClass('focus');
-  });
+  // $(".input__highlight").each((i, item) => {
+  //   $(item).removeClass('focus');
+  // });
 
   $(this).closest('.input').children('.hint').addClass('active');
   $(this).closest('.input').children('.input__highlight').addClass('focus');
   $(this).closest('.input__wrapper').addClass('focus');
 });
+
 
 
 $(document).ready(function () {

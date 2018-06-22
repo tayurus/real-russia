@@ -8,17 +8,34 @@ html(lang="ru")
                 .d-flex.flex-wrap.align-items-center.justify-content-between
                     div
                         .title Russian Tourist Visa Support Application
-                        include ../blocks/steps/steps.jade
+                        .steps.mt-30
+                            .steps__item
+                                .steps__item-step 1
+                                  .steps__item-icon
+                                      img(src="img/check.png")
+                                .steps__item-text service details
+                            .steps__item
+                              .steps__item-step.steps__item-step_active 2
+                                .steps__item-icon.steps__item-icon_warning !
+                              .steps__item-text.steps__item-text_active.top-22.l-30 personal details
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 3
+                              .steps__item-text.steps__item-text_disabled your visit
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 4
+                              .steps__item-text.steps__item-text_disabled.top-22 payment
+                            .steps__line
+                            .steps__line.steps__line_grey.w-66
                     
                     include ../blocks/total/total.jade 
                     
-            .container.bg-gray
+            .container.bg-gray.pb-30
                 .d-flex.align-items-center
-                    div.d-flex
-                        button.button.button_accept.mr-3 RETRIEVE SAVED APPLICATION
-                        button.button.button_accept save progress
-                    button.button.button_prev-step I AM A RETURNING CLIENT
-                    
+                div.d-flex.jc-sb.pt-27.pl-10
+                  div.d-flex.flex-grow-1(style="width: 730px")
+                    div
+                      button.button save progress
+                      .button__text.pb-4 SAVE your current progress.                    
                 .step
                     h2.step__title Personal details
                     .step__description
@@ -39,6 +56,43 @@ html(lang="ru")
                                 input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
                             .input__error-label This field cannot be empty
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                             
                         .input
                             .input__wrapper
@@ -46,6 +100,43 @@ html(lang="ru")
                                 input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
                             .input__error-label This field cannot be empty
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                             
                         .input
                             .input__wrapper
@@ -53,6 +144,43 @@ html(lang="ru")
                                 input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
                             .input__error-label This field cannot be empty
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                         .radio-buttons
                             .radio-buttons__wrapper
                                 input.radio-buttons__radio(type="radio", name="someName", id="yes")
@@ -63,23 +191,135 @@ html(lang="ru")
                                 
                         .input
                             .input__wrapper
+                                
                                 label.input__label Date of birth
                                 input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
                                 include ../blocks/datepicker/datepicker.jade
                             .input__error-label This field cannot be empty
-                            
+                          
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                         .input.mb-4
                             .input__wrapper
                                 label.input__label Citizenship
                                 br
                                 input.input__select.total__select.total__country(type="text", readonly, pattern="/^[a-z]{3,}%/gi") 
                                 
+                                .hint
+                                  .hint__header
+                                    .hint__tab(tab='1')
+                                      .hint__header-text Assistance
+                                      .hint__header-icon ?
+                                    .hint__tab.hint__tab_active(tab='2')
+                                      .hint__header-text Further Help
+                                      .hint__header-icon
+                                        img(src="img/phone-receiver.png")
+                                  .hint__body.active(data-tab='1')
+                                    .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                    .hint__action
+                                      .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                      .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                      .hint__action-icon
+                                        img(src="img/headset.png")
+                                      .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                      .hint__action-icon
+                                        img(src="img/support.png")
+                                      .hint__action-text.hint__action-text_grey  Livechat: Online
+                                  .hint__body(data-tab='2')
+                                    .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                    .hint__action
+                                      .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                      .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                      .hint__action-icon
+                                        img(src="img/headset.png")
+                                      .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                      .hint__action-icon
+                                        img(src="img/support.png")
+                                      .hint__action-text.hint__action-text_grey  Livechat: Online                                                                    
                         .input
                             .input__wrapper
                                 label.input__label Passport number
                                 input.input__field(type="text", name="", required, pattern="/^[0-9]{3,}$/gi")
                             .input__error-label This field cannot be empty
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                         .input
                             .input__wrapper
                                 label.input__label Date passport issued
@@ -87,6 +327,43 @@ html(lang="ru")
                                 include ../blocks/datepicker/datepicker.jade
                             .input__error-label This field cannot be empty
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                         .input
                             .input__wrapper
                                 label.input__label Date passport expires
@@ -94,6 +371,43 @@ html(lang="ru")
                                 include ../blocks/datepicker/datepicker.jade
                             .input__error-label This field cannot be empty
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                         .input
                             .input__wrapper
                                 label.input__label Date passport expires
@@ -101,18 +415,134 @@ html(lang="ru")
                                 include ../blocks/datepicker/datepicker.jade
                             .input__error-label This field cannot be empty
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                         .input
                             .input__wrapper
                                 label.input__label Email address
                                 input.input__field(type="text", name="", required, pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/gi")
                             .input__error-label This field cannot be empty
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
                         .input
                             .input__wrapper
                                 label.input__label Telephone
                                 input.input__field(id="phone" type="tel", required)
                             .input__error-label This field cannot be empty
-                                    
                             
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                        
+            div.container
+              div.d-flex.jc-sb.mw-710.mt-19.mb-35
+                button.button Save progress
+                div
+                  button.button.border-red.color-red.bg-white.mr-2 < previous step
+                  button.button.button_red next step >
 
                             
