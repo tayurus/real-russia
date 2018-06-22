@@ -29,12 +29,35 @@ $(".input__field").on("blur propertychange click change keyup input paste", func
 })
 
 $(".input").click(function(){
+
     if ($(this).has(".input__field_calendar").length >= 1){
         // console.log($(this).find('.input__wrapper').find('.datepicker'));
         // $(this).find('.datepicker').toggle()
         $(this).find('.datepicker').show()
     }
-})
+});
+
+
+
+$(".input__select, .input__field").on('focusin',function() {
+  $(".hint").each((i, item) => {
+    $(item).removeClass('active');
+  });
+
+  $(".input__wrapper").each((i, item) => {
+    $(item).removeClass('focus');
+  });
+
+  // $(".input__highlight").each((i, item) => {
+  //   $(item).removeClass('focus');
+  // });
+
+  $(this).closest('.input').children('.hint').addClass('active');
+  $(this).closest('.input').children('.input__highlight').addClass('focus');
+  $(this).closest('.input__wrapper').addClass('focus');
+});
+
+
 
 $(document).ready(function () {
     $("#phone").intlTelInput({
