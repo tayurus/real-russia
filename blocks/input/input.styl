@@ -1,0 +1,128 @@
+.input
+    max-width: 625px
+    position: relative;
+    // &__highlight
+    //   width: 708px;
+    //   height: 112px;
+    //   position: absolute;
+    //   background-color: #fff3c2;
+    //   top: -16px;
+    //   left: -14px;
+    //   z-index: 0;
+    //   display: none;
+    //   &.focus
+    //     display: block;
+
+.input__wrapper
+    border 1px solid rgba(0, 0, 0, 0.31)
+    background-color #fefefe
+    border-radius 5px;
+    position: relative;
+    &.focus
+      border: 1px solid #da9e0f;
+      box-shadow: 0px 0px 19px 1px rgba(218,158,15,0.57);
+
+.input__label
+    color #000000
+    font-family "Open Sans"
+    font-size 14px
+    padding: 5px 0px 0px 15px
+
+.input__label_gray
+    padding 8px
+    background-color: #b0b0b080;
+    font-family: "Open Sans";
+
+.input__field
+    padding: 10px 15px 10px 20px
+    border: none;
+    width: 100%
+    outline: none;
+    color: #000000;
+    font-family: "Open Sans";
+    line-height: 20px;
+    transition: 0.5s
+
+.input__field_calendar
+    cursor: pointer;
+    background: url('img/input-calendar.png') no-repeat 98% center;
+
+.input__select
+    display: block !important;
+    width: 100% !important;
+    padding: 10px;
+    font-family: "Open Sans" !important;
+    border: 0px !important
+    outline: none;
+
+// ERORRS
+
+.input__wrapper_error input
+    background-color: #fbe3e3;
+
+.input__wrapper_error
+    background-color: #fbe3e3;
+    border: 1px solid #cc091d;
+
+.input__wrapper_error:after
+    position: absolute;
+    content: "!";
+    color: #cc091d;
+    font-family: "Open Sans";
+    font-size: 25px;
+    font-weight: 700;
+    right: -25px;
+    top: 50%;
+    transform: translateY(-50%);
+
+.input__wrapper_error + .input__error-label
+    visibility: visible;
+
+.input__error-label
+    visibility: hidden;
+    text-align: right;
+    color #cc091d
+    font-family "Open Sans"
+    font-size 12px
+    line-height 20px
+    margin-bottom: 7px
+    position: relative;
+    z-index: 1
+
+// CORRECT
+
+.input__wrapper_correct
+    border: 1px solid #8ac43f;
+
+.input__wrapper_correct:after
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 14px;
+    background: url('img/ok.png') no-repeat center / contain;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+
+.input__wrapper .intl-tel-input
+    display block !important
+
+.input__wrapper .intl-tel-input.separate-dial-code .selected-flag
+    background transparent !important
+
+@media (max-width:767px),(max-device-width:767px) 
+    .input
+        width: 90%;
+
+
+@media (max-width:400px), (max-device-width:400px)
+    .input_double-dates .input__field_calendar
+        font-size 11px
+
+    .input_double-dates .input__field_calendar
+        background: url(img/input-calendar.png) no-repeat 98% center / 23px;
+        font-size: 11px
+        padding 0px
+
+    .input_double-dates .input__wrapper
+        padding 0px 5px
