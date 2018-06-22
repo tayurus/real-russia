@@ -1,11 +1,26 @@
 .input
     max-width: 625px
+    position: relative;
+    &__highlight
+      width: 708px;
+      height: 112px;
+      position: absolute;
+      background-color: #fff3c2;
+      top: -16px;
+      left: -14px;
+      z-index: 0;
+      display: none;
+      &.focus
+        display: block;
 
 .input__wrapper
     border 1px solid rgba(0, 0, 0, 0.31)
     background-color #fefefe
     border-radius 5px;
     position: relative;
+    z-index: 1
+    &.focus
+      border: 1px solid #da9e0f;
 
 .input__label
     color #000000
@@ -33,6 +48,7 @@
     padding: 10px;
     font-family: "Open Sans" !important;
     border: 0px !important
+    outline: none;
 
 // ERORRS
 
