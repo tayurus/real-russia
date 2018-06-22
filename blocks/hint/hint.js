@@ -1,5 +1,5 @@
 $('.hint').click(function(event) {
-
+    event.stopPropagation()
     console.log($(event.target));
     if($(event.target).closest('[tab]')) {
       $(this).find('[tab]').each((i, item) => {

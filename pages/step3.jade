@@ -4,20 +4,47 @@ html(lang="ru")
     body
 
         main
+            .message
+                .message__icon_error
+                .message__content
+                    .message__title The following fields have problems
+                    .message__links
+                        a.message__link(href="#") Purpose of visit 
+                        a.message__link(href="#") Visitor 1 First name 
+                        a.message__link(href="#") Visitor 1 Surname 
+                        a.message__link(href="#") Visitor 1 Gender 
+                        a.message__link(href="#") Visitor 2 Surname
             .container
                 .d-flex.flex-wrap.align-items-center.justify-content-between
                     div
                         .title DETAILS ABOUT YOUR VISIT TO RUSSIA
-                        include ../blocks/steps/steps.jade
+                        .steps.mt-30
+                            .steps__item
+                                .steps__item-step 1
+                                  .steps__item-icon
+                                      img(src="img/check.png")
+                                .steps__item-text service details
+                            .steps__item
+                              .steps__item-step 2
+                                .steps__item-icon.steps__item-icon_warning !
+                              .steps__item-text.top-22.l-30 personal details
+                            .steps__item
+                              .steps__item-step.steps__item-step_active 3
+                              .steps__item-text.steps__item-text_active your visit
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 4
+                              .steps__item-text.steps__item-text_disabled.top-22 payment
+                            .steps__line
+                            .steps__line.steps__line_grey.w-33
                     
-                    include ../blocks/total/total.jade 
-                    
-            .container.bg-gray
+                    include ../blocks/total/total.jade  
+            .container.bg-gray.pb-30
                 .d-flex.align-items-center
-                    .d-flex
-                        button.button.button_accept.mr-3 RETRIEVE SAVED APPLICATION
-                        button.button.button_accept save progress
-                    button.button.button_prev-step I AM A RETURNING CLIENT
+                    div.d-flex.jc-sb.pt-27.pl-10
+                      div.d-flex.flex-grow-1.button-wrap
+                        div
+                          button.button save progress
+                          .button__text.pb-4 SAVE your current progress.
                     
                 .step
                     h2.step__title Personal details
@@ -68,7 +95,43 @@ html(lang="ru")
                                     option(value="") Volgograd
                                     option(value="") Kazan
                             .input__error-label This field cannot be empty
-                                    
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                                
                         .input.mt-4
                             .input__wrapper
                                 label.input__label Hotel
@@ -76,7 +139,43 @@ html(lang="ru")
                                     option(value="") Ahtuba
                                     option(value="") Dream in Reallity
                             .input__error-label This field cannot be empty
-                                    
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                                
                     .step__subtitle
                         .step__subtitle-text Location 2
                         .step__subtitle-icon
@@ -89,14 +188,86 @@ html(lang="ru")
                                     option(value="") Moscow
                                     option(value="") Volgograd
                                     option(value="") Kazan
-                                    
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                                
                         .input.mt-4
                             .input__wrapper
                                 label.input__label Hotel
                                 select.input__select
                                     option(value="") Ahtuba
                                     option(value="") Dream in Reallity
-                                    
+                            .hint
+                              .hint__header
+                                .hint__tab(tab='1')
+                                  .hint__header-text Assistance
+                                  .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                  .hint__header-text Further Help
+                                  .hint__header-icon
+                                    img(src="img/phone-receiver.png")
+                              .hint__body.active(data-tab='1')
+                                .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online
+                              .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/phone-receiver.png")
+                                  .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/headset.png")
+                                  .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                  .hint__action-icon
+                                    img(src="img/support.png")
+                                  .hint__action-text.hint__action-text_grey  Livechat: Online                                                                                
                         .step__note.my-4
                             .step__note-text To apply for your visa, in some situations we may need to provide your data to the XXXX etc.
                                 br
@@ -126,6 +297,12 @@ html(lang="ru")
                             .radio-buttons__wrapper
                                 input.radio-buttons__radio(type="radio", checked, name="someName2", id="no2")
                                 label.radio-buttons__view(for="no2") No
+            div.container
+              div.d-block.d-sm-flex.jc-sb.mw-710.mt-19.mb-35
+                button.button.mr-3.mb-3 Save progress
+                div
+                  button.button.border-red.color-red.bg-white.mr-2.mb-3 < previous step
+                  button.button.button_red.mb-3 next step >
 
 
 

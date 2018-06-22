@@ -27,16 +27,16 @@ html(lang="ru")
                     include ../blocks/total/total.jade 
                     
             .container.bg-gray.pb-4
-                .d-flex.align-items-center
-                    div.d-flex.jc-sb.pt-27.pl-10
-                      div.d-flex.flex-grow-1(style="width: 730px")
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-between
+                    div.jc-sb.pt-27.pl-10.d-block.d-sm-flex
+                      div.flex-grow-1.button-wrap.d-block.d-sm-flex.flex-grow-1
                         div
                           button.button.mr-3 retrieve saved application
                           .button__text CONTINUE a saved existing application.
                         div
                           button.button save progress
                           .button__text SAVE your current progress.
-                      div
+                      .ml-3.ml-xl-0
                         button.button.border-red.color-red.bg-white I AM A RETURNING CLIENT
                         .button__text Recover your personal details quickly to pre-fill your application.
                     
@@ -328,6 +328,6 @@ html(lang="ru")
                                 img(src="img/support.png")
                               .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
             div.container
-              div.d-flex.jc-sb.mw-710.mt-19.mb-35
-                button.button Save progress
-                button.button.button_red next step >
+              div.d-block.d-sm-flex.jc-sb.mw-710.mt-19.mb-35
+                button.button.mr-3.mb-3 Save progress
+                button.button.button_red.mb-3 next step >
