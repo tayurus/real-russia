@@ -13,6 +13,11 @@
     font-size 14px
     padding: 5px 0px 0px 15px
 
+.input__label_gray
+    padding 8px
+    background-color: #b0b0b080;
+    font-family: "Open Sans";
+
 .input__field
     padding: 10px 15px 10px 20px
     border: none;
@@ -81,8 +86,25 @@
     top: 50%;
     transform: translateY(-50%);
 
-@media (max-width:767px),(max-device-width:767px) {
-    .input{
+.input__wrapper .intl-tel-input
+    display block !important
+
+.input__wrapper .intl-tel-input.separate-dial-code .selected-flag
+    background transparent !important
+
+@media (max-width:767px),(max-device-width:767px) 
+    .input
         width: 90%;
-    }
-}
+
+
+@media (max-width:400px), (max-device-width:400px)
+    .input_double-dates .input__field_calendar
+        font-size 11px
+
+    .input_double-dates .input__field_calendar
+        background: url(img/input-calendar.png) no-repeat 98% center / 23px;
+        font-size: 11px
+        padding 0px
+
+    .input_double-dates .input__wrapper
+        padding 0px 5px

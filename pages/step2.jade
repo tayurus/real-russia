@@ -96,13 +96,6 @@ html(lang="ru")
                             
                         .input
                             .input__wrapper
-                                label.input__label Date passport expires
-                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
-                                include ../blocks/datepicker/datepicker.jade
-                            .input__error-label This field cannot be empty
-                            
-                        .input
-                            .input__wrapper
                                 label.input__label Email address
                                 input.input__field(type="text", name="", required, pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/gi")
                             .input__error-label This field cannot be empty

@@ -1,0 +1,133 @@
+doctype html
+html(lang="ru")
+    include ../blocks/head/head.jade
+    body
+
+        main
+            .container
+                .d-flex.flex-wrap.align-items-center.justify-content-between
+                    div
+                        .title DETAILS ABOUT YOUR VISIT TO RUSSIA
+                        include ../blocks/steps/steps.jade
+                    
+                    include ../blocks/total/total.jade 
+                    
+            .container.bg-gray
+                .d-flex.align-items-center
+                    .d-flex
+                        button.button.button_accept.mr-3 RETRIEVE SAVED APPLICATION
+                        button.button.button_accept save progress
+                    button.button.button_prev-step I AM A RETURNING CLIENT
+                    
+                .step
+                    h2.step__title Personal details
+                    .step__description
+                        img.mr-4(src="img/location.png", alt="")
+                        .step__text
+                            b Time to tell us about your visit  -
+                            br
+                            span As well as the dates you’re arriving and departing, list all the cities and hotels you’re planning at staying at during your stay.
+                                | You can add up to 10 separate locations below by just clicking on the ‘Add another location’ button.
+                    
+                    .input_double-dates
+                        .input__wrapper
+                            label.input__label Entry 1- Arrival and departure travel dates
+                            .d-flex.align-items-center
+                                .input
+                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                                    include ../blocks/datepicker/datepicker.jade
+                                span.input__label_gray.ml-3.mr-1 to
+                                .input
+                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                                    include ../blocks/datepicker/datepicker.jade
+                        .input__error-label This field cannot be empty
+                        
+                    .input_double-dates
+                        .input__wrapper
+                            label.input__label Entry 2 - Arrival and departure travel dates
+                            .d-flex.align-items-center
+                                .input
+                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                                    include ../blocks/datepicker/datepicker.jade
+                                span.input__label_gray.ml-3.mr-1 to
+                                .input
+                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                                    include ../blocks/datepicker/datepicker.jade
+                        .input__error-label This field cannot be empty
+                    
+                    .step__subtitle
+                        .step__subtitle-text Location 1
+                        .step__subtitle-icon
+                        
+                    .step__subtitle-content
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label City
+                                select.input__select
+                                    option(value="") Moscow
+                                    option(value="") Volgograd
+                                    option(value="") Kazan
+                            .input__error-label This field cannot be empty
+                                    
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label Hotel
+                                select.input__select
+                                    option(value="") Ahtuba
+                                    option(value="") Dream in Reallity
+                            .input__error-label This field cannot be empty
+                                    
+                    .step__subtitle
+                        .step__subtitle-text Location 2
+                        .step__subtitle-icon
+                        
+                    .step__subtitle-content
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label City
+                                select.input__select
+                                    option(value="") Moscow
+                                    option(value="") Volgograd
+                                    option(value="") Kazan
+                                    
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label Hotel
+                                select.input__select
+                                    option(value="") Ahtuba
+                                    option(value="") Dream in Reallity
+                                    
+                        .step__note.my-4
+                            .step__note-text To apply for your visa, in some situations we may need to provide your data to the XXXX etc.
+                                br
+                                br
+                                | Real Russia Limited will not; sell, rent, share, or otherwise disclose the email addresses or other personally identifiable information to third parties without your consent.
+                                br
+                                br
+                                | By submitting this application, you should be aware that in some situations we will need to provide personal data to our suppliers and partners to effect the provision of the service.
+                                br  
+                                br  
+                                | For more information please refer to our Privacy Statement.
+                                
+                        .radio-buttons__title Would you like to join our monthly newsletter list?
+                        .radio-buttons
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", name="someName1", id="yes1")
+                                label.radio-buttons__view(for="yes1") Yes
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", checked, name="someName1", id="no1")
+                                label.radio-buttons__view(for="no1") No
+                        
+                        .radio-buttons__title Would you like to join our mailing list for special offers, news and information?     
+                        .radio-buttons
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", name="someName2", id="yes2")
+                                label.radio-buttons__view(for="yes2") Yes
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", checked, name="someName2", id="no2")
+                                label.radio-buttons__view(for="no2") No
+
+
+
+                        
+                    
