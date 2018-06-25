@@ -1,3 +1,8 @@
+$( ".datepicker_jq").datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+
 $(".datepicker").each((index, item) => {
 
     let currentDate = new Date();

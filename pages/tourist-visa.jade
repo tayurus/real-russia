@@ -409,8 +409,8 @@ html(lang="ru")
                     .input
                         .input__wrapper    
                             label.input__label Date of birth
-                            input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
-                            include ../blocks/datepicker/datepicker.jade
+                            //- // input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                            input(type="text" class="datepicker_jq input__field input__field_calendar" pattern="/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/gi")
                         .input__error-label This field cannot be empty
 
                     .input
@@ -428,15 +428,15 @@ html(lang="ru")
                     .input
                         .input__wrapper    
                             label.input__label Date issued
-                            input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
-                            include ../blocks/datepicker/datepicker.jade
+                            // input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                            input(type="text" class="datepicker_jq input__field input__field_calendar" pattern="/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/gi")
                         .input__error-label This field cannot be empty
 
                     .input
                         .input__wrapper    
                             label.input__label Date expires
-                            input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
-                            include ../blocks/datepicker/datepicker.jade
+                            // input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                            input(type="text" class="datepicker_jq input__field input__field_calendar" pattern="/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/gi")
                         .input__error-label This field cannot be empty
 
                 .step
@@ -455,12 +455,12 @@ html(lang="ru")
                             label.input__label Entry 1- Arrival and departure travel dates
                             .d-flex.align-items-center
                                 .input
-                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
-                                    include ../blocks/datepicker/datepicker.jade
+                                    //- input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                                    input(type="text" class="datepicker_jq input__field input__field_calendar" pattern="/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/gi")
                                 span.input__label_gray.ml-3.mr-1 to
                                 .input
-                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
-                                    include ../blocks/datepicker/datepicker.jade
+                                    //- input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                                    input(type="text" class="datepicker_jq input__field input__field_calendar" pattern="/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/gi")
                         .input__error-label This field cannot be empty
 
 
@@ -688,3 +688,5 @@ html(lang="ru")
                   div.d-block.d-sm-flex.jc-sb.mw-710.mt-19.mb-35
                     button.button.mr-3.mb-3 Save progress
                     button.button.button_red.mb-3 next step >
+                    
+                     
