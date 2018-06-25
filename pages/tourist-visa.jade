@@ -4,23 +4,75 @@ html(lang="ru")
     body
         main
             .container
-                .d-flex.flex-wrap.align-items-center.justify-content-between
+                .d-flex.align-items-center.justify-content-between
                     div
                         .title Russian Tourist Visa Support Application
-                        .steps.mt-30
-                            .steps__item
-                                .steps__item-step.steps__item-step_active 1
-                                .steps__item-text.steps__item-text_active service details
-                            .steps__item
-                              .steps__item-step.steps__item-step_disabled 2
-                              .steps__item-text.steps__item-text_disabled.top-22.l-30 personal details
-                            .steps__item
-                              .steps__item-step.steps__item-step_disabled 3
-                              .steps__item-text.steps__item-text_disabled your visit
-                            .steps__item
-                              .steps__item-step.steps__item-step_disabled 4
-                              .steps__item-text.steps__item-text_disabled.top-22 payment
-                            .steps__line
-                            .steps__line.steps__line_grey
+                        .provide.mt-4
+                            .provide__title You will need to hand:
+                            div.provide__list.mt-2.d-flex.flex-wrap
+                                ul.mr-5
+                                    li.provide__list-item 
+                                        .provide__list-icon.mr-3
+                                            img(src="img/tick.png")
+                                        .provide__list-text Passports
+                                    li.provide__list-item 
+                                        .provide__list-icon.mr-3
+                                            img(src="img/tick.png")
+                                        .provide__list-text Credit or debit card
+                                    li.provide__list-item 
+                                        .provide__list-icon.mr-3
+                                            img(src="img/tick.png")
+                                        .provide__list-text Your group’s personal details
+                                ul.mr-5
+                                    li.provide__list-item 
+                                        .provide__list-icon.mr-3
+                                            img(src="img/tick.png")
+                                        .provide__list-text Lorem ipsum another 1
+                                    li.provide__list-item 
+                                        .provide__list-icon.mr-3
+                                            img(src="img/tick.png")
+                                        .provide__list-text Your proposed travel dates
+                                    li.provide__list-item 
+                                        .provide__list-icon.mr-3
+                                            img(src="img/tick.png")
+                                        .provide__list-text Lorem ipsum another 2
                     
                     include ../blocks/total/total.jade 
+            .container.bg-gray.pb-4.px-0.mt-3
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-between
+                    div.jc-sb.pt-27.pl-10.d-block.d-sm-flex
+                      div.flex-grow-1.button-wrap.d-block.d-sm-flex.flex-grow-1
+                        div
+                          button.button.mr-3 retrieve saved application
+                          .button__text CONTINUE a saved existing application.
+                        div
+                          button.button.button_red save progress
+                          .button__text START a new application.
+                      .ml-3.ml-xl-0
+                        div.step__text.font-weight-bold
+                            | You wil need approximately 
+                            span(style="color: #cc091d;") 20 minutes 
+                            | to complete this application
+            .container.px-0
+                img(src="img/pic.jpg")
+            .container.px-0
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-between.mt-5
+                    .steps
+                        .steps__item
+                            .steps__item-step.steps__item-step_active 1
+                            .steps__item-text.steps__item-text_active service details
+                        .steps__item
+                          .steps__item-step.steps__item-step_disabled 2
+                          .steps__item-text.steps__item-text_disabled.top-22.l-30 personal details
+                        .steps__item
+                          .steps__item-step.steps__item-step_disabled 3
+                          .steps__item-text.steps__item-text_disabled your visit
+                        .steps__item
+                          .steps__item-step.steps__item-step_disabled 4
+                          .steps__item-text.steps__item-text_disabled.top-22 payment
+                        .steps__line
+                        .steps__line.steps__line_grey
+                    .ml-3.ml-xl-0(style="max-width: 409px;")
+                      div.step__text
+                          span.font-weight-bold With our simple step by step process, 
+                          | you can see exactly how far through you are - along with if you have successfully completed a section, or are still missing some information.
