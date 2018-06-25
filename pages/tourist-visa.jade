@@ -12,15 +12,626 @@ html(lang="ru")
                                 .steps__item-step.steps__item-step_active 1
                                 .steps__item-text.steps__item-text_active service details
                             .steps__item
-                              .steps__item-step.steps__item-step_disabled 2
-                              .steps__item-text.steps__item-text_disabled.top-22.l-30 personal details
+                                .steps__item-step.steps__item-step_disabled 2
+                                .steps__item-text.steps__item-text_disabled.top-22.l-30 personal details
                             .steps__item
-                              .steps__item-step.steps__item-step_disabled 3
-                              .steps__item-text.steps__item-text_disabled your visit
+                                .steps__item-step.steps__item-step_disabled 3
+                                .steps__item-text.steps__item-text_disabled your visit
                             .steps__item
-                              .steps__item-step.steps__item-step_disabled 4
-                              .steps__item-text.steps__item-text_disabled.top-22 payment
+                                .steps__item-step.steps__item-step_disabled 4
+                                .steps__item-text.steps__item-text_disabled.top-22 payment
                             .steps__line
                             .steps__line.steps__line_grey
-                    
-                    include ../blocks/total/total.jade 
+
+                    include ../blocks/total/total.jade
+
+
+            .container.bg-gray.pb-4
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-between
+                    div.jc-sb.pt-27.pl-10.d-block.d-sm-flex
+                        div.flex-grow-1.button-wrap.d-block.d-sm-flex.flex-grow-1
+                            div
+                                button.button.mr-3 retrieve saved application
+                                .button__text CONTINUE a saved existing application.
+                            div
+                                button.button save progress
+                                .button__text SAVE your current progress.
+                        .ml-3.ml-xl-0
+                            button.button.border-red.color-red.bg-white I AM A RETURNING CLIENT
+                            .button__text Recover your personal details quickly to pre-fill your application.
+
+                .step
+                    // Tourist Visa Support — Service details /////////////////////////////////////////////////////////////////////////////////////
+                    h2.step__title Tourist Visa Support — Service details
+                    .step__description
+                        img.mr-4(src="img/portfolio.png", alt="")
+                        .step__text
+                            b Let’s start with the basics -
+                            br
+                            span We need to find out first a little about your upcoming visit.
+
+                    //- Group Size    
+                    .input
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Group Size
+                            select.input__select
+                                option(value="") 1
+                                option(value="") 2
+                                option(value="") 3
+                        .input__highlight
+                        .hint
+                            .hint__header
+                                .hint__tab.hint__tab_active(tab='1')
+                                    .hint__header-text Assistance
+                                    .hint__header-icon ?
+                                .hint__tab(tab='2')
+                                    .hint__header-text Further Help
+                                    .hint__header-icon
+                                        img(src="img/phone-receiver.png")
+                            .hint__body.active(data-tab='1')
+                                .hint__body-text If there is more than one person travelling on the same itinerary then you may include them all on one visa support document rather than applying for individual ones.
+                            .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                    .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/headset.png")
+                                    .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/support.png")
+                                    .hint__action-text.hint__action-text_grey  Livechat: Online   
+
+                    //- Number of entries         
+                    .input.mt-4
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Number of entries
+                            select.input__select
+                                option(value="") Single entry visa
+                                option(value="") Double entry visa
+
+                        .input__highlight
+                        .hint
+                            .hint__header
+                                .hint__tab.hint__tab_active(tab='1')
+                                    .hint__header-text Assistance
+                                    .hint__header-icon ?
+                                .hint__tab(tab='2')
+                                    .hint__header-text Further Help
+                                    .hint__header-icon
+                                        img(src="img/phone-receiver.png")
+                            .hint__body.active(data-tab='1')
+                                .hint__body-text A single entry visa allows the visa holder one entry and exit from Russia and a double entry visa allows for two entries and exits within the visa validity period.
+                                    | If you have a group where some individuals require a single entry visa and others a double entry visa then you should apply for the appropriate visa support documents for these individuals separately to avoid higher consular fees.
+                            .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                    .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/headset.png")
+                                    .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/support.png")
+                                    .hint__action-text.hint__action-text_grey  Livechat: Online      
+
+                    //- Purpose of visit        
+                    .input.mt-4
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Purpose of visit
+                            select.input__select
+                                option(value="") Tourist
+                                option(value="") Business Tourist
+                                option(value="") Auto Tourist
+
+                        .input__highlight
+                        .hint
+                            .hint__header
+                                .hint__tab.hint__tab_active(tab='1')
+                                    .hint__header-text Assistance
+                                    .hint__header-icon ?
+                                .hint__tab(tab='2')
+                                    .hint__header-text Further Help
+                                    .hint__header-icon
+                                        img(src="img/phone-receiver.png")
+                            .hint__body.active(data-tab='1')
+                                .hint__body-text A tourist visa may have a purpose other than general tourism.
+                                    br
+                                    br
+                                    | If you have your own visa support then select the closest matching purpose to the one you have listed on it, generally this will be simply "tourist".
+                                    br
+                                    br
+                                    | If Real Russia is providing your visa support documents you have the option of selecting from the following purpose types that will more closely match your actual purpose:
+                                    br
+                                    br
+                                    b AUTO TOURIST - 
+                                    | For general tourist purposes though where you will be taking your own private vehicle into Russia. You should provide a cover letter with your application pack indicating your route of journey, and the vehicle details such as make, registration and colour, and a copy of the vehicle registration document. Please note that in addition to the auto-tourist visa there will be other requirements to take your vehicle into and out of Russia which you will | be responsible for.
+                                    br
+                                    br
+                                    b BUSINESS TOURIST - 
+                                    | For people travelling to Russia to establish business links or investigate the economic climate for future business opportunities (please note, once the business links are in place, you should travel on a full business visa). You should be staying in a hotel, know the exact dates you are going to visit Russia and may not generally request this type of visa for visits of more than 15 days.
+                                    br
+                                    br
+                                    b TOURIST - 
+                                    |   For general tourist purposes.
+                                    br
+                                    br
+                                    b TRANS-SIBERIAN -
+                                    |  For people travelling along the Trans-Siberian, Trans-Mongolian or Trans-Manchurian railway.
+                            .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                    .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/headset.png")
+                                    .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/support.png")
+                                    .hint__action-text.hint__action-text_grey  Livechat: Online 
+
+
+                    //- Purpose of visit        
+                    .input.mt-4
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Registration
+                            select.input__select
+                                option(value="") No registration service needed 
+                                option(value="") Registration in Moscow - £20
+                                option(value="") Registration in Saint Petersburg - £20
+
+                        .input__highlight
+                        .hint
+                            .hint__header
+                                .hint__tab.hint__tab_active(tab='1')
+                                    .hint__header-text Assistance
+                                    .hint__header-icon ?
+                                .hint__tab(tab='2')
+                                    .hint__header-text Further Help
+                                    .hint__header-icon
+                                        img(src="img/phone-receiver.png")
+                            .hint__body.active(data-tab='1')
+                                .hint__body-text 
+                                    b No registration service needed
+                                    br
+                                    | Select this option if you are staying in a hotel, staying in other accommodation where your visa will be registered for you or if you are staying in each Russian city you will be visiting for fewer than seven working days.
+                                    br
+                                    br
+                                    b Registration in Moscow
+                                    br
+                                    br
+                                    | Select this option if you are staying in Moscow for more than 7 working days though not staying in a hotel and wish to pre-pay for our registration service. Please note that the registration cost is per person and applied to the total number of people applying. Please note that once your visa is issued the pre-paid registration fees are non-refundable.
+                                    br
+                                    br
+                                    | If you wish you may select "No registration service needed" and pay our office in Moscow directly.
+                                    br
+                                    br
+                                    b Registration in St. Petersburg
+                                    br
+                                    br
+                                    | Select this option if you are staying in St Petersburg but not staying in a hotel and wish to pre-pay for a registration service with our partners. Please note that the registration cost is per person and applied to the total number of people applying. Please note that once your visa is issued the pre-paid registration fees are non-refundable.
+                            .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                    .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/headset.png")
+                                    .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/support.png")
+                                    .hint__action-text.hint__action-text_grey  Livechat: Online 
+
+                    //- Country applying in      
+                    .input.mt-4
+                        .input__wrapper.input__wrapper_correct
+                            label.input__label Country applying in
+                            br
+                            input.input__select.total__select.total__country(type="text") 
+
+                        .input__highlight
+                        .hint
+                            .hint__header
+                                .hint__tab.hint__tab_active(tab='1')
+                                    .hint__header-text Assistance
+                                    .hint__header-icon ?
+                                .hint__tab(tab='2')
+                                    .hint__header-text Further Help
+                                    .hint__header-icon
+                                        img(src="img/phone-receiver.png")
+                            .hint__body.active(data-tab='1')
+                                .hint__body-text 
+                                    | Please let us know which country you will be applying for your visa in, so that we can advise you, if there are any specific conditions that we are aware of, when applying for a tourist visa using our visa support.
+                            .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                    .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/headset.png")
+                                    .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/support.png")
+                                    .hint__action-text.hint__action-text_grey  Livechat: Online    
+
+                        //- Delivery option      
+                        .input.mt-4
+                            .input__wrapper.input__wrapper_correct
+                                label.input__label Delivery option
+                                select.input__select
+                                    option(value="") By email - original not required
+                                    option(value="") Other courier - price on application
+
+                .step
+                    // Personal Details /////////////////////////////////////////////////////////////////////////////////////
+                    h2.step__title Personal Details
+                    .step__description
+                        img.mr-4(src="img/user.png", alt="")
+                        .step__text
+                            b Let us know a bit about yourself -
+                            br
+                            span Just the key details we need to collect from you and your group to proceed with our application. You can add up to a further 5 people below by just clicking on the ‘Add another person’ button.
+
+                    .input.mt-4
+                        .input__wrapper
+                            label.input__label First name
+                            input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
+                        .input__error-label This field cannot be empty
+
+                        .hint
+                            .hint__header
+                                .hint__tab(tab='1')
+                                    .hint__header-text Assistance
+                                    .hint__header-icon ?
+                                .hint__tab.hint__tab_active(tab='2')
+                                    .hint__header-text Further Help
+                                    .hint__header-icon
+                                        img(src="img/phone-receiver.png")
+                            .hint__body.active(data-tab='1')
+                                .hint__body-text Provide the details for each person to be listed on the visa support document exactly as it appears in
+                                    | their passport and ensure they are correct as the consulate may reject your application if the visa support details and passport details do not match. Please note that special characters with accents or umlauts are not recognized by the system and should be changed to their equivalents in English alphabet. If you are not sure about the spelling,   contact our visa team at visas@realrussia.co.uk or on 02071007370.
+                                    | .hint__action
+                                    .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                    .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/headset.png")
+                                    .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/support.png")
+                                    .hint__action-text.hint__action-text_grey  Livechat: Online
+                            .hint__body(data-tab='2')
+                                .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/phone-receiver.png")
+                                    .hint__action-text  +44 (0)207 100 7370
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/headset.png")
+                                    .hint__action-text.hint__action-text_black  Click to Call
+                                .hint__action
+                                    .hint__action-icon
+                                        img(src="img/support.png")
+                                    .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
+
+                    .input
+                        .input__wrapper
+                            label.input__label Middle name
+                            input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
+                        .input__error-label This field cannot be empty
+
+
+                    .input
+                        .input__wrapper
+                            label.input__label Surname
+                            input.input__field(type="text", name="", required, pattern="/^[a-z]{3,}$/gi")
+                        .input__error-label This field cannot be empty
+
+                    .radio-buttons
+                        .radio-buttons__wrapper
+                            input.radio-buttons__radio(type="radio", name="someName", id="yes", selected)
+                            label.radio-buttons__view(for="yes") Male
+                        .radio-buttons__wrapper
+                            input.radio-buttons__radio(type="radio", name="someName", id="no")
+                            label.radio-buttons__view(for="no") Female
+
+                    .input
+                        .input__wrapper    
+                            label.input__label Date of birth
+                            input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                            include ../blocks/datepicker/datepicker.jade
+                        .input__error-label This field cannot be empty
+
+                    .input
+                        .input__wrapper
+                            label.input__label Citizenship
+                            br
+                            input.input__select.total__select.total__country(type="text", readonly, pattern="/^[a-z]{3,}%/gi") 
+
+                    .input.mt-4
+                        .input__wrapper
+                            label.input__label Passport number
+                            input.input__field(type="text", name="", required, pattern="/^[0-9]{3,}$/gi")
+                        .input__error-label This field cannot be empty
+
+                    .input
+                        .input__wrapper    
+                            label.input__label Date issued
+                            input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                            include ../blocks/datepicker/datepicker.jade
+                        .input__error-label This field cannot be empty
+
+                    .input
+                        .input__wrapper    
+                            label.input__label Date expires
+                            input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                            include ../blocks/datepicker/datepicker.jade
+                        .input__error-label This field cannot be empty
+
+                .step
+                    // Details about your visit to Russia /////////////////////////////////////////////////////////////////////////////////////
+                    h2.step__title Details about your visit to Russia                
+                    .step__description
+                        img.mr-4(src="img/location.png", alt="")
+                        .step__text
+                            b Time to tell us about your visit  -
+                            br
+                            span As well as the dates you’re arriving and departing, list all the cities and hotels you’re planning at staying at during your stay.
+                                | You can add up to 10 separate locations below by just clicking on the ‘Add another location’ button.
+
+                    .input_double-dates
+                        .input__wrapper
+                            label.input__label Entry 1- Arrival and departure travel dates
+                            .d-flex.align-items-center
+                                .input
+                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                                    include ../blocks/datepicker/datepicker.jade
+                                span.input__label_gray.ml-3.mr-1 to
+                                .input
+                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
+                                    include ../blocks/datepicker/datepicker.jade
+                        .input__error-label This field cannot be empty
+
+
+                    .step__subtitle
+                        .step__subtitle-text Location 1
+                        .step__subtitle-icon
+
+                    .step__subtitle-content
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label City
+                                select.input__select
+                                    option(value="") Moscow
+                                    option(value="") Volgograd
+                                    option(value="") Kazan
+                            .input__error-label This field cannot be empty
+                            .hint
+                                .hint__header
+                                    .hint__tab.hint__tab_active(tab='1')
+                                        .hint__header-text Assistance
+                                        .hint__header-icon ?
+                                    .hint__tab(tab='2')
+                                        .hint__header-text Further Help
+                                        .hint__header-icon
+                                            img(src="img/phone-receiver.png")
+                                .hint__body.active(data-tab='1')
+                                    .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/phone-receiver.png")
+                                        .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/headset.png")
+                                        .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/support.png")
+                                        .hint__action-text.hint__action-text_grey  Livechat: Online
+                                .hint__body(data-tab='2')
+                                    .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/phone-receiver.png")
+                                        .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/headset.png")
+                                        .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/support.png")
+                                        .hint__action-text.hint__action-text_grey  Livechat: Online                                                                                
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label Hotel
+                                select.input__select
+                                    option(value="") Ahtuba
+                                    option(value="") Dream in Reallity
+                            .input__error-label This field cannot be empty
+                            .hint
+                                .hint__header
+                                    .hint__tab.hint__tab_active(tab='1')
+                                        .hint__header-text Assistance
+                                        .hint__header-icon ?
+                                    .hint__tab(tab='2')
+                                        .hint__header-text Further Help
+                                        .hint__header-icon
+                                            img(src="img/phone-receiver.png")
+                                .hint__body.active(data-tab='1')
+                                    .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/phone-receiver.png")
+                                        .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/headset.png")
+                                        .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/support.png")
+                                        .hint__action-text.hint__action-text_grey  Livechat: Online
+                                .hint__body(data-tab='2')
+                                    .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/phone-receiver.png")
+                                        .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/headset.png")
+                                        .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/support.png")
+                                        .hint__action-text.hint__action-text_grey  Livechat: Online                                                                                
+                    .step__subtitle
+                        .step__subtitle-text Location 2
+                        .step__subtitle-icon
+
+                    .step__subtitle-content
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label City
+                                select.input__select
+                                    option(value="") Moscow
+                                    option(value="") Volgograd
+                                    option(value="") Kazan
+                            .hint
+                                .hint__header
+                                    .hint__tab(tab='1')
+                                        .hint__header-text Assistance
+                                        .hint__header-icon ?
+                                    .hint__tab.hint__tab_active(tab='2')
+                                        .hint__header-text Further Help
+                                        .hint__header-icon
+                                            img(src="img/phone-receiver.png")
+                                .hint__body.active(data-tab='1')
+                                    .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/phone-receiver.png")
+                                        .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/headset.png")
+                                        .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/support.png")
+                                        .hint__action-text.hint__action-text_grey  Livechat: Online
+                                .hint__body(data-tab='2')
+                                    .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/phone-receiver.png")
+                                        .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/headset.png")
+                                        .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/support.png")
+                                        .hint__action-text.hint__action-text_grey  Livechat: Online                                                                                
+                        .input.mt-4
+                            .input__wrapper
+                                label.input__label Hotel
+                                select.input__select
+                                    option(value="") Ahtuba
+                                    option(value="") Dream in Reallity
+                            .hint
+                                .hint__header
+                                    .hint__tab(tab='1')
+                                        .hint__header-text Assistance
+                                        .hint__header-icon ?
+                                    .hint__tab.hint__tab_active(tab='2')
+                                        .hint__header-text Further Help
+                                        .hint__header-icon
+                                            img(src="img/phone-receiver.png")
+                                .hint__body.active(data-tab='1')
+                                    .hint__body-text If you need further help, don’t hestitate to get in touch now with any of the following options:
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/phone-receiver.png")
+                                        .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/headset.png")
+                                        .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/support.png")
+                                        .hint__action-text.hint__action-text_grey  Livechat: Online
+                                .hint__body(data-tab='2')
+                                    .hint__body-text If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/phone-receiver.png")
+                                        .hint__action-text  +44 (0)207 100 7370
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/headset.png")
+                                        .hint__action-text.hint__action-text_black  Click to Call
+                                    .hint__action
+                                        .hint__action-icon
+                                            img(src="img/support.png")
+                                        .hint__action-text.hint__action-text_grey  Livechat: Online
+
+
+                .step
+                    //Contact details /////////////////////////////////////////////////////////////////////////////////////
+                    h2.step__title Contact details              
+                                
+                    .input
+                        .input__wrapper
+                            label.input__label Telephone
+                            input.input__field(id="phone" type="tel", required)
+                        .input__error-label This field cannot be empty  
+                        
+                    .input
+                        .input__wrapper
+                            label.input__label Email address
+                            input.input__field(type="text", name="", required, pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/gi")
+                        .input__error-label This field cannot be empty 
+                        
+                    .radio-buttons__title Have you read the 
+                        a(href="#") terms and conditions? 
+                    .radio-buttons
+                        .radio-buttons__wrapper
+                            input.radio-buttons__radio(type="radio", name="someName2", id="yes2")
+                            label.radio-buttons__view(for="yes2") Yes
+                        .radio-buttons__wrapper
+                            input.radio-buttons__radio(type="radio", checked, name="someName2", id="no2")
+                            label.radio-buttons__view(for="no2") No
+                            
+                    .step__note
+                        b EXAMPLE OF NOTE OR WARNING
+                        .step__note-text The Russian consulate in United Kingdom have currently no special conditions that we are aware of and accept an email copy of the visa support documents as well as group visa supports.
+                            | However, this is subject to change so please confirm the current requirements directly with the consulate before submitting your application.
+                            | If necessary we can arrange to courier the original visa support document to you from Moscow, please feel free to contact our visa team at visas@realrussia.co.uk who will be happy to help.
+                            
+                div.container
+                  div.d-block.d-sm-flex.jc-sb.mw-710.mt-19.mb-35
+                    button.button.mr-3.mb-3 Save progress
+                    button.button.button_red.mb-3 next step >
