@@ -1,0 +1,26 @@
+doctype html
+html(lang="ru")
+    include ../blocks/head/head.jade
+    body
+        main
+            .container
+                .d-flex.flex-wrap.align-items-center.justify-content-between
+                    div
+                        .title Russian Tourist Visa Support Application
+                        .steps.mt-30
+                            .steps__item
+                                .steps__item-step.steps__item-step_active 1
+                                .steps__item-text.steps__item-text_active service details
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 2
+                              .steps__item-text.steps__item-text_disabled.top-22.l-30 personal details
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 3
+                              .steps__item-text.steps__item-text_disabled your visit
+                            .steps__item
+                              .steps__item-step.steps__item-step_disabled 4
+                              .steps__item-text.steps__item-text_disabled.top-22 payment
+                            .steps__line
+                            .steps__line.steps__line_grey
+                    
+                    include ../blocks/total/total.jade 
