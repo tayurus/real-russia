@@ -23,7 +23,7 @@ html(lang="ru")
                             .steps__item-text your visit
                         .steps__item
                             .steps__item-step.steps__item-step_active 4
-                            .steps__item-text.steps__item-text_disabled.top-22 payment
+                            .steps__item-text.steps__item-text_disabled(style="top:40px") payment
                         .steps__line
                         .steps__line.steps__line_grey.w-66
                     include ../blocks/total/total.jade
@@ -148,5 +148,6 @@ html(lang="ru")
 
             .container.d-flex.justify-content-between.mt-4.flex-column.flex-md-row
                 button.button.mb-3.mx-1 Save progress
-                button.button.border-red.color-red.bg-white.mx-1.mb-3 < PREVIOUS STEP
+                a(href="step3.html")
+                    button.button.border-red.color-red.bg-white.mx-1.mb-3 < PREVIOUS STEP
                 button.button.button_red.mx-1.mb-3 MAKE PAYMENT   
