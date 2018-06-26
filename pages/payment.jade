@@ -1,0 +1,152 @@
+doctype html
+html(lang="ru")
+    include ../blocks/head/head.jade
+    body
+        main
+            .container
+                .d-flex.align-items-center.justify-content-center.justify-content-sm-between.mt-5.flex-wrap.flex-md-nowrap
+                    .steps.mt-30
+                        .steps__item
+                            .steps__item-step 1
+                                .steps__item-icon
+                                    img(src="img/check.png")
+                            .steps__item-text service details
+                        .steps__item
+                            .steps__item-step 2
+                                .steps__item-icon
+                                    img(src="img/check.png")
+                            .steps__item-text personal details
+                        .steps__item
+                            .steps__item-step 3 
+                                .steps__item-icon
+                                    img(src="img/check.png")
+                            .steps__item-text your visit
+                        .steps__item
+                            .steps__item-step.steps__item-step_active 4
+                            .steps__item-text.steps__item-text_disabled.top-22 payment
+                        .steps__line
+                        .steps__line.steps__line_grey.w-66
+                    include ../blocks/total/total.jade
+
+            .d-flex.align-items-center.container.bg-gray.pb-30.flex-wrap.flex-lg-nowrap      
+                .container.px-0
+                    .d-flex.align-items-center
+                    div.d-flex.jc-sb.pt-27.pl-10
+                        div.d-flex.flex-grow-1.button-wrap
+                            div
+                                button.button save progress
+                                .button__text.pb-4 SAVE your current progress.                    
+                    .step
+                        h2.step__title VISA SUPPORT APPLICATION Order Summary
+                        .step__description
+                            .step__text
+                                | Thank you 
+                                span.color-red PAUL BRADLEY
+                                | , your Real Russian Tourist Visa Support application has been submitted to our database and is ready for processing.
+                                | Your reference number is: 
+                                b SSSD - 13611 - D7326 - PB
+
+                        hr
+
+                        table.total-table
+                            tr
+                                td Single entry visa
+                                td £15.30
+                            tr
+                                td No registration service needed
+                                td £0.00
+                            tr
+                                td.font-weight-bold TOTAL PRICE
+                                td.color-red.font-weight-bold £15.30
+                        hr
+
+                        .step__note
+                            | The visa support document applied for will be valid for processing a visa for the named person to enter Russia on or after <not specified> and they must leave Russia on or before <not specified>. The visa will allow one entry to and one exit from Russia during this period. It is the applicant’s responsibility to confirm that the visa support document/visa meet their requirements before they process the visa, or travel or use the visa itself.
+                            | Please note that once the visa support is issued, no refunds are possible.
+
+                        .radio-buttons__title.font-weight-bold Having completed my application, I agree that the above visa application is suitable.
+                        .radio-buttons
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", checked, name="someName", id="yes")
+                                label.radio-buttons__view(for="yes") Yes
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", name="someName", id="no")
+                                label.radio-buttons__view(for="no") No
+
+                        .step__note You can now proceed to payment
+
+                        .container
+                            h2.step__title PAYMENT
+                            .step__description
+                                img.mr-4.mb-2(src="img/payment.png", alt="")
+                                .step__text
+                                    b Make a secure online payment for your visa support documents.
+                                    | We have sent an email to 
+                                    span.color-red paul@psbweb.co.uk 
+                                    | with details of alternative payment methods should you prefer not to pay by credit/debit card.
+
+                            .input
+                                .input__wrapper
+                                    label.input__label First name
+                                    input.input__field(type="text", name="", required, pattern="/^[a-z]{2,5}$/gi")
+                                .input__error-label This field cannot be empty
+
+                            .input
+                                .input__wrapper
+                                    label.input__label Surname
+                                    input.input__field(type="text", name="", required, pattern="/^[a-z]{2,5}$/gi")
+                                .input__error-label This field cannot be empty
+
+                            .d-flex.flex-wrap.flex-md-nowrap
+                                .input.mr-0.mr-md-5
+                                    .input__wrapper
+                                        label.input__label House number/name
+                                        input.input__field(type="text", name="", required, pattern="/^[0-9a-z]{1,}$/gi")
+                                    .input__error-label This field cannot be empty
+
+                                .input.mr-0.mr-md-4
+                                    .input__wrapper
+                                        label.input__label Postcode
+                                        input.input__field(type="text", name="", required, pattern="/^[0-9]{3,}$/gi")
+                                    .input__error-label This field cannot be empty
+
+                            .input
+                                .input__wrapper
+                                    label.input__label Card type
+                                    select.input__select
+                                        option(value="") Visa Debit
+                                        option(value="") American Express
+                                        option(value="") Mastercard
+
+                            .input.mt-4
+                                .input__wrapper
+                                    label.input__label Card number
+                                    input.input__field(type="text", name="", required, pattern="/^[0-9]{4}(\\s{1})?[0-9]{4}(\\s{1})?[0-9]{4}(\\s{1})?[0-9]{4}(\\s{1})?$/gi")
+                                .input__error-label This field cannot be empty
+
+                            .d-flex.flex-wrap.flex-md-nowrap
+                                .input.mr-0.mr-md-5
+                                    .input__wrapper    
+                                        label.input__label Expiry date
+                                        input(type="text" class="datepicker_jq input__field input__field_calendar" pattern="/^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$/gi")
+                                    .input__error-label This field cannot be empty
+
+                                .input.mr-0.mr-md-4
+                                    .input__wrapper
+                                        label.input__label CCV
+                                        input.input__field(type="text", name="", required, pattern="/^[0-9]{2,3}$/gi")
+                                    .input__error-label This field cannot be empty
+
+                div.mt-4.mt-lg-0
+                    b.color-red SECURE PAYMENT PROCESSING
+                    .step__note Text about how secure payment is Text about how secure payment is Text about how secure payment is
+                    .d-flex
+                        img.mr-2(src="img/mastercard.png", alt="Mastercard")
+                        img.mr-2(src="img/visa.png", alt="visa")
+                        img.mr-2(src="img/visa-debit.png", alt="visa-debit")
+                        img(src="img/american-express.png", alt="american-express") 
+
+            .container.d-flex.justify-content-between.mt-4.flex-column.flex-md-row
+                button.button.mb-3.mx-1 Save progress
+                button.button.border-red.color-red.bg-white.mx-1.mb-3 < PREVIOUS STEP
+                button.button.button_red.mx-1.mb-3 MAKE PAYMENT   
