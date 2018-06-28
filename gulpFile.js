@@ -12,7 +12,7 @@ var reload      = browserSync.reload;
 let src = {
     stylus: ["**/*.styl","**/*.css", "!node_modules/**/*.css", "!build/**/*.css", "!node_modules/**/*.styl"],
     js: ["**/*.js", "!node_modules/**/*.js", "!gulpFile.js", "!build/**/*.js"],
-    pages: ["pages/**/*.jade"],
+    // pages: ["pages/**/*.jade"],
     img: ["**/*.png", "**/*.jpg", "**/*.svg", "**/*.ico", "!node_modules/**/*.ico", "!node_modules/**/*.jpg", "!node_modules/**/*.png", "!node_modules/**/*.svg", "!build/**/*.ico", "!build/**/*.svg", "!build/**/*.jpg", "!build/**/*.png", ]
 }
 
@@ -23,15 +23,15 @@ let dist = {
 
 gulp.task("build", function() {
     //PAGES
-    gulp.src(src.pages).pipe(jade({
-        pretty: "\t"
-    }))
-    .pipe(replace('<!--', ''))
-    .pipe(replace('-->', ''))
-    .pipe(rename(function (path) {
-        path.extname = ".asp";
-      }))
-    .pipe(gulp.dest(dist.main)).pipe(reload({stream:true}));;
+    // gulp.src(src.pages).pipe(jade({
+    //     pretty: "\t"
+    // }))
+    // .pipe(replace('<!--', ''))
+    // .pipe(replace('-->', ''))
+    // .pipe(rename(function (path) {
+    //     path.extname = ".asp";
+    //   }))
+    // .pipe(gulp.dest(dist.main)).pipe(reload({stream:true}));;
 
     // IMG
     gulp.src(src.img).pipe(rename({
@@ -69,7 +69,8 @@ gulp.task('browserSync', function() {
 
 gulp.task("watch", ["build"], function() {
     // gulp.watch(Object.values(src), ["build"]);
-    gulp.watch([src.js, src.stylus, src.pages, src.img, ['blocks/**/*jade']], ["build"]);
+    // gulp.watch([src.js, src.stylus, src.pages, src.img, ['blocks/**/*jade']], ["build"]);
+    gulp.watch([src.js, src.stylus, src.img, ['blocks/**/*jade']], ["build"]);
 })
 
 gulp.task("default", ['browserSync', 'watch'], function(){
