@@ -3,6 +3,7 @@ let jade = require("gulp-jade");
 let autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var rename = require('gulp-rename');
+var replace = require('gulp-replace');
 let cleanCSS = require('gulp-clean-css');
 var browserSync = require('browser-sync');
 var stylus = require('gulp-stylus');
@@ -24,7 +25,13 @@ gulp.task("build", function() {
     //PAGES
     gulp.src(src.pages).pipe(jade({
         pretty: "\t"
-    })).pipe(gulp.dest(dist.main)).pipe(reload({stream:true}));;
+    }))
+    .pipe(replace('<!--', ''))
+    .pipe(replace('-->', ''))
+    .pipe(rename(function (path) {
+        path.extname = ".asp";
+      }))
+    .pipe(gulp.dest(dist.main)).pipe(reload({stream:true}));;
 
     // IMG
     gulp.src(src.img).pipe(rename({

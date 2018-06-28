@@ -56,31 +56,39 @@ html(lang="ru")
                             span As well as the dates you’re arriving and departing, list all the cities and hotels you’re planning at staying at during your stay.
                                 | You can add up to 10 separate locations below by just clicking on the ‘Add another location’ button.
                     
-                    .input_double-dates
-                        .input__wrapper
-                            label.input__label Entry 1- Arrival and departure travel dates
-                            .d-flex.align-items-center
-                                .input
-                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
-                                    include ../blocks/datepicker/datepicker.jade
-                                span.input__label_gray.ml-3.mr-1 to
-                                .input
-                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
-                                    include ../blocks/datepicker/datepicker.jade
-                        .input__error-label This field cannot be empty
+                    label.input__label Entry 1 - Arrival and departure travel dates 
+                    .d-block.d-sm-flex.justify-content-between.mw-625  
                         
-                    .input_double-dates
-                        .input__wrapper
-                            label.input__label Entry 2 - Arrival and departure travel dates
-                            .d-flex.align-items-center
-                                .input
-                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
-                                    include ../blocks/datepicker/datepicker.jade
-                                span.input__label_gray.ml-3.mr-1 to
-                                .input
-                                    input.input__field.input__field_calendar(type="text", readonly, name="", required)
-                                    include ../blocks/datepicker/datepicker.jade
-                        .input__error-label This field cannot be empty
+                        .input.mr-3
+                            .input__wrapper
+                                label.input__label Arrival Date
+                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                                include ../blocks/datepicker/datepicker.jade
+                            .input__error-label This field cannot be empty
+                        .input.mr-3
+                            .input__wrapper
+                                label.input__label Departure Date
+                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                                include ../blocks/datepicker/datepicker.jade
+                            .input__error-label This field cannot be empty
+                    
+                    label.input__label Entry 2 - Arrival and departure travel dates  
+                    .d-block.d-sm-flex.justify-content-between.mw-625
+                        
+                        .input.mr-3
+                            .input__wrapper
+                                label.input__label Arrival Date 
+                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                                include ../blocks/datepicker/datepicker.jade
+                            .input__error-label This field cannot be empty
+                        .input.mr-3
+                            .input__wrapper
+                                label.input__label Departure Date
+                                input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
+                                include ../blocks/datepicker/datepicker.jade
+                            .input__error-label This field cannot be empty
+                        
+                
                     
                     .step__subtitle
                         .step__subtitle-text Location 1
@@ -297,14 +305,21 @@ html(lang="ru")
                             .radio-buttons__wrapper
                                 input.radio-buttons__radio(type="radio", checked, name="someName2", id="no2")
                                 label.radio-buttons__view(for="no2") No
+                        .radio-buttons__title.font-weight-bold I have read and understood 
+                            a(href="#") terms and conditions    
+                        .radio-buttons
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", name="someName3", id="yes3")
+                                label.radio-buttons__view(for="yes3") Yes
+                            .radio-buttons__wrapper
+                                input.radio-buttons__radio(type="radio", checked, name="someName3", id="no3")
+                                label.radio-buttons__view(for="no3") No
             div.container
               div.d-block.d-sm-flex.jc-sb.mw-660.mt-19.mb-35
                 button.button.mr-3.mb-3 Save progress
                 div
-                    a(href="step2.html")
-                        button.button.border-red.color-red.bg-white.mr-2.mb-3 < previous step
-                    a(href="payment.html")
-                        button.button.button_red.mb-3 next step >
+                    a.button.border-red.color-red.bg-white.mr-2.mb-3(href="step2.html") < previous step
+                    a.button.button_red.mb-3(href="payment.html") next step >
 
 
 
