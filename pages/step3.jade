@@ -4,16 +4,6 @@ html(lang="ru")
     body
 
         main
-            .message
-                .message__icon_error
-                .message__content
-                    .message__title The following fields have problems
-                    .message__links
-                        a.message__link(href="#") Purpose of visit 
-                        a.message__link(href="#") Visitor 1 First name 
-                        a.message__link(href="#") Visitor 1 Surname 
-                        a.message__link(href="#") Visitor 1 Gender 
-                        a.message__link(href="#") Visitor 2 Surname
             .container
                 .d-flex.flex-wrap.align-items-center.justify-content-between
                     div
@@ -46,7 +36,7 @@ html(lang="ru")
                           button.button save progress
                           .button__text.pb-4 SAVE your current progress.
                     
-                .step
+                .step(data-step="3")
                     h2.step__title details about your visit to russia
                     .step__description
                         img.mr-4(src="img/location.png", alt="")

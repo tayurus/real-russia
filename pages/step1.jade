@@ -40,7 +40,7 @@ html(lang="ru")
                         button.button.border-red.color-red.bg-white I AM A RETURNING CLIENT
                         .button__text Recover your personal details quickly to pre-fill your application.
                     
-                .step
+                .step(data-step="1")
                     h2.step__title service details
                     .step__description
                         img.mr-4(src="img/portfolio.png", alt="")
@@ -327,8 +327,11 @@ html(lang="ru")
                               .hint__action-icon
                                 img(src="img/support.png")
                               .hint__action-text.hint__action-text_grey  Livechat: Online                                                                
+                    
             div.container
               div.d-block.d-sm-flex.jc-sb.mw-660.mt-19.mb-35
                 button.button.mr-3.mb-3 Save progress
-                a(href="step2.html")
-                    button.button.button_red.mb-3 next step >  
+                div
+                    a(href="step1.html")
+                        button.button.border-red.color-red.bg-white.mr-2.mb-3(data-role="prevStep") < previous step
+                    a.button.button_red.mb-3(data-role="nextStep") next step >

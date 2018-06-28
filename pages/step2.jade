@@ -35,8 +35,10 @@ html(lang="ru")
                   div.d-flex.flex-grow-1.button-wrap
                     div
                       button.button save progress
-                      .button__text.pb-4 SAVE your current progress.                    
-                .step
+                      .button__text.pb-4 SAVE your current progress.   
+                      
+                                       
+                .step(data-step="2")
                     h2.step__title Personal details
                     .step__description
                         img.mr-4(src="img/user.png", alt="")
@@ -194,7 +196,7 @@ html(lang="ru")
                                 
                                 label.input__label Date of birth
                                 input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
-                                include ../blocks/datepicker/datepicker.jade
+                                
                             .input__error-label This field cannot be empty
                           
                             .hint
@@ -326,7 +328,7 @@ html(lang="ru")
                                 .input__wrapper
                                     label.input__label Date passport issued
                                     input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
-                                    include ../blocks/datepicker/datepicker.jade
+                                    
                                 .input__error-label This field cannot be empty
                                 
                                 .hint
@@ -370,7 +372,7 @@ html(lang="ru")
                                 .input__wrapper
                                     label.input__label Date passport expires
                                     input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
-                                    include ../blocks/datepicker/datepicker.jade
+                                    
                                 .input__error-label This field cannot be empty
                                 
                                 .hint
@@ -414,7 +416,7 @@ html(lang="ru")
                             .input__wrapper
                                 label.input__label Date passport expires
                                 input.input__field.input__field_calendar(type="text", readonly, name="", pattern="/^[0-9]{1,2}\\s[a-z]{3}\\s[0-9]{4}$/gi" required)
-                                include ../blocks/datepicker/datepicker.jade
+                                
                             .input__error-label This field cannot be empty
                             
                             .hint
