@@ -1,19 +1,7 @@
-*{
-    box-sizing: border-box;
-}
 
 @font-face
     src: url('fonts/Open-Sans.ttf');
     font-family: "Open Sans";
-
-body{
-    margin: 0px;
-    padding: 0px;
-}
-
-a
-    color: inherit!important;
-    text-decoration: none!important;
 
 .bg-gray
     background-color: #f7f7f7
@@ -59,6 +47,18 @@ a
 .color-red
     color: #cc091d;
 
+.container_form-wrapper{
+    position: relative !important;
+    z-index: 0 !important;
+}
+
+.container_form-wrapper *{
+    box-sizing: border-box !important;
+}
+
+.container_form-wrapper a
+    color: inherit!important;
+    text-decoration: none!important;
 
 @media (max-width:414px)
   .top-22
