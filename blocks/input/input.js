@@ -4,11 +4,9 @@ $(".input__field").on("blur propertychange click change keyup input paste", func
 
         let value = $(this).val();
         let pattern = $(this).attr('pattern');
-        console.log(pattern);
         //create a regex from pattern
         let flags = pattern.replace(/.*\/([gimy]*)$/, '$1');
         let regexBody = pattern.replace(new RegExp('^/(.*?)/'+flags+'$'), '$1');
-        console.log("REGEXBODY = " +regexBody);
         let regex = new RegExp(regexBody, flags);
 
         //check if input's value correct

@@ -942,7 +942,7 @@
                    <div class="input mr-3">
                        <div class="input__wrapper">
                            <label class="input__label">Date passport issued</label>
-                           <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>" class="datepicker_jq input__field input__field_calendar"/>
+                           <input class="datepicker_jq input__field input__field_calendar passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
                        </div>
                        <div class="input__error-label">This field cannot be empty</div>
                        <div class="hint">
@@ -1005,7 +1005,7 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Date passport expires</label>
-                           <input type="text" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
+                           <input type="text" class="datepicker_jq input__field input__field_calendar passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
                        </div>
                        <div class="input__error-label">This field cannot be empty</div>
                        <div class="hint">
@@ -1212,14 +1212,30 @@
                <div class="input mr-3">
                    <div class="input__wrapper">
                        <label class="input__label">Arrival Date</label>
-                       <input type="text" id="arrival-date1" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
+                       <input type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar arrival-date"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
                <div class="input mr-3">
                    <div class="input__wrapper">
                        <label class="input__label">Departure Date</label>
-                       <input type="text" id="departure-date1"data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
+                       <input type="text"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar departure-date"/>
+                   </div>
+                   <div class="input__error-label">This field cannot be empty</div>
+               </div>
+           </div><label class="input__label">Entry 21 - Arrival and departure travel dates </label>
+           <div class="d-block d-sm-flex justify-content-between mw-625">
+               <div class="input mr-3">
+                   <div class="input__wrapper">
+                       <label class="input__label">Arrival Date</label>
+                       <input type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar arrival-date"/>
+                   </div>
+                   <div class="input__error-label">This field cannot be empty</div>
+               </div>
+               <div class="input mr-3">
+                   <div class="input__wrapper">
+                       <label class="input__label">Departure Date</label>
+                       <input type="text"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar departure-date"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>

@@ -39,172 +39,85 @@ $("[data-role='prevStep']").click(function(){
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
 
-let currentYear = new Date().getFullYear()
-let minDefaultYear = currentYear - 100;
+
+    let currentYear = new Date().getFullYear()
+    let minDefaultYear = currentYear - 100;
+    let currentDate = new Date();
+
+    $( ".datepicker_jq").each( function(index, item){
+        let minYearAttr = $(item).attr('data-minyear');
+        let maxYearAttr = $(item).attr('data-maxyear');
+
+        if ( typeof minYearAttr === "undefined" )
+            $(item).datepicker( "option", "yearRange", minDefaultYear + ":" + currentYear);
+        else
+            $(item).datepicker( "option", "yearRange",  minYearAttr + ":" + currentYear);
+
+        if ( typeof maxYearAttr === "undefined" )
+            $(item).datepicker( "option", "yearRange", currentYear + ":" + currentYear + 20);
+        else
+            $(item).datepicker( "option", "yearRange", currentYear + ":" + maxYearAttr);
+
+        if ( typeof minYearAttr === "undefined" && typeof maxYearAttr === "undefined" )
+            $(item).datepicker( "option", "yearRange", minDefaultYear + ":" + currentYear);
+        else
+            $(item).datepicker( "option", "yearRange", minYearAttr + ":" + maxYearAttr);
+
+    })
+
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!! VALIDATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // Setting default min date for departure
+    console.log("SHIT");
+    $(".departure-date").each(function(index, item) {
+        let currentDate = new Date();
+        $(item).datepicker("option", "minDate",  new Date(currentDate.setDate(currentDate.getDate() + 2)));
+        console.log("departure-date each");
+        $(item).change(function(){
+            console.log("departure-date CHANGED");
+            let selectedDate = $(this).datepicker("getDate");
+            let minDateArrival = new Date(selectedDate.toDateString()), maxDateArrival = new Date(selectedDate.toDateString());
+
+            // CALCULATING MIN ARRIVAL DATE
+            //subtract from selected date 30 days
+            minDateArrival.setDate(minDateArrival.getDate() - 30);
+            if (minDateArrival < new Date()){
+                currentDate = new Date();
+                minDateArrival = new Date(currentDate.setDate(currentDate.getDate() + 1));
+            }
+
+
+            // CALCULATING MAX ARRIVAL DATE
+            maxDateArrival.setDate(maxDateArrival.getDate() - 1);
+
+
+
+            $(this).datepicker("option", "minDate", minDateArrival);
+            $(this).datepicker("option", "maxDate", maxDateArrival);
+        })
+
+    })
+
+
+    // Setting default min dates for arrival
+    $(".arrival-date").each(function(index,item){
+        let currentDate = new Date();
+        $(item).datepicker("option", "minDate",  new Date(currentDate.setDate(currentDate.getDate() + 1)));
+
+        $(item).change(function() {
+            console.log("arrival-date CHANGED");
+            let selectedDate = $(this).datepicker("getDate");
+            let maxDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 30));
+
+            $(this).datepicker("option", "maxDate", maxDateDeparture);
+        })
+    })
+
+
 $( ".datepicker_jq").datepicker({
       changeMonth: true,
       changeYear: true,
       // yearRange: (typeof($(this).attr('data-minyear')) === "undefined") ? minDefaultYear + ":" + currentYear : $(this).attr('data-minyear') + ":" + currentYear
     });
-
-$( ".datepicker_jq").each( function(index, item){
-    let minYearAttr = $(item).attr('data-minyear');
-    let maxYearAttr = $(item).attr('data-maxyear');
-
-    if ( typeof minYearAttr === "undefined" )
-        $(item).datepicker( "option", "yearRange", minDefaultYear + ":" + currentYear);
-    else
-        $(item).datepicker( "option", "yearRange",  minYearAttr + ":" + currentYear);
-
-    if ( typeof maxYearAttr === "undefined" )
-        $(item).datepicker( "option", "yearRange", currentYear + ":" + currentYear + 20);
-    else
-        $(item).datepicker( "option", "yearRange", currentYear + ":" + maxYearAttr);
-
-    if ( typeof minYearAttr === "undefined" && typeof maxYearAttr === "undefined" )
-        $(item).datepicker( "option", "yearRange", minDefaultYear + ":" + currentYear);
-    else
-        $(item).datepicker( "option", "yearRange", minYearAttr + ":" + maxYearAttr);
-
-})
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!! VALIDATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// Setting default min date for departure
-let currentDate = new Date();
-$("#departure-date1").datepicker("option", "minDate",  new Date(currentDate.setDate(currentDate.getDate() + 2)));
-
-$("#departure-date1").change(function(){
-    let selectedDate = $("#departure-date1").datepicker("getDate");
-    let minDateArrival = new Date(selectedDate.toDateString()), maxDateArrival = new Date(selectedDate.toDateString());
-
-    // CALCULATING MIN ARRIVAL DATE
-    //subtract from selected date 30 days
-    minDateArrival.setDate(minDateArrival.getDate() - 30);
-    if (minDateArrival < new Date()){
-        currentDate = new Date();
-        minDateArrival = new Date(currentDate.setDate(currentDate.getDate() + 1));
-    }
-
-
-    // CALCULATING MAX ARRIVAL DATE
-    maxDateArrival.setDate(maxDateArrival.getDate() - 1);
-
-
-
-    $("#arrival-date1").datepicker("option", "minDate", minDateArrival);
-    $("#arrival-date1").datepicker("option", "maxDate", maxDateArrival);
-})
-
-// Setting default min dates for arrival
-currentDate = new Date();
-$("#arrival-date1").datepicker("option", "minDate",  new Date(currentDate.setDate(currentDate.getDate() + 1)))
-
-
-$("#arrival-date1").change(function() {
-    let selectedDate = $("#arrival-date1").datepicker("getDate");
-    let maxDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 30));
-
-    $("#departure-date1").datepicker("option", "maxDate", maxDateDeparture);
-})
-
-
-// $(".datepicker").each((index, item) => {
-//
-//     let currentDate = new Date();
-//     let days =  Array(42).fill(0);
-//
-//     function initializeDatePicker(){
-//         table = matrixify(fillDays(), 6,7);
-//         console.log(table);
-//         $(item).find(".datepicker__current").text(formateDate(currentDate));
-//         for (let week = 1; week <= 6; week++)
-//             for (let day = 0; day < 7; day++)
-//                 $(item).find(".datepicker__days tr:eq("+week+") td:eq("+day+")").text(table[week - 1][day])
-//     }
-//
-//     //fill array of visible days
-//     function fillDays() {
-//         /*get day of week of first day of month*/
-//         //get indexes of current month and Year
-//         let monthIndex = currentDate.getMonth();
-//         let yearIndex = currentDate.getFullYear();
-//
-//         //create new date of first day of this month
-//         let firstDayDate = new Date(yearIndex, monthIndex, 1);
-//
-//         //get day of week and add 1 (because in Russia Monday is first day week)
-//         let firstDayOfWeek = firstDayDate.getDay() - 1;
-//         if (firstDayOfWeek == -1)
-//             firstDayOfWeek = 6;
-//         if (firstDayOfWeek == 0)
-//             firstDayOfWeek = 7;
-//
-//         /*fill the array this month days*/
-//         let filler = 1;
-//
-//         let daysInMonth = new Date(yearIndex, monthIndex + 1, 0).getDate();
-//         console.log("CURRENT MONTH = " + monthIndex + " yearIndex = " + yearIndex + "daysInMonth = " + daysInMonth);
-//         let daysInPrevMonth = new Date(yearIndex, monthIndex, 0).getDate();
-//         let newDays = days.map((item, index) => {
-//             let day = 0;
-//             if (index < firstDayOfWeek)
-//                 day = daysInPrevMonth - firstDayOfWeek + 1 + index;
-//
-//             else if (index >= firstDayOfWeek && filler <= daysInMonth)
-//                 day = filler++;
-//
-//             /*fill array to the end of next-month's days*/
-//             else if (filler > daysInMonth)
-//                 day = filler++ - daysInMonth;
-//
-//                 return day;
-//         })
-//         return newDays;
-//     }
-//
-//     function formateDate(date){
-//        date = date.toDateString();
-//        let reg = /([a-z]+) ([a-z]+) ([0-9]+) ([0-9]+)/gi;
-//        let match = reg.exec(date);
-//        return match[2] + " " + match[4];
-//    }
-//
-//     //change current date's month (+-1)
-//     function changeMonth(e,operation) {
-//         e.stopPropagation()
-//         if (operation == "+")
-//             currentDate.setMonth(currentDate.getMonth() + 1);
-//         else
-//             currentDate.setMonth(currentDate.getMonth() - 1);
-//
-//         initializeDatePicker()
-//     }
-//
-//     function matrixify(arr, rows, cols) {
-//        var matrix = [];
-//        if (rows * cols === arr.length) {
-//            for (var i = 0; i < arr.length; i += cols) {
-//                matrix.push(arr.slice(i, cols + i));
-//            }
-//        }
-//        return matrix;
-//    };
-//
-//     //Add event listeners for next-prev arrow
-//     $(item).find(".datepicker__prev").click((e) => changeMonth(e,"-"))
-//     $(item).find(".datepicker__next").click((e) => changeMonth(e,"+"))
-//     $(item).find(".datepicker__days td").click(function(e){
-//         e.stopPropagation();
-//         let res = $(this).text() + " " + formateDate(currentDate);
-//         console.log($(item).prev());
-//         $(item).prev().val(res)
-//         $(item).prev().trigger('click');
-//         $(item).hide()
-//     })
-//
-//     initializeDatePicker()
-//     $(item).hide();
-// })
 
 $('.hint').click(function(event) {
     event.stopPropagation()
@@ -233,11 +146,9 @@ $(".input__field").on("blur propertychange click change keyup input paste", func
 
         let value = $(this).val();
         let pattern = $(this).attr('pattern');
-        console.log(pattern);
         //create a regex from pattern
         let flags = pattern.replace(/.*\/([gimy]*)$/, '$1');
         let regexBody = pattern.replace(new RegExp('^/(.*?)/'+flags+'$'), '$1');
-        console.log("REGEXBODY = " +regexBody);
         let regex = new RegExp(regexBody, flags);
 
         //check if input's value correct
