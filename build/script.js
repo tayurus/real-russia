@@ -68,7 +68,44 @@ $( ".datepicker_jq").each( function(index, item){
 
 })
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!! VALIDATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// Setting default min date for departure
+let currentDate = new Date();
+$("#departure-date1").datepicker("option", "minDate",  new Date(currentDate.setDate(currentDate.getDate() + 2)));
 
+$("#departure-date1").change(function(){
+    let selectedDate = $("#departure-date1").datepicker("getDate");
+    let minDateArrival = new Date(selectedDate.toDateString()), maxDateArrival = new Date(selectedDate.toDateString());
+
+    // CALCULATING MIN ARRIVAL DATE
+    //subtract from selected date 30 days
+    minDateArrival.setDate(minDateArrival.getDate() - 30);
+    if (minDateArrival < new Date()){
+        currentDate = new Date();
+        minDateArrival = new Date(currentDate.setDate(currentDate.getDate() + 1));
+    }
+
+
+    // CALCULATING MAX ARRIVAL DATE
+    maxDateArrival.setDate(maxDateArrival.getDate() - 1);
+
+
+
+    $("#arrival-date1").datepicker("option", "minDate", minDateArrival);
+    $("#arrival-date1").datepicker("option", "maxDate", maxDateArrival);
+})
+
+// Setting default min dates for arrival
+currentDate = new Date();
+$("#arrival-date1").datepicker("option", "minDate",  new Date(currentDate.setDate(currentDate.getDate() + 1)))
+
+
+$("#arrival-date1").change(function() {
+    let selectedDate = $("#arrival-date1").datepicker("getDate");
+    let maxDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 30));
+
+    $("#departure-date1").datepicker("option", "maxDate", maxDateDeparture);
+})
 
 
 // $(".datepicker").each((index, item) => {

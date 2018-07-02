@@ -1212,14 +1212,14 @@
                <div class="input mr-3">
                    <div class="input__wrapper">
                        <label class="input__label">Arrival Date</label>
-                       <input type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
+                       <input type="text" id="arrival-date1" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
                <div class="input mr-3">
                    <div class="input__wrapper">
                        <label class="input__label">Departure Date</label>
-                       <input type="text" data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
+                       <input type="text" id="departure-date1"data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
