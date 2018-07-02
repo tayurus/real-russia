@@ -70,7 +70,7 @@ inititializeSteps();
     console.log("SHIT");
     $(".departure-date").each(function(index, item) {
         let currentDate = new Date();
-        $(item).datepicker("option", "minDate",  new Date(currentDate.setDate(currentDate.getDate() + 2)));
+        $(item).datepicker( {"minDate" :  new Date(currentDate.setDate(currentDate.getDate() + 2))});
         console.log("departure-date each");
         $(item).change(function(){
             console.log("departure-date CHANGED");
@@ -88,11 +88,8 @@ inititializeSteps();
 
             // CALCULATING MAX ARRIVAL DATE
             maxDateArrival.setDate(maxDateArrival.getDate() - 1);
-
-
-
-            $(this).datepicker("option", "minDate", minDateArrival);
-            $(this).datepicker("option", "maxDate", maxDateArrival);
+            $(this).closest('.input').prev().find('.arrival-date').datepicker("option", {"minDate" : minDateArrival});
+            $(this).closest('.input').prev().find('.arrival-date').datepicker("option", {"maxDate" : maxDateArrival});
         })
 
     })
@@ -101,14 +98,18 @@ inititializeSteps();
     // Setting default min dates for arrival
     $(".arrival-date").each(function(index,item){
         let currentDate = new Date();
-        $(item).datepicker("option", "minDate",  new Date(currentDate.setDate(currentDate.getDate() + 1)));
+        $(item).datepicker(  {"minDate" :  new Date(currentDate.setDate(currentDate.getDate() + 1))});
 
         $(item).change(function() {
             console.log("arrival-date CHANGED");
             let selectedDate = $(this).datepicker("getDate");
             let maxDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 30));
-
-            $(this).datepicker("option", "maxDate", maxDateDeparture);
+            selectedDate = $(this).datepicker("getDate");
+            let minDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 2));
+            console.log("maxDate, ", maxDateDeparture);
+            //search departure-date
+            $(this).closest('.input').next().find('.departure-date').datepicker("option", {"maxDate" : maxDateDeparture});
+            $(this).closest('.input').next().find('.departure-date').datepicker("option", {"minDate" : minDateDeparture});
         })
     })
 
