@@ -160,7 +160,7 @@ passportValidate()
             let selectedDate = $(this).datepicker("getDate");
             let maxDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 30));
             selectedDate = $(this).datepicker("getDate");
-            let minDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 2));
+            let minDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 1));
             //search departure-date
 
             //if maxDateDeparture + 6 month > minPassportExpiredDate -> maxDateDeparture = minPassportExpiredDate - 6 month
