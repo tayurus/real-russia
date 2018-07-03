@@ -77,6 +77,29 @@ $(".input-group-size").change(function(){
 
 })
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!! CHECK iF USER VISIT LESS 7 DAYS !!!!!!!!!!!!!!!!
+
+$('.departure-date').change(function() {
+    if( $(this).closest('.input').prev().find('.arrival-date').datepicker('getDate')  !== null ) {
+        let departureDate = $(this).datepicker('getDate');
+        let arrivalDate = $(this).closest('.input').prev().find('.arrival-date').datepicker('getDate');
+        let day = 84000000;
+        if ((departureDate - arrivalDate) / day < 7)
+            alert ("You don't need registration");
+    }
+
+})
+$('.arrival-date').change(function() {
+    if( $(this).closest('.input').next().find('.departure-date').datepicker('getDate')  !== null ) {
+        let arrivalDate = $(this).datepicker('getDate');
+        let departureDate = $(this).closest('.input').next().find('.departure-date').datepicker('getDate');
+        let day = 84000000;
+        if (Math.abs(departureDate - arrivalDate) / day < 7)
+            alert ("You don't need registration");
+    }
+
+})
+
 
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();

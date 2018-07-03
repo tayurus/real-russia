@@ -63,7 +63,7 @@
         let currentDate = new Date();
         $(item).datepicker(  {"minDate" :  new Date(currentDate.setDate(currentDate.getDate() + 1))});
         $(item).change(function() {
-            let selectedDate = $(t  his).datepicker("getDate");
+            let selectedDate = $(this).datepicker("getDate");
             let maxDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 30));
             selectedDate = $(this).datepicker("getDate");
             let minDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 1));
