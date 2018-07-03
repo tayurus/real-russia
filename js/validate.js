@@ -144,3 +144,10 @@ $('.input-entries').change(function() {
         $('.second-entry').show();
     else $('.second-entry').hide();
 })
+
+// !!!!!!!!!!! caucasian cities 10 days warning !!!!!!!!!!
+
+$('.input-city').change(function() {
+    if ( ($(this).val() == 'Magas') || ($(this).val() == 'Makhachkala') || ($(this).val() == 'Vladikavkaz') || ($(this).val() == 'Pyatigorsk'))
+        alert('10 processing days for Сaucasus cities')
+})

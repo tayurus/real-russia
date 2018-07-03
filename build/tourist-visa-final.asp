@@ -1256,7 +1256,7 @@
                <div class="input mt-4">
                    <div class="input__wrapper">
                        <label class="input__label">City</label>
-                       <select class="input__select">
+                       <select class="input__select input-city">
                            <option selected disabled hidden>Please select</option>
                            <%
                            dim city
