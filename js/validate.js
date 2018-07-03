@@ -24,7 +24,7 @@
 
     })
 
-    // !!!!!!!!!!!!!!!!!!!!!!!!!!!! VALIDATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!! ARRIVAL-DEPARTURE VALIDATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Setting default min date for departure
     $(".departure-date").each(function(index, item) {
         let currentDate = new Date();
@@ -61,9 +61,70 @@
             selectedDate = $(this).datepicker("getDate");
             let minDateDeparture = new Date(selectedDate.setDate(selectedDate.getDate() + 2));
             //search departure-date
+
+            //if maxDateDeparture + 6 month > minPassportExpiredDate -> maxDateDeparture = minPassportExpiredDate - 6 month
+            if (addMonth(maxDateDeparture, 6) > getMinPassportExpiredDate()){
+                maxDateDeparture.setMilliseconds(maxDateDeparture.getMilliseconds() - (addMonth(maxDateDeparture, 6) - getMinPassportExpiredDate()));
+                console.log("PROBLEM ", addMonth(maxDateDeparture, 6) + " > " + getMinPassportExpiredDate());
+                console.log("NEW maxDateDeparture = ", maxDateDeparture);
+            }
+
             $(this).closest('.input').next().find('.departure-date').datepicker("option", {"maxDate" : maxDateDeparture});
             $(this).closest('.input').next().find('.departure-date').datepicker("option", {"minDate" : minDateDeparture});
         })
     })
 
-    
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  PASSPORT VALIDATION  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//setting minimal date of passport issued
+function passportValidate(){
+
+    $(".passport-issued").each(function(index, item){
+        console.log("shit");
+        let currentDate = new Date();
+        if ($(item).hasClass("hasDatepicker"))
+            $(item).datepicker("option", {"maxDate" :  currentDate});
+        else
+            $(item).datepicker( {"maxDate" :  currentDate});
+    })
+
+    //setting minimal date of passport expired
+    $(".passport-expired").each(function(index, item){
+        let currentDate = new Date();
+        currentDate.setMonth(currentDate.getMonth() + 6)
+        if ($(item).hasClass("hasDatepicker"))
+            $(item).datepicker("option", {"minDate" :  new Date(currentDate.setDate(currentDate.getDate() + 2))});
+        else
+            $(item).datepicker( {"minDate" :  new Date(currentDate.setDate(currentDate.getDate() + 2))});
+    })
+
+}
+
+$(".passport-expired").change(function(){
+    getMinPassportExpiredDate()
+})
+
+function getMinPassportExpiredDate(){
+    let minPassportExpiredDate = new Date(3000, 0, 0);
+    $(".passport-expired").each(function(index, item){
+        if (($(item).datepicker('getDate') < minPassportExpiredDate) && ($(item).datepicker('getDate') !==  null))
+            minPassportExpiredDate = $(item).datepicker('getDate');
+
+        //set max arrival date
+        let minPassportExpiredDateCOPY = new Date(JSON.parse(JSON.stringify(minPassportExpiredDate)));
+        minPassportExpiredDateCOPY.setMonth(minPassportExpiredDateCOPY.getMonth() - 6);
+        minPassportExpiredDateCOPY.setDate(minPassportExpiredDateCOPY.getDate() - 1);
+        console.log("minPassportExpiredDateCOPY = ", minPassportExpiredDateCOPY);
+        if ($(".arrival-date").hasClass("hasDatepicker"))
+            $(".arrival-date").datepicker("option",{maxDate: minPassportExpiredDateCOPY})
+        else
+            $(".arrival-date").datepicker({maxDate: minPassportExpiredDateCOPY})
+        if ($(".departure-date").hasClass("hasDatepicker"))
+            $(".departure-date").datepicker("option",{maxDate: minPassportExpiredDateCOPY})
+        else
+            $(".departure-date").datepicker({maxDate: minPassportExpiredDateCOPY})
+    })
+    return minPassportExpiredDate;
+
+}

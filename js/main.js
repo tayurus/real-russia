@@ -36,5 +36,48 @@ $("[data-role='prevStep']").click(function(){
     }
 });
 
+//when user change groupSize
+$(".input-group-size").change(function(){
+    let visitorsCount = $(this).val();
+
+    //removes all visitors except one
+    $(".visitor-wrapper").each(function(index, item){
+        if (index != 0)
+            $(item).remove()
+    })
+
+    //add needed count of visitors-blocks
+    for (let i = 1; i < visitorsCount; i++)
+        $(".visitor-wrapper:eq(0)")
+        .after($(".visitor-wrapper:eq(0)")
+        .clone(true));
+
+    $(".visitor-wrapper .datepicker_jq").attr("id", "")
+          .removeClass('hasDatepicker')
+          .removeData('datepicker')
+          .unbind()
+          .datepicker({
+                changeMonth: true,
+                changeYear: true,
+          });
+
+    //changing number-text of visitor
+    $(".visitor-wrapper").each(function(index, item){
+        let newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
+        console.log(newText);
+        $(item).find(".step__subtitle-text").text(newText)
+    })
+
+    //initializing datepickers for new visitors
+    console.log($( ".datepicker_jq.passport-issued"));
+
+    //initializing datepickers-validation for passports for new visitors
+    passportValidate()
+
+
+})
+
+
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
+passportValidate()

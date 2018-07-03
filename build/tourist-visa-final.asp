@@ -97,10 +97,10 @@
            <div class="input">
                <div class="input__wrapper input__wrapper_correct">
                    <label class="input__label">Group Size</label>
-                   <select class="input__select" name="MaxGroupSize">
+                   <select class="input__select input-group-size" name="MaxGroupSize">
                         <%
                             for i = 0 to ViewBag.MaxGroupSize %>
-                           <option value="">
+                           <option value="<%= i %>">
                                 <%= i %>
                            </option>
                         <% next %>
@@ -543,406 +543,16 @@
                    <span>Just the key details we need to collect from you and your group to proceed with our application. You can add up to a further 5 people below by just clicking on the ‘Add another person’ button.</span>
                </div>
            </div>
-           <div class="step__subtitle">
-               <div class="step__subtitle-text">Visitor 1</div>
-               <div class="step__subtitle-icon"></div>
-           </div>
-           <div class="step__subtitle-content">
-               <div class="input mt-4">
-                   <div class="input__wrapper">
-                       <label class="input__label">First name</label>
-                       <input type="text" name="" required="required" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
-                   </div>
-                   <div class="input__error-label">This field cannot be empty</div>
-                   <div class="hint">
-                       <div class="hint__header">
-                           <div tab="1" class="hint__tab">
-                               <div class="hint__header-text">Assistance</div>
-                               <div class="hint__header-icon">?</div>
-                           </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
-                               <div class="hint__header-text">Further Help</div>
-                               <div class="hint__header-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                           </div>
-                       </div>
-                       <div data-tab="1" class="hint__body active">
-                           <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
-                           </div>
-                       </div>
-                       <div data-tab="2" class="hint__body">
-                           <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
-                           </div>
-                       </div>
-                   </div>
+           <div class="visitor-wrapper">
+               <div class="step__subtitle">
+                   <div class="step__subtitle-text">Visitor 1</div>
+                   <div class="step__subtitle-icon"></div>
                </div>
-               <div class="input">
-                   <div class="input__wrapper">
-                       <label class="input__label">Middle name</label>
-                       <input type="text" name="" required="required" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
-                   </div>
-                   <div class="input__error-label">This field cannot be empty</div>
-                   <div class="hint">
-                       <div class="hint__header">
-                           <div tab="1" class="hint__tab">
-                               <div class="hint__header-text">Assistance</div>
-                               <div class="hint__header-icon">?</div>
-                           </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
-                               <div class="hint__header-text">Further Help</div>
-                               <div class="hint__header-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                           </div>
-                       </div>
-                       <div data-tab="1" class="hint__body active">
-                           <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
-                           </div>
-                       </div>
-                       <div data-tab="2" class="hint__body">
-                           <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="input">
-                   <div class="input__wrapper">
-                       <label class="input__label">Surname</label>
-                       <input type="text" name="" required="required" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
-                   </div>
-                   <div class="input__error-label">This field cannot be empty</div>
-                   <div class="hint">
-                       <div class="hint__header">
-                           <div tab="1" class="hint__tab">
-                               <div class="hint__header-text">Assistance</div>
-                               <div class="hint__header-icon">?</div>
-                           </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
-                               <div class="hint__header-text">Further Help</div>
-                               <div class="hint__header-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                           </div>
-                       </div>
-                       <div data-tab="1" class="hint__body active">
-                           <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
-                           </div>
-                       </div>
-                       <div data-tab="2" class="hint__body">
-                           <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="radio-buttons">
-                   <div class="radio-buttons__wrapper">
-                       <input type="radio" name="someName" id="yes" class="radio-buttons__radio"/>
-                       <label for="yes" class="radio-buttons__view">Male</label>
-                   </div>
-                   <div class="radio-buttons__wrapper">
-                       <input type="radio" name="someName" id="no" class="radio-buttons__radio"/>
-                       <label for="no" class="radio-buttons__view">Female</label>
-                   </div>
-               </div>
-               <div class="input">
-                   <div class="input__wrapper">
-                       <label class="input__label">Date of birth</label>
-                       <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minYear="<%= ViewBag.MinBirthYear %>" class="datepicker_jq input__field input__field_calendar"/>
-                   </div>
-                   <div class="input__error-label">This field cannot be empty</div>
-                   <div class="hint">
-                       <div class="hint__header">
-                           <div tab="1" class="hint__tab">
-                               <div class="hint__header-text">Assistance</div>
-                               <div class="hint__header-icon">?</div>
-                           </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
-                               <div class="hint__header-text">Further Help</div>
-                               <div class="hint__header-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                           </div>
-                       </div>
-                       <div data-tab="1" class="hint__body active">
-                           <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
-                           </div>
-                       </div>
-                       <div data-tab="2" class="hint__body">
-                           <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online         </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="d-block d-sm-flex justify-content-between mw-625">
-                   <div style="width: 50%" class="input mr-3 mb-4">
+               <div class="step__subtitle-content">
+                   <div class="input mt-4">
                        <div class="input__wrapper">
-                           <label class="input__label">Citizenship</label>
-                           <br/>
-                           <input type="text" readonly="readonly" pattern="/^[a-z]{3,}%/gi" style="height: 40px" class="input__select total__select total__country"/>
-                           <div class="hint">
-                               <div class="hint__header">
-                                   <div tab="1" class="hint__tab">
-                                       <div class="hint__header-text">Assistance</div>
-                                       <div class="hint__header-icon">?</div>
-                                   </div>
-                                   <div tab="2" class="hint__tab hint__tab_active">
-                                       <div class="hint__header-text">Further Help</div>
-                                       <div class="hint__header-icon">
-                                           <img src="img/phone-receiver.png"/>
-                                       </div>
-                                   </div>
-                               </div>
-                               <div data-tab="1" class="hint__body active">
-                                   <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
-                                   <div class="hint__action">
-                                       <div class="hint__action-icon">
-                                           <img src="img/phone-receiver.png"/>
-                                       </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                                   </div>
-                                   <div class="hint__action">
-                                       <div class="hint__action-icon">
-                                           <img src="img/headset.png"/>
-                                       </div>
-                                       <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                                   </div>
-                                   <div class="hint__action">
-                                       <div class="hint__action-icon">
-                                           <img src="img/support.png"/>
-                                       </div>
-                                       <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
-                                   </div>
-                               </div>
-                               <div data-tab="2" class="hint__body">
-                                   <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
-                                   <div class="hint__action">
-                                       <div class="hint__action-icon">
-                                           <img src="img/phone-receiver.png"/>
-                                       </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                                   </div>
-                                   <div class="hint__action">
-                                       <div class="hint__action-icon">
-                                           <img src="img/headset.png"/>
-                                       </div>
-                                       <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                                   </div>
-                                   <div class="hint__action">
-                                       <div class="hint__action-icon">
-                                           <img src="img/support.png"/>
-                                       </div>
-                                       <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                    </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-                   <div style="width: 50%" class="input">
-                       <div class="input__wrapper">
-                           <label class="input__label">Passport number</label>
-                           <input type="text" name="" required="required" pattern="/^[0-9]{3,}$/gi" class="input__field"/>
-                       </div>
-                       <div class="input__error-label">This field cannot be empty</div>
-                       <div class="hint">
-                           <div class="hint__header">
-                               <div tab="1" class="hint__tab">
-                                   <div class="hint__header-text">Assistance</div>
-                                   <div class="hint__header-icon">?</div>
-                               </div>
-                               <div tab="2" class="hint__tab hint__tab_active">
-                                   <div class="hint__header-text">Further Help</div>
-                                   <div class="hint__header-icon">
-                                       <img src="img/phone-receiver.png"/>
-                                   </div>
-                               </div>
-                           </div>
-                           <div data-tab="1" class="hint__body active">
-                               <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
-                               <div class="hint__action">
-                                   <div class="hint__action-icon">
-                                       <img src="img/phone-receiver.png"/>
-                                   </div>
-                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                               </div>
-                               <div class="hint__action">
-                                   <div class="hint__action-icon">
-                                       <img src="img/headset.png"/>
-                                   </div>
-                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                               </div>
-                               <div class="hint__action">
-                                   <div class="hint__action-icon">
-                                       <img src="img/support.png"/>
-                                   </div>
-                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
-                               </div>
-                           </div>
-                           <div data-tab="2" class="hint__body">
-                               <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
-                               <div class="hint__action">
-                                   <div class="hint__action-icon">
-                                       <img src="img/phone-receiver.png"/>
-                                   </div>
-                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                               </div>
-                               <div class="hint__action">
-                                   <div class="hint__action-icon">
-                                       <img src="img/headset.png"/>
-                                   </div>
-                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                               </div>
-                               <div class="hint__action">
-                                   <div class="hint__action-icon">
-                                       <img src="img/support.png"/>
-                                   </div>
-                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-               <div class="d-block d-sm-flex justify-content-between mw-625">
-                   <div class="input mr-3">
-                       <div class="input__wrapper">
-                           <label class="input__label">Date passport issued</label>
-                           <input class="datepicker_jq input__field input__field_calendar passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
+                           <label class="input__label">First name</label>
+                           <input type="text" name="" required="required" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
                        </div>
                        <div class="input__error-label">This field cannot be empty</div>
                        <div class="hint">
@@ -1004,8 +614,8 @@
                    </div>
                    <div class="input">
                        <div class="input__wrapper">
-                           <label class="input__label">Date passport expires</label>
-                           <input type="text" class="datepicker_jq input__field input__field_calendar passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
+                           <label class="input__label">Middle name</label>
+                           <input type="text" name="" required="required" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
                        </div>
                        <div class="input__error-label">This field cannot be empty</div>
                        <div class="hint">
@@ -1065,134 +675,527 @@
                            </div>
                        </div>
                    </div>
-               </div>
-               <div class="input">
-                   <div class="input__wrapper">
-                       <label class="input__label">Email address</label>
-                       <input type="text" name="" required="required" pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/gi" class="input__field"/>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Surname</label>
+                           <input type="text" name="" required="required" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
+                       </div>
+                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="hint">
+                           <div class="hint__header">
+                               <div tab="1" class="hint__tab">
+                                   <div class="hint__header-text">Assistance</div>
+                                   <div class="hint__header-icon">?</div>
+                               </div>
+                               <div tab="2" class="hint__tab hint__tab_active">
+                                   <div class="hint__header-text">Further Help</div>
+                                   <div class="hint__header-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                               </div>
+                           </div>
+                           <div data-tab="1" class="hint__body active">
+                               <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/headset.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/support.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                               </div>
+                           </div>
+                           <div data-tab="2" class="hint__body">
+                               <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/headset.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/support.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
+                               </div>
+                           </div>
+                       </div>
                    </div>
-                   <div class="input__error-label">This field cannot be empty</div>
-                   <div class="hint">
-                       <div class="hint__header">
-                           <div tab="1" class="hint__tab">
-                               <div class="hint__header-text">Assistance</div>
-                               <div class="hint__header-icon">?</div>
-                           </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
-                               <div class="hint__header-text">Further Help</div>
-                               <div class="hint__header-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                           </div>
+                   <div class="radio-buttons">
+                       <div class="radio-buttons__wrapper">
+                           <input type="radio" name="someName" id="yes" class="radio-buttons__radio"/>
+                           <label for="yes" class="radio-buttons__view">Male</label>
                        </div>
-                       <div data-tab="1" class="hint__body active">
-                           <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
-                               </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
-                           </div>
+                       <div class="radio-buttons__wrapper">
+                           <input type="radio" name="someName" id="no" class="radio-buttons__radio"/>
+                           <label for="no" class="radio-buttons__view">Female</label>
                        </div>
-                       <div data-tab="2" class="hint__body">
-                           <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Date of birth</label>
+                           <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minYear="<%= ViewBag.MinBirthYear %>" class="datepicker_jq input__field input__field_calendar"/>
+                       </div>
+                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="hint">
+                           <div class="hint__header">
+                               <div tab="1" class="hint__tab">
+                                   <div class="hint__header-text">Assistance</div>
+                                   <div class="hint__header-icon">?</div>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div tab="2" class="hint__tab hint__tab_active">
+                                   <div class="hint__header-text">Further Help</div>
+                                   <div class="hint__header-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                               </div>
                            </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
+                           <div data-tab="1" class="hint__body active">
+                               <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
                                </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/headset.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/support.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                               </div>
                            </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
+                           <div data-tab="2" class="hint__body">
+                               <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
                                </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/headset.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/support.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online         </div>
+                               </div>
                            </div>
                        </div>
                    </div>
-               </div>
-               <div class="input">
-                   <div class="input__wrapper">
-                       <label class="input__label">Telephone</label>
-                       <input id="phone" type="tel" required="required" class="input__field"/>
+                   <div class="d-block d-sm-flex justify-content-between mw-625">
+                       <div style="width: 50%" class="input mr-3 mb-4">
+                           <div class="input__wrapper">
+                               <label class="input__label">Citizenship</label>
+                               <br/>
+                               <input type="text" readonly="readonly" pattern="/^[a-z]{3,}%/gi" style="height: 40px" class="input__select total__select total__country"/>
+                               <div class="hint">
+                                   <div class="hint__header">
+                                       <div tab="1" class="hint__tab">
+                                           <div class="hint__header-text">Assistance</div>
+                                           <div class="hint__header-icon">?</div>
+                                       </div>
+                                       <div tab="2" class="hint__tab hint__tab_active">
+                                           <div class="hint__header-text">Further Help</div>
+                                           <div class="hint__header-icon">
+                                               <img src="img/phone-receiver.png"/>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div data-tab="1" class="hint__body active">
+                                       <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
+                                       <div class="hint__action">
+                                           <div class="hint__action-icon">
+                                               <img src="img/phone-receiver.png"/>
+                                           </div>
+                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       </div>
+                                       <div class="hint__action">
+                                           <div class="hint__action-icon">
+                                               <img src="img/headset.png"/>
+                                           </div>
+                                           <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                                       </div>
+                                       <div class="hint__action">
+                                           <div class="hint__action-icon">
+                                               <img src="img/support.png"/>
+                                           </div>
+                                           <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                                       </div>
+                                   </div>
+                                   <div data-tab="2" class="hint__body">
+                                       <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
+                                       <div class="hint__action">
+                                           <div class="hint__action-icon">
+                                               <img src="img/phone-receiver.png"/>
+                                           </div>
+                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       </div>
+                                       <div class="hint__action">
+                                           <div class="hint__action-icon">
+                                               <img src="img/headset.png"/>
+                                           </div>
+                                           <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                                       </div>
+                                       <div class="hint__action">
+                                           <div class="hint__action-icon">
+                                               <img src="img/support.png"/>
+                                           </div>
+                                           <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                    </div>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div style="width: 50%" class="input">
+                           <div class="input__wrapper">
+                               <label class="input__label">Passport number</label>
+                               <input type="text" name="" required="required" pattern="/^[0-9]{3,}$/gi" class="input__field"/>
+                           </div>
+                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="hint">
+                               <div class="hint__header">
+                                   <div tab="1" class="hint__tab">
+                                       <div class="hint__header-text">Assistance</div>
+                                       <div class="hint__header-icon">?</div>
+                                   </div>
+                                   <div tab="2" class="hint__tab hint__tab_active">
+                                       <div class="hint__header-text">Further Help</div>
+                                       <div class="hint__header-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div data-tab="1" class="hint__body active">
+                                   <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/headset.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/support.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                                   </div>
+                               </div>
+                               <div data-tab="2" class="hint__body">
+                                   <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/headset.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/support.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
                    </div>
-                   <div class="input__error-label">This field cannot be empty</div>
-                   <div class="hint">
-                       <div class="hint__header">
-                           <div tab="1" class="hint__tab">
-                               <div class="hint__header-text">Assistance</div>
-                               <div class="hint__header-icon">?</div>
+                   <div class="d-block d-sm-flex justify-content-between mw-625">
+                       <div class="input mr-3">
+                           <div class="input__wrapper">
+                               <label class="input__label">Date passport issued</label>
+                               <input class="datepicker_jq input__field input__field_calendar passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
-                               <div class="hint__header-text">Further Help</div>
-                               <div class="hint__header-icon">
-                                   <img src="img/phone-receiver.png"/>
+                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="hint">
+                               <div class="hint__header">
+                                   <div tab="1" class="hint__tab">
+                                       <div class="hint__header-text">Assistance</div>
+                                       <div class="hint__header-icon">?</div>
+                                   </div>
+                                   <div tab="2" class="hint__tab hint__tab_active">
+                                       <div class="hint__header-text">Further Help</div>
+                                       <div class="hint__header-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                   </div>
+                               </div>
+                               <div data-tab="1" class="hint__body active">
+                                   <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/headset.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/support.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                                   </div>
+                               </div>
+                               <div data-tab="2" class="hint__body">
+                                   <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/headset.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/support.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
+                                   </div>
                                </div>
                            </div>
                        </div>
-                       <div data-tab="1" class="hint__body active">
-                           <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
-                               </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                       <div class="input">
+                           <div class="input__wrapper">
+                               <label class="input__label">Date passport expires</label>
+                               <input type="text" class="datepicker_jq input__field input__field_calendar passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
                            </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
+                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="hint">
+                               <div class="hint__header">
+                                   <div tab="1" class="hint__tab">
+                                       <div class="hint__header-text">Assistance</div>
+                                       <div class="hint__header-icon">?</div>
+                                   </div>
+                                   <div tab="2" class="hint__tab hint__tab_active">
+                                       <div class="hint__header-text">Further Help</div>
+                                       <div class="hint__header-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                   </div>
                                </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
-                           </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
+                               <div data-tab="1" class="hint__body active">
+                                   <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/headset.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/support.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                                   </div>
                                </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                               <div data-tab="2" class="hint__body">
+                                   <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/phone-receiver.png"/>
+                                       </div>
+                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/headset.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                                   </div>
+                                   <div class="hint__action">
+                                       <div class="hint__action-icon">
+                                           <img src="img/support.png"/>
+                                       </div>
+                                       <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
+                                   </div>
+                               </div>
                            </div>
                        </div>
-                       <div data-tab="2" class="hint__body">
-                           <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/phone-receiver.png"/>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Email address</label>
+                           <input type="text" name="" required="required" pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/gi" class="input__field"/>
+                       </div>
+                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="hint">
+                           <div class="hint__header">
+                               <div tab="1" class="hint__tab">
+                                   <div class="hint__header-text">Assistance</div>
+                                   <div class="hint__header-icon">?</div>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div tab="2" class="hint__tab hint__tab_active">
+                                   <div class="hint__header-text">Further Help</div>
+                                   <div class="hint__header-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                               </div>
                            </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/headset.png"/>
+                           <div data-tab="1" class="hint__body active">
+                               <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
                                </div>
-                               <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/headset.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/support.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                               </div>
                            </div>
-                           <div class="hint__action">
-                               <div class="hint__action-icon">
-                                   <img src="img/support.png"/>
+                           <div data-tab="2" class="hint__body">
+                               <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
                                </div>
-                               <div class="hint__action-text hint__action-text_grey"> Livechat: Online </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/headset.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/support.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online                                                                </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Telephone</label>
+                           <input id="phone" type="tel" required="required" class="input__field"/>
+                       </div>
+                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="hint">
+                           <div class="hint__header">
+                               <div tab="1" class="hint__tab">
+                                   <div class="hint__header-text">Assistance</div>
+                                   <div class="hint__header-icon">?</div>
+                               </div>
+                               <div tab="2" class="hint__tab hint__tab_active">
+                                   <div class="hint__header-text">Further Help</div>
+                                   <div class="hint__header-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                               </div>
+                           </div>
+                           <div data-tab="1" class="hint__body active">
+                               <div class="hint__body-text">If you need further help, don’t hestitate to get in touch now with any of the following options:</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/headset.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/support.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online</div>
+                               </div>
+                           </div>
+                           <div data-tab="2" class="hint__body">
+                               <div class="hint__body-text">If you have any questions about your visa support application either before, during or after processing please look at our frequently asked questions, or feel free to contact us directly and we will be happy to help.</div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/phone-receiver.png"/>
+                                   </div>
+                                   <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/headset.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_black"> Click to Call</div>
+                               </div>
+                               <div class="hint__action">
+                                   <div class="hint__action-icon">
+                                       <img src="img/support.png"/>
+                                   </div>
+                                   <div class="hint__action-text hint__action-text_grey"> Livechat: Online </div>
+                               </div>
                            </div>
                        </div>
                    </div>
                </div>
            </div>
+
        </div>
        <div data-step="3" class="step">
            <h2 class="step__title">details about your visit to russia</h2>
