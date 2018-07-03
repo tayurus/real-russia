@@ -167,7 +167,7 @@
            <div class="input mt-5">
                <div class="input__wrapper input__wrapper_correct">
                    <label class="input__label">Number of entries</label>
-                   <select class="input__select" name="EntryTypes">
+                   <select class="input__select input-entries" name="EntryTypes">
                        <%
                        dim entryType
                        for each entryType in ViewBag.EntryTypes %>
@@ -1210,8 +1210,9 @@
                    </span>
                </div>
            </div>
-           <label class="input__label">Entry 1 - Arrival and departure travel dates </label>
-           <div class="d-block d-sm-flex justify-content-between mw-625">
+           <div class="first-entry">
+               <label class="input__label">Entry 1 - Arrival and departure travel dates </label>
+               <div class="d-block d-sm-flex justify-content-between mw-625">
                <div class="input mr-3">
                    <div class="input__wrapper">
                        <label class="input__label">Arrival Date</label>
@@ -1226,22 +1227,26 @@
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
-           </div><label class="input__label">Entry 21 - Arrival and departure travel dates </label>
-           <div class="d-block d-sm-flex justify-content-between mw-625">
+           </div>
+           </div>
+           <div class="second-entry">
+               <label class="input__label">Entry 2 - Arrival and departure travel dates </label>
+               <div class="d-block d-sm-flex justify-content-between mw-625">
                <div class="input mr-3">
-                   <div class="input__wrapper">
+                   <div class="input__wrapper disabled">
                        <label class="input__label">Arrival Date</label>
-                       <input type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar arrival-date"/>
+                       <input disabled type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar arrival-date"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
                <div class="input mr-3">
-                   <div class="input__wrapper">
+                   <div class="input__wrapper disabled">
                        <label class="input__label">Departure Date</label>
-                       <input type="text"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar departure-date"/>
+                       <input disabled type="text"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar departure-date"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
+           </div>
            </div>
            <div class="step__subtitle">
                <div class="step__subtitle-text">Location 1</div>

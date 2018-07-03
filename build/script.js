@@ -3,6 +3,11 @@ function addMonth(date, monthCount){
     return new Date(dateCopy.setMonth(dateCopy.getMonth() + monthCount));
 }
 
+function makeSecondEntryActive() {
+    $('.input__wrapper.disabled').find('input').removeAttr('disabled');
+    $('.input__wrapper.disabled').removeClass('disabled');
+}
+
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   FUNCTIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //current showed step and max count of steps
@@ -115,7 +120,7 @@ passportValidate()
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!! ARRIVAL-DEPARTURE VALIDATION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     // Setting default min date for departure
-    $(".departure-date").each(function(index, item) {
+    $(".first-entry .departure-date").each(function(index, item) {
         let currentDate = new Date();
         $(item).datepicker( {"minDate" :  new Date(currentDate.setDate(currentDate.getDate() + 2))});
         $(item).change(function(){
@@ -133,8 +138,15 @@ passportValidate()
 
             // CALCULATING MAX ARRIVAL DATE
             maxDateArrival.setDate(maxDateArrival.getDate() - 1);
-            $(this).closest('.input').prev().find('.arrival-date').datepicker("option", {"minDate" : minDateArrival});
-            $(this).closest('.input').prev().find('.arrival-date').datepicker("option", {"maxDate" : maxDateArrival});
+            $(this).closest('.input').prev().find('.first-entry .arrival-date').datepicker("option", {"minDate" : minDateArrival});
+            $(this).closest('.input').prev().find('.first-entry .arrival-date').datepicker("option", {"maxDate" : maxDateArrival});
+
+            if ($(".first-entry .arrival-date").datepicker('getDate') !== null){
+                makeSecondEntryActive();
+                // $('.second-entry .arrival-date').datepicker("option", {"minDate" : selectedDate.setDate(selectedDate.getDate() + 1)});
+                $('.second-entry .arrival-date').datepicker("option", {"minDate" : new Date(selectedDate.setDate(selectedDate.getDate() + 1))});
+            }
+
         })
 
     })
@@ -217,6 +229,15 @@ function getMinPassportExpiredDate(){
     return minPassportExpiredDate;
 
 }
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!! entries validation !!!!!!!!!!!!!!!!!
+
+$('.input-entries').change(function() {
+    if( $(this).val() == 'Double entry visa' )
+        $('.second-entry').show();
+    else $('.second-entry').hide();
+})
 
 
 $( ".datepicker_jq").datepicker({
