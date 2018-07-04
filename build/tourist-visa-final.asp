@@ -18,7 +18,7 @@
        <div class="d-flex flex-wrap align-items-center justify-content-between">
            <div>
                <div class="title">Russian Tourist Visa Support Application</div>
-              
+
                <div class="steps">
                    <div class="steps__item steps__item_correct steps__item_active" data-steps="1">
                        1
@@ -241,13 +241,53 @@
            <div class="input mt-5">
                <div class="input__wrapper input__wrapper_correct">
                    <label class="input__label">Purpose of visit</label>
-                   <select class="input__select" name="PurposesOfVisit">
+                   <select class="input__select input-purpose" name="PurposesOfVisit">
                        <% for each i in ViewBag.PurposesOfVisit %>
-                            <option value="">
+                            <option value="<%= i %>">
                                 <%= i %>
                             </option>
                         <% next %>
                    </select>
+               </div>
+               <div class="auto-tourism-wrapper">
+                   <div class="radio-buttons">
+                       <div class="radio-buttons__wrapper">
+                           <input type="radio" name="autoTourism" id="Car" class="radio-buttons__radio"/>
+                           <label for="Car" class="radio-buttons__view">Car</label>
+                       </div>
+                       <div class="radio-buttons__wrapper">
+                           <input type="radio" name="autoTourism" id="Motorcycle" class="radio-buttons__radio"/>
+                           <label for="Motorcycle" class="radio-buttons__view">Motorcycle</label>
+                       </div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Vehicle make</label>
+                           <input type="text" name="" required="required" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
+                       </div>
+                       <div class="input__error-label">This field cannot be empty</div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Vehicle color</label>
+                           <select class="input__select" name="">
+                                <option value="">Black
+                                </option>
+                                <option value="">Dark blue
+                                </option>
+                                <option value="">Golden
+                                </option>
+                           </select>
+                       </div>
+                       <div class="input__error-label">This field cannot be empty</div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Licence Plate number</label>
+                           <input type="text" name="" required="required" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
+                       </div>
+                       <div class="input__error-label">This field cannot be empty</div>
+                   </div>
                </div>
                <div class="input__highlight"></div>
                <div class="hint">
@@ -307,7 +347,7 @@
                    </div>
                </div>
            </div>
-           <div class="input mt-5">
+           <div class="input">
                <div class="input__wrapper input__wrapper_correct">
                    <label class="input__label">Registration</label>
                    <select class="input__select">

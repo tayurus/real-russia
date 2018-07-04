@@ -110,6 +110,14 @@ $('.arrival-date').change(function() {
 
 })
 
+// !!!!!!!!!!! when user select auto tourism !!!!!!!!!!
+
+$('.input-purpose').change(function() {
+    if($(this).val() == "Auto Tourist")
+        $('.auto-tourism-wrapper').show()
+    else $('.auto-tourism-wrapper').hide()
+})
+
 
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
