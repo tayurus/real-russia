@@ -1,4 +1,7 @@
 
+var registration;
+
+
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   FUNCTIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //current showed step and max count of steps
 let currStep,  maxStepCount;
@@ -106,6 +109,10 @@ $('.input-purpose').change(function() {
     if($(this).val() == "Auto Tourist")
         $('.auto-tourism-wrapper').show()
     else $('.auto-tourism-wrapper').hide()
+})
+
+$(".input-registration").change(function() {
+    registration = $(this).val()
 })
 
 

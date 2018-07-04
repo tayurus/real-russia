@@ -350,7 +350,7 @@
            <div class="input">
                <div class="input__wrapper input__wrapper_correct">
                    <label class="input__label">Registration</label>
-                   <select class="input__select">
+                   <select class="input__select input-registration">
                        <%
                        for each key in ViewBag.Registrations %>
                             <option value="<%= key %>">
@@ -422,7 +422,7 @@
                <div class="input__wrapper input__wrapper_correct">
                    <label class="input__label">Country applying in</label>
                    <br/>
-                   <select class="input__select">
+                   <select class="input input__select input-country" >
                        <option selected disabled hidden>Please select</option>
                        <%
                        dim country

@@ -151,3 +151,13 @@ $('.input-city').change(function() {
     if ( ($(this).val() == 'Magas') || ($(this).val() == 'Makhachkala') || ($(this).val() == 'Vladikavkaz') || ($(this).val() == 'Pyatigorsk'))
         alert('10 processing days for Сaucasus cities')
 })
+
+// Registration validation for MALAISIA AND SINGAPORE
+$(".input-country").change(function() {
+    if ($(this).val() == "Singapore" || $(this).val() == "Malaysia" ){
+        if (registration === "YES_Piter"){
+            alert("Malaysia and Singapore can not get registration in S.P!");
+            $(".input-country").val("Afghanistan");
+        }
+    }
+})
