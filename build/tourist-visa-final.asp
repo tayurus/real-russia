@@ -18,26 +18,29 @@
        <div class="d-flex flex-wrap align-items-center justify-content-between">
            <div>
                <div class="title">Russian Tourist Visa Support Application</div>
-               <div class="steps mt-30">
-                   <div class="steps__item">
-                       <div class="steps__item-step steps__item-step_active">1</div>
-                       <div class="steps__item-text steps__item-text_active">service details</div>
+              
+               <div class="steps">
+                   <div class="steps__item steps__item_correct steps__item_active" data-steps="1">
+                       1
+                       <div class="steps__item-text">SERVICE DETAILS</div>
                    </div>
-                   <div class="steps__item">
-                       <div class="steps__item-step steps__item-step_disabled">2</div>
-                       <div class="steps__item-text steps__item-text_disabled top-22 l-30">personal details</div>
-                   </div>
-                   <div class="steps__item">
-                       <div class="steps__item-step steps__item-step_disabled">3</div>
-                       <div class="steps__item-text steps__item-text_disabled">your visit</div>
-                   </div>
-                   <div class="steps__item">
-                       <div class="steps__item-step steps__item-step_disabled">4</div>
-                       <div class="steps__item-text steps__item-text_disabled top-22">payment</div>
+                   <div class="steps__line steps__line_filled"></div>
+                   <div class="steps__item steps__item_incorrect" data-steps="2">
+                       2
+                       <div class="steps__item-text">PERSONAL DETAILS</div>
                    </div>
                    <div class="steps__line"></div>
-                   <div class="steps__line steps__line_grey"></div>
+                   <div class="steps__item steps__item_visited" data-steps="3">
+                       3
+                       <div class="steps__item-text">YOUR VISIT</div>
+                   </div>
+                   <div class="steps__line"></div>
+                   <div class="steps__item" data-steps="4">
+                       4
+                       <div class="steps__item-text">PAYMENT</div>
+                   </div>
                </div>
+
            </div>
            <div class="total pl-0 pl-sm-4">
                <div class="d-flex flex-column flex-sm-row">
