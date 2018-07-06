@@ -82,6 +82,28 @@ $('.input-purpose').change(function() {
     else $('.auto-tourism-wrapper').hide()
 })
 
+$("[data-button='addLocation']").click(function(){
+    $(this).before($(this).prev().clone(true));
+})
+
+
+$(document).on("click", ".button__remove-location", function(){
+    if ($(".location-wrapper").length > 1){
+        let element = $(this).parent().find('.input-city');
+        cities.forEach((item, index) => {
+            if (item.element.is(element))
+                cities.splice(index, 1);
+        })
+        $(this).parent().remove();
+    }
+
+    cities.forEach((item) => {
+        validateProcessingCities(item.element, true);
+    })
+
+})
+
+
 
 
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////

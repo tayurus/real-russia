@@ -14,14 +14,14 @@ function datePassportExpiredMustBeAfterIssued(issued, expired) {
 
 function dateMustBeAfterCurrentDate(date) {
     let currentDate = new Date();
-    if (currentDate > date)
+    if (date < currentDate )
         return "Date must be after current date!"
     return ""
 }
 
 function dateMustBeBeforeCurrentDate(date) {
     let currentDate = new Date();
-    if (currentDate < date)
+    if (date > currentDate )
         return "Date must be before current date!"
     return ""
 }
@@ -64,5 +64,35 @@ function secondArrivalDateMustBeLaterThanFirstDepartureDate(secondArrival, first
     if (secondArrival < firstDeparture){
         return "second arrival date must be later than first departure date";
     }
+    return "";
+}
+
+function someCountriesCannotRegitsterInPiter(country, registerCity){
+    let restrictedCountries = ['Singapore', 'Malaysia'];
+    if(registerCity == 'YES_Piter')
+        if(restrictedCountries.includes(country))
+            return `${country} can't register in Saint Petersburg`
+    return ""
+}
+
+function processingDaysForCaucasusCities(city) {
+    let caucasCities = ['Makhachkala', 'Pyatigorsk', 'Vladikavkaz', 'Magas'];
+
+    if(caucasCities.includes(city))
+        return 'Visa processing for Caucasus cities is 10 days'
+    return ""
+}
+
+function citiesCannotContainDuplicates(cities) {
+    let isDuplicates = false;
+    cities.forEach((city, index) => {
+        let citiesCopy = JSON.parse(JSON.stringify(cities));
+        citiesCopy.splice(index, 1);
+        if (citiesCopy.includes(city))
+            isDuplicates = true;
+    })
+
+    if (isDuplicates)
+        return "Locations can not contain duplicates cities";
     return "";
 }
