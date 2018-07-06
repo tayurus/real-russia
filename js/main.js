@@ -1,7 +1,4 @@
 
-var registration;
-
-
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   FUNCTIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //current showed step and max count of steps
 let currStep,  maxStepCount;
@@ -71,39 +68,13 @@ $(".input-group-size").change(function(){
         $(item).find(".step__subtitle-text").text(newText)
     })
 
-    //initializing datepickers for new visitors
-    console.log($( ".datepicker_jq.passport-issued"));
-
-    //initializing datepickers-validation for passports for new visitors
-    passportValidate()
-
-
 })
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!! CHECK iF USER VISIT LESS 7 DAYS !!!!!!!!!!!!!!!!
-
-$('.departure-date').change(function() {
-    if( $(this).closest('.input').prev().find('.arrival-date').datepicker('getDate')  !== null ) {
-        let departureDate = $(this).datepicker('getDate');
-        let arrivalDate = $(this).closest('.input').prev().find('.arrival-date').datepicker('getDate');
-        let day = 84000000;
-        if ((departureDate - arrivalDate) / day < 7)
-            alert ("You don't need registration");
-    }
-
+$('.input-entries').change(function() {
+    if( $(this).val() == 'Double entry visa' )
+        $('.second-entry').show();
+    else $('.second-entry').hide();
 })
-$('.arrival-date').change(function() {
-    if( $(this).closest('.input').next().find('.departure-date').datepicker('getDate')  !== null ) {
-        let arrivalDate = $(this).datepicker('getDate');
-        let departureDate = $(this).closest('.input').next().find('.departure-date').datepicker('getDate');
-        let day = 84000000;
-        if (Math.abs(departureDate - arrivalDate) / day < 7)
-            alert ("You don't need registration");
-    }
-
-})
-
-// !!!!!!!!!!! when user select auto tourism !!!!!!!!!!
 
 $('.input-purpose').change(function() {
     if($(this).val() == "Auto Tourist")
@@ -111,11 +82,7 @@ $('.input-purpose').change(function() {
     else $('.auto-tourism-wrapper').hide()
 })
 
-$(".input-registration").change(function() {
-    registration = $(this).val()
-})
 
 
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
-passportValidate()

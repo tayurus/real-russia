@@ -1,9 +1,15 @@
-function addMonth(date, monthCount){
-    let dateCopy = new Date(JSON.parse(JSON.stringify(date)));
-    return new Date(dateCopy.setMonth(dateCopy.getMonth() + monthCount));
+//////////////////////////////////////////helpers
+function parseDate(s) {
+    var b = s.split(/\D/);
+    return new Date(b[0], parseInt(b[1]) - 1, b[2]);
 }
 
-function makeSecondEntryActive() {
-    $('.input__wrapper.disabled').find('input').removeAttr('disabled');
-    $('.input__wrapper.disabled').removeClass('disabled');
+function addMonths(date, months){
+    let copyDate = new Date(JSON.parse(JSON.stringify(date)));
+    copyDate.setMonth(copyDate.getMonth() + 6);
+    return copyDate;
+}
+
+function extractObjectField(obj, fieldName){
+    return obj[fieldName];
 }

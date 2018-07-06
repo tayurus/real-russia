@@ -102,7 +102,7 @@
                    <label class="input__label">Group Size</label>
                    <select class="input__select input-group-size" name="MaxGroupSize">
                         <%
-                            for i = 0 to ViewBag.MaxGroupSize %>
+                            for i = 1 to ViewBag.MaxGroupSize %>
                            <option value="<%= i %>">
                                 <%= i %>
                            </option>
@@ -252,7 +252,7 @@
                <div class="auto-tourism-wrapper">
                    <div class="radio-buttons">
                        <div class="radio-buttons__wrapper">
-                           <input type="radio" name="autoTourism" id="Car" class="radio-buttons__radio"/>
+                           <input type="radio" name="autoTourism" checked id="Car" class="radio-buttons__radio"/>
                            <label for="Car" class="radio-buttons__view">Car</label>
                        </div>
                        <div class="radio-buttons__wrapper">
@@ -347,7 +347,7 @@
                    </div>
                </div>
            </div>
-           <div class="input">
+           <div class="input mt-5">
                <div class="input__wrapper input__wrapper_correct">
                    <label class="input__label">Registration</label>
                    <select class="input__select input-registration">
@@ -783,7 +783,7 @@
                    </div>
                    <div class="radio-buttons">
                        <div class="radio-buttons__wrapper">
-                           <input type="radio" name="someName" id="yes" class="radio-buttons__radio"/>
+                           <input type="radio" name="someName" id="yes" checked class="radio-buttons__radio"/>
                            <label for="yes" class="radio-buttons__view">Male</label>
                        </div>
                        <div class="radio-buttons__wrapper">
@@ -986,7 +986,7 @@
                        <div class="input mr-3">
                            <div class="input__wrapper">
                                <label class="input__label">Date passport issued</label>
-                               <input class="datepicker_jq input__field input__field_calendar passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
+                               <input class="datepicker_jq input__field input__field_calendar input-passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
                            </div>
                            <div class="input__error-label">This field cannot be empty</div>
                            <div class="hint">
@@ -1049,7 +1049,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Date passport expires</label>
-                               <input type="text" class="datepicker_jq input__field input__field_calendar passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
+                               <input type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
                            </div>
                            <div class="input__error-label">This field cannot be empty</div>
                            <div class="hint">
@@ -1259,14 +1259,14 @@
                <div class="input mr-3">
                    <div class="input__wrapper">
                        <label class="input__label">Arrival Date</label>
-                       <input type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar arrival-date"/>
+                       <input type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
                <div class="input mr-3">
                    <div class="input__wrapper">
                        <label class="input__label">Departure Date</label>
-                       <input type="text"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar departure-date"/>
+                       <input type="text"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
@@ -1276,16 +1276,16 @@
                <label class="input__label">Entry 2 - Arrival and departure travel dates </label>
                <div class="d-block d-sm-flex justify-content-between mw-625">
                <div class="input mr-3">
-                   <div class="input__wrapper disabled">
+                   <div class="input__wrapper ">
                        <label class="input__label">Arrival Date</label>
-                       <input disabled type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar arrival-date"/>
+                       <input  type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
                <div class="input mr-3">
-                   <div class="input__wrapper disabled">
+                   <div class="input__wrapper ">
                        <label class="input__label">Departure Date</label>
-                       <input disabled type="text"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar departure-date"/>
+                       <input  type="text"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-departure-date2"/>
                    </div>
                    <div class="input__error-label">This field cannot be empty</div>
                </div>
