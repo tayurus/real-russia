@@ -11,11 +11,14 @@ $(".input__field, .input__select").on("blur propertychange click change keyup in
 
         //check if input's value correct
         if (!regex.test(value)){
-            $(this).parent().addClass("input__wrapper_error")
-            $(this).parent().removeClass("input__wrapper_correct")
-            // if (value !== "")
-            $(this).parent().next().text("check this field!");
-            if (value === "")
+
+            if (typeof $(this).attr('required') !== 'undefined'){
+                $(this).parent().addClass("input__wrapper_error")
+                $(this).parent().removeClass("input__wrapper_correct")
+                $(this).parent().next().text("check this field!");
+            }
+
+            if (value === "" && typeof $(this).attr('required') !== 'undefined')
                 $(this).parent().next().text("This field cannot be empty!");
         }
         else{

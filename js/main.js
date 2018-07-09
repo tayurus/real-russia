@@ -61,19 +61,20 @@ $("[data-role='prevStep']").click(function(){
 
 //when user change groupSize
 $(".input-group-size").change(function(){
-    let visitorsCount = $(this).val();
+
+    let newVisitorsCount = $(this).val();
 
     //removes all visitors except one
     $(".visitor-wrapper").each(function(index, item){
-        if (index != 0)
+        if ((index + 1) > newVisitorsCount)
             $(item).remove()
     })
 
     //add needed count of visitors-blocks
-    for (let i = 1; i < visitorsCount; i++)
-        $(".visitor-wrapper:eq(0)")
-        .after($(".visitor-wrapper:eq(0)")
-        .clone(true));
+    for (let i = visitorsCount; i < newVisitorsCount; i++)
+        $(".visitor-wrapper:eq("+(visitorsCount -1 )+")")
+        .after($(".visitor-wrapper:eq("+(visitorsCount -1 )+")")
+        .clone(false))
 
     $(".visitor-wrapper .datepicker_jq").attr("id", "")
           .removeClass('hasDatepicker')
@@ -87,9 +88,15 @@ $(".input-group-size").change(function(){
     //changing number-text of visitor
     $(".visitor-wrapper").each(function(index, item){
         let newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
-        console.log(newText);
-        $(item).find(".step__subtitle-text").text(newText)
+        $(item).find(".step__subtitle-text").text(newText);
+
+        //remove text from inputs
+        if ((index + 1) > visitorsCount){
+            $(item).find('input').val("");
+        }
     })
+
+    visitorsCount = newVisitorsCount;
 
 })
 

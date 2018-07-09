@@ -96,3 +96,17 @@ function citiesCannotContainDuplicates(cities) {
         return "Locations can not contain duplicates cities";
     return "";
 }
+
+function warningRegistration7Days(arrivalDate, departureDate, registrationValue) {
+    let days1;
+    let day = 86400000;
+    if (registrationValue !== "NO"){
+        if (typeof arrivalDate !== "undefined" && typeof departureDate !== "undefined")
+            days = (departureDate - arrivalDate) / day;
+    }
+
+    if (days <= 7 )
+        return "Your journey is less than 7 days, so you don't need registration!";
+
+    return "";
+}
