@@ -133,7 +133,11 @@ $(document).on("click", ".button__remove-location", function(){
 
 })
 
-
+$('.input-purpose').change(function() {
+    if( $(this).val() == 'Auto Tourist' )
+        $('.auto-tourism-wrapper').show();
+    else $('.auto-tourism-wrapper').hide();
+})
 
 
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
