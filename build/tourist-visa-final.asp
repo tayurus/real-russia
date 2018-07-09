@@ -18,12 +18,12 @@
          <div>
             <div class="title">Russian Tourist Visa Support Application</div>
             <div class="steps">
-               <div class="steps__item steps__item_correct steps__item_active" data-steps="1">
+               <div class="steps__item steps__item_active" data-steps="1">
                   1
                   <div class="steps__item-text">SERVICE DETAILS</div>
                </div>
                <div class="steps__line steps__line_filled"></div>
-               <div class="steps__item steps__item_incorrect" data-steps="2">
+               <div class="steps__item" data-steps="2">
                   2
                   <div class="steps__item-text">PERSONAL DETAILS</div>
                </div>
@@ -266,12 +266,13 @@
                <div class="input">
                   <div class="input__wrapper">
                      <label class="input__label">Vehicle color</label>
-                     <select class="input__select" name="">
-                        <option value="">Black
+                     <select class="input input__select" pattern="/^[a-z]{3,}$/gi" name="">
+                        <option selected disabled hidden>Please select</option>
+                        <option value="black">Black
                         </option>
-                        <option value="">Dark blue
+                        <option value="blue">Dark blue
                         </option>
-                        <option value="">Golden
+                        <option value="golden">Golden
                         </option>
                      </select>
                   </div>
@@ -347,6 +348,7 @@
             <div class="input__wrapper input__wrapper_correct">
                <label class="input__label">Registration</label>
                <select class="input__select input-registration">
+                   <option selected disabled hidden>Please select</option>
                   <%
                      for each key in ViewBag.Registrations %>
                   <option value="<%= key %>">

@@ -1,4 +1,4 @@
-$(".input__field").on("blur propertychange click change keyup input paste", function() {
+$(".input__field, .input__select").on("blur propertychange click change keyup input paste", function() {
     //extract value and pattern from input
     if (typeof $(this).attr('pattern') !== "undefined"){
 
@@ -13,14 +13,15 @@ $(".input__field").on("blur propertychange click change keyup input paste", func
         if (!regex.test(value)){
             $(this).parent().addClass("input__wrapper_error")
             $(this).parent().removeClass("input__wrapper_correct")
-            if (value !== "")
-                $(this).parent().next().text("check this field!");
+            // if (value !== "")
+            $(this).parent().next().text("check this field!");
             if (value === "")
                 $(this).parent().next().text("This field cannot be empty!");
         }
         else{
             $(this).parent().removeClass("input__wrapper_error")
             $(this).parent().addClass("input__wrapper_correct")
+            $(this).parent().next().text("");
         }
     }
 

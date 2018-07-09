@@ -8,7 +8,26 @@ function inititializeSteps() {
     showCurrStep();
 }
 
+function checkIsStepCorrect(){
+    //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
+    let stepHasError = false;
+    $(".input__error-label").each(function(index, item){
+        if ($(item).text() !== "" && $(item).is(":visible")){
+            stepHasError = true;
+            $("[data-steps="+currStep+"]").addClass("steps__item_incorrect");
+            $("[data-steps="+currStep+"]").removeClass("steps__item_correct");
+        }
+    });
+
+    if (!stepHasError){
+        $("[data-steps="+currStep+"]").removeClass("steps__item_incorrect");
+        $("[data-steps="+currStep+"]").addClass("steps__item_correct");
+    }
+}
+
 function showCurrStep(){
+
+
     //hide all steps
     $("[data-step]").hide();
     //show next step
@@ -20,6 +39,9 @@ function showCurrStep(){
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EVENT LISTENERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //when user clicks on button "next-step"
 $("[data-role='nextStep']").click(function(){
+
+    checkIsStepCorrect();
+
     //check - if next steps exist
     if (currStep < maxStepCount){
         currStep++;
@@ -29,6 +51,7 @@ $("[data-role='nextStep']").click(function(){
 
 //when user clicks on button "prev-step"
 $("[data-role='prevStep']").click(function(){
+    checkIsStepCorrect();
     //check - if prev steps exist
     if (currStep != 1){
         currStep--;
