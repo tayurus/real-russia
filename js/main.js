@@ -27,11 +27,27 @@ function checkIsStepCorrect(){
 
 function showCurrStep(){
 
+    //если сейчас 4-ый шаг, то изменить "next step" на "continue" и сделать ее кнопкой отправки формы
+    setTimeout(() => {
+        if (currStep == 4){
+            $("[data-role='nextStep']").text("Confirm!");
+            $("[data-role='nextStep']").attr("type", "submit");
+        }
+        else {
+            //иначе сделать изменить "continue" на "next step"
+            $("[data-role='nextStep']").text("next step");
+            $("[data-role='nextStep']").attr("type", "button");
+        }
+    },200)
+
+
 
     //hide all steps
     $("[data-step]").hide();
     //show next step
     $("[data-step="+currStep+"]").show();
+    $("[data-steps]").removeClass("steps__item_active");
+    $("[data-steps="+currStep+"]").addClass("steps__item_active");
     $(window).scrollTop(0);
 }
 

@@ -7,6 +7,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.4.0/js/intlTelInput.min.js"></script>
 <link rel="stylesheet" href="styles.css"/>
 <script src="script.js" defer="defer"></script>
 <% end sub %>
@@ -15,7 +16,7 @@
 <% end sub %>
 <% sub MainContentSection %>
 <main class="container_form-wrapper">
-    <!-- <form id="applicationForm" action="touristsupport2.asp" method="post" onsubmit="checkAll();return false;"> -->
+    <form id="applicationForm" action="/Apply/touristsupport2.asp" method="post">
        <div class="container">
            <div class="d-flex flex-wrap align-items-center justify-content-between">
                <div>
@@ -72,8 +73,8 @@
        </div>
        <div class="container bg-gray pb-4">
            <div class="d-flex align-items-center justify-content-center justify-content-sm-between">
-               <div class="jc-sb pt-27 pl-10 d-block d-sm-flex">
-                   <div class="flex-grow-1 button-wrap d-block d-sm-flex flex-grow-1">
+               <div class="justify-content-between pt-4 pl-2 d-block d-sm-flex">
+                   <div class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
                        <div>
                            <button class="button mr-3">retrieve saved application</button>
                            <div class="button__text">CONTINUE a saved existing application.</div>
@@ -83,7 +84,7 @@
                            <div class="button__text">SAVE your current progress.</div>
                        </div>
                    </div>
-                   <div class="ml-3 ml-xl-0">
+                   <div class="ml-0 ml-md-3">
                        <button class="button border-red color-red bg-white">I AM A RETURNING CLIENT</button>
                        <div class="button__text">Recover your personal details quickly to pre-fill your application.</div>
                    </div>
@@ -104,7 +105,7 @@
                        <label class="input__label">Group Size</label>
                        <select class="input__select input-group-size" name="groupNum">
                             <%
-                                for i = 0 to ViewBag.MaxGroupSize %>
+                                for i = 1 to ViewBag.MaxGroupSize %>
                                <option value="<%= i %>">
                                     <%= i %>
                                </option>
@@ -386,7 +387,7 @@
                        <label class="input__label">Country applying in</label>
                        <br/>
                        <select class="input input__select input-country" name="consulateCountry">
-                           <option selected disabled hidden>Please select</option>
+                           <!-- <option selected disabled hidden>Please select</option> -->
                            <%
                            dim country
                            for each country in ViewBag.Countries %>
@@ -467,7 +468,7 @@
                        <label class="input__label">Delivery option</label>
                        <br/>
                        <select class="input__select" name="deliveryOption">
-                           <option selected disabled hidden>Please select</option>
+                           <!-- <option selected disabled hidden>Please select</option> -->
                            <%
                            for each key in ViewBag.Deliveries %>
                                 <option value="<%= key %>">
@@ -761,7 +762,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Date of birth</label>
-                               <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" name="birth-date" data-minYear="<%= ViewBag.MinBirthYear %>" class="datepicker_jq input__field input__field_calendar"/>
+                               <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" name="birth-date" data-minYear="<%= ViewBag.MinBirthYear %>" class="datepicker_jq input__field input__field_calendar input-birth-date"/>
                            </div>
                            <div class="input__error-label">This field cannot be empty</div>
                            <div class="hint">
@@ -962,7 +963,7 @@
                            <div class="input mr-3" style="position: static;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
-                                   <input class="datepicker_jq input__field input__field_calendar passport-issued" name="passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
+                                   <input class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
                                </div>
                                <div class="input__error-label">This field cannot be empty</div>
                                <div class="hint">
@@ -1025,7 +1026,7 @@
                            <div class="input" style="position: static;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport expires</label>
-                                   <input type="text" class="datepicker_jq input__field input__field_calendar passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
+                                   <input type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
                                </div>
                                <div class="input__error-label">This field cannot be empty</div>
                                <div class="hint">
@@ -1152,7 +1153,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Telephone</label>
-                               <input id="phone" type="tel" ="" class="input__field" name="phone"/>
+                               <input id="phone" type="tel" pattern="/^[0-9]{4,}$/gi"class="input__field" name="phone"/>
                            </div>
                            <div class="input__error-label">This field cannot be empty</div>
                            <div class="hint">
@@ -1631,14 +1632,12 @@
            </div>
        </div>
        <div class="container">
-       <div class="d-block d-sm-flex jc-sb mw-660 mt-19 mb-35">
-           <button class="button mr-3 mb-3">Save progress</button>
-           <div>
-               <button data-role="prevStep" class="button border-red color-red bg-white mr-2 mb-3">< previous step</button>
-               <button data-role="nextStep" class="button button_red mb-3">next step ></button>
-           </div>
+       <div class="d-block d-sm-flex flex-direction-column justify-content-between mw-660 mt-19 mb-35">
+           <button class="button mr-0 mr-md-3 mb-3" type="button">Save progress</button>
+           <button data-role="prevStep" type="button" class="button border-red color-red bg-white mr-0 mr-md-2 mb-3">< previous step</button>
+           <button data-role="nextStep" type="button" class="button button_red mb-3">next step ></button>
        </div>
    </div>
-    <!-- </form> -->
+    </form>
 </main>
 <% end sub %>
