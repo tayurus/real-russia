@@ -110,3 +110,34 @@ function warningRegistration7Days(arrivalDate, departureDate, registrationValue)
 
     return "";
 }
+
+function valueCanNotBeEmpty(value){
+    if (typeof value === 'undefined' || value === ''){
+        return 'This field cannot be empty'
+    }
+    return '';
+}
+
+function valueMustContainOnlyLetters(value){
+    let reg = /^[a-z]{1,}$/gi;
+    if (!reg.test(value) && value != ''){
+        return 'This field must contain only letters'
+    }
+    return ''
+}
+
+function valueMustContainOnlyDigits(value){
+    let reg = /^[0-9]{1,}$/gi;
+    if (!reg.test(value) && value != ''){
+        return 'This field must contain only digits'
+    }
+    return ''
+}
+
+function emailMustBeValid(value){
+    let reg = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/gi;
+    if (!reg.test(value)){
+        return 'email must be valid';
+    }
+    return '';
+}

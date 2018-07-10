@@ -1,7 +1,7 @@
 /////////////////////////////////////////////данные
-var arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportIssued = [],
+var arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
     passportExpired = [], country, registration, birthDate, processingCity, cities = [],
-    visitorsCount = 1;
+    visitorsCount = 1, firstName, surname, middleName, email, phone;
 
 //////////////////////////////////////////helpers
 function parseDate(s) {
@@ -293,6 +293,37 @@ function warningRegistration7Days(arrivalDate, departureDate, registrationValue)
     return "";
 }
 
+function valueCanNotBeEmpty(value){
+    if (typeof value === 'undefined' || value === ''){
+        return 'This field cannot be empty'
+    }
+    return '';
+}
+
+function valueMustContainOnlyLetters(value){
+    let reg = /^[a-z]{1,}$/gi;
+    if (!reg.test(value) && value != ''){
+        return 'This field must contain only letters'
+    }
+    return ''
+}
+
+function valueMustContainOnlyDigits(value){
+    let reg = /^[0-9]{1,}$/gi;
+    if (!reg.test(value) && value != ''){
+        return 'This field must contain only digits'
+    }
+    return ''
+}
+
+function emailMustBeValid(value){
+    let reg = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/gi;
+    if (!reg.test(value)){
+        return 'email must be valid';
+    }
+    return '';
+}
+
 let currentYear = new Date().getFullYear();
 let minDefaultYear = currentYear - 100;
 let currentDate = new Date();
@@ -316,49 +347,72 @@ $(".datepicker_jq").each(function(index, item) {
 
 /////////////////////////////////////////////обработчики изменений данных
 
-$(document).on("change", ".input-passport-issued", function() {
+$(document).on("blur propertychange change input paste", ".input-passport-issued", function() {
     validatePassportIssued($(this));
 });
 
-$(document).on("change", ".input-passport-expired", function() {
+$(document).on("blur propertychange change input paste", ".input-passport-expired", function() {
     validatePassportExpired($(this));
 });
 
-$(document).on("change", ".input-arrival-date1", function() {
+$(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
     validateArrival1($(this));
 });
 
-$(document).on("change", ".input-departure-date1", function() {
+$(document).on("blur propertychange change input paste", ".input-departure-date1", function() {
     validateDeparture1($(this));
 });
 
-$(document).on("change", ".input-departure-date2", function() {
+$(document).on("blur propertychange change input paste", ".input-departure-date2", function() {
     validateDeparture2($(this));
 });
 
-$(document).on("change", ".input-arrival-date2", function() {
+$(document).on("blur propertychange change input paste", ".input-arrival-date2", function() {
     validateArrival2($(this));
 });
 
-$(document).on("change", ".input-citizenship", function() {
+$(document).on("blur propertychange change input paste", ".input-citizenship", function() {
     validateCountry($(this));
 });
 
-$(document).on("change", ".input-registration", function() {
+$(document).on("blur propertychange change input paste", ".input-registration", function() {
     validateRegistration($(this));
 });
 
-$(document).on("change", ".input-birth-date", function() {
+$(document).on("blur propertychange change input paste", ".input-birth-date", function() {
     validateBirthDate($(this));
 });
 
-$(document).on("change", ".input-city", function() {
+$(document).on("blur propertychange change input paste", ".input-city", function() {
     validateProcessingCities($(this));
 });
 
-$(document).on("change", "[name='gender_1']", function() {
+$(document).on("blur propertychange change input paste", "[name='gender_1']", function() {
     validateGenders($(this));
 });
+
+$(document).on('blur propertychange change input paste', '.input-firstname', function(){
+    validateFirstName($(this));
+})
+
+$(document).on('blur propertychange change input paste', '.input-middlename', function(){
+    validateMiddleName($(this));
+})
+
+$(document).on('blur propertychange change input paste', '.input-surname', function(){
+    validateSurname($(this));
+})
+
+$(document).on('blur propertychange change input paste', '.input-passport-number', function(){
+    validatePassportNumber($(this));
+})
+
+$(document).on('blur propertychange change input paste', '.input-email', function(){
+    validateEmail($(this));
+})
+$(document).on('blur propertychange change input paste', '.input-phone', function(){
+    validatePhone($(this));
+})
 
 
 //функции-обработчики
@@ -382,6 +436,8 @@ function validatePassportIssued(e, trigger) {
         .next()
         .html(errorsText);
 
+    checkIfFieldCorrect(errorsText, e)
+
     if (typeof passportExpired[index] !== "undefined" && !trigger) validatePassportExpired(passportExpired[index].element, true);
 }
 
@@ -404,6 +460,8 @@ function validatePassportExpired(e, trigger) {
         .parent()
         .next()
         .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
 
     if (typeof passportIssued[index] !== "undefined" && !trigger) validatePassportIssued(passportIssued[index].element, true);
 
@@ -433,6 +491,8 @@ function validateArrival1(e, trigger) {
         .parent()
         .next()
         .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof departureDate1 !== "undefined") validateDeparture1(departureDate1.element, true);
 }
@@ -467,6 +527,8 @@ function validateDeparture1(e, trigger) {
         .next()
         .html(errorsText);
 
+    checkIfFieldCorrect(errorsText, e)
+
     if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival1(arrivalDate1.element, true);
 
     if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);
@@ -496,6 +558,8 @@ function validateArrival2(e, trigger) {
         .parent()
         .next()
         .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof departureDate2 !== "undefined") validateDeparture2(departureDate2.element, true);
 
@@ -532,6 +596,8 @@ function validateDeparture2(e, trigger) {
         .next()
         .html(errorsText);
 
+    checkIfFieldCorrect(errorsText, e)
+
     if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival2(arrivalDate2.element, true);
 }
 
@@ -549,6 +615,8 @@ function validateCountry(e, trigger){
         .parent()
         .next()
         .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
 }
@@ -572,6 +640,8 @@ function validateRegistration(e, trigger){
         .next()
         .html(errorsText);
 
+    checkIfFieldCorrect(errorsText, e)
+
     if (!trigger && typeof country !== "undefined") validateCountry(country.element, true);
 }
 
@@ -586,6 +656,7 @@ function validateBirthDate(e, trigger) {
         .parent()
         .next()
         .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
 }
 
 function validateProcessingCities(e, trigger) {
@@ -611,6 +682,7 @@ function validateProcessingCities(e, trigger) {
         .parent()
         .next()
         .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
 
     if (!trigger)
         cities.forEach((item) => {
@@ -630,9 +702,104 @@ function validateWarningRegistration7Days(entryNumber){
     return res;
 }
 
-
 function validateGenders(e) {
     $(e).closest('.radio-buttons').next('.input__error-label').text('');
+}
+
+function validateFirstName(e){
+    firstName = {
+        val: $(e).val(),
+        element: $(e)
+    }
+    let errorsText = '<div>'+ valueCanNotBeEmpty(firstName.val) +'</div>';
+    errorsText += '<div>'+ valueMustContainOnlyLetters(firstName.val) +'</div>';
+    $(e)
+        .parent()
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
+
+function validateMiddleName(e){
+    middleName = {
+        val: $(e).val(),
+        element: $(e)
+    }
+    let errorsText = '<div>'+ valueMustContainOnlyLetters(middleName.val) +'</div>';
+    $(e)
+        .parent()
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
+
+function validateSurname(e){
+    surname = {
+        val: $(e).val(),
+        element: $(e)
+    }
+    let errorsText = '<div>'+ valueCanNotBeEmpty(surname.val) +'</div>';
+    errorsText += '<div>'+ valueMustContainOnlyLetters(surname.val) +'</div>';
+    $(e)
+        .parent()
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
+}
+
+function validatePassportNumber(e){
+    passportNumber= {
+        val: $(e).val(),
+        element: $(e)
+    }
+
+    let errorsText = '<div>'+ valueCanNotBeEmpty(passportNumber.val) +'</div>';
+    $(e)
+        .parent()
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
+}
+function validateEmail(e){
+    email= {
+        val: $(e).val(),
+        element: $(e)
+    }
+
+    let errorsText = '<div>'+ emailMustBeValid(email.val) +'</div>';
+    $(e)
+        .parent()
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
+}
+
+function validatePhone(e){
+    phone = {
+        val: $(e).val(),
+        element: $(e)
+    }
+
+    let errorsText = '<div>'+ valueMustContainOnlyDigits(phone.val) +'</div>';
+    errorsText += '<div>'+ valueCanNotBeEmpty(phone.val) +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
+}
+
+function checkIfFieldCorrect(errorsText, e){
+    if (errorsText.replace(/<div>/gi,'').replace(/<\/div>/gi, '').trim() === ''){
+        $(e).parent().addClass("input__wrapper_correct");
+    }
+    else {
+        $(e).parent().removeClass("input__wrapper_correct");
+    }
 }
 
 
@@ -667,47 +834,6 @@ $('.hint').click(function(event) {
     }
 
 })
-
-$(".input__field, .input__select").on("blur propertychange click change keyup input paste", function() {
-    //extract value and pattern from input
-    if (typeof $(this).attr('pattern') !== "undefined"){
-
-        let value = $(this).val();
-        let pattern = $(this).attr('pattern');
-        //create a regex from pattern
-        let flags = pattern.replace(/.*\/([gimy]*)$/, '$1');
-        let regexBody = pattern.replace(new RegExp('^/(.*?)/'+flags+'$'), '$1');
-        let regex = new RegExp(regexBody, flags);
-
-        //check if input's value correct
-        if (!regex.test(value)){
-
-            if (typeof $(this).attr('required') !== 'undefined'){
-                $(this).parent().addClass("input__wrapper_error")
-                $(this).parent().removeClass("input__wrapper_correct")
-                $(this).parent().next().text("check this field!");
-            }
-
-            if (value === "" && typeof $(this).attr('required') !== 'undefined')
-                $(this).parent().next().text("This field cannot be empty!");
-        }
-        else{
-            $(this).parent().removeClass("input__wrapper_error")
-            $(this).parent().addClass("input__wrapper_correct")
-            $(this).parent().next().text("");
-        }
-    }
-
-})
-
-$(".input").click(function(){
-
-    if ($(this).has(".input__field_calendar").length >= 1){
-        // console.log($(this).find('.input__wrapper').find('.datepicker'));
-        // $(this).find('.datepicker').toggle()
-        $(this).find('.datepicker').show()
-    }
-});
 
 
 

@@ -23,12 +23,12 @@
                    <div class="title">Russian Tourist Visa Support Application</div>
 
                    <div class="steps">
-                       <div class="steps__item steps__item_correct steps__item_active" data-steps="1">
+                       <div class="steps__item steps__item_active" data-steps="1">
                            1
                            <div class="steps__item-text">SERVICE DETAILS</div>
                        </div>
                        <div class="steps__line steps__line_filled"></div>
-                       <div class="steps__item steps__item_incorrect" data-steps="2">
+                       <div class="steps__item" data-steps="2">
                            2
                            <div class="steps__item-text">PERSONAL DETAILS</div>
                        </div>
@@ -559,9 +559,9 @@
                        <div class="input mt-4">
                            <div class="input__wrapper">
                                <label class="input__label">First name</label>
-                               <input type="text" name="firstName" ="" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
+                               <input type="text" name="firstName" ="" pattern="/^[a-z]{3,}$/gi" class="input__field input-firstname"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div tab="1" class="hint__tab">
@@ -622,7 +622,7 @@
                        <div class="input mb-3">
                            <div class="input__wrapper">
                                <label class="input__label">Middle name</label>
-                               <input type="text" name="middleName" pattern="/^[a-z]{3,}$/gi"  class="input__field"/>
+                               <input type="text" name="middleName" pattern="/^[a-z]{3,}$/gi"  class="input__field input-middlename"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="hint">
@@ -685,9 +685,9 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Surname</label>
-                               <input type="text" name="surName" ="" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
+                               <input type="text" name="surName" ="" pattern="/^[a-z]{3,}$/gi" class="input__field input-surname"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div tab="1" class="hint__tab">
@@ -764,7 +764,7 @@
                                <label class="input__label">Date of birth</label>
                                <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" name="birth-date" data-minYear="<%= ViewBag.MinBirthYear %>" class="datepicker_jq input__field input__field_calendar input-birth-date"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div tab="1" class="hint__tab">
@@ -823,7 +823,7 @@
                            </div>
                        </div>
                        <div class="d-block d-sm-flex justify-content-between mw-625">
-                           <div style="width: 50%" class="input mr-3 mb-4">
+                           <div style="width: 50%" class="input mr-5 mb-4">
                                <div class="input__wrapper">
                                    <label class="input__label">Citizenship</label>
                                    <br/>
@@ -837,7 +837,7 @@
                                         <% next %>
                                    </select>
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                                <div class="hint">
                                        <div class="hint__header">
                                            <div tab="1" class="hint__tab">
@@ -898,9 +898,9 @@
                            <div style="width: 50%" class="input">
                                <div class="input__wrapper">
                                    <label class="input__label">Passport number</label>
-                                   <input type="text" name="passportNumber" ="" pattern="/^[0-9]{3,}$/gi" class="input__field"/>
+                                   <input type="text" name="passportNumber" ="" pattern="/^[0-9]{3,}$/gi" class="input__field input-passport-number"/>
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div tab="1" class="hint__tab">
@@ -960,12 +960,12 @@
                            </div>
                        </div>
                        <div class="d-block d-sm-flex justify-content-between mw-625" style="position: relative;">
-                           <div class="input mr-3" style="position: static;">
+                           <div class="input mr-5" style="position: static;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
                                    <input class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div tab="1" class="hint__tab">
@@ -1028,7 +1028,7 @@
                                    <label class="input__label">Date passport expires</label>
                                    <input type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div tab="1" class="hint__tab">
@@ -1090,9 +1090,9 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Email address</label>
-                               <input type="text" name="email" ="" pattern="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/gi" class="input__field"/>
+                               <input type="text" name="email" class="input__field input-email"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div tab="1" class="hint__tab">
@@ -1153,9 +1153,9 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Telephone</label>
-                               <input id="phone" type="tel" pattern="/^[0-9]{4,}$/gi"class="input__field" name="phone"/>
+                               <input id="phone" type="tel" pattern="/^[0-9]{4,}$/gi"class="input__field input-phone" name="phone"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div tab="1" class="hint__tab">
@@ -1229,7 +1229,7 @@
                                    <label class="input__label">Vehicle make</label>
                                    <input type="text" name="vehicleMake" ="" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                            </div>
                            <div class="input">
                                <div class="input__wrapper">
@@ -1243,14 +1243,14 @@
                                         </option>
                                    </select>
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                            </div>
                            <div class="input">
                                <div class="input__wrapper">
                                    <label class="input__label">Licence Plate number</label>
                                    <input type="text" name="vehiclePlateNumber" ="" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                            </div>
                        </div>
                    </div>
@@ -1273,19 +1273,19 @@
                <div class="first-entry">
                    <label class="input__label">Entry 1 - Arrival and departure travel dates </label>
                    <div class="d-block d-sm-flex justify-content-between mw-625">
-                   <div class="input mr-3">
+                   <div class="input mr-5">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
                            <input type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
                        </div>
-                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="input__error-label"></div>
                    </div>
                    <div class="input mr-3">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
                            <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
                        </div>
-                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="input__error-label"></div>
                    </div>
                </div>
                </div>
@@ -1297,14 +1297,14 @@
                            <label class="input__label">Arrival Date</label>
                            <input name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
                        </div>
-                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="input__error-label"></div>
                    </div>
                    <div class="input mr-3">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
                            <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-departure-date2"/>
                        </div>
-                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="input__error-label"></div>
                    </div>
                </div>
                </div>
@@ -1329,7 +1329,7 @@
                                         <% next %>
                                    </select>
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div tab="1" class="hint__tab">
@@ -1395,7 +1395,7 @@
                                        <option value="">Dream in Reallity</option>
                                    </select>
                                </div>
-                               <div class="input__error-label">This field cannot be empty</div>
+                               <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div tab="1" class="hint__tab">
@@ -1570,14 +1570,14 @@
                            <label class="input__label">First name</label>
                            <input type="text" name="" ="" pattern="/^[a-z]{2,5}$/gi" class="input__field"/>
                        </div>
-                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="input__error-label"></div>
                    </div>
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Surname</label>
                            <input type="text" name="" ="" pattern="/^[a-z]{2,5}$/gi" class="input__field"/>
                        </div>
-                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="input__error-label"></div>
                    </div>
                    <div class="d-flex flex-wrap flex-md-nowrap">
                        <div class="input mr-0 mr-md-5">
@@ -1585,14 +1585,14 @@
                                <label class="input__label">House number/name</label>
                                <input type="text" name="" ="" pattern="/^[0-9a-z]{1,}$/gi" class="input__field"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                        </div>
                        <div class="input mr-0 mr-md-4">
                            <div class="input__wrapper">
                                <label class="input__label">Postcode</label>
                                <input type="text" name="" ="" pattern="/^[0-9]{3,}$/gi" class="input__field"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                        </div>
                    </div>
                    <div class="input">
@@ -1610,7 +1610,7 @@
                            <label class="input__label">Card number</label>
                            <input type="text" name="" ="" pattern="/^[0-9]{4}(\s{1})?[0-9]{4}(\s{1})?[0-9]{4}(\s{1})?[0-9]{4}(\s{1})?$/gi" class="input__field"/>
                        </div>
-                       <div class="input__error-label">This field cannot be empty</div>
+                       <div class="input__error-label"></div>
                    </div>
                    <div class="d-flex flex-wrap flex-md-nowrap">
                        <div class="input mr-0 mr-md-5">
@@ -1618,14 +1618,14 @@
                                <label class="input__label">Expiry date</label>
                                <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                        </div>
                        <div class="input mr-0 mr-md-4">
                            <div class="input__wrapper">
                                <label class="input__label">CCV</label>
                                <input type="text" name="" ="" pattern="/^[0-9]{2,3}$/gi" class="input__field"/>
                            </div>
-                           <div class="input__error-label">This field cannot be empty</div>
+                           <div class="input__error-label"></div>
                        </div>
                    </div>
                </div>
