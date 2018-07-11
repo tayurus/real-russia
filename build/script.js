@@ -30,6 +30,11 @@ function inititializeSteps() {
 }
 
 function checkIsStepCorrect(){
+    $('input:visible').each((index, item) => {
+        if ($(item).val() == "")
+            $(item).trigger('change')
+    })
+
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepHasError = false;
     $(".input__error-label").each(function(index, item){
@@ -44,6 +49,7 @@ function checkIsStepCorrect(){
         $("[data-steps="+currStep+"]").removeClass("steps__item_incorrect");
         $("[data-steps="+currStep+"]").addClass("steps__item_correct");
     }
+
 }
 
 function showCurrStep(){
@@ -88,6 +94,7 @@ $("[data-role='nextStep']").click(function(){
 
 //when user clicks on button "prev-step"
 $("[data-role='prevStep']").click(function(){
+
     checkIsStepCorrect();
     //check - if prev steps exist
     if (currStep != 1){
@@ -144,6 +151,7 @@ $('.input-entries').change(function() {
 })
 
 $('.input-purpose').change(function() {
+    console.log("purpose.val = ", $(this).val());
     if($(this).val() == "Auto Tourist")
         $('.auto-tourism-wrapper').show()
     else $('.auto-tourism-wrapper').hide()
@@ -510,7 +518,7 @@ function validateArrival1(e, trigger) {
     }
 
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        alert(validateWarningRegistration7Days(1));
+        // alert(validateWarningRegistration7Days(1));
     }
 
     $(e)
@@ -545,7 +553,7 @@ function validateDeparture1(e, trigger) {
     }
 
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        alert(validateWarningRegistration7Days(1));
+        // alert(validateWarningRegistration7Days(1));
     }
 
     $(e)
@@ -578,7 +586,7 @@ function validateArrival2(e, trigger) {
     }
 
     if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
-        alert(validateWarningRegistration7Days(2));
+        // alert(validateWarningRegistration7Days(2));
     }
     $(e)
         .parent()
@@ -614,7 +622,7 @@ function validateDeparture2(e, trigger) {
     }
 
     if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
-        alert(validateWarningRegistration7Days(2));
+        // alert(validateWarningRegistration7Days(2));
     }
 
     $(e)
@@ -658,7 +666,7 @@ function validateRegistration(e, trigger){
         errorsText = someCountriesCannotRegitsterInPiter(country.val, registration.val);
 
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        alert(validateWarningRegistration7Days(1));
+        // alert(validateWarningRegistration7Days(1));
     }
 
     $(e)
@@ -719,12 +727,13 @@ function validateProcessingCities(e, trigger) {
 function validateWarningRegistration7Days(entryNumber){
     let res;
     if (entryNumber == 1)
-        if (typeof arrivalDate1 !== 'undefined' && typeof departureDate1 !== 'undefined')
+        if (typeof arrivalDate1 !== 'undefined' && typeof departureDate1 !== 'undefined' && departureDate1.val != null)
             res = res || warningRegistration7Days(arrivalDate1.val, departureDate1.val, registration)
     if (entryNumber == 2)
-        if (typeof arrivalDate2 !== 'undefined' && typeof departureDate2 !== 'undefined')
+        if (typeof arrivalDate2 !== 'undefined' && typeof departureDate2 !== 'undefined' && departureDate2.val != null)
             res = res || warningRegistration7Days(arrivalDate2.val, departureDate2.val, registration)
 
+    console.log("RES = ", res);
     return res;
 }
 
@@ -833,11 +842,12 @@ $( ".datepicker_jq").datepicker({
       changeMonth: true,
       changeYear: true,
       // yearRange: (typeof($(this).attr('data-minyear')) === "undefined") ? minDefaultYear + ":" + currentYear : $(this).attr('data-minyear') + ":" + currentYear
-}).mask('99/99/9999');
+}).mask('99/99/9999')
 
 $( ".datepicker_jq").change(function(){
-    if ($(this).datepicker('getDate').toDateString() === new Date().toDateString())
-        $(this).datepicker("setDate", new Date());
+    if ($(this).datepicker('getDate') != null)
+        if ($(this).datepicker('getDate').toDateString() === new Date().toDateString())
+            $(this).datepicker("setDate", new Date());
 })
 
 $('.hint').click(function(event) {
@@ -908,8 +918,8 @@ $(document).on("click", ".step__subtitle", function() {
 
 setTimeout(function(){
     $('[data-steps]').click(function(){
+        checkIsStepCorrect();
         currStep = $(this).attr('data-steps');
-
         //hide all steps
         $("[data-step]").hide();
         //show next step
