@@ -71,7 +71,7 @@
 
            </div>
        </div>
-       <div class="container bg-gray pb-4">
+       <div class="container bg-gray pb-4 px-0">
            <div class="d-flex align-items-center justify-content-center justify-content-sm-between">
                <div class="justify-content-between pt-4 pl-2 d-block d-sm-flex">
                    <div class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
@@ -324,7 +324,7 @@
                        </select>
 
                    </div>
-                   <div class="input__highlight"></div>
+                   <div class="input__error-label"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div tab="1" class="hint__tab">
@@ -1216,7 +1216,7 @@
                        <div class="auto-tourism-wrapper">
                            <div class="radio-buttons">
                                <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="vehicleType" id="Car" class="radio-buttons__radio"/>
+                                   <input type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
                                    <label for="Car" class="radio-buttons__view">Car</label>
                                </div>
                                <div class="radio-buttons__wrapper">

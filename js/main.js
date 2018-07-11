@@ -9,6 +9,11 @@ function inititializeSteps() {
 }
 
 function checkIsStepCorrect(){
+    $('input:visible').each((index, item) => {
+        if ($(item).val() == "")
+            $(item).trigger('change')
+    })
+
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepHasError = false;
     $(".input__error-label").each(function(index, item){
@@ -23,6 +28,7 @@ function checkIsStepCorrect(){
         $("[data-steps="+currStep+"]").removeClass("steps__item_incorrect");
         $("[data-steps="+currStep+"]").addClass("steps__item_correct");
     }
+
 }
 
 function showCurrStep(){
@@ -67,6 +73,7 @@ $("[data-role='nextStep']").click(function(){
 
 //when user clicks on button "prev-step"
 $("[data-role='prevStep']").click(function(){
+
     checkIsStepCorrect();
     //check - if prev steps exist
     if (currStep != 1){
@@ -123,6 +130,7 @@ $('.input-entries').change(function() {
 })
 
 $('.input-purpose').change(function() {
+    console.log("purpose.val = ", $(this).val());
     if($(this).val() == "Auto Tourist")
         $('.auto-tourism-wrapper').show()
     else $('.auto-tourism-wrapper').hide()

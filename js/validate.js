@@ -158,7 +158,7 @@ function validateArrival1(e, trigger) {
     }
 
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        alert(validateWarningRegistration7Days(1));
+        // alert(validateWarningRegistration7Days(1));
     }
 
     $(e)
@@ -193,7 +193,7 @@ function validateDeparture1(e, trigger) {
     }
 
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        alert(validateWarningRegistration7Days(1));
+        // alert(validateWarningRegistration7Days(1));
     }
 
     $(e)
@@ -226,7 +226,7 @@ function validateArrival2(e, trigger) {
     }
 
     if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
-        alert(validateWarningRegistration7Days(2));
+        // alert(validateWarningRegistration7Days(2));
     }
     $(e)
         .parent()
@@ -262,7 +262,7 @@ function validateDeparture2(e, trigger) {
     }
 
     if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
-        alert(validateWarningRegistration7Days(2));
+        // alert(validateWarningRegistration7Days(2));
     }
 
     $(e)
@@ -306,7 +306,7 @@ function validateRegistration(e, trigger){
         errorsText = someCountriesCannotRegitsterInPiter(country.val, registration.val);
 
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        alert(validateWarningRegistration7Days(1));
+        // alert(validateWarningRegistration7Days(1));
     }
 
     $(e)
@@ -367,12 +367,13 @@ function validateProcessingCities(e, trigger) {
 function validateWarningRegistration7Days(entryNumber){
     let res;
     if (entryNumber == 1)
-        if (typeof arrivalDate1 !== 'undefined' && typeof departureDate1 !== 'undefined')
+        if (typeof arrivalDate1 !== 'undefined' && typeof departureDate1 !== 'undefined' && departureDate1.val != null)
             res = res || warningRegistration7Days(arrivalDate1.val, departureDate1.val, registration)
     if (entryNumber == 2)
-        if (typeof arrivalDate2 !== 'undefined' && typeof departureDate2 !== 'undefined')
+        if (typeof arrivalDate2 !== 'undefined' && typeof departureDate2 !== 'undefined' && departureDate2.val != null)
             res = res || warningRegistration7Days(arrivalDate2.val, departureDate2.val, registration)
 
+    console.log("RES = ", res);
     return res;
 }
 

@@ -1,7 +1,7 @@
 setTimeout(function(){
     $('[data-steps]').click(function(){
+        checkIsStepCorrect();
         currStep = $(this).attr('data-steps');
-
         //hide all steps
         $("[data-step]").hide();
         //show next step
