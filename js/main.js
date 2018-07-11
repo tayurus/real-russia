@@ -38,11 +38,13 @@ function showCurrStep(){
         if (currStep == 4){
             $("[data-role='nextStep']").text("Confirm!");
             $("[data-role='nextStep']").attr("type", "submit");
+            $("[data-role='nextStep']").attr("data-role", "confirm");
         }
         else {
             //иначе сделать изменить "continue" на "next step"
             $("[data-role='nextStep']").text("next step");
-            $("[data-role='nextStep']").attr("type", "button");
+            $("[data-role='confirm']").attr("type", "button");
+            $("[data-role='confirm']").attr("data-role", "nextStep");
         }
     },200)
 
@@ -59,6 +61,22 @@ function showCurrStep(){
 
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EVENT LISTENERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+$(document).on("click", '[data-role="confirm"]', function(e){
+    //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
+    let stepsHasError = false;
+    $(".input__error-label").each(function(index, item){
+        if ($(item).text() !== ""){
+            stepsHasError = true;
+            $("[data-steps="+currStep+"]").addClass("steps__item_incorrect");
+            $("[data-steps="+currStep+"]").removeClass("steps__item_correct");
+        }
+    });
+    if (stepsHasError){
+        alert("Check steps. You have errors!");
+        e.preventDefault();
+    }
+})
+
 //when user clicks on button "next-step"
 $("[data-role='nextStep']").click(function(){
 
@@ -112,6 +130,11 @@ $(".input-group-size").change(function(){
     $(".visitor-wrapper").each(function(index, item){
         let newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
         $(item).find(".step__subtitle-text").text(newText);
+        $(item).find(".radio-buttons__wrapper:first .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
+        $(item).find('#yes').attr("id", "yes" + (index + 1))
+        $(item).find('#no').attr("id", "no" + (index + 1))
+        $(item).find('[for=yes]').attr("for", "yes" + (index + 1))
+        $(item).find('[for=no]').attr("for", "no" + (index + 1))
 
         //remove text from inputs
         if ((index + 1) > visitorsCount){
@@ -138,6 +161,9 @@ $('.input-purpose').change(function() {
 
 $("[data-button='addLocation']").click(function(){
     $(this).before($(this).prev().clone(true));
+    locationCount++;
+    $(this).prev().find('.input-city').attr('name', 'visitCity' + locationCount);
+    $(this).prev().find('.input-hotel').attr('name', 'visitHotel' + locationCount);
 })
 
 
@@ -154,6 +180,14 @@ $(document).on("click", ".button__remove-location", function(){
     cities.forEach((item) => {
         validateProcessingCities(item.element, true);
     })
+    locationCount = 0;
+
+    $(".location-wrapper").each(function(index, item){
+        locationCount++;
+        $(item).find('.input-city').attr('name', 'visitCity' + locationCount);
+        $(item).find('.input-hotel').attr('name', 'visitHotel' + locationCount);
+    })
+
 
 })
 

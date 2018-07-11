@@ -49,7 +49,7 @@
                    <div class="d-flex flex-column flex-sm-row">
                        <div class="mr-4 mb-2 mb-sm-0">
                            <div class="total__label">Currency</div>
-                           <select class="total__select">
+                           <select class="total__select" name="currency">
                                <option value="gbp">£ - GBP</option>
                                <option value="gbp">$ - USD</option>
                                <option value="gbp">€ - EUR</option>
@@ -386,7 +386,7 @@
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Country applying in</label>
                        <br/>
-                       <select class="input input__select input-country" name="consulateCountry">
+                       <select class="input__select input-country" name="consulateCountry">
                            <!-- <option selected disabled hidden>Please select</option> -->
                            <%
                            dim country
@@ -559,7 +559,7 @@
                        <div class="input mt-4">
                            <div class="input__wrapper">
                                <label class="input__label">First name</label>
-                               <input type="text" name="firstName" ="" pattern="/^[a-z]{3,}$/gi" class="input__field input-firstname"/>
+                               <input type="text" name="firstName" class="input__field input-firstname"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="hint">
@@ -622,7 +622,7 @@
                        <div class="input mb-3">
                            <div class="input__wrapper">
                                <label class="input__label">Middle name</label>
-                               <input type="text" name="middleName" pattern="/^[a-z]{3,}$/gi"  class="input__field input-middlename"/>
+                               <input type="text" name="middleName"  class="input__field input-middlename"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="hint">
@@ -685,7 +685,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Surname</label>
-                               <input type="text" name="surName" ="" pattern="/^[a-z]{3,}$/gi" class="input__field input-surname"/>
+                               <input type="text" name="surName" class="input__field input-surname"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="hint">
@@ -748,11 +748,11 @@
                        <div class="input">
                            <div class="radio-buttons">
                                <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="gender_1" id="yes" class="radio-buttons__radio"/>
+                                   <input type="radio" name="gender_1" value="Male" id="yes" class="radio-buttons__radio"/>
                                    <label for="yes" class="radio-buttons__view">Male</label>
                                </div>
                                <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="gender_1" id="no" class="radio-buttons__radio"/>
+                                   <input type="radio" name="gender_1" value="Female" id="no" class="radio-buttons__radio"/>
                                    <label for="no" class="radio-buttons__view">Female</label>
                                </div>
 
@@ -762,7 +762,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Date of birth</label>
-                               <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" name="birth-date" data-minYear="<%= ViewBag.MinBirthYear %>" class="datepicker_jq input__field input__field_calendar input-birth-date"/>
+                               <input type="text" class="datepicker_jq input__field input__field_calendar input-birth-date"/>
                                 <input type="hidden" name="dobMonth" />
                                <input type="hidden" name="dobDay" />
                                <input type="hidden" name="dobYear" />
@@ -830,8 +830,7 @@
                                <div class="input__wrapper">
                                    <label class="input__label">Citizenship</label>
                                    <br/>
-                                   <select class="input input__select input-citizenship" name="consulateCountry">
-                                       <option selected disabled hidden>Please select</option>
+                                   <select class="input input__select input-citizenship" name="passportCitzenship">
                                        <%
                                        for each country in ViewBag.Countries %>
                                             <option value="<%= country.name %>">
@@ -901,7 +900,7 @@
                            <div style="width: 50%" class="input">
                                <div class="input__wrapper">
                                    <label class="input__label">Passport number</label>
-                                   <input type="text" name="passportNumber" ="" pattern="/^[0-9]{3,}$/gi" class="input__field input-passport-number"/>
+                                   <input type="text" name="passportNumber" class="input__field input-passport-number"/>
                                </div>
                                <div class="input__error-label"></div>
                                <div class="hint">
@@ -966,7 +965,7 @@
                            <div class="input mr-5" style="position: static;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
-                                   <input class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
+                                   <input class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
                                    <input type="hidden" name="passportMonthIssued" />
                                     <input type="hidden" name="passportDayIssued" />
                                   <input type="hidden" name="passportYearIssued" />
@@ -1032,7 +1031,7 @@
                            <div class="input" style="position: static;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport expires</label>
-                                   <input type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
+                                   <input type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" />
                                    <input type="hidden" name="passportMonthExpires" />
                                     <input type="hidden" name="passportDayExpires" />
                                   <input type="hidden" name="passportYearExpires" />
@@ -1162,7 +1161,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Telephone</label>
-                               <input id="phone" type="tel" pattern="/^[0-9]{4,}$/gi"class="input__field input-phone" name="phone"/>
+                               <input id="phone" class="input__field input-phone" type="tel" name="phone"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="hint">
@@ -1236,7 +1235,7 @@
                            <div class="input">
                                <div class="input__wrapper">
                                    <label class="input__label">Vehicle make</label>
-                                   <input type="text" name="vehicleMake" ="" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
+                                   <input type="text" name="vehicleMake" class="input__field"/>
                                </div>
                                <div class="input__error-label"></div>
                            </div>
@@ -1257,7 +1256,7 @@
                            <div class="input">
                                <div class="input__wrapper">
                                    <label class="input__label">Licence Plate number</label>
-                                   <input type="text" name="vehiclePlateNumber" ="" pattern="/^[a-z]{3,}$/gi" class="input__field"/>
+                                   <input type="text" name="vehiclePlateNumber" class="input__field"/>
                                </div>
                                <div class="input__error-label"></div>
                            </div>
@@ -1285,7 +1284,7 @@
                    <div class="input mr-5">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
-                           <input type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
+                           <input type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
                            <input type="hidden" name="visitMonthOfEntry" />
                             <input type="hidden" name="visitDayOfEntry" />
                           <input type="hidden" name="visitYearOfEntry" />
@@ -1295,7 +1294,7 @@
                    <div class="input mr-3">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
-                           <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
+                           <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
                            <input type="hidden" name="visitMonthOfExit" />
                             <input type="hidden" name="visitDayOfExit" />
                           <input type="hidden" name="visitYearOfExit" />
@@ -1310,14 +1309,20 @@
                    <div class="input mr-3">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
-                           <input name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
+                           <input name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
+                           <input type="hidden" name="visitMonthOfEntry2" />
+                          <input type="hidden" name="visitDayOfEntry2" />
+                          <input type="hidden" name="visitYearOfEntry2" />
                        </div>
                        <div class="input__error-label"></div>
                    </div>
                    <div class="input mr-3">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
-                           <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-departure-date2"/>
+                           <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date2"/>
+                           <input type="hidden" name="visitMonthOfExit2" />
+                          <input type="hidden" name="visitDayOfExit2" />
+                          <input type="hidden" name="visitYearOfExit2" />
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1405,7 +1410,7 @@
                            <div class="input mt-4">
                                <div class="input__wrapper">
                                    <label class="input__label">Hotel</label>
-                                   <select class="input__select" name="visitHotel1">
+                                   <select class="input__select input-hotel" name="visitHotel1">
                                        <option value="">Ahtuba</option>
                                        <option value="">Dream in Reallity</option>
                                    </select>
@@ -1583,14 +1588,14 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">First name</label>
-                           <input type="text" name="" ="" pattern="/^[a-z]{2,5}$/gi" class="input__field"/>
+                           <input type="text" name="" class="input__field"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Surname</label>
-                           <input type="text" name="" ="" pattern="/^[a-z]{2,5}$/gi" class="input__field"/>
+                           <input type="text" name="" class="input__field"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1598,14 +1603,14 @@
                        <div class="input mr-0 mr-md-5">
                            <div class="input__wrapper">
                                <label class="input__label">House number/name</label>
-                               <input type="text" name="" ="" pattern="/^[0-9a-z]{1,}$/gi" class="input__field"/>
+                               <input type="text" name="" class="input__field"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>
                        <div class="input mr-0 mr-md-4">
                            <div class="input__wrapper">
                                <label class="input__label">Postcode</label>
-                               <input type="text" name="" ="" pattern="/^[0-9]{3,}$/gi" class="input__field"/>
+                               <input type="text" name="" class="input__field"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>
@@ -1623,7 +1628,7 @@
                    <div class="input mt-4">
                        <div class="input__wrapper">
                            <label class="input__label">Card number</label>
-                           <input type="text" name="" ="" pattern="/^[0-9]{4}(\s{1})?[0-9]{4}(\s{1})?[0-9]{4}(\s{1})?[0-9]{4}(\s{1})?$/gi" class="input__field"/>
+                           <input type="text" name="" class="input__field"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1631,14 +1636,14 @@
                        <div class="input mr-0 mr-md-5">
                            <div class="input__wrapper">
                                <label class="input__label">Expiry date</label>
-                               <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar"/>
+                               <input type="text" class="datepicker_jq input__field input__field_calendar"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>
                        <div class="input mr-0 mr-md-4">
                            <div class="input__wrapper">
                                <label class="input__label">CCV</label>
-                               <input type="text" name="" ="" pattern="/^[0-9]{2,3}$/gi" class="input__field"/>
+                               <input type="text" name="" class="input__field"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>
@@ -1653,6 +1658,25 @@
            <button data-role="nextStep" type="button" class="button button_red mb-3">next step ></button>
        </div>
    </div>
+   <div class="d-none">
+        <input type="hidden" name="reg_GBP_Moscow" />
+        <input type="hidden" name="reg_GBP_Piter" />
+        <input type="hidden" name="s_GBP" />
+        <input type="hidden" name="d_GBP" />
+        <input type="hidden" name="s_EUR" />
+        <input type="hidden" name="s_USD" />
+        <input type="hidden" name="reg_EUR_Moscow" />
+        <input type="hidden" name="reg_EUR_Piter" />
+        <input type="hidden" name="reg_USD_Moscow" />
+        <input type="hidden" name="reg_USD_Piter" />
+        <input type="hidden" name="d_EUR" />
+        <input type="hidden" name="d_USD" />
+        <input type="hidden" name="whoContacted" />
+        <input type="hidden" name="emailConfirm" />
+        <input type="hidden" name="comments" />
+        <input type="hidden" name="partnerId" />
+   </div>
+   <% call HoneyPot_HtmlHiddenField("") %>
     </form>
 </main>
 <% end sub %>

@@ -264,7 +264,11 @@ function validateDeparture2(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = dateMustBeAfterCurrentDate(departureDate1.val);
+    let errorsText = '';
+
+    if(typeof departureDate1 !== "undefined")
+        errorsText = dateMustBeAfterCurrentDate(departureDate1.val);
+        
     if (typeof arrivalDate2 !== "undefined") {
         errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate2.val, departureDate2.val) + "</div>";
         errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";

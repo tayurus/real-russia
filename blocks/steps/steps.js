@@ -2,6 +2,20 @@ setTimeout(function(){
     $('[data-steps]').click(function(){
         checkIsStepCorrect();
         currStep = $(this).attr('data-steps');
+
+        setTimeout(() => {
+            if (currStep == 4){
+                $("[data-role='nextStep']").text("Confirm!");
+                $("[data-role='nextStep']").attr("type", "submit");
+                $("[data-role='nextStep']").attr("data-role", "confirm");
+            }
+            else {
+                //иначе сделать изменить "continue" на "next step"
+                $("[data-role='nextStep']").text("next step");
+                $("[data-role='confirm']").attr("type", "button");
+                $("[data-role='confirm']").attr("data-role", "nextStep");
+            }
+        },200)
         //hide all steps
         $("[data-step]").hide();
         //show next step
