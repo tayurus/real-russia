@@ -155,6 +155,15 @@ $('.input-purpose').change(function() {
     else $('.auto-tourism-wrapper').hide();
 })
 
+function separationDateIntoThreeInputs(date) {
+    let mass = date.val().split('/');
+    let next = date.next();
+    for (i = 0; i < mass.length; i++) {
+        next.val(mass[i]);
+        next = next.next();
+    }
+}
+
 
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();

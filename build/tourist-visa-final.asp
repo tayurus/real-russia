@@ -763,6 +763,9 @@
                            <div class="input__wrapper">
                                <label class="input__label">Date of birth</label>
                                <input type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" name="birth-date" data-minYear="<%= ViewBag.MinBirthYear %>" class="datepicker_jq input__field input__field_calendar input-birth-date"/>
+                                <input type="hidden" name="dobMonth" />
+                               <input type="hidden" name="dobDay" />
+                               <input type="hidden" name="dobYear" />
                            </div>
                            <div class="input__error-label"></div>
                            <div class="hint">
@@ -964,6 +967,9 @@
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
                                    <input class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
+                                   <input type="hidden" name="passportMonthIssued" />
+                                    <input type="hidden" name="passportDayIssued" />
+                                  <input type="hidden" name="passportYearIssued" />
                                </div>
                                <div class="input__error-label"></div>
                                <div class="hint">
@@ -1027,6 +1033,9 @@
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport expires</label>
                                    <input type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" />
+                                   <input type="hidden" name="passportMonthExpires" />
+                                    <input type="hidden" name="passportDayExpires" />
+                                  <input type="hidden" name="passportYearExpires" />
                                </div>
                                <div class="input__error-label"></div>
                                <div class="hint">
@@ -1277,6 +1286,9 @@
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
                            <input type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
+                           <input type="hidden" name="visitMonthOfEntry" />
+                            <input type="hidden" name="visitDayOfEntry" />
+                          <input type="hidden" name="visitYearOfEntry" />
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1284,6 +1296,9 @@
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
                            <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" pattern="/^[0-9]{2}/[0-9]{2}/[0-9]{4}$/gi" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
+                           <input type="hidden" name="visitMonthOfExit" />
+                            <input type="hidden" name="visitDayOfExit" />
+                          <input type="hidden" name="visitYearOfExit" />
                        </div>
                        <div class="input__error-label"></div>
                    </div>

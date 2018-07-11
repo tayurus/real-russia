@@ -23,69 +23,86 @@ $(".datepicker_jq").each(function(index, item) {
 
 $(document).on("blur propertychange change input paste", ".input-passport-issued", function() {
     validatePassportIssued($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-passport-expired", function() {
     validatePassportExpired($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
     validateArrival1($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date1", function() {
     validateDeparture1($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date2", function() {
     validateDeparture2($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-arrival-date2", function() {
     validateArrival2($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-citizenship", function() {
     validateCountry($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-registration", function() {
     validateRegistration($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-birth-date", function() {
     validateBirthDate($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-city", function() {
     validateProcessingCities($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", "[name='gender_1']", function() {
     validateGenders($(this));
+    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on('blur propertychange change input paste', '.input-firstname', function(){
     validateFirstName($(this));
+    separationDateIntoThreeInputs($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-middlename', function(){
     validateMiddleName($(this));
+    separationDateIntoThreeInputs($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-surname', function(){
     validateSurname($(this));
+    separationDateIntoThreeInputs($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-passport-number', function(){
     validatePassportNumber($(this));
+    separationDateIntoThreeInputs($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-email', function(){
     validateEmail($(this));
+    separationDateIntoThreeInputs($(this));
 })
 $(document).on('blur propertychange change input paste', '.input-phone', function(){
     validatePhone($(this));
+    separationDateIntoThreeInputs($(this));
 })
 
 
