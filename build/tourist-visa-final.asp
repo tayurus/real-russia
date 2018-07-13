@@ -1349,7 +1349,7 @@
                                         <% next %>
                                    </select>
                                </div>
-                               <div class="input__error-label"></div>
+                               <div class="input__label_warning"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div tab="1" class="hint__tab">
