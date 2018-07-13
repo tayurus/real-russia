@@ -10,6 +10,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.4.0/js/intlTelInput.min.js"></script>
 <link rel="stylesheet" href="styles.css"/>
 <script src="script.js" defer="defer"></script>
+<meta charset="utf-8">
 <% end sub %>
 
 <% sub ScriptsSection %>
@@ -246,9 +247,15 @@
                        <label class="input__label">Purpose of visit</label>
                        <select class="input__select input-purpose" name="purposeOfVisit">
                            <% for each i in ViewBag.PurposesOfVisit %>
-                                <option value="<%= i %>">
-                                    <%= i %>
-                                </option>
+                               <% if i = "Tourist" then  %>
+                                   <option value="<%= i %>" selected>
+                                       <%= i %>
+                                   </option>
+                                <% else %>
+                                    <option value="<%= i %>">
+                                        <%= i %>
+                                    </option>
+                                <% end if %>
                             <% next %>
                        </select>
                    </div>
@@ -383,11 +390,11 @@
                    </div>
                </div>
                <div class="input mt-5">
-                   <div class="input__wrapper input__wrapper_correct">
+                   <div class="input__wrapper">
                        <label class="input__label">Country applying in</label>
                        <br/>
-                       <select class="input__select input-country" name="consulateCountry">
-                           <!-- <option selected disabled hidden>Please select</option> -->
+                       <select value="" class="input__select input-country" name="consulateCountry">
+                           <option selected disabled hidden>Please select</option>
                            <%
                            dim country
                            for each country in ViewBag.Countries %>
@@ -397,7 +404,7 @@
                             <% next %>
                        </select>
                    </div>
-                   <div class="input__highlight"></div>
+                   <div class="input__error-label"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div tab="1" class="hint__tab">
@@ -831,6 +838,7 @@
                                    <label class="input__label">Citizenship</label>
                                    <br/>
                                    <select class="input input__select input-citizenship" name="passportCitzenship">
+                                       <option selected disabled hidden>Please select</option>
                                        <%
                                        for each country in ViewBag.Countries %>
                                             <option value="<%= country.name %>">
@@ -1221,49 +1229,49 @@
                                </div>
                            </div>
                        </div>
-                       <div class="auto-tourism-wrapper">
-                           <div class="radio-buttons">
-                               <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
-                                   <label for="Car" class="radio-buttons__view">Car</label>
-                               </div>
-                               <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="vehicleType" id="Motorcycle" class="radio-buttons__radio"/>
-                                   <label for="Motorcycle" class="radio-buttons__view">Motorcycle</label>
-                               </div>
-                           </div>
-                           <div class="input">
-                               <div class="input__wrapper">
-                                   <label class="input__label">Vehicle make</label>
-                                   <input type="text" name="vehicleMake" class="input__field"/>
-                               </div>
-                               <div class="input__error-label"></div>
-                           </div>
-                           <div class="input">
-                               <div class="input__wrapper">
-                                   <label class="input__label">Vehicle color</label>
-                                   <select class="input__select" name="vehicleColor">
-                                        <option value="">Black
-                                        </option>
-                                        <option value="">Dark blue
-                                        </option>
-                                        <option value="">Golden
-                                        </option>
-                                   </select>
-                               </div>
-                               <div class="input__error-label"></div>
-                           </div>
-                           <div class="input">
-                               <div class="input__wrapper">
-                                   <label class="input__label">Licence Plate number</label>
-                                   <input type="text" name="vehiclePlateNumber" class="input__field"/>
-                               </div>
-                               <div class="input__error-label"></div>
-                           </div>
-                       </div>
+
                    </div>
                </div>
-
+               <div class="auto-tourism-wrapper">
+                   <div class="radio-buttons">
+                       <div class="radio-buttons__wrapper">
+                           <input type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
+                           <label for="Car" class="radio-buttons__view">Car</label>
+                       </div>
+                       <div class="radio-buttons__wrapper">
+                           <input type="radio" name="vehicleType" id="Motorcycle" class="radio-buttons__radio"/>
+                           <label for="Motorcycle" class="radio-buttons__view">Motorcycle</label>
+                       </div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Vehicle make</label>
+                           <input type="text" name="vehicleMake" class="input__field"/>
+                       </div>
+                       <div class="input__error-label"></div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Vehicle color</label>
+                           <select class="input__select" name="vehicleColor">
+                                <option value="">Black
+                                </option>
+                                <option value="">Dark blue
+                                </option>
+                                <option value="">Golden
+                                </option>
+                           </select>
+                       </div>
+                       <div class="input__error-label"></div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Licence Plate number</label>
+                           <input type="text" name="vehiclePlateNumber" class="input__field"/>
+                       </div>
+                       <div class="input__error-label"></div>
+                   </div>
+               </div>
            </div>
            <div data-step="3" class="step">
                <h2 class="step__title">details about your visit to russia</h2>
@@ -1551,7 +1559,7 @@
                </table>
                <hr/>
                <div class="step__note">
-                   The visa support document applied for will be valid for processing a visa for the named person to enter Russia on or after <not specified> and they must leave Russia on or before <not specified>. The visa will allow one entry to and one exit from Russia during this period. It is the applicant’s responsibility to confirm that the visa support document/visa meet their requirements before they process the visa, or travel or use the visa itself.
+                   The visa support document applied for will be valid for processing a visa for the named person to enter Russia on or after <span class="arrival-date-insert"> < not specified > </span> and they must leave Russia on or before <span class="departure-date-insert">< not specified ></span>. The visa will allow one entry to and one exit from Russia during this period. It is the applicant’s responsibility to confirm that the visa support document/visa meet their requirements before they process the visa, or travel or use the visa itself.
                    Please note that once the visa support is issued, no refunds are possible.
                </div>
                <div class="radio-buttons__title font-weight-bold">Having completed my application, I agree that the above visa application is suitable.</div>
@@ -1576,7 +1584,7 @@
                        <img src="img/american-express.png" alt="american-express"/>
                    </div>
                </div>
-               <div class="container">
+               <!-- <div class="container">
                    <h2 class="step__title">PAYMENT</h2>
                    <div class="step__description">
                        <img src="img/payment.png" alt="" class="mr-4 mb-2"/>
@@ -1648,7 +1656,7 @@
                            <div class="input__error-label"></div>
                        </div>
                    </div>
-               </div>
+               </div> -->
            </div>
        </div>
        <div class="container">

@@ -9,8 +9,8 @@ function inititializeSteps() {
 }
 
 function checkIsStepCorrect(){
-    $('input:visible').each((index, item) => {
-        if ($(item).val() == "")
+    $('input:visible, select:visible').each((index, item) => {
+        if ($(item).val() === "" || $(item).val() === null)
             $(item).trigger('change')
     })
 
@@ -206,6 +206,24 @@ function separationDateIntoThreeInputs(date) {
     }
 }
 
+$(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
+    $('.arrival-date-insert').text($(this).val());
+});
+
+$(document).on("blur propertychange change input paste", ".input-departure-date1", function() {
+    if (numberOfEntries.val === "Single entry visa")
+        $('.departure-date-insert').text($(this).val());
+});
+
+$(document).on("blur propertychange change input paste", ".input-departure-date2", function() {
+    $('.departure-date-insert').text($(this).val());
+});
+$(document).on("blur propertychange change input paste", ".input-entries", function() {
+    numberOfEntries = {
+        element: $(this),
+        val: $(this).val()
+    }
+});
 
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();

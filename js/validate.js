@@ -52,13 +52,11 @@ $(document).on("blur propertychange change input paste", ".input-arrival-date2",
 });
 
 $(document).on("blur propertychange change input paste", ".input-citizenship", function() {
-    validateCountry($(this));
-    separationDateIntoThreeInputs($(this));
+    validateCitizenship($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-registration", function() {
     validateRegistration($(this));
-    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-birth-date", function() {
@@ -68,41 +66,36 @@ $(document).on("blur propertychange change input paste", ".input-birth-date", fu
 
 $(document).on("blur propertychange change input paste", ".input-city", function() {
     validateProcessingCities($(this));
-    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", "[name='gender_1']", function() {
     validateGenders($(this));
-    separationDateIntoThreeInputs($(this));
 });
 
 $(document).on('blur propertychange change input paste', '.input-firstname', function(){
     validateFirstName($(this));
-    separationDateIntoThreeInputs($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-middlename', function(){
     validateMiddleName($(this));
-    separationDateIntoThreeInputs($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-surname', function(){
     validateSurname($(this));
-    separationDateIntoThreeInputs($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-passport-number', function(){
     validatePassportNumber($(this));
-    separationDateIntoThreeInputs($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-email', function(){
     validateEmail($(this));
-    separationDateIntoThreeInputs($(this));
 })
 $(document).on('blur propertychange change input paste', '.input-phone', function(){
     validatePhone($(this));
-    separationDateIntoThreeInputs($(this));
+})
+$(document).on('blur propertychange change input paste', '.input-country', function(){
+    validateCountryApply($(this));
 })
 
 
@@ -268,7 +261,7 @@ function validateDeparture2(e, trigger) {
 
     if(typeof departureDate1 !== "undefined")
         errorsText = dateMustBeAfterCurrentDate(departureDate1.val);
-        
+
     if (typeof arrivalDate2 !== "undefined") {
         errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate2.val, departureDate2.val) + "</div>";
         errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
@@ -296,15 +289,15 @@ function validateDeparture2(e, trigger) {
     if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival2(arrivalDate2.element, true);
 }
 
-function validateCountry(e, trigger){
-    country = {
+function validateCitizenship(e, trigger){
+    citizenship = {
         val: $(e).val(),
         element: $(e)
     };
 
-    let errorsText = "";
+    let errorsText =  '<div>'+ valueCanNotBeEmpty(citizenship.val) +'</div>';
     if (typeof registration !== 'undefined')
-        errorsText = someCountriesCannotRegitsterInPiter(country.val, registration.val);
+        errorsText = someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
 
     $(e)
         .parent()
@@ -323,8 +316,8 @@ function validateRegistration(e, trigger){
     };
 
     let errorsText = "";
-    if (typeof country !== 'undefined')
-        errorsText = someCountriesCannotRegitsterInPiter(country.val, registration.val);
+    if (typeof citizenship !== 'undefined')
+        errorsText = someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
 
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
         // alert(validateWarningRegistration7Days(1));
@@ -337,7 +330,7 @@ function validateRegistration(e, trigger){
 
     checkIfFieldCorrect(errorsText, e)
 
-    if (!trigger && typeof country !== "undefined") validateCountry(country.element, true);
+    if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
 }
 
 function validateBirthDate(e, trigger) {
@@ -496,4 +489,19 @@ function checkIfFieldCorrect(errorsText, e){
     else {
         $(e).parent().removeClass("input__wrapper_correct");
     }
+}
+
+function validateCountryApply(e){
+    countryApplyIn = {
+        val: $(e).val(),
+        element: $(e)
+    }
+
+    let errorsText =  '<div>'+ valueCanNotBeEmpty(countryApplyIn.val) +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
 }

@@ -112,7 +112,7 @@ function warningRegistration7Days(arrivalDate, departureDate, registrationValue)
 }
 
 function valueCanNotBeEmpty(value){
-    if (typeof value === 'undefined' || value === ''){
+    if (typeof value === 'undefined' || value === '' || value === null){
         return 'This field cannot be empty'
     }
     return '';
