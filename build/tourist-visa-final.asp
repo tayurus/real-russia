@@ -1306,7 +1306,7 @@
                <div class="second-entry">
                    <label class="input__label">Entry 2 - Arrival and departure travel dates </label>
                    <div class="d-block d-sm-flex justify-content-between mw-625">
-                   <div class="input mr-3">
+                   <div class="input mr-5">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
                            <input name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
