@@ -8,8 +8,9 @@ function inititializeSteps() {
     showCurrStep();
 }
 
-function checkIsStepCorrect(){
-    $('input:visible, select:visible').each((index, item) => {
+
+function checkIsStepCorrect(step){
+    $('[data-step='+step+'] input, [data-step='+step+'] select').each((index, item) => {
         if ($(item).val() === "" || $(item).val() === null)
             $(item).trigger('change')
     })
@@ -19,14 +20,14 @@ function checkIsStepCorrect(){
     $(".input__error-label").each(function(index, item){
         if ($(item).text() !== "" && $(item).is(":visible")){
             stepHasError = true;
-            $("[data-steps="+currStep+"]").addClass("steps__item_incorrect");
-            $("[data-steps="+currStep+"]").removeClass("steps__item_correct");
+            $("[data-steps="+step+"]").addClass("steps__item_incorrect");
+            $("[data-steps="+step+"]").removeClass("steps__item_correct");
         }
     });
 
     if (!stepHasError){
-        $("[data-steps="+currStep+"]").removeClass("steps__item_incorrect");
-        $("[data-steps="+currStep+"]").addClass("steps__item_correct");
+        $("[data-steps="+step+"]").removeClass("steps__item_incorrect");
+        $("[data-steps="+step+"]").addClass("steps__item_correct");
     }
 
 }
@@ -80,7 +81,7 @@ $(document).on("click", '[data-role="confirm"]', function(e){
 //when user clicks on button "next-step"
 $("[data-role='nextStep']").click(function(){
 
-    checkIsStepCorrect();
+    checkIsStepCorrect(currStep);
 
     //check - if next steps exist
     if (currStep < maxStepCount){
@@ -92,7 +93,7 @@ $("[data-role='nextStep']").click(function(){
 //when user clicks on button "prev-step"
 $("[data-role='prevStep']").click(function(){
 
-    checkIsStepCorrect();
+    checkIsStepCorrect(currStep);
     //check - if prev steps exist
     if (currStep != 1){
         currStep--;
@@ -143,6 +144,8 @@ $(".input-group-size").change(function(){
     })
 
     visitorsCount = newVisitorsCount;
+
+    checkIsStepCorrect(2);
 
 })
 

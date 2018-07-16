@@ -332,6 +332,7 @@
 
                    </div>
                    <div class="input__error-label"></div>
+                   <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div tab="1" class="hint__tab">
@@ -1246,19 +1247,20 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Vehicle make</label>
-                           <input type="text" name="vehicleMake" class="input__field"/>
+                           <input type="text" name="vehicleMake" class="input__field input-vehicle-make"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Vehicle color</label>
-                           <select class="input__select" name="vehicleColor">
-                                <option value="">Black
+                           <select class="input__select input-vehicle-color" name="vehicleColor">
+                               <option selected hidden disabled>Please select...</option>
+                                <option value="black">Black
                                 </option>
-                                <option value="">Dark blue
+                                <option value="dark">Dark blue
                                 </option>
-                                <option value="">Golden
+                                <option value="golden">Golden
                                 </option>
                            </select>
                        </div>
@@ -1267,7 +1269,7 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Licence Plate number</label>
-                           <input type="text" name="vehiclePlateNumber" class="input__field"/>
+                           <input type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1289,7 +1291,7 @@
                <div class="first-entry">
                    <label class="input__label">Entry 1 - Arrival and departure travel dates </label>
                    <div class="d-block d-sm-flex justify-content-between mw-625">
-                   <div class="input mr-5">
+                   <div class="input mr-5 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
                            <input type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
@@ -1298,8 +1300,9 @@
                           <input type="hidden" name="visitYearOfEntry" />
                        </div>
                        <div class="input__error-label"></div>
+                       <div class="input__highlight"></div>
                    </div>
-                   <div class="input mr-3">
+                   <div class="input mr-3 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
                            <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
@@ -1308,13 +1311,14 @@
                           <input type="hidden" name="visitYearOfExit" />
                        </div>
                        <div class="input__error-label"></div>
+                       <div class="input__highlight"></div>
                    </div>
                </div>
                </div>
                <div class="second-entry">
                    <label class="input__label">Entry 2 - Arrival and departure travel dates </label>
                    <div class="d-block d-sm-flex justify-content-between mw-625">
-                   <div class="input mr-5">
+                   <div class="input mr-5 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
                            <input name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
@@ -1323,8 +1327,9 @@
                           <input type="hidden" name="visitYearOfEntry2" />
                        </div>
                        <div class="input__error-label"></div>
+                       <div class="input__highlight"></div>
                    </div>
-                   <div class="input mr-3">
+                   <div class="input mr-3 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
                            <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date2"/>
@@ -1333,6 +1338,7 @@
                           <input type="hidden" name="visitYearOfExit2" />
                        </div>
                        <div class="input__error-label"></div>
+                       <div class="input__highlight"></div>
                    </div>
                </div>
                </div>
@@ -1357,7 +1363,7 @@
                                         <% next %>
                                    </select>
                                </div>
-                               <div class="input__label_warning"></div>
+                               <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div tab="1" class="hint__tab">

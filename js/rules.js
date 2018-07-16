@@ -141,3 +141,10 @@ function emailMustBeValid(value){
     }
     return '';
 }
+
+function transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotSelected){
+    if (hasSiberianRailWay && anotherCitiesNotSelected)
+        return 'Transsiberian Railway can not be only one location';
+
+    return '';
+}

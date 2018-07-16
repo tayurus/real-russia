@@ -97,6 +97,17 @@ $(document).on('blur propertychange change input paste', '.input-phone', functio
 $(document).on('blur propertychange change input paste', '.input-country', function(){
     validateCountryApply($(this));
 })
+$(document).on('blur propertychange change input paste', '.input-vehicle-make', function(){
+    validateVehicleMake($(this));
+})
+$(document).on('blur propertychange change input paste', '.input-vehicle-color', function(){
+    validateVehicleColor($(this));
+})
+$(document).on('blur propertychange change input paste', '.input-vehicle-lisence', function(){
+    validateVehicleLisence($(this));
+})
+
+
 
 
 //функции-обработчики
@@ -115,6 +126,7 @@ function validatePassportIssued(e, trigger) {
     }
 
     errorsText += "<div>" + dateMustBeBeforeCurrentDate(passportIssued[index].val) + "</div>";
+    errorsText += "<div>" + valueCanNotBeEmpty(passportIssued[index].val) + "</div>";
     $(e)
         .parent()
         .next()
@@ -167,14 +179,17 @@ function validateArrival1(e, trigger) {
         errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate1.val, departureDate1.val) + "</div>";
     }
 
+    let warningText = "";
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        // alert(validateWarningRegistration7Days(1));
+        warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
     $(e)
         .parent()
         .next()
         .html(errorsText);
+
+    $(e).parent().next().next().html(warningText)
 
     checkIfFieldCorrect(errorsText, e)
 
@@ -202,14 +217,20 @@ function validateDeparture1(e, trigger) {
         errorsText += "<div>" + passportsMustBeValid6MonthsAfterDeparture(departureDate1.val, passportExpiredDates) + "</div>";
     }
 
+    let warningText = "";
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        // alert(validateWarningRegistration7Days(1));
+        warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
     $(e)
         .parent()
         .next()
         .html(errorsText);
+    $(e)
+        .parent()
+        .next()
+        .next()
+        .html(warningText);
 
     checkIfFieldCorrect(errorsText, e)
 
@@ -235,13 +256,19 @@ function validateArrival2(e, trigger) {
         errorsText += "<div>" + secondArrivalDateMustBeLaterThanFirstDepartureDate(arrivalDate2.val, departureDate1.val) + "</div>";
     }
 
+    let warningText = "";
     if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
-        // alert(validateWarningRegistration7Days(2));
+        warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
     $(e)
         .parent()
         .next()
         .html(errorsText);
+    $(e)
+        .parent()
+        .next()
+        .next()
+        .html(warningText);
 
     checkIfFieldCorrect(errorsText, e)
 
@@ -275,14 +302,20 @@ function validateDeparture2(e, trigger) {
         errorsText += "<div>" + passportsMustBeValid6MonthsAfterDeparture(departureDate2.val, passportExpiredDates) + "</div>";
     }
 
+    let warningText = "";
     if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
-        // alert(validateWarningRegistration7Days(2));
+        warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
 
     $(e)
         .parent()
         .next()
         .html(errorsText);
+    $(e)
+        .parent()
+        .next()
+        .next()
+        .html(warningText);
 
     checkIfFieldCorrect(errorsText, e)
 
@@ -319,8 +352,9 @@ function validateRegistration(e, trigger){
     if (typeof citizenship !== 'undefined')
         errorsText = someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
 
+    let warningText = "";
     if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
-        // alert(validateWarningRegistration7Days(1));
+        warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
     $(e)
@@ -328,9 +362,21 @@ function validateRegistration(e, trigger){
         .next()
         .html(errorsText);
 
+    $(e)
+        .parent()
+        .next()
+        .next()
+        .html(warningText);
+
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
+    if (!trigger){
+        validateArrival1(arrivalDate1.element, false);
+        validateArrival2(arrivalDate2.element, false);
+        validateDeparture1(departureDate1.element, false);
+        validateDeparture2(departureDate2.element, false);
+    }
 }
 
 function validateBirthDate(e, trigger) {
@@ -339,7 +385,8 @@ function validateBirthDate(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = dateMustBeBeforeCurrentDate(birthDate.val);
+    let errorsText = '<div>' + dateMustBeBeforeCurrentDate(birthDate.val) + '</div>';
+    errorsText += '<div>' + valueCanNotBeEmpty(birthDate.val) + '</div>';
     $(e)
         .parent()
         .next()
@@ -363,7 +410,20 @@ function validateProcessingCities(e, trigger) {
     cities.forEach((city) => {
         citiesVal.push(extractObjectField(city, "val"))
     })
-    let errorsText = processingDaysForCaucasusCities(processingCity.val);
+
+    let hasSiberianRailWay = false;
+    let anotherCitiesNotSelected = true;
+    citiesVal.forEach((item) => {
+        if (item === "Transsiberian Railway")
+            hasSiberianRailWay = true;
+
+        else if (item !== null)
+            anotherCitiesNotSelected = false;
+    })
+
+    let errorsText = '<div>' + transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotSelected) + '</div>';
+
+    errorsText += '<div>' + processingDaysForCaucasusCities(processingCity.val) + '</div>';
     errorsText += "<div>" + citiesCannotContainDuplicates(citiesVal) + "</div>";
 
     $(e)
@@ -381,13 +441,12 @@ function validateProcessingCities(e, trigger) {
 function validateWarningRegistration7Days(entryNumber){
     let res;
     if (entryNumber == 1)
-        if (typeof arrivalDate1 !== 'undefined' && typeof departureDate1 !== 'undefined' && departureDate1.val != null)
-            res = res || warningRegistration7Days(arrivalDate1.val, departureDate1.val, registration)
+        if (typeof arrivalDate1 !== 'undefined' && typeof departureDate1 !== 'undefined' && departureDate1.val != null && typeof registration !== "undefined")
+            res = res || warningRegistration7Days(arrivalDate1.val, departureDate1.val, registration.val)
     if (entryNumber == 2)
-        if (typeof arrivalDate2 !== 'undefined' && typeof departureDate2 !== 'undefined' && departureDate2.val != null)
-            res = res || warningRegistration7Days(arrivalDate2.val, departureDate2.val, registration)
+        if (typeof arrivalDate2 !== 'undefined' && typeof departureDate2 !== 'undefined' && departureDate2.val != null && typeof registration !== "undefined")
+            res = res || warningRegistration7Days(arrivalDate2.val, departureDate2.val, registration.val)
 
-    console.log("RES = ", res);
     return res;
 }
 
@@ -498,6 +557,49 @@ function validateCountryApply(e){
     }
 
     let errorsText =  '<div>'+ valueCanNotBeEmpty(countryApplyIn.val) +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
+}
+
+function validateVehicleMake(e){
+    vehicleMake = {
+        val: $(e).val(),
+        element: $(e)
+    }
+
+    let errorsText =  '<div>'+ valueCanNotBeEmpty(vehicleMake.val) +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
+}
+function validateVehicleColor(e){
+    vehicleColor = {
+        val: $(e).val(),
+        element: $(e)
+    }
+
+    let errorsText =  '<div>'+ valueCanNotBeEmpty(vehicleColor.val) +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
+}
+function validateVehicleLisence(e){
+    vehicleLisence = {
+        val: $(e).val(),
+        element: $(e)
+    }
+
+    let errorsText =  '<div>'+ valueCanNotBeEmpty(vehicleLisence.val) +'</div>';
     $(e)
         .closest('.input__wrapper')
         .next()

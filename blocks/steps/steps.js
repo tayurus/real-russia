@@ -1,6 +1,6 @@
 setTimeout(function(){
     $('[data-steps]').click(function(){
-        checkIsStepCorrect();
+        checkIsStepCorrect(currStep);
         currStep = $(this).attr('data-steps');
 
         setTimeout(() => {
