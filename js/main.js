@@ -33,7 +33,6 @@ function checkIsStepCorrect(step){
 }
 
 function showCurrStep(){
-
     //если сейчас 4-ый шаг, то изменить "next step" на "continue" и сделать ее кнопкой отправки формы
     setTimeout(() => {
         if (currStep == 4){
@@ -43,7 +42,7 @@ function showCurrStep(){
         }
         else {
             //иначе сделать изменить "continue" на "next step"
-            $("[data-role='nextStep']").text("next step");
+            $("[data-role='confirm']").text("next step");
             $("[data-role='confirm']").attr("type", "button");
             $("[data-role='confirm']").attr("data-role", "nextStep");
         }
@@ -191,6 +190,8 @@ $(document).on("click", ".button__remove-location", function(){
         $(item).find('.input-hotel').attr('name', 'visitHotel' + locationCount);
     })
 
+    checkIsStepCorrect(3);
+
 
 })
 
@@ -210,16 +211,20 @@ function separationDateIntoThreeInputs(date) {
 }
 
 $(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
-    $('.arrival-date-insert').text($(this).val());
+    $('.arrival-date-insert').text($('.input-arrival-date1').val());
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date1", function() {
-    if (numberOfEntries.val === "Single entry visa")
-        $('.departure-date-insert').text($(this).val());
+    if (numberOfEntries.val === "Single entry visa"){
+        $('.departure-date-insert').text($('.input-departure-date1').val());
+    }
+
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date2", function() {
-    $('.departure-date-insert').text($(this).val());
+    if (numberOfEntries.val === "Double entry visa"){
+        $('.departure-date-insert').text($('.input-departure-date2').val());
+    }
 });
 $(document).on("blur propertychange change input paste", ".input-entries", function() {
     numberOfEntries = {

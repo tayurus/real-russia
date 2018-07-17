@@ -421,15 +421,23 @@ function validateProcessingCities(e, trigger) {
             anotherCitiesNotSelected = false;
     })
 
-    let errorsText = '<div>' + transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotSelected) + '</div>';
+    let errorsText = '<div>' + valueCanNotBeEmpty(cities[index].val) + '</div>';
+    errorsText += '<div>' + transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotSelected) + '</div>';
 
-    errorsText += '<div>' + processingDaysForCaucasusCities(processingCity.val) + '</div>';
     errorsText += "<div>" + citiesCannotContainDuplicates(citiesVal) + "</div>";
+
+    let warningText = '<div>' + processingDaysForCaucasusCities(processingCity.val) + '</div>';
 
     $(e)
         .parent()
         .next()
         .html(errorsText);
+    $(e)
+        .parent()
+        .next()
+        .next()
+        .html(warningText);
+
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger)

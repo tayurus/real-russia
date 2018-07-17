@@ -54,7 +54,6 @@ function checkIsStepCorrect(step){
 }
 
 function showCurrStep(){
-
     //если сейчас 4-ый шаг, то изменить "next step" на "continue" и сделать ее кнопкой отправки формы
     setTimeout(() => {
         if (currStep == 4){
@@ -64,7 +63,7 @@ function showCurrStep(){
         }
         else {
             //иначе сделать изменить "continue" на "next step"
-            $("[data-role='nextStep']").text("next step");
+            $("[data-role='confirm']").text("next step");
             $("[data-role='confirm']").attr("type", "button");
             $("[data-role='confirm']").attr("data-role", "nextStep");
         }
@@ -212,6 +211,8 @@ $(document).on("click", ".button__remove-location", function(){
         $(item).find('.input-hotel').attr('name', 'visitHotel' + locationCount);
     })
 
+    checkIsStepCorrect(3);
+
 
 })
 
@@ -231,16 +232,20 @@ function separationDateIntoThreeInputs(date) {
 }
 
 $(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
-    $('.arrival-date-insert').text($(this).val());
+    $('.arrival-date-insert').text($('.input-arrival-date1').val());
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date1", function() {
-    if (numberOfEntries.val === "Single entry visa")
-        $('.departure-date-insert').text($(this).val());
+    if (numberOfEntries.val === "Single entry visa"){
+        $('.departure-date-insert').text($('.input-departure-date1').val());
+    }
+
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date2", function() {
-    $('.departure-date-insert').text($(this).val());
+    if (numberOfEntries.val === "Double entry visa"){
+        $('.departure-date-insert').text($('.input-departure-date2').val());
+    }
 });
 $(document).on("blur propertychange change input paste", ".input-entries", function() {
     numberOfEntries = {
@@ -826,15 +831,23 @@ function validateProcessingCities(e, trigger) {
             anotherCitiesNotSelected = false;
     })
 
-    let errorsText = '<div>' + transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotSelected) + '</div>';
+    let errorsText = '<div>' + valueCanNotBeEmpty(cities[index].val) + '</div>';
+    errorsText += '<div>' + transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotSelected) + '</div>';
 
-    errorsText += '<div>' + processingDaysForCaucasusCities(processingCity.val) + '</div>';
     errorsText += "<div>" + citiesCannotContainDuplicates(citiesVal) + "</div>";
+
+    let warningText = '<div>' + processingDaysForCaucasusCities(processingCity.val) + '</div>';
 
     $(e)
         .parent()
         .next()
         .html(errorsText);
+    $(e)
+        .parent()
+        .next()
+        .next()
+        .html(warningText);
+
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger)
@@ -1097,8 +1110,7 @@ setTimeout(function(){
     $('[data-steps]').click(function(){
         checkIsStepCorrect(currStep);
         currStep = $(this).attr('data-steps');
-
-        setTimeout(() => {
+        // setTimeout(() => {
             if (currStep == 4){
                 $("[data-role='nextStep']").text("Confirm!");
                 $("[data-role='nextStep']").attr("type", "submit");
@@ -1106,11 +1118,11 @@ setTimeout(function(){
             }
             else {
                 //иначе сделать изменить "continue" на "next step"
-                $("[data-role='nextStep']").text("next step");
+                $("[data-role='confirm']").text("next step");
                 $("[data-role='confirm']").attr("type", "button");
                 $("[data-role='confirm']").attr("data-role", "nextStep");
             }
-        },200)
+        // },200)
         //hide all steps
         $("[data-step]").hide();
         //show next step

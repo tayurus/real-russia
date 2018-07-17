@@ -1364,6 +1364,7 @@
                                    </select>
                                </div>
                                <div class="input__error-label"></div>
+                               <div class="input__highlight"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div tab="1" class="hint__tab">
