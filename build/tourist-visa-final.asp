@@ -1565,7 +1565,7 @@
                    </tr>
                </table>
                <hr/>
-               <div class="step__note">
+               <div class="step__note" id="summary">
                    The visa support document applied for will be valid for processing a visa for the named person to enter Russia on or after <span class="arrival-date-insert"> < not specified > </span> and they must leave Russia on or before <span class="departure-date-insert">< not specified ></span>. The visa will allow one entry to and one exit from Russia during this period. It is the applicant’s responsibility to confirm that the visa support document/visa meet their requirements before they process the visa, or travel or use the visa itself.
                    Please note that once the visa support is issued, no refunds are possible.
                </div>
