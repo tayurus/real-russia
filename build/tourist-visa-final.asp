@@ -2,19 +2,23 @@
 <% sub TitleSection %>Russian Tourist Visa Support Application<% end sub %>
 
 <% sub StyleSheetsSection %>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.4.0/js/intlTelInput.min.js"></script>
-<link rel="stylesheet" href="styles.css"/>
-<script src="script.js" defer="defer"></script>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
+<link href="styles.css" rel="stylesheet" />
 <% end sub %>
 
 <% sub ScriptsSection %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js" type="text/javascript" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.4.0/js/intlTelInput.min.js" type="text/javascript" ></script>
+<script src="/visas/belarusia/scripts/infrastructure.data.js" type="text/javascript"></script>
+<script src="/Russian/Scripts/Visas.Russian.js" type="text/javascript"></script>
+<script src="/Russian/Scripts/Visas.Russian.Prices.js" type="text/javascript"></script>
+<script src="/services/consulateSettings.asp" type="text/javascript"></script>
+<script src="/inc/scripts/Visas.Russian.js" type="text/javascript"></script>
+<script src="script.js" defer="defer"></script>
 <% end sub %>
+
 <% sub MainContentSection %>
 <main class="container_form-wrapper">
     <form id="applicationForm" action="/Apply/touristsupport2.asp" method="post">
@@ -464,12 +468,7 @@
                    </div>
                </div>
                <div class="step__note">
-                   <b>CONSULAR NOTES</b>
-                   <div class="step__note-text">
-                       The Russian consulate in United Kingdom have currently no special conditions that we are aware of and accept an email copy of the visa support documents as well as group visa supports.
-                       However, this is subject to change so please confirm the current requirements directly with the consulate before submitting your application.
-                       If necessary we can arrange to courier the original visa support document to you from Moscow, please feel free to contact our visa team at visas@realrussia.co.uk who will be happy to help.
-                   </div>
+                  
                </div>
                <div class="input mt-5">
                    <div class="input__wrapper input__wrapper_correct">

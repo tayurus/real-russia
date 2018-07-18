@@ -276,7 +276,8 @@ $(document).on("blur propertychange change input paste", ".input-entries", funct
 $(document).on("blur propertychange change input paste", ".input-country", function() {
     let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry($(this).val());
     text = text.replace("{Country}", $(this).val());
-    $('.step__note-text').text(text)
+    $(this).closest('.input').next().html("<b>CONSULAR NOTES</b>\
+                                            <div class='step__note-text'>" + text + "</div>")
 });
 
 $(document).on("blur propertychange change input paste", ".input-city", function() {
