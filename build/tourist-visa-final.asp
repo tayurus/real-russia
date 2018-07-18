@@ -468,7 +468,7 @@
                    </div>
                </div>
                <div class="step__note">
-                  
+
                </div>
                <div class="input mt-5">
                    <div class="input__wrapper input__wrapper_correct">
@@ -1362,11 +1362,10 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Vehicle make</label>
-                           <!-- <input type="text" name="vehicleMake" class="input__field input-vehicle-make"/> -->
                            <%
                            set attr = new cAssocArray
                             attr("name") = "visaType"
-                            attr("class") = "input__select input-entries"
+                            attr("class") = "input__select input-vehicle-make"
                             call HtmlSelect_args8(ViewBag.CarBrands, "Title", "Title", attr, "", "", "Please select", true)
                            %>
 

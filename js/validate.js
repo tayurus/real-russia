@@ -116,6 +116,7 @@ $(document).on('blur propertychange change input paste', '.input-hotel', functio
 
 
 
+
 //функции-обработчики
 
 //валидация даты выдачи паспорта
