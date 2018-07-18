@@ -17,7 +17,7 @@ function checkIsStepCorrect(step){
 
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepHasError = false;
-    $(".input__error-label").each(function(index, item){
+    $("[data-step="+step+"] .input__error-label").each(function(index, item){
         if ($(item).text() !== "" && $(item).is(":visible")){
             stepHasError = true;
             $("[data-steps="+step+"]").addClass("steps__item_incorrect");
@@ -167,10 +167,14 @@ $('.input-entries').change(function() {
 })
 
 $('.input-purpose').change(function() {
-    console.log("purpose.val = ", $(this).val());
     if($(this).val() == "Auto Tourist")
         $('.auto-tourism-wrapper').show()
     else $('.auto-tourism-wrapper').hide()
+
+
+    setTimeout(() => {
+        checkIsStepCorrect(3)
+    },200)
 })
 
 $("[data-button='addLocation']").click(function(){

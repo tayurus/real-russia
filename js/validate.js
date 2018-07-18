@@ -117,9 +117,12 @@ $(document).on('blur propertychange change input paste', '.input-hotel', functio
 
 
 
+
 //функции-обработчики
 
 //валидация даты выдачи паспорта
+
+
 function validatePassportIssued(e, trigger) {
     let index = $(".input-passport-issued").index(e) + 1;
     passportIssued[index] = {
