@@ -1,4 +1,5 @@
 function initializeDatepicker(){
+
     $( ".datepicker_jq").datepicker({
           changeMonth: true,
           changeYear: true,
