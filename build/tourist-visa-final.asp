@@ -756,12 +756,12 @@
                        <div class="input">
                            <div class="radio-buttons">
                                <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="gender_1" value="Male" id="yes" class="radio-buttons__radio"/>
-                                   <label for="yes" class="radio-buttons__view">Male</label>
+                                   <input type="radio" name="gender_1" value="Male" id="m1" class="radio-buttons__radio"/>
+                                   <label for="m1" class="radio-buttons__view">Male</label>
                                </div>
                                <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="gender_1" value="Female" id="no" class="radio-buttons__radio"/>
-                                   <label for="no" class="radio-buttons__view">Female</label>
+                                   <input type="radio" name="gender_1" value="Female" id="f1" class="radio-buttons__radio"/>
+                                   <label for="f1" class="radio-buttons__view">Female</label>
                                </div>
 
                            </div>
@@ -1506,23 +1506,23 @@
                <div class="radio-buttons__title">Would you like to join our monthly newsletter list?</div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="someName1" id="yes1" class="radio-buttons__radio"/>
-                       <label for="yes1" class="radio-buttons__view">Yes</label>
+                       <input type="radio" name="joinToNewsLetter" id="joinToNewsLetterYes" class="radio-buttons__radio"/>
+                       <label for="joinToNewsLetterYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="someName1" id="no1" class="radio-buttons__radio"/>
-                       <label for="no1" class="radio-buttons__view">No</label>
+                       <input type="radio" checked="checked" name="joinToNewsLetter" id="joinToNewsLetterNo" class="radio-buttons__radio"/>
+                       <label for="joinToNewsLetterNo" class="radio-buttons__view">No</label>
                    </div>
                </div>
                <div class="radio-buttons__title">Would you like to join our mailing list for special offers, news and information?     </div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="someName2" id="yes2" class="radio-buttons__radio"/>
-                       <label for="yes2" class="radio-buttons__view">Yes</label>
+                       <input type="radio" name="joinMailingList" id="joinMailingListYes" class="radio-buttons__radio"/>
+                       <label for="joinMailingListYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="someName2" id="no2" class="radio-buttons__radio"/>
-                       <label for="no2" class="radio-buttons__view">No</label>
+                       <input type="radio" checked="checked" name="joinMailingList" id="joinMailingListNo" class="radio-buttons__radio"/>
+                       <label for="joinMailingListNo" class="radio-buttons__view">No</label>
                    </div>
                </div>
                <div class="radio-buttons__title font-weight-bold">I have read and understood
@@ -1530,12 +1530,12 @@
                </div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="tandc" id="yes3" class="radio-buttons__radio"/>
-                       <label for="yes3" class="radio-buttons__view">Yes</label>
+                       <input type="radio" name="haveRead" id="haveReadYes" class="radio-buttons__radio"/>
+                       <label for="haveReadYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="tandc" id="no3" class="radio-buttons__radio"/>
-                       <label for="no3" class="radio-buttons__view">No  </label>
+                       <input type="radio" checked="checked" name="haveRead" id="haveReadNo" class="radio-buttons__radio"/>
+                       <label for="haveReadNo" class="radio-buttons__view">No  </label>
                    </div>
                </div>
 
@@ -1572,12 +1572,12 @@
                <div class="radio-buttons__title font-weight-bold">Having completed my application, I agree that the above visa application is suitable.</div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="someName4" id="yes4" class="radio-buttons__radio"/>
-                       <label for="yes4" class="radio-buttons__view">Yes</label>
+                       <input type="radio" checked="checked" name="agreeVisaSuitable" id="agreeVisaSuitableYes" class="radio-buttons__radio"/>
+                       <label for="agreeVisaSuitableYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="someName4" id="no4" class="radio-buttons__radio"/>
-                       <label for="no4" class="radio-buttons__view">No</label>
+                       <input type="radio" name="agreeVisaSuitable" id="agreeVisaSuitableNo" class="radio-buttons__radio"/>
+                       <label for="agreeVisaSuitableNo" class="radio-buttons__view">No</label>
                    </div>
                </div>
                <div class="step__note">You can now proceed to payment</div>

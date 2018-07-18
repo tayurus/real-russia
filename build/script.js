@@ -132,11 +132,16 @@ $(".input-group-size").change(function(){
             $(item).remove()
     })
 
+    //save last sex
+    let lastSex = $(".visitor-wrapper:last").find('[name=gender_' + visitorsCount + ']:checked').val();
+
     //add needed count of visitors-blocks
     for (let i = visitorsCount; i < newVisitorsCount; i++)
         $(".visitor-wrapper:eq("+(visitorsCount -1 )+")")
         .after($(".visitor-wrapper:eq("+(visitorsCount -1 )+")")
         .clone(false))
+
+
 
     $(".visitor-wrapper .datepicker_jq").attr("id", "")
           .removeClass('hasDatepicker')
@@ -152,10 +157,10 @@ $(".input-group-size").change(function(){
         let newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
         $(item).find(".step__subtitle-text").text(newText);
         $(item).find(".radio-buttons__wrapper .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
-        $(item).find('#yes').attr("id", "yes" + (index + 1))
-        $(item).find('#no').attr("id", "no" + (index + 1))
-        $(item).find('[for=yes]').attr("for", "yes" + (index + 1))
-        $(item).find('[for=no]').attr("for", "no" + (index + 1))
+        $(item).find('[id^=m]').attr("id", "m" + (index + 1))
+        $(item).find('[id^=f]').attr("id", "f" + (index + 1))
+        $(item).find('[for^=m]').attr("for", "m" + (index + 1))
+        $(item).find('[for^=f]').attr("for", "f" + (index + 1))
 
         //remove text from inputs
         if ((index + 1) > visitorsCount){
@@ -163,9 +168,16 @@ $(".input-group-size").change(function(){
         }
     })
 
+    //resurect last Sex
+     $("[name=gender_" + visitorsCount + "][value=" + lastSex + "]").prop("checked", true)
+
+     if (visitorsCount < newVisitorsCount)
+        $(".visitor-wrapper:last").find('input').prop("checked", false)
+
+    initializeDatepicker()
+
     visitorsCount = newVisitorsCount;
 
-    checkIsStepCorrect(2);
 
 })
 
@@ -364,15 +376,16 @@ function citiesCannotContainDuplicates(cities) {
 }
 
 function warningRegistration7Days(arrivalDate, departureDate, registrationValue) {
-    let days1;
+    let days = 0;
     let day = 86400000;
     if (registrationValue !== "NO"){
         if (typeof arrivalDate !== "undefined" && typeof departureDate !== "undefined")
             days = (departureDate - arrivalDate) / day;
+        if (days <= 7 )
+            return "Your journey is less than 7 days, so you don't need registration!";
     }
 
-    if (days <= 7 )
-        return "Your journey is less than 7 days, so you don't need registration!";
+
 
     return "";
 }
@@ -611,6 +624,7 @@ function validateArrival1(e, trigger) {
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof departureDate1 !== "undefined") validateDeparture1(departureDate1.element, true);
+    if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
 }
 
 //валидация даты выезда
@@ -652,8 +666,8 @@ function validateDeparture1(e, trigger) {
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival1(arrivalDate1.element, true);
-
     if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);
+    if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
 }
 
 //валидация даты вьезда
@@ -690,8 +704,8 @@ function validateArrival2(e, trigger) {
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof departureDate2 !== "undefined") validateDeparture2(departureDate2.element, true);
-
     if (!trigger && typeof departureDate1 !== "undefined") validateDeparture1(departureDate1.element, true);
+    if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
 }
 
 //валидация даты выезда
@@ -737,6 +751,7 @@ function validateDeparture2(e, trigger) {
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival2(arrivalDate2.element, true);
+    if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
 }
 
 function validateCitizenship(e, trigger){
@@ -770,7 +785,7 @@ function validateRegistration(e, trigger){
         errorsText = someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -789,10 +804,10 @@ function validateRegistration(e, trigger){
 
     if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
     if (!trigger){
-        validateArrival1(arrivalDate1.element, false);
-        validateArrival2(arrivalDate2.element, false);
-        validateDeparture1(departureDate1.element, false);
-        validateDeparture2(departureDate2.element, false);
+        validateArrival1(arrivalDate1.element, true);
+        validateArrival2(arrivalDate2.element, true);
+        validateDeparture1(departureDate1.element, true);
+        validateDeparture2(departureDate2.element, true);
     }
 }
 
@@ -1033,13 +1048,36 @@ function validateVehicleLisence(e){
     checkIfFieldCorrect(errorsText, e)
 }
 
+$('.hint').click(function(event) {
+    event.stopPropagation()
+    console.log($(event.target));
+    if($(event.target).closest('[tab]')) {
+      $(this).find('[tab]').each((i, item) => {
+        $(item).removeClass('hint__tab_active');
+      })
 
-$( ".datepicker_jq").datepicker({
-      changeMonth: true,
-      changeYear: true,
-      dateFormat: 'yy-mm-dd'
-      // yearRange: (typeof($(this).attr('data-minyear')) === "undefined") ? minDefaultYear + ":" + currentYear : $(this).attr('data-minyear') + ":" + currentYear
-}).mask('9999-99-99')
+      $(event.target).closest('[tab]').addClass('hint__tab_active');
+
+      $(this).children('[data-tab]').each((i, item) => {
+        $(item).removeClass('active');
+
+        if($(event.target).closest('[tab]').attr('tab') == $(item).attr('data-tab')) {
+          $(item).addClass('active');
+        }
+      })
+    }
+
+})
+
+function initializeDatepicker(){
+    $( ".datepicker_jq").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: 'yy-mm-dd'
+          // yearRange: (typeof($(this).attr('data-minyear')) === "undefined") ? minDefaultYear + ":" + currentYear : $(this).attr('data-minyear') + ":" + currentYear
+    }).mask('9999-99-99')
+}
+initializeDatepicker()
 
 $( ".datepicker_jq").change(function(){
     if ($(this).datepicker('getDate') != null)
@@ -1086,27 +1124,6 @@ $("#phone").intlTelInput({
   // preferredCountries: ['cn', 'jp'],
   separateDialCode: true
 });
-
-$('.hint').click(function(event) {
-    event.stopPropagation()
-    console.log($(event.target));
-    if($(event.target).closest('[tab]')) {
-      $(this).find('[tab]').each((i, item) => {
-        $(item).removeClass('hint__tab_active');
-      })
-
-      $(event.target).closest('[tab]').addClass('hint__tab_active');
-
-      $(this).children('[data-tab]').each((i, item) => {
-        $(item).removeClass('active');
-
-        if($(event.target).closest('[tab]').attr('tab') == $(item).attr('data-tab')) {
-          $(item).addClass('active');
-        }
-      })
-    }
-
-})
 
 $(document).on("click", ".step__subtitle", function() {
     $(this).toggleClass("step__subtitle_close")

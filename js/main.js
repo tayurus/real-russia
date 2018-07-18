@@ -111,11 +111,16 @@ $(".input-group-size").change(function(){
             $(item).remove()
     })
 
+    //save last sex
+    let lastSex = $(".visitor-wrapper:last").find('[name=gender_' + visitorsCount + ']:checked').val();
+
     //add needed count of visitors-blocks
     for (let i = visitorsCount; i < newVisitorsCount; i++)
         $(".visitor-wrapper:eq("+(visitorsCount -1 )+")")
         .after($(".visitor-wrapper:eq("+(visitorsCount -1 )+")")
         .clone(false))
+
+
 
     $(".visitor-wrapper .datepicker_jq").attr("id", "")
           .removeClass('hasDatepicker')
@@ -131,10 +136,10 @@ $(".input-group-size").change(function(){
         let newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
         $(item).find(".step__subtitle-text").text(newText);
         $(item).find(".radio-buttons__wrapper .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
-        $(item).find('#yes').attr("id", "yes" + (index + 1))
-        $(item).find('#no').attr("id", "no" + (index + 1))
-        $(item).find('[for=yes]').attr("for", "yes" + (index + 1))
-        $(item).find('[for=no]').attr("for", "no" + (index + 1))
+        $(item).find('[id^=m]').attr("id", "m" + (index + 1))
+        $(item).find('[id^=f]').attr("id", "f" + (index + 1))
+        $(item).find('[for^=m]').attr("for", "m" + (index + 1))
+        $(item).find('[for^=f]').attr("for", "f" + (index + 1))
 
         //remove text from inputs
         if ((index + 1) > visitorsCount){
@@ -142,9 +147,16 @@ $(".input-group-size").change(function(){
         }
     })
 
+    //resurect last Sex
+     $("[name=gender_" + visitorsCount + "][value=" + lastSex + "]").prop("checked", true)
+
+     if (visitorsCount < newVisitorsCount)
+        $(".visitor-wrapper:last").find('input').prop("checked", false)
+
+    initializeDatepicker()
+
     visitorsCount = newVisitorsCount;
 
-    checkIsStepCorrect(2);
 
 })
 

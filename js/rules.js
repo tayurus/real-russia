@@ -98,15 +98,16 @@ function citiesCannotContainDuplicates(cities) {
 }
 
 function warningRegistration7Days(arrivalDate, departureDate, registrationValue) {
-    let days1;
+    let days = 0;
     let day = 86400000;
     if (registrationValue !== "NO"){
         if (typeof arrivalDate !== "undefined" && typeof departureDate !== "undefined")
             days = (departureDate - arrivalDate) / day;
+        if (days <= 7 )
+            return "Your journey is less than 7 days, so you don't need registration!";
     }
 
-    if (days <= 7 )
-        return "Your journey is less than 7 days, so you don't need registration!";
+
 
     return "";
 }
