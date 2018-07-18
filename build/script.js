@@ -610,7 +610,7 @@ function validateArrival1(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
+    if (typeof validateWarningRegistration7Days(1) !== "undefined"  && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -803,12 +803,11 @@ function validateRegistration(e, trigger){
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
-    if (!trigger){
-        validateArrival1(arrivalDate1.element, true);
-        validateArrival2(arrivalDate2.element, true);
-        validateDeparture1(departureDate1.element, true);
-        validateDeparture2(departureDate2.element, true);
-    }
+
+    if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival1(arrivalDate1.element, true);
+    if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);
+    if (!trigger && typeof departureDate1 !== "undefined") validateDeparture1(departureDate1.element, true);
+    if (!trigger && typeof departureDate2 !== "undefined") validateDeparture2(departureDate2.element, true);
 }
 
 function validateBirthDate(e, trigger) {
@@ -1048,6 +1047,22 @@ function validateVehicleLisence(e){
     checkIfFieldCorrect(errorsText, e)
 }
 
+function initializeDatepicker(){
+    $( ".datepicker_jq").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: 'yy-mm-dd'
+          // yearRange: (typeof($(this).attr('data-minyear')) === "undefined") ? minDefaultYear + ":" + currentYear : $(this).attr('data-minyear') + ":" + currentYear
+    }).mask('9999-99-99')
+}
+initializeDatepicker()
+
+$( ".datepicker_jq").change(function(){
+    if ($(this).datepicker('getDate') != null)
+        if ($(this).datepicker('getDate').toDateString() === new Date().toDateString())
+            $(this).datepicker("setDate", new Date());
+})
+
 $('.hint').click(function(event) {
     event.stopPropagation()
     console.log($(event.target));
@@ -1067,22 +1082,6 @@ $('.hint').click(function(event) {
       })
     }
 
-})
-
-function initializeDatepicker(){
-    $( ".datepicker_jq").datepicker({
-          changeMonth: true,
-          changeYear: true,
-          dateFormat: 'yy-mm-dd'
-          // yearRange: (typeof($(this).attr('data-minyear')) === "undefined") ? minDefaultYear + ":" + currentYear : $(this).attr('data-minyear') + ":" + currentYear
-    }).mask('9999-99-99')
-}
-initializeDatepicker()
-
-$( ".datepicker_jq").change(function(){
-    if ($(this).datepicker('getDate') != null)
-        if ($(this).datepicker('getDate').toDateString() === new Date().toDateString())
-            $(this).datepicker("setDate", new Date());
 })
 
 

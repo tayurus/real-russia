@@ -180,7 +180,7 @@ function validateArrival1(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
+    if (typeof validateWarningRegistration7Days(1) !== "undefined"  && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -219,7 +219,7 @@ function validateDeparture1(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
+    if (typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -258,7 +258,7 @@ function validateArrival2(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
+    if (typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
     $(e)
@@ -304,7 +304,7 @@ function validateDeparture2(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
+    if (typeof validateWarningRegistration7Days(2) !== "undefined" && validateWarningRegistration7Days(2) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
 
@@ -355,7 +355,7 @@ function validateRegistration(e, trigger){
         errorsText = someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
 
     let warningText = "";
-    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -373,12 +373,11 @@ function validateRegistration(e, trigger){
     checkIfFieldCorrect(errorsText, e)
 
     if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
-    if (!trigger){
-        validateArrival1(arrivalDate1.element, true);
-        validateArrival2(arrivalDate2.element, true);
-        validateDeparture1(departureDate1.element, true);
-        validateDeparture2(departureDate2.element, true);
-    }
+
+    if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival1(arrivalDate1.element, true);
+    if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);
+    if (!trigger && typeof departureDate1 !== "undefined") validateDeparture1(departureDate1.element, true);
+    if (!trigger && typeof departureDate2 !== "undefined") validateDeparture2(departureDate2.element, true);
 }
 
 function validateBirthDate(e, trigger) {
