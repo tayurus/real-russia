@@ -1,4 +1,4 @@
-<% dim i, key %>
+<% dim i, key, attr %>
 <% sub TitleSection %>Russian Tourist Visa Support Application<% end sub %>
 
 <% sub StyleSheetsSection %>
@@ -1233,7 +1233,7 @@
 
                    </div>
                </div>
-               <div class="auto-tourism-wrapper">
+               <!-- <div class="auto-tourism-wrapper">
                    <div class="radio-buttons">
                        <div class="radio-buttons__wrapper">
                            <input type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
@@ -1248,6 +1248,13 @@
                        <div class="input__wrapper">
                            <label class="input__label">Vehicle make</label>
                            <input type="text" name="vehicleMake" class="input__field input-vehicle-make"/>
+                           <%
+                           set attr = new cAssocArray
+                            attr("name") = "visaType"
+                            attr("class") = "input__select input-entries"
+                            call HtmlSelect_args8(ViewBag.CarBrands, "Title", "Title", attr, "", "", "Please select", true)
+                           %>
+
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1273,7 +1280,7 @@
                        </div>
                        <div class="input__error-label"></div>
                    </div>
-               </div>
+               </div> -->
            </div>
            <div data-step="3" class="step">
                <h2 class="step__title">details about your visit to russia</h2>
@@ -1341,6 +1348,62 @@
                        <div class="input__highlight"></div>
                    </div>
                </div>
+               </div>
+               <div class="auto-tourism-wrapper">
+                   <div class="radio-buttons">
+                       <div class="radio-buttons__wrapper">
+                           <input type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
+                           <label for="Car" class="radio-buttons__view">Car</label>
+                       </div>
+                       <div class="radio-buttons__wrapper">
+                           <input type="radio" name="vehicleType" id="Motorcycle" class="radio-buttons__radio"/>
+                           <label for="Motorcycle" class="radio-buttons__view">Motorcycle</label>
+                       </div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Vehicle make</label>
+                           <!-- <input type="text" name="vehicleMake" class="input__field input-vehicle-make"/> -->
+                           <%
+                           set attr = new cAssocArray
+                            attr("name") = "visaType"
+                            attr("class") = "input__select input-entries"
+                            call HtmlSelect_args8(ViewBag.CarBrands, "Title", "Title", attr, "", "", "Please select", true)
+                           %>
+
+                       </div>
+                       <div class="input__error-label"></div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Vehicle color</label>
+
+                           <%
+                           set attr = new cAssocArray
+                            attr("name") = "visaType"
+                            attr("class") = "input__select input-vehicle-color"
+                            call HtmlSelect_args8(ViewBag.VehicleColors, empty, empty, attr, "", "", "Please select", true)
+                           %>
+
+                           <!-- <select class="input__select input-vehicle-color" name="vehicleColor">
+                               <option selected hidden disabled>Please select...</option>
+                                <option value="black">Black
+                                </option>
+                                <option value="dark">Dark blue
+                                </option>
+                                <option value="golden">Golden
+                                </option>
+                           </select> -->
+                       </div>
+                       <div class="input__error-label"></div>
+                   </div>
+                   <div class="input">
+                       <div class="input__wrapper">
+                           <label class="input__label">Licence Plate number</label>
+                           <input type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
+                       </div>
+                       <div class="input__error-label"></div>
+                   </div>
                </div>
                <div class="location-wrapper">
                    <div class="step__subtitle">

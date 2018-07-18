@@ -1,6 +1,6 @@
 /////////////////////////////////////////////данные
 var numberOfEntries = {val: "Single entry visa"}, arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
-    passportExpired = [], citizenship, countryApplyIn, registration, birthDate, processingCity, cities = [], vehicleMake, vehicleColor, vehicleLisence,
+    passportExpired = [], citizenship, countryApplyIn, registration, birthDate, processingCity, cities = [], hotels = [], vehicleMake, vehicleColor, vehicleLisence,
     visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1;
 
 //////////////////////////////////////////helpers
@@ -273,6 +273,23 @@ $(document).on("blur propertychange change input paste", ".input-entries", funct
     }
 });
 
+$(document).on("blur propertychange change input paste", ".input-country", function() {
+    let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry($(this).val());
+    text = text.replace("{Country}", $(this).val());
+    $('.step__note-text').text(text)
+});
+
+$(document).on("blur propertychange change input paste", ".input-city", function() {
+    let el = $(this);
+    Visas.Russian.HotelsServiceProxy.Current.getHotels($(this).val(), function(data){
+        $(el).closest('.input').next().find('select').find('option').remove();
+        $(el).closest('.input').next().find('select').append("<option disabled selected hidden>Please select...</option>");
+        data.forEach((hotel) => {
+            $(el).closest('.input').next().find('select').append("<option value=" + hotel.hotelName + " >" + hotel.hotelName + "</option>")
+        })
+    });
+});
+
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
 
@@ -536,6 +553,9 @@ $(document).on('blur propertychange change input paste', '.input-vehicle-color',
 $(document).on('blur propertychange change input paste', '.input-vehicle-lisence', function(){
     validateVehicleLisence($(this));
 })
+$(document).on('blur propertychange change input paste', '.input-hotel', function(){
+    validateProcessingHotels($(this));
+})
 
 
 
@@ -649,7 +669,7 @@ function validateDeparture1(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
+    if (typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -688,7 +708,7 @@ function validateArrival2(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
+    if (typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
     $(e)
@@ -734,7 +754,7 @@ function validateDeparture2(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(2) !== "undefined" && !trigger && validateWarningRegistration7Days(2) !== ""){
+    if (typeof validateWarningRegistration7Days(2) !== "undefined" && validateWarningRegistration7Days(2) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
 
@@ -785,7 +805,7 @@ function validateRegistration(e, trigger){
         errorsText = someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
 
     let warningText = "";
-    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && !trigger && validateWarningRegistration7Days(1) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -875,6 +895,24 @@ function validateProcessingCities(e, trigger) {
         cities.forEach((item) => {
             validateProcessingCities(item.element, true);
         })
+}
+
+function validateProcessingHotels(e, trigger) {
+
+    let index = $(".input-hotel").index(e) + 1;
+    hotels[index] = {
+        val: $(e).val(),
+        element: $(e)
+    };
+
+    let errorsText = '<div>' + valueCanNotBeEmpty(hotels[index].val) + '</div>';
+
+    $(e)
+        .parent()
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
 }
 
 function validateWarningRegistration7Days(entryNumber){

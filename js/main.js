@@ -252,5 +252,22 @@ $(document).on("blur propertychange change input paste", ".input-entries", funct
     }
 });
 
+$(document).on("blur propertychange change input paste", ".input-country", function() {
+    let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry($(this).val());
+    text = text.replace("{Country}", $(this).val());
+    $('.step__note-text').text(text)
+});
+
+$(document).on("blur propertychange change input paste", ".input-city", function() {
+    let el = $(this);
+    Visas.Russian.HotelsServiceProxy.Current.getHotels($(this).val(), function(data){
+        $(el).closest('.input').next().find('select').find('option').remove();
+        $(el).closest('.input').next().find('select').append("<option disabled selected hidden>Please select...</option>");
+        data.forEach((hotel) => {
+            $(el).closest('.input').next().find('select').append("<option value=" + hotel.hotelName + " >" + hotel.hotelName + "</option>")
+        })
+    });
+});
+
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();

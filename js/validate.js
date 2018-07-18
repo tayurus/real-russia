@@ -106,6 +106,9 @@ $(document).on('blur propertychange change input paste', '.input-vehicle-color',
 $(document).on('blur propertychange change input paste', '.input-vehicle-lisence', function(){
     validateVehicleLisence($(this));
 })
+$(document).on('blur propertychange change input paste', '.input-hotel', function(){
+    validateProcessingHotels($(this));
+})
 
 
 
@@ -445,6 +448,24 @@ function validateProcessingCities(e, trigger) {
         cities.forEach((item) => {
             validateProcessingCities(item.element, true);
         })
+}
+
+function validateProcessingHotels(e, trigger) {
+
+    let index = $(".input-hotel").index(e) + 1;
+    hotels[index] = {
+        val: $(e).val(),
+        element: $(e)
+    };
+
+    let errorsText = '<div>' + valueCanNotBeEmpty(hotels[index].val) + '</div>';
+
+    $(e)
+        .parent()
+        .next()
+        .html(errorsText);
+
+    checkIfFieldCorrect(errorsText, e)
 }
 
 function validateWarningRegistration7Days(entryNumber){
