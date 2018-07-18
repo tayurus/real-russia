@@ -130,7 +130,7 @@ $(".input-group-size").change(function(){
     $(".visitor-wrapper").each(function(index, item){
         let newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
         $(item).find(".step__subtitle-text").text(newText);
-        $(item).find(".radio-buttons__wrapper:first .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
+        $(item).find(".radio-buttons__wrapper .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
         $(item).find('#yes').attr("id", "yes" + (index + 1))
         $(item).find('#no').attr("id", "no" + (index + 1))
         $(item).find('[for=yes]').attr("for", "yes" + (index + 1))

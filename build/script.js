@@ -151,7 +151,7 @@ $(".input-group-size").change(function(){
     $(".visitor-wrapper").each(function(index, item){
         let newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
         $(item).find(".step__subtitle-text").text(newText);
-        $(item).find(".radio-buttons__wrapper:first .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
+        $(item).find(".radio-buttons__wrapper .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
         $(item).find('#yes').attr("id", "yes" + (index + 1))
         $(item).find('#no').attr("id", "no" + (index + 1))
         $(item).find('[for=yes]').attr("for", "yes" + (index + 1))
@@ -1047,27 +1047,6 @@ $( ".datepicker_jq").change(function(){
             $(this).datepicker("setDate", new Date());
 })
 
-$('.hint').click(function(event) {
-    event.stopPropagation()
-    console.log($(event.target));
-    if($(event.target).closest('[tab]')) {
-      $(this).find('[tab]').each((i, item) => {
-        $(item).removeClass('hint__tab_active');
-      })
-
-      $(event.target).closest('[tab]').addClass('hint__tab_active');
-
-      $(this).children('[data-tab]').each((i, item) => {
-        $(item).removeClass('active');
-
-        if($(event.target).closest('[tab]').attr('tab') == $(item).attr('data-tab')) {
-          $(item).addClass('active');
-        }
-      })
-    }
-
-})
-
 
 
 $(".input__select, .input__field").on('focusin',function() {
@@ -1107,6 +1086,27 @@ $("#phone").intlTelInput({
   // preferredCountries: ['cn', 'jp'],
   separateDialCode: true
 });
+
+$('.hint').click(function(event) {
+    event.stopPropagation()
+    console.log($(event.target));
+    if($(event.target).closest('[tab]')) {
+      $(this).find('[tab]').each((i, item) => {
+        $(item).removeClass('hint__tab_active');
+      })
+
+      $(event.target).closest('[tab]').addClass('hint__tab_active');
+
+      $(this).children('[data-tab]').each((i, item) => {
+        $(item).removeClass('active');
+
+        if($(event.target).closest('[tab]').attr('tab') == $(item).attr('data-tab')) {
+          $(item).addClass('active');
+        }
+      })
+    }
+
+})
 
 $(document).on("click", ".step__subtitle", function() {
     $(this).toggleClass("step__subtitle_close")
