@@ -145,7 +145,7 @@ $(".input-group-size").change(function(){
         if ((index + 1) > visitorsCount){
             $(item).find('input').val("");
         }
-    })
+    });
 
     //resurect last Sex
      $("[name=gender_" + visitorsCount + "][value=" + lastSex + "]").prop("checked", true)
@@ -157,13 +157,15 @@ $(".input-group-size").change(function(){
 
     visitorsCount = newVisitorsCount;
 
-
-})
+    calculatePrice();
+});
 
 $('.input-entries').change(function() {
     if( $(this).val() == 'Double entry visa' )
         $('.second-entry').show();
     else $('.second-entry').hide();
+
+    calculatePrice();
 })
 
 $('.input-purpose').change(function() {
@@ -274,5 +276,43 @@ $(document).on("blur propertychange change input paste", ".input-city", function
     });
 });
 
+function calculatePrice() {
+    Visas.Russian.Prices.CurrentPriceServiceProxy.GetTouristVSDOrderPrice(Visas.Russian.EntryTypeId.parseFrom(numberOfEntries.val), Visas.Russian.RegistrationTypeId.parseFrom(registration.val), visitorsCount, function(data) {
+        $('.total__sum-value').text(data.Total.toFixed(2));
+    });
+}
+
+$(document).on("blur propertychange change input paste", ".input-registration", function() {
+    calculatePrice();
+})
+
+
+Visas.Russian.EntryTypeId.parseFrom = function (val) {
+    val = val.toLowerCase();
+    if (val.indexOf("single") >= 0) {
+        return Visas.Russian.EntryTypeId.Single;
+    }
+
+    if (val.indexOf("double") >= 0) {
+        return Visas.Russian.EntryTypeId.Double;
+    }
+    throw new Error();
+};
+
+Visas.Russian.RegistrationTypeId.parseFrom = function (val) {
+    switch (val) {
+        case "NO":
+            return null;
+        case "YES":
+            return Visas.Russian.RegistrationTypeId.RegistrationInMoscow;
+        case "YES_Piter":
+            return Visas.Russian.RegistrationTypeId.RegistrationInStPetersburg;
+        default:
+            throw new Error();
+    }
+};
+
+
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
+calculatePrice();

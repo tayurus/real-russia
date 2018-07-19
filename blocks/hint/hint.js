@@ -1,20 +1,7 @@
-$('.hint').click(function(event) {
-    event.stopPropagation()
-    console.log($(event.target));
-    if($(event.target).closest('[tab]')) {
-      $(this).find('[tab]').each((i, item) => {
-        $(item).removeClass('hint__tab_active');
-      })
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
 
-      $(event.target).closest('[tab]').addClass('hint__tab_active');
-
-      $(this).children('[data-tab]').each((i, item) => {
-        $(item).removeClass('active');
-
-        if($(event.target).closest('[tab]').attr('tab') == $(item).attr('data-tab')) {
-          $(item).addClass('active');
-        }
-      })
-    }
-
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('tab') + ']').addClass('active')
 })

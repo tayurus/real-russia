@@ -1,6 +1,6 @@
 /////////////////////////////////////////////данные
 var numberOfEntries = {val: "Single entry visa"}, arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
-    passportExpired = [], citizenship, countryApplyIn, registration, birthDate, processingCity, cities = [], hotels = [], vehicleMake, vehicleColor, vehicleLisence,
+    passportExpired = [], citizenship, countryApplyIn, registration = {val:"NO"}, birthDate, processingCity, cities = [], hotels = [], vehicleMake, vehicleColor, vehicleLisence,
     visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1, purpose;
 
 //////////////////////////////////////////helpers
@@ -166,7 +166,7 @@ $(".input-group-size").change(function(){
         if ((index + 1) > visitorsCount){
             $(item).find('input').val("");
         }
-    })
+    });
 
     //resurect last Sex
      $("[name=gender_" + visitorsCount + "][value=" + lastSex + "]").prop("checked", true)
@@ -178,13 +178,15 @@ $(".input-group-size").change(function(){
 
     visitorsCount = newVisitorsCount;
 
-
-})
+    calculatePrice();
+});
 
 $('.input-entries').change(function() {
     if( $(this).val() == 'Double entry visa' )
         $('.second-entry').show();
     else $('.second-entry').hide();
+
+    calculatePrice();
 })
 
 $('.input-purpose').change(function() {
@@ -295,8 +297,47 @@ $(document).on("blur propertychange change input paste", ".input-city", function
     });
 });
 
+function calculatePrice() {
+    Visas.Russian.Prices.CurrentPriceServiceProxy.GetTouristVSDOrderPrice(Visas.Russian.EntryTypeId.parseFrom(numberOfEntries.val), Visas.Russian.RegistrationTypeId.parseFrom(registration.val), visitorsCount, function(data) {
+        $('.total__sum-value').text(data.Total.toFixed(2));
+    });
+}
+
+$(document).on("blur propertychange change input paste", ".input-registration", function() {
+    calculatePrice();
+})
+
+
+Visas.Russian.EntryTypeId.parseFrom = function (val) {
+    val = val.toLowerCase();
+    if (val.indexOf("single") >= 0) {
+        return Visas.Russian.EntryTypeId.Single;
+    }
+
+    if (val.indexOf("double") >= 0) {
+        return Visas.Russian.EntryTypeId.Double;
+    }
+    throw new Error();
+};
+
+Visas.Russian.RegistrationTypeId.parseFrom = function (val) {
+    switch (val) {
+        case "NO":
+            return null;
+        case "YES":
+            return Visas.Russian.RegistrationTypeId.RegistrationInMoscow;
+        case "YES_Piter":
+            return Visas.Russian.RegistrationTypeId.RegistrationInStPetersburg;
+        default:
+            throw new Error();
+    }
+};
+
+
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
+calculatePrice();
+
 
 ///////////////////////////////////////////правила
 function datePassportIssuedMustBeBeforeExpired(issued, expired) {
@@ -1114,25 +1155,12 @@ $( ".datepicker_jq").change(function(){
             $(this).datepicker("setDate", new Date());
 })
 
-$('.hint').click(function(event) {
-    event.stopPropagation()
-    console.log($(event.target));
-    if($(event.target).closest('[tab]')) {
-      $(this).find('[tab]').each((i, item) => {
-        $(item).removeClass('hint__tab_active');
-      })
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
 
-      $(event.target).closest('[tab]').addClass('hint__tab_active');
-
-      $(this).children('[data-tab]').each((i, item) => {
-        $(item).removeClass('active');
-
-        if($(event.target).closest('[tab]').attr('tab') == $(item).attr('data-tab')) {
-          $(item).addClass('active');
-        }
-      })
-    }
-
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('tab') + ']').addClass('active')
 })
 
 
@@ -1175,6 +1203,11 @@ $("#phone").intlTelInput({
   separateDialCode: true
 });
 
+$(document).on("click", ".step__subtitle", function() {
+    $(this).toggleClass("step__subtitle_close")
+    $(this).next().toggle(1000)
+})
+
 setTimeout(function(){
     $('[data-steps]').click(function(){
         checkIsStepCorrect(currStep);
@@ -1211,11 +1244,6 @@ setTimeout(function(){
     })
 
 },1000)
-
-$(document).on("click", ".step__subtitle", function() {
-    $(this).toggleClass("step__subtitle_close")
-    $(this).next().toggle(1000)
-})
 
 !function(n) {
     "function" == typeof define && define.amd

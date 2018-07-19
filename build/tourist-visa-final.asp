@@ -68,7 +68,8 @@
                    <div class="total__result">
                        <div class="total__label total__label_big mr-1">Total price</div>
                        <div class="total__sum">
-                           <span class="total__currency">£</span>15.30
+                           <span class="total__currency">£</span>
+                           <span class="total__sum-value">15.30</span>
                        </div>
                    </div>
                    <div class="total__label total__label_small">Prices are shown in different currencies for your convenience, however payment will be made in British Pounds at the prevailing bank rate.</div>
@@ -120,11 +121,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab">
+                           <div tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
+                           <div tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -137,7 +138,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -158,7 +159,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -191,11 +192,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab">
+                           <div tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
+                           <div tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -208,7 +209,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -229,7 +230,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -267,11 +268,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab">
+                           <div tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
+                           <div tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -284,7 +285,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -305,7 +306,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -339,11 +340,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab">
+                           <div tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
+                           <div tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -356,7 +357,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -377,7 +378,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -412,11 +413,11 @@
                    <div class="input__error-label"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab">
+                           <div tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
+                           <div tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -429,7 +430,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -450,7 +451,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -491,11 +492,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab">
+                           <div tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
+                           <div tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -508,7 +509,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -529,7 +530,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -571,11 +572,11 @@
                            <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
-                                   <div tab="1" class="hint__tab">
+                                   <div tab="1" class="hint__tab hint__tab_active">
                                        <div class="hint__header-text">Assistance</div>
                                        <div class="hint__header-icon">?</div>
                                    </div>
-                                   <div tab="2" class="hint__tab hint__tab_active">
+                                   <div tab="2" class="hint__tab">
                                        <div class="hint__header-text">Further Help</div>
                                        <div class="hint__header-icon">
                                            <img src="img/phone-receiver.png"/>
@@ -588,7 +589,7 @@
                                        <div class="hint__action-icon">
                                            <img src="img/phone-receiver.png"/>
                                        </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                    </div>
                                    <div class="hint__action">
                                        <div class="hint__action-icon">
@@ -609,7 +610,7 @@
                                        <div class="hint__action-icon">
                                            <img src="img/phone-receiver.png"/>
                                        </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                    </div>
                                    <div class="hint__action">
                                        <div class="hint__action-icon">
@@ -634,11 +635,11 @@
                            <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
-                                   <div tab="1" class="hint__tab">
+                                   <div tab="1" class="hint__tab hint__tab_active">
                                        <div class="hint__header-text">Assistance</div>
                                        <div class="hint__header-icon">?</div>
                                    </div>
-                                   <div tab="2" class="hint__tab hint__tab_active">
+                                   <div tab="2" class="hint__tab">
                                        <div class="hint__header-text">Further Help</div>
                                        <div class="hint__header-icon">
                                            <img src="img/phone-receiver.png"/>
@@ -651,7 +652,7 @@
                                        <div class="hint__action-icon">
                                            <img src="img/phone-receiver.png"/>
                                        </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                    </div>
                                    <div class="hint__action">
                                        <div class="hint__action-icon">
@@ -672,7 +673,7 @@
                                        <div class="hint__action-icon">
                                            <img src="img/phone-receiver.png"/>
                                        </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                    </div>
                                    <div class="hint__action">
                                        <div class="hint__action-icon">
@@ -697,11 +698,11 @@
                            <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
-                                   <div tab="1" class="hint__tab">
+                                   <div tab="1" class="hint__tab hint__tab_active">
                                        <div class="hint__header-text">Assistance</div>
                                        <div class="hint__header-icon">?</div>
                                    </div>
-                                   <div tab="2" class="hint__tab hint__tab_active">
+                                   <div tab="2" class="hint__tab">
                                        <div class="hint__header-text">Further Help</div>
                                        <div class="hint__header-icon">
                                            <img src="img/phone-receiver.png"/>
@@ -714,7 +715,7 @@
                                        <div class="hint__action-icon">
                                            <img src="img/phone-receiver.png"/>
                                        </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                    </div>
                                    <div class="hint__action">
                                        <div class="hint__action-icon">
@@ -735,7 +736,7 @@
                                        <div class="hint__action-icon">
                                            <img src="img/phone-receiver.png"/>
                                        </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                    </div>
                                    <div class="hint__action">
                                        <div class="hint__action-icon">
@@ -777,11 +778,11 @@
                            <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
-                                   <div tab="1" class="hint__tab">
+                                   <div tab="1" class="hint__tab hint__tab_active">
                                        <div class="hint__header-text">Assistance</div>
                                        <div class="hint__header-icon">?</div>
                                    </div>
-                                   <div tab="2" class="hint__tab hint__tab_active">
+                                   <div tab="2" class="hint__tab">
                                        <div class="hint__header-text">Further Help</div>
                                        <div class="hint__header-icon">
                                            <img src="img/phone-receiver.png"/>
@@ -794,7 +795,7 @@
                                        <div class="hint__action-icon">
                                            <img src="img/phone-receiver.png"/>
                                        </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                    </div>
                                    <div class="hint__action">
                                        <div class="hint__action-icon">
@@ -815,7 +816,7 @@
                                        <div class="hint__action-icon">
                                            <img src="img/phone-receiver.png"/>
                                        </div>
-                                       <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                       <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                    </div>
                                    <div class="hint__action">
                                        <div class="hint__action-icon">
@@ -850,11 +851,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                        <div class="hint__header">
-                                           <div tab="1" class="hint__tab">
+                                           <div tab="1" class="hint__tab hint__tab_active">
                                                <div class="hint__header-text">Assistance</div>
                                                <div class="hint__header-icon">?</div>
                                            </div>
-                                           <div tab="2" class="hint__tab hint__tab_active">
+                                           <div tab="2" class="hint__tab">
                                                <div class="hint__header-text">Further Help</div>
                                                <div class="hint__header-icon">
                                                    <img src="img/phone-receiver.png"/>
@@ -867,7 +868,7 @@
                                                <div class="hint__action-icon">
                                                    <img src="img/phone-receiver.png"/>
                                                </div>
-                                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                            </div>
                                            <div class="hint__action">
                                                <div class="hint__action-icon">
@@ -888,7 +889,7 @@
                                                <div class="hint__action-icon">
                                                    <img src="img/phone-receiver.png"/>
                                                </div>
-                                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                            </div>
                                            <div class="hint__action">
                                                <div class="hint__action-icon">
@@ -913,11 +914,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab">
+                                       <div tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab hint__tab_active">
+                                       <div tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -930,7 +931,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -951,7 +952,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -981,11 +982,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab">
+                                       <div tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab hint__tab_active">
+                                       <div tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -998,7 +999,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -1019,7 +1020,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -1047,11 +1048,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab">
+                                       <div tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab hint__tab_active">
+                                       <div tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -1064,7 +1065,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -1085,7 +1086,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -1115,11 +1116,11 @@
                    <div class="input__error-label"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab">
+                           <div tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
+                           <div tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -1132,7 +1133,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -1153,7 +1154,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -1178,11 +1179,11 @@
                    <div class="input__error-label"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab">
+                           <div tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab hint__tab_active">
+                           <div tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -1195,7 +1196,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -1216,7 +1217,7 @@
                                <div class="hint__action-icon">
                                    <img src="img/phone-receiver.png"/>
                                </div>
-                               <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                               <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                            </div>
                            <div class="hint__action">
                                <div class="hint__action-icon">
@@ -1429,11 +1430,11 @@
                                <div class="input__highlight"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab">
+                                       <div tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab hint__tab_active">
+                                       <div tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -1446,7 +1447,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -1467,7 +1468,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -1494,11 +1495,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab">
+                                       <div tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab hint__tab_active">
+                                       <div tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -1511,7 +1512,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
@@ -1532,7 +1533,7 @@
                                            <div class="hint__action-icon">
                                                <img src="img/phone-receiver.png"/>
                                            </div>
-                                           <div class="hint__action-text"> +44 (0)207 100 7370</div>
+                                           <div class="hint__action-text"> <a href="tel:+44(0)2071007370">+44 (0)207 100 7370</a></div>
                                        </div>
                                        <div class="hint__action">
                                            <div class="hint__action-icon">
