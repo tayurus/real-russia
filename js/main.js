@@ -278,12 +278,26 @@ $(document).on("blur propertychange change input paste", ".input-city", function
 
 function calculatePrice() {
     Visas.Russian.Prices.CurrentPriceServiceProxy.GetTouristVSDOrderPrice(Visas.Russian.EntryTypeId.parseFrom(numberOfEntries.val), Visas.Russian.RegistrationTypeId.parseFrom(registration.val), visitorsCount, function(data) {
+        totalPrice = data.Total.toFixed(2);
         $('.total__sum-value').text(data.Total.toFixed(2));
     });
 }
 
 $(document).on("blur propertychange change input paste", ".input-registration", function() {
     calculatePrice();
+})
+
+$(document).on("blur propertychange change input paste", ".total__select", function() {
+        let selectedCurrency = $(this).val();
+        if (selectedCurrency === "gbp")
+            $('.total__currency').text('£');
+        if (selectedCurrency === "usd")
+            $('.total__currency').text('$');
+        if (selectedCurrency === "eur")
+            $('.total__currency').text('€');
+
+        let selectedRate = parseFloat($(this).find("option[value=" + selectedCurrency + "]").attr('rate')).toFixed(2);
+        $('.total__sum-value').text((totalPrice * selectedRate).toFixed(2))
 })
 
 

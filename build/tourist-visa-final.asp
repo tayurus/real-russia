@@ -55,9 +55,9 @@
                        <div class="mr-4 mb-2 mb-sm-0">
                            <div class="total__label">Currency</div>
                            <select class="total__select" name="currency">
-                               <option value="gbp">£ - GBP</option>
-                               <option value="gbp">$ - USD</option>
-                               <option value="gbp">€ - EUR</option>
+                               <option rate="<%= ViewBag.GBPtoGBPRate %>" value="gbp">£ - GBP</option>
+                               <option rate="<%= ViewBag.USDtoGBPRate %>" value="usd">$ - USD</option>
+                               <option rate="<%= ViewBag.EURToGBPRate %>" value="eur">€ - EUR</option>
                            </select>
                        </div>
                        <div>

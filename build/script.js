@@ -1,7 +1,7 @@
 /////////////////////////////////////////////данные
 var numberOfEntries = {val: "Single entry visa"}, arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
     passportExpired = [], citizenship, countryApplyIn, registration = {val:"NO"}, birthDate, processingCity, cities = [], hotels = [], vehicleMake, vehicleColor, vehicleLisence,
-    visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1, purpose;
+    visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1, purpose, totalPrice;
 
 //////////////////////////////////////////helpers
 function parseDate(s) {
@@ -299,12 +299,26 @@ $(document).on("blur propertychange change input paste", ".input-city", function
 
 function calculatePrice() {
     Visas.Russian.Prices.CurrentPriceServiceProxy.GetTouristVSDOrderPrice(Visas.Russian.EntryTypeId.parseFrom(numberOfEntries.val), Visas.Russian.RegistrationTypeId.parseFrom(registration.val), visitorsCount, function(data) {
+        totalPrice = data.Total.toFixed(2);
         $('.total__sum-value').text(data.Total.toFixed(2));
     });
 }
 
 $(document).on("blur propertychange change input paste", ".input-registration", function() {
     calculatePrice();
+})
+
+$(document).on("blur propertychange change input paste", ".total__select", function() {
+        let selectedCurrency = $(this).val();
+        if (selectedCurrency === "gbp")
+            $('.total__currency').text('£');
+        if (selectedCurrency === "usd")
+            $('.total__currency').text('$');
+        if (selectedCurrency === "eur")
+            $('.total__currency').text('€');
+
+        let selectedRate = parseFloat($(this).find("option[value=" + selectedCurrency + "]").attr('rate')).toFixed(2);
+        $('.total__sum-value').text((totalPrice * selectedRate).toFixed(2))
 })
 
 
