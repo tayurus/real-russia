@@ -32,13 +32,13 @@
                            1
                            <div class="steps__item-text">SERVICE DETAILS</div>
                        </div>
-                       <div class="steps__line steps__line_filled"></div>
+                       <div class="steps__line "></div>
                        <div class="steps__item" data-steps="2">
                            2
                            <div class="steps__item-text">PERSONAL DETAILS</div>
                        </div>
                        <div class="steps__line"></div>
-                       <div class="steps__item steps__item_visited" data-steps="3">
+                       <div class="steps__item " data-steps="3">
                            3
                            <div class="steps__item-text">YOUR VISIT</div>
                        </div>
@@ -1604,28 +1604,28 @@
            </div>
            <div data-step="4" class="step">
                <h2 class="step__title">VISA SUPPORT APPLICATION Order Summary</h2>
-               <div class="step__description">
+               <!-- <div class="step__description">
                    <div class="step__text">Thank you
                        <span class="color-red">PAUL BRADLEY</span>, your Real Russian Tourist Visa Support application has been submitted to our database and is ready for processing.
                        Your reference number is:
                        <b>SSSD - 13611 - D7326 - PB</b>
                    </div>
-               </div>
-               <hr/>
+               </div> -->
+               <!-- <hr/>
                <table class="total-table">
                    <tr>
                        <td>Single entry visa</td>
-                       <td>£15.30</td>
+                       <td class="total-table__visa">£15.30</td>
                    </tr>
                    <tr>
-                       <td>No registration service needed</td>
+                       <td class="total-table__registration">No registration service needed</td>
                        <td>£0.00</td>
                    </tr>
                    <tr>
                        <td class="font-weight-bold">TOTAL PRICE</td>
                        <td class="color-red font-weight-bold">£15.30</td>
                    </tr>
-               </table>
+               </table> -->
                <hr/>
                <div class="step__note" id="summary">
                    The visa support document applied for will be valid for processing a visa for the named person to enter Russia on or after <span class="arrival-date-insert"> < not specified > </span> and they must leave Russia on or before <span class="departure-date-insert">< not specified ></span>. The visa will allow one entry to and one exit from Russia during this period. It is the applicant’s responsibility to confirm that the visa support document/visa meet their requirements before they process the visa, or travel or use the visa itself.

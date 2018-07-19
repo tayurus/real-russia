@@ -10,6 +10,8 @@ function inititializeSteps() {
 
 
 function checkIsStepCorrect(step){
+
+    $('[data-step='+step+']').show();
     $('[data-step='+step+'] input, [data-step='+step+'] select').each((index, item) => {
         if ($(item).val() === "" || $(item).val() === null)
             $(item).trigger('change')
@@ -18,7 +20,7 @@ function checkIsStepCorrect(step){
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepHasError = false;
     $("[data-step="+step+"] .input__error-label").each(function(index, item){
-        if ($(item).text() !== ""){
+        if ($(item).text() !== "" && $(item).is(":visible")){
             stepHasError = true;
             $("[data-steps="+step+"]").addClass("steps__item_incorrect");
             $("[data-steps="+step+"]").removeClass("steps__item_correct");
@@ -29,6 +31,8 @@ function checkIsStepCorrect(step){
         $("[data-steps="+step+"]").removeClass("steps__item_incorrect");
         $("[data-steps="+step+"]").addClass("steps__item_correct");
     }
+
+    $('[data-step='+step+']').hide();
 
 }
 
@@ -64,13 +68,20 @@ function showCurrStep(){
 $(document).on("click", '[data-role="confirm"]', function(e){
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepsHasError = false;
-    $(".input__error-label").each(function(index, item){
-        if ($(item).text() !== ""){
-            stepsHasError = true;
-            $("[data-steps="+currStep+"]").addClass("steps__item_incorrect");
-            $("[data-steps="+currStep+"]").removeClass("steps__item_correct");
-        }
-    });
+    for (let i = 1; i <= 4; i++){
+        $("[data-step=" + i + "]").show()
+        $(".input__error-label").each(function(index, item){
+            if ($(item).text() !== "" && $(item).is(":visible")){
+                stepsHasError = true;
+                $("[data-steps="+currStep+"]").addClass("steps__item_incorrect");
+                $("[data-steps="+currStep+"]").removeClass("steps__item_correct");
+            }
+        });
+        $("[data-step=" + i + "]").hide();
+    }
+
+    $("[data-step=" + 4 + "]").show();
+
     if (stepsHasError){
         alert("Check steps. You have errors!");
         e.preventDefault();
@@ -129,6 +140,7 @@ $(".input-group-size").change(function(){
           .datepicker({
                 changeMonth: true,
                 changeYear: true,
+                dateFormat: 'yy-mm-dd'
           });
 
     //changing number-text of visitor
@@ -299,6 +311,9 @@ $(document).on("blur propertychange change input paste", ".total__select", funct
 
         let selectedRate = parseFloat($(this).find("option[value=" + selectedCurrency + "]").attr('rate')).toFixed(2);
         $('.total__sum-value').text((totalPrice * selectedRate).toFixed(2))
+
+        // if($(this).val() === 'YES')
+        //     $('.total-table__registration').text()
 })
 
 

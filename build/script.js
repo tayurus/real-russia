@@ -31,6 +31,8 @@ function inititializeSteps() {
 
 
 function checkIsStepCorrect(step){
+
+    $('[data-step='+step+']').show();
     $('[data-step='+step+'] input, [data-step='+step+'] select').each((index, item) => {
         if ($(item).val() === "" || $(item).val() === null)
             $(item).trigger('change')
@@ -39,7 +41,7 @@ function checkIsStepCorrect(step){
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepHasError = false;
     $("[data-step="+step+"] .input__error-label").each(function(index, item){
-        if ($(item).text() !== ""){
+        if ($(item).text() !== "" && $(item).is(":visible")){
             stepHasError = true;
             $("[data-steps="+step+"]").addClass("steps__item_incorrect");
             $("[data-steps="+step+"]").removeClass("steps__item_correct");
@@ -50,6 +52,8 @@ function checkIsStepCorrect(step){
         $("[data-steps="+step+"]").removeClass("steps__item_incorrect");
         $("[data-steps="+step+"]").addClass("steps__item_correct");
     }
+
+    $('[data-step='+step+']').hide();
 
 }
 
@@ -85,13 +89,20 @@ function showCurrStep(){
 $(document).on("click", '[data-role="confirm"]', function(e){
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepsHasError = false;
-    $(".input__error-label").each(function(index, item){
-        if ($(item).text() !== ""){
-            stepsHasError = true;
-            $("[data-steps="+currStep+"]").addClass("steps__item_incorrect");
-            $("[data-steps="+currStep+"]").removeClass("steps__item_correct");
-        }
-    });
+    for (let i = 1; i <= 4; i++){
+        $("[data-step=" + i + "]").show()
+        $(".input__error-label").each(function(index, item){
+            if ($(item).text() !== "" && $(item).is(":visible")){
+                stepsHasError = true;
+                $("[data-steps="+currStep+"]").addClass("steps__item_incorrect");
+                $("[data-steps="+currStep+"]").removeClass("steps__item_correct");
+            }
+        });
+        $("[data-step=" + i + "]").hide();
+    }
+
+    $("[data-step=" + 4 + "]").show();
+
     if (stepsHasError){
         alert("Check steps. You have errors!");
         e.preventDefault();
@@ -150,6 +161,7 @@ $(".input-group-size").change(function(){
           .datepicker({
                 changeMonth: true,
                 changeYear: true,
+                dateFormat: 'yy-mm-dd'
           });
 
     //changing number-text of visitor
@@ -320,6 +332,9 @@ $(document).on("blur propertychange change input paste", ".total__select", funct
 
         let selectedRate = parseFloat($(this).find("option[value=" + selectedCurrency + "]").attr('rate')).toFixed(2);
         $('.total__sum-value').text((totalPrice * selectedRate).toFixed(2))
+
+        // if($(this).val() === 'YES')
+        //     $('.total-table__registration').text()
 })
 
 
@@ -1170,6 +1185,14 @@ $( ".datepicker_jq").change(function(){
             $(this).datepicker("setDate", new Date());
 })
 
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
+
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('tab') + ']').addClass('active')
+})
+
 
 
 $(".input__select, .input__field").on('focusin',function() {
@@ -1210,14 +1233,6 @@ $("#phone").intlTelInput({
   separateDialCode: true
 });
 
-$(".hint__tab").click(function(){
-    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
-    $(this).addClass("hint__tab_active");
-
-    $(this).closest('.hint').find('[data-tab]').removeClass('active');
-    $(this).closest('.hint').find('[data-tab=' + $(this).attr('tab') + ']').addClass('active')
-})
-
 $(document).on("click", ".step__subtitle", function() {
     $(this).toggleClass("step__subtitle_close")
     $(this).next().toggle(1000)
@@ -1225,6 +1240,10 @@ $(document).on("click", ".step__subtitle", function() {
 
 setTimeout(function(){
     $('[data-steps]').click(function(){
+
+        let clickedStep = $(this).attr('data-steps');
+        for (let i = 1; i < clickedStep; i++)
+            checkIsStepCorrect(i);
         checkIsStepCorrect(currStep);
         currStep = $(this).attr('data-steps');
         // setTimeout(() => {
