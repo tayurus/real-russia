@@ -82,6 +82,11 @@ $(document).on("click", '[data-role="confirm"]', function(e){
 
     $("[data-step=" + 4 + "]").show();
 
+    if ($("[name=agreeVisaSuitable]:checked").val() !== "yes")
+        stepsHasError = true;
+    if ($("[name=haveRead]:checked").val() !== "yes")
+        stepsHasError = true;
+
     if (stepsHasError){
         alert("Check steps. You have errors!");
         e.preventDefault();

@@ -1592,11 +1592,11 @@
                </div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="haveRead" id="haveReadYes" class="radio-buttons__radio"/>
+                       <input type="radio" name="haveRead" id="haveReadYes" value="yes" class="radio-buttons__radio"/>
                        <label for="haveReadYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="haveRead" id="haveReadNo" class="radio-buttons__radio"/>
+                       <input type="radio" checked="checked" name="haveRead" value="no" id="haveReadNo" class="radio-buttons__radio"/>
                        <label for="haveReadNo" class="radio-buttons__view">No  </label>
                    </div>
                </div>
@@ -1634,15 +1634,15 @@
                <div class="radio-buttons__title font-weight-bold">Having completed my application, I agree that the above visa application is suitable.</div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="agreeVisaSuitable" id="agreeVisaSuitableYes" class="radio-buttons__radio"/>
+                       <input type="radio" checked="checked" name="agreeVisaSuitable" id="agreeVisaSuitableYes" value="yes" class="radio-buttons__radio"/>
                        <label for="agreeVisaSuitableYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="agreeVisaSuitable" id="agreeVisaSuitableNo" class="radio-buttons__radio"/>
+                       <input type="radio" name="agreeVisaSuitable" id="agreeVisaSuitableNo" value="no" class="radio-buttons__radio"/>
                        <label for="agreeVisaSuitableNo" class="radio-buttons__view">No</label>
                    </div>
                </div>
-               <div class="step__note">You can now proceed to payment</div>
+               <!-- <div class="step__note">You can now proceed to payment</div>
                <div class="mt-4 mt-lg-0">
                    <b class="color-red">SECURE PAYMENT PROCESSING</b>
                    <div class="step__note">Text about how secure payment is Text about how secure payment is Text about how secure payment is</div>
@@ -1652,7 +1652,7 @@
                        <img src="img/visa-debit.png" alt="visa-debit" class="mr-2"/>
                        <img src="img/american-express.png" alt="american-express"/>
                    </div>
-               </div>
+               </div> -->
                <!-- <div class="container">
                    <h2 class="step__title">PAYMENT</h2>
                    <div class="step__description">
