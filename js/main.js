@@ -18,7 +18,7 @@ function checkIsStepCorrect(step){
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepHasError = false;
     $("[data-step="+step+"] .input__error-label").each(function(index, item){
-        if ($(item).text() !== "" && $(item).is(":visible")){
+        if ($(item).text() !== ""){
             stepHasError = true;
             $("[data-steps="+step+"]").addClass("steps__item_incorrect");
             $("[data-steps="+step+"]").removeClass("steps__item_correct");
@@ -158,6 +158,7 @@ $(".input-group-size").change(function(){
     visitorsCount = newVisitorsCount;
 
     calculatePrice();
+    checkIsStepCorrect(2);
 });
 
 $('.input-entries').change(function() {

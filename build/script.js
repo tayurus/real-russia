@@ -39,7 +39,7 @@ function checkIsStepCorrect(step){
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepHasError = false;
     $("[data-step="+step+"] .input__error-label").each(function(index, item){
-        if ($(item).text() !== "" && $(item).is(":visible")){
+        if ($(item).text() !== ""){
             stepHasError = true;
             $("[data-steps="+step+"]").addClass("steps__item_incorrect");
             $("[data-steps="+step+"]").removeClass("steps__item_correct");
@@ -179,6 +179,7 @@ $(".input-group-size").change(function(){
     visitorsCount = newVisitorsCount;
 
     calculatePrice();
+    checkIsStepCorrect(2);
 });
 
 $('.input-entries').change(function() {
@@ -1217,6 +1218,11 @@ $(".hint__tab").click(function(){
     $(this).closest('.hint').find('[data-tab=' + $(this).attr('tab') + ']').addClass('active')
 })
 
+$(document).on("click", ".step__subtitle", function() {
+    $(this).toggleClass("step__subtitle_close")
+    $(this).next().toggle(1000)
+})
+
 setTimeout(function(){
     $('[data-steps]').click(function(){
         checkIsStepCorrect(currStep);
@@ -1253,11 +1259,6 @@ setTimeout(function(){
     })
 
 },1000)
-
-$(document).on("click", ".step__subtitle", function() {
-    $(this).toggleClass("step__subtitle_close")
-    $(this).next().toggle(1000)
-})
 
 !function(n) {
     "function" == typeof define && define.amd
