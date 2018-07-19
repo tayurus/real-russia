@@ -190,7 +190,7 @@ function validateArrival1(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined"  && validateWarningRegistration7Days(1) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined"  && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -229,7 +229,7 @@ function validateDeparture1(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -268,7 +268,7 @@ function validateArrival2(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
     $(e)
@@ -314,7 +314,7 @@ function validateDeparture2(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(2) !== "undefined" && validateWarningRegistration7Days(2) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined" && validateWarningRegistration7Days(2) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
 

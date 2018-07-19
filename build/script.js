@@ -1,6 +1,6 @@
 /////////////////////////////////////////////данные
-var numberOfEntries = {val: "Single entry visa"}, arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
-    passportExpired = [], citizenship, countryApplyIn, registration = {val:"NO"}, birthDate, processingCity, cities = [], hotels = [], vehicleMake, vehicleColor, vehicleLisence,
+var numberOfEntries = { val: "Single entry visa"}, arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
+    passportExpired = [], citizenship, countryApplyIn, registration = {element: $(".input-registration"),val:"NO"}, birthDate, processingCity, cities = [], hotels = [], vehicleMake, vehicleColor, vehicleLisence,
     visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1, purpose, totalPrice;
 
 //////////////////////////////////////////helpers
@@ -697,7 +697,7 @@ function validateArrival1(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined"  && validateWarningRegistration7Days(1) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined"  && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -736,7 +736,7 @@ function validateDeparture1(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
     }
 
@@ -775,7 +775,7 @@ function validateArrival2(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
     $(e)
@@ -821,7 +821,7 @@ function validateDeparture2(e, trigger) {
     }
 
     let warningText = "";
-    if (typeof validateWarningRegistration7Days(2) !== "undefined" && validateWarningRegistration7Days(2) !== ""){
+    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined" && validateWarningRegistration7Days(2) !== ""){
         warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
 
@@ -1169,14 +1169,6 @@ $( ".datepicker_jq").change(function(){
             $(this).datepicker("setDate", new Date());
 })
 
-$(".hint__tab").click(function(){
-    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
-    $(this).addClass("hint__tab_active");
-
-    $(this).closest('.hint').find('[data-tab]').removeClass('active');
-    $(this).closest('.hint').find('[data-tab=' + $(this).attr('tab') + ']').addClass('active')
-})
-
 
 
 $(".input__select, .input__field").on('focusin',function() {
@@ -1217,9 +1209,12 @@ $("#phone").intlTelInput({
   separateDialCode: true
 });
 
-$(document).on("click", ".step__subtitle", function() {
-    $(this).toggleClass("step__subtitle_close")
-    $(this).next().toggle(1000)
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
+
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('tab') + ']').addClass('active')
 })
 
 setTimeout(function(){
@@ -1258,6 +1253,11 @@ setTimeout(function(){
     })
 
 },1000)
+
+$(document).on("click", ".step__subtitle", function() {
+    $(this).toggleClass("step__subtitle_close")
+    $(this).next().toggle(1000)
+})
 
 !function(n) {
     "function" == typeof define && define.amd

@@ -82,16 +82,16 @@
                <div class="justify-content-between pt-4 pl-2 d-block d-sm-flex">
                    <div class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
                        <div>
-                           <button class="button mr-3">retrieve saved application</button>
+                           <button type="button" class="button mr-3">retrieve saved application</button>
                            <div class="button__text">CONTINUE a saved existing application.</div>
                        </div>
                        <div>
-                           <button class="button">save progress</button>
+                           <button type="button" class="button">save progress</button>
                            <div class="button__text">SAVE your current progress.</div>
                        </div>
                    </div>
                    <div class="ml-0 ml-md-3">
-                       <button class="button border-red color-red bg-white">I AM A RETURNING CLIENT</button>
+                       <button type="button" class="button border-red color-red bg-white">I AM A RETURNING CLIENT</button>
                        <div class="button__text">Recover your personal details quickly to pre-fill your application.</div>
                    </div>
                </div>
