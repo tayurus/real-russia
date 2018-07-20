@@ -1,7 +1,7 @@
 /////////////////////////////////////////////данные
 var numberOfEntries = { val: "Single entry visa"}, arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
     passportExpired = [], citizenship, countryApplyIn, registration = {element: $(".input-registration"),val:"NO"}, birthDate, processingCity, cities = [], hotels = [], vehicleMake, vehicleColor, vehicleLisence,
-    visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1, purpose, totalPrice;
+    visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1, purpose, totalPrice, haveReadTerms, agreeVisaSuitable;
 
 //////////////////////////////////////////helpers
 function parseDate(s) {
@@ -34,7 +34,7 @@ function checkIsStepCorrect(step){
 
     $('[data-step='+step+']').show();
     $('[data-step='+step+'] input, [data-step='+step+'] select').each((index, item) => {
-        if ($(item).val() === "" || $(item).val() === null)
+        if ($(item).val() === "" || $(item).val() === null || ($(item).val() === 'no' && $(item).is(":checked")))
             $(item).trigger('change')
     })
 
@@ -103,10 +103,10 @@ $(document).on("click", '[data-role="confirm"]', function(e){
 
     $("[data-step=" + 4 + "]").show();
 
-    if ($("[name=agreeVisaSuitable]:checked").val() !== "yes")
-        stepsHasError = true;
-    if ($("[name=haveRead]:checked").val() !== "yes")
-        stepsHasError = true;
+    // if ($("[name=agreeVisaSuitable]:checked").val() !== "yes")
+    //     stepsHasError = true;
+    // if ($("[name=haveRead]:checked").val() !== "yes")
+    //     stepsHasError = true;
 
     if (stepsHasError){
         alert("Check steps. You have errors!");
@@ -526,6 +526,18 @@ function transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotS
     return '';
 }
 
+function userMustReadTerms(value){
+    if (value === "no")
+        return "You should read terms and conditions";
+    return "";
+}
+
+function userAgreeVisaSuitable(value){
+    if (value === "no")
+        return "You should check 'yes'";
+    return "";
+}
+
 let currentYear = new Date().getFullYear();
 let minDefaultYear = currentYear - 100;
 let currentDate = new Date();
@@ -640,6 +652,13 @@ $(document).on('blur propertychange change input paste', '.input-vehicle-lisence
 $(document).on('blur propertychange change input paste', '.input-hotel', function(){
     validateProcessingHotels($(this));
 })
+$(document).on('blur propertychange change input paste', '[name=haveRead]', function(){
+    validateHaveReadTerms($(this));
+})
+$(document).on('blur propertychange change input paste', '[name=agreeVisaSuitable]', function(){
+    validateAgreeVisaSuitable($(this));
+})
+
 
 
 
@@ -1173,6 +1192,40 @@ function validateVehicleLisence(e){
     checkIfFieldCorrect(errorsText, e)
 }
 
+function validateHaveReadTerms(e){
+    haveReadTerms = {
+        element: $(e),
+        val: $(e).attr('value')
+    }
+
+    let errorsText = '<div>'+  userMustReadTerms(haveReadTerms.val)  +'</div>';
+    $(e)
+        .closest('.radio-buttons')
+        .next()
+        .html(errorsText);
+}
+
+function validateAgreeVisaSuitable(e){
+    agreeVisaSuitable = {
+        element: $(e),
+        val: $(e).attr('value')
+    }
+
+    let errorsText = '<div>'+  userAgreeVisaSuitable(agreeVisaSuitable.val)  +'</div>';
+    $(e)
+        .closest('.radio-buttons')
+        .next()
+        .html(errorsText);
+}
+
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
+
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
+})
+
 function initializeDatepicker(){
 
     $( ".datepicker_jq").datepicker({
@@ -1188,14 +1241,6 @@ $( ".datepicker_jq").change(function(){
     if ($(this).datepicker('getDate') != null)
         if ($(this).datepicker('getDate').toDateString() === new Date().toDateString())
             $(this).datepicker("setDate", new Date());
-})
-
-$(".hint__tab").click(function(){
-    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
-    $(this).addClass("hint__tab_active");
-
-    $(this).closest('.hint').find('[data-tab]').removeClass('active');
-    $(this).closest('.hint').find('[data-tab=' + $(this).attr('tab') + ']').addClass('active')
 })
 
 

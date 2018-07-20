@@ -121,11 +121,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab hint__tab_active">
+                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab">
+                           <div data-head-tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -192,11 +192,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab hint__tab_active">
+                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab">
+                           <div data-head-tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -268,11 +268,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab hint__tab_active">
+                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab">
+                           <div data-head-tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -340,11 +340,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab hint__tab_active">
+                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab">
+                           <div data-head-tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -413,11 +413,11 @@
                    <div class="input__error-label"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab hint__tab_active">
+                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab">
+                           <div data-head-tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -492,11 +492,11 @@
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab hint__tab_active">
+                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab">
+                           <div data-head-tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -572,11 +572,11 @@
                            <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
-                                   <div tab="1" class="hint__tab hint__tab_active">
+                                   <div data-head-tab="1" class="hint__tab hint__tab_active">
                                        <div class="hint__header-text">Assistance</div>
                                        <div class="hint__header-icon">?</div>
                                    </div>
-                                   <div tab="2" class="hint__tab">
+                                   <div data-head-tab="2" class="hint__tab">
                                        <div class="hint__header-text">Further Help</div>
                                        <div class="hint__header-icon">
                                            <img src="img/phone-receiver.png"/>
@@ -635,11 +635,11 @@
                            <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
-                                   <div tab="1" class="hint__tab hint__tab_active">
+                                   <div data-head-tab="1" class="hint__tab hint__tab_active">
                                        <div class="hint__header-text">Assistance</div>
                                        <div class="hint__header-icon">?</div>
                                    </div>
-                                   <div tab="2" class="hint__tab">
+                                   <div data-head-tab="2" class="hint__tab">
                                        <div class="hint__header-text">Further Help</div>
                                        <div class="hint__header-icon">
                                            <img src="img/phone-receiver.png"/>
@@ -698,11 +698,11 @@
                            <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
-                                   <div tab="1" class="hint__tab hint__tab_active">
+                                   <div data-head-tab="1" class="hint__tab hint__tab_active">
                                        <div class="hint__header-text">Assistance</div>
                                        <div class="hint__header-icon">?</div>
                                    </div>
-                                   <div tab="2" class="hint__tab">
+                                   <div data-head-tab="2" class="hint__tab">
                                        <div class="hint__header-text">Further Help</div>
                                        <div class="hint__header-icon">
                                            <img src="img/phone-receiver.png"/>
@@ -778,11 +778,11 @@
                            <div class="input__error-label"></div>
                            <div class="hint">
                                <div class="hint__header">
-                                   <div tab="1" class="hint__tab hint__tab_active">
+                                   <div data-head-tab="1" class="hint__tab hint__tab_active">
                                        <div class="hint__header-text">Assistance</div>
                                        <div class="hint__header-icon">?</div>
                                    </div>
-                                   <div tab="2" class="hint__tab">
+                                   <div data-head-tab="2" class="hint__tab">
                                        <div class="hint__header-text">Further Help</div>
                                        <div class="hint__header-icon">
                                            <img src="img/phone-receiver.png"/>
@@ -851,11 +851,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                        <div class="hint__header">
-                                           <div tab="1" class="hint__tab hint__tab_active">
+                                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                                <div class="hint__header-text">Assistance</div>
                                                <div class="hint__header-icon">?</div>
                                            </div>
-                                           <div tab="2" class="hint__tab">
+                                           <div data-head-tab="2" class="hint__tab">
                                                <div class="hint__header-text">Further Help</div>
                                                <div class="hint__header-icon">
                                                    <img src="img/phone-receiver.png"/>
@@ -914,11 +914,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab hint__tab_active">
+                                       <div data-head-tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab">
+                                       <div data-head-tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -982,11 +982,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab hint__tab_active">
+                                       <div data-head-tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab">
+                                       <div data-head-tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -1048,11 +1048,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab hint__tab_active">
+                                       <div data-head-tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab">
+                                       <div data-head-tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -1116,11 +1116,11 @@
                    <div class="input__error-label"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab hint__tab_active">
+                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab">
+                           <div data-head-tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -1179,11 +1179,11 @@
                    <div class="input__error-label"></div>
                    <div class="hint">
                        <div class="hint__header">
-                           <div tab="1" class="hint__tab hint__tab_active">
+                           <div data-head-tab="1" class="hint__tab hint__tab_active">
                                <div class="hint__header-text">Assistance</div>
                                <div class="hint__header-icon">?</div>
                            </div>
-                           <div tab="2" class="hint__tab">
+                           <div data-head-tab="2" class="hint__tab">
                                <div class="hint__header-text">Further Help</div>
                                <div class="hint__header-icon">
                                    <img src="img/phone-receiver.png"/>
@@ -1430,11 +1430,11 @@
                                <div class="input__highlight"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab hint__tab_active">
+                                       <div data-head-tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab">
+                                       <div data-head-tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -1495,11 +1495,11 @@
                                <div class="input__error-label"></div>
                                <div class="hint">
                                    <div class="hint__header">
-                                       <div tab="1" class="hint__tab hint__tab_active">
+                                       <div data-head-tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
                                            <div class="hint__header-icon">?</div>
                                        </div>
-                                       <div tab="2" class="hint__tab">
+                                       <div data-head-tab="2" class="hint__tab">
                                            <div class="hint__header-text">Further Help</div>
                                            <div class="hint__header-icon">
                                                <img src="img/phone-receiver.png"/>
@@ -1596,11 +1596,11 @@
                        <label for="haveReadYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="haveRead" value="no" id="haveReadNo" class="radio-buttons__radio"/>
+                       <input type="radio" name="haveRead" checked value="no" id="haveReadNo" class="radio-buttons__radio"/>
                        <label for="haveReadNo" class="radio-buttons__view">No  </label>
                    </div>
                </div>
-
+               <div class="input__error-label text-left"></div>
            </div>
            <div data-step="4" class="step">
                <h2 class="step__title">VISA SUPPORT APPLICATION Order Summary</h2>
@@ -1642,6 +1642,7 @@
                        <label for="agreeVisaSuitableNo" class="radio-buttons__view">No</label>
                    </div>
                </div>
+               <div class="input__error-label text-left"></div>
                <!-- <div class="step__note">You can now proceed to payment</div>
                <div class="mt-4 mt-lg-0">
                    <b class="color-red">SECURE PAYMENT PROCESSING</b>

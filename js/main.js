@@ -13,7 +13,7 @@ function checkIsStepCorrect(step){
 
     $('[data-step='+step+']').show();
     $('[data-step='+step+'] input, [data-step='+step+'] select').each((index, item) => {
-        if ($(item).val() === "" || $(item).val() === null)
+        if ($(item).val() === "" || $(item).val() === null || ($(item).val() === 'no' && $(item).is(":checked")))
             $(item).trigger('change')
     })
 
@@ -82,10 +82,10 @@ $(document).on("click", '[data-role="confirm"]', function(e){
 
     $("[data-step=" + 4 + "]").show();
 
-    if ($("[name=agreeVisaSuitable]:checked").val() !== "yes")
-        stepsHasError = true;
-    if ($("[name=haveRead]:checked").val() !== "yes")
-        stepsHasError = true;
+    // if ($("[name=agreeVisaSuitable]:checked").val() !== "yes")
+    //     stepsHasError = true;
+    // if ($("[name=haveRead]:checked").val() !== "yes")
+    //     stepsHasError = true;
 
     if (stepsHasError){
         alert("Check steps. You have errors!");

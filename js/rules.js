@@ -149,3 +149,15 @@ function transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotS
 
     return '';
 }
+
+function userMustReadTerms(value){
+    if (value === "no")
+        return "You should read terms and conditions";
+    return "";
+}
+
+function userAgreeVisaSuitable(value){
+    if (value === "no")
+        return "You should check 'yes'";
+    return "";
+}

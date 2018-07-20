@@ -112,6 +112,13 @@ $(document).on('blur propertychange change input paste', '.input-vehicle-lisence
 $(document).on('blur propertychange change input paste', '.input-hotel', function(){
     validateProcessingHotels($(this));
 })
+$(document).on('blur propertychange change input paste', '[name=haveRead]', function(){
+    validateHaveReadTerms($(this));
+})
+$(document).on('blur propertychange change input paste', '[name=agreeVisaSuitable]', function(){
+    validateAgreeVisaSuitable($(this));
+})
+
 
 
 
@@ -643,4 +650,30 @@ function validateVehicleLisence(e){
         .html(errorsText);
 
     checkIfFieldCorrect(errorsText, e)
+}
+
+function validateHaveReadTerms(e){
+    haveReadTerms = {
+        element: $(e),
+        val: $(e).attr('value')
+    }
+
+    let errorsText = '<div>'+  userMustReadTerms(haveReadTerms.val)  +'</div>';
+    $(e)
+        .closest('.radio-buttons')
+        .next()
+        .html(errorsText);
+}
+
+function validateAgreeVisaSuitable(e){
+    agreeVisaSuitable = {
+        element: $(e),
+        val: $(e).attr('value')
+    }
+
+    let errorsText = '<div>'+  userAgreeVisaSuitable(agreeVisaSuitable.val)  +'</div>';
+    $(e)
+        .closest('.radio-buttons')
+        .next()
+        .html(errorsText);
 }
