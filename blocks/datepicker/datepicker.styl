@@ -41,6 +41,100 @@
     cursor: pointer;
     user-select: none;
 
+.ui-widget.ui-widget-content
+    border-radius: 0
+    padding: 0
+    padding: 8px;
+    background-color: #EEEEEE;
+    width: auto;
+
+// .ui-widget.ui-widget-content::after
+//     content: "";
+//     position: absolute;
+//     top: -10px;
+//     left: 10%;
+//     transform: translate(-50%,-50%);
+//     border-top: 10px solid transparent;
+//     border-bottom: 10px solid #c5c5c5;
+//     border-left: 10px solid transparent;
+//     border-right: 10px solid transparent;
+
+.ui-datepicker .ui-datepicker-header
+    border-radius: 0
+    border: 0
+    background-color: #cc091d
+    padding: 7px 0;
+
+.ui-icon-circle-triangle-w
+    background-position: 50%;
+
+.ui-widget-header .ui-icon-circle-triangle-e.ui-icon
+    background-image: url(img/arrow-datepicker-right.png);
+    background-position: 50%;
+
+.ui-datepicker-next-hover,
+.ui-datepicker-prev-hover,
+.ui-datepicker-next-hover span,
+.ui-datepicker-prev-hover span
+    background-color: transparent!important
+    border 0!important
+
+.ui-datepicker .ui-datepicker-next
+    width: 16px
+    height: 16px
+    top: 9px;
+    right: 8px;
+    left: auto;
+
+.ui-datepicker .ui-datepicker-prev
+    width: 16px
+    height: 16px
+    top: 9px;
+    left: 8px;
+
+.ui-widget-header .ui-icon
+    background-image: url(img/arrow-datepicker-left.png);
+
+.ui-datepicker table
+    background-color: #fff;
+    margin: 0
+
+.ui-datepicker th
+    border-bottom: 1px solid #c5c5c5;
+
+.ui-datepicker th span
+    font-family: "Open Sans"!important
+    font-weight: normal;
+
+.ui-state-default, .ui-widget-content .ui-state-default
+    border: 0
+    background: none
+    font-family: "Open Sans"!important
+
+.ui-widget-content .ui-state-active
+    background-image: none!important;
+    border-radius: 50%;
+    background-color: #cc091d;
+    color: #fff;
+
+.ui-datepicker-days-cell-over .ui-datepicker-today
+    background-color: transparent
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight
+    background: #fffa90;
+    color: #777620;
+    border-radius: 50%
+
+.ui-state-default, .ui-widget-content .ui-state-default
+    padding: 0;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+.ui-datepicker td
+    background-color: transparent;
 
 @media (max-width:430px),(max-device-width:430px) {
     .datepicker{

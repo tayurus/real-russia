@@ -3,6 +3,7 @@
 //current showed step and max count of steps
 let currStep,  maxStepCount;
 function inititializeSteps() {
+    $("[data-role='prevStep']").hide()
     currStep = 1;
     maxStepCount = 4;
     showCurrStep();
@@ -33,6 +34,7 @@ function checkIsStepCorrect(step){
     }
 
     $('[data-step='+step+']').hide();
+    $('[data-step='+currStep+']').show();
 
 }
 
@@ -61,6 +63,13 @@ function showCurrStep(){
     $("[data-steps]").removeClass("steps__item_active");
     $("[data-steps="+currStep+"]").addClass("steps__item_active");
     $(window).scrollTop(0);
+
+    if (currStep != 1){
+        $("[data-role='prevStep']").show()
+    }
+    else {
+        $("[data-role='prevStep']").hide()
+    }
 }
 
 
@@ -103,6 +112,8 @@ $("[data-role='nextStep']").click(function(){
         currStep++;
         showCurrStep();
     }
+
+
 });
 
 //when user clicks on button "prev-step"
@@ -114,6 +125,7 @@ $("[data-role='prevStep']").click(function(){
         currStep--;
         showCurrStep();
     }
+
 });
 
 //when user change groupSize
@@ -202,6 +214,7 @@ $("[data-button='addLocation']").click(function(){
     locationCount++;
     $(this).prev().find('.input-city').attr('name', 'visitCity' + locationCount);
     $(this).prev().find('.input-hotel').attr('name', 'visitHotel' + locationCount);
+    checkIsStepCorrect(3);
 })
 
 

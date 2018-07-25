@@ -13,6 +13,16 @@
     //   &.focus
     //     display: block;
 
+.input.input_correct:after
+    position: absolute;
+    content: "";
+    width: 18px;
+    height: 14px;
+    background: url('img/ok.png') no-repeat center / contain;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+
 .input__highlight
     color: tomato;
 
@@ -21,6 +31,7 @@
     background-color #fefefe
     border-radius 5px;
     position: relative;
+    overflow: hidden;
     &.focus
       border: 1px solid #da9e0f;
       box-shadow: 0px 0px 19px 1px rgba(218,158,15,0.57);
@@ -102,15 +113,17 @@
 .input__wrapper_correct
     border: 1px solid #8ac43f;
 
-.input__wrapper_correct:after
-    position: absolute;
-    content: "";
-    width: 18px;
-    height: 14px;
-    background: url('img/ok.png') no-repeat center / contain;
-    right: -30px;
-    top: 50%;
-    transform: translateY(-50%);
+
+
+// .input__wrapper_correct:after
+//     position: absolute;
+//     content: "";
+//     width: 18px;
+//     height: 14px;
+//     background: url('img/ok.png') no-repeat center / contain;
+//     right: -30px;
+//     top: 50%;
+//     transform: translateY(-50%);
 
 .input__wrapper .intl-tel-input
     display block !important

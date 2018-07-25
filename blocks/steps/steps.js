@@ -20,10 +20,7 @@ setTimeout(function(){
             }
         // },200)
         //hide all steps
-        $("[data-step]").hide();
-        //show next step
-        $("[data-step="+currStep+"]").show();
-        $(window).scrollTop(0);
+        showCurrStep()
 
         $(".steps__item_active").addClass("steps__item_visited");
 

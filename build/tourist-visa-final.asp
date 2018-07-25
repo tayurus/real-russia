@@ -21,7 +21,7 @@
 
 <% sub MainContentSection %>
 <main class="container_form-wrapper">
-    <form id="applicationForm" action="/Apply/touristsupport2.asp" method="post">
+    <form id="applicationForm" action="/Apply/touristsupport2.asp" method="post" class="tvsd-form">
        <div class="container">
            <div class="d-flex flex-wrap align-items-center justify-content-between">
                <div>
@@ -106,7 +106,7 @@
                        <span>We need to find out first a little about your upcoming visit.</span>
                    </div>
                </div>
-               <div class="input">
+               <div class="input input_correct">
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Group Size</label>
                        <select class="input__select input-group-size" name="groupNum">
@@ -176,7 +176,7 @@
                        </div>
                    </div>
                </div>
-               <div class="input mt-5">
+               <div class="input input_correct mt-5">
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Number of entries</label>
                        <select class="input__select input-entries" name="visaType">
@@ -247,7 +247,7 @@
                        </div>
                    </div>
                </div>
-               <div class="input mt-5 mb-5">
+               <div class="input input_correct mt-5 mb-5">
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Purpose of visit</label>
                        <select class="input__select input-purpose" name="purposeOfVisit">
@@ -323,7 +323,7 @@
                        </div>
                    </div>
                </div>
-               <div class="input">
+               <div class="input input_correct">
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Registration</label>
                        <select class="input__select input-registration" name="regService">
@@ -395,7 +395,7 @@
                        </div>
                    </div>
                </div>
-               <div class="input mt-5">
+               <div class="input  mt-5">
                    <div class="input__wrapper">
                        <label class="input__label">Country applying in</label>
                        <br/>
@@ -471,7 +471,7 @@
                <div class="step__note">
 
                </div>
-               <div class="input mt-5">
+               <div class="input input_correct mt-5">
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Delivery option</label>
                        <br/>
@@ -1412,7 +1412,7 @@
                    </div>
 
                        <div class="step__subtitle-content">
-                           <div class="input mt-4">
+                           <div class="input input_correct mt-4">
                                <div class="input__wrapper">
                                    <label class="input__label">City</label>
                                    <select class="input__select input-city" name="visitCity1">
@@ -1485,7 +1485,7 @@
                                    </div>
                                </div>
                            </div>
-                           <div class="input mt-4">
+                           <div class="input input_correct mt-4">
                                <div class="input__wrapper">
                                    <label class="input__label">Hotel</label>
                                    <select class="input__select input-hotel" name="visitHotel1">
@@ -1588,7 +1588,7 @@
                    </div>
                </div>
                <div class="radio-buttons__title font-weight-bold">I have read and understood
-                   <a href="#">terms and conditions    </a>
+                   <a href="#" class="radio-buttons__link">terms and conditions    </a>
                </div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
@@ -1730,9 +1730,10 @@
            </div>
        </div>
        <div class="container">
-       <div class="d-block d-sm-flex flex-direction-column justify-content-between mw-660 mt-19 mb-35">
+       <!-- <div class="d-block d-sm-flex flex-direction-column justify-content-between mw-660 mt-19 mb-35"> -->
+       <div class="container-buttons">
            <button class="button mr-0 mr-md-3 mb-3" type="button">Save progress</button>
-           <button data-role="prevStep" type="button" class="button border-red color-red bg-white mr-0 mr-md-2 mb-3">< previous step</button>
+           <button data-role="prevStep" type="button" class="button border-red color-red bg-white mr-sm-2 ml-sm-auto mb-3">< previous step</button>
            <button data-role="nextStep" type="button" class="button button_red mb-3">next step ></button>
        </div>
    </div>

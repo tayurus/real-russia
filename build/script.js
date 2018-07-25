@@ -24,6 +24,7 @@ function extractObjectField(obj, fieldName){
 //current showed step and max count of steps
 let currStep,  maxStepCount;
 function inititializeSteps() {
+    $("[data-role='prevStep']").hide()
     currStep = 1;
     maxStepCount = 4;
     showCurrStep();
@@ -54,6 +55,7 @@ function checkIsStepCorrect(step){
     }
 
     $('[data-step='+step+']').hide();
+    $('[data-step='+currStep+']').show();
 
 }
 
@@ -82,6 +84,13 @@ function showCurrStep(){
     $("[data-steps]").removeClass("steps__item_active");
     $("[data-steps="+currStep+"]").addClass("steps__item_active");
     $(window).scrollTop(0);
+
+    if (currStep != 1){
+        $("[data-role='prevStep']").show()
+    }
+    else {
+        $("[data-role='prevStep']").hide()
+    }
 }
 
 
@@ -124,6 +133,8 @@ $("[data-role='nextStep']").click(function(){
         currStep++;
         showCurrStep();
     }
+
+
 });
 
 //when user clicks on button "prev-step"
@@ -135,6 +146,7 @@ $("[data-role='prevStep']").click(function(){
         currStep--;
         showCurrStep();
     }
+
 });
 
 //when user change groupSize
@@ -223,6 +235,7 @@ $("[data-button='addLocation']").click(function(){
     locationCount++;
     $(this).prev().find('.input-city').attr('name', 'visitCity' + locationCount);
     $(this).prev().find('.input-hotel').attr('name', 'visitHotel' + locationCount);
+    checkIsStepCorrect(3);
 })
 
 
@@ -489,7 +502,7 @@ function warningRegistration7Days(arrivalDate, departureDate, registrationValue)
 }
 
 function valueCanNotBeEmpty(value){
-    if (typeof value === 'undefined' || value === '' || value === null){
+    if (typeof value === 'undefined' || value === '' || value === null || value == "__-__-____"){
         return 'This field cannot be empty'
     }
     return '';
@@ -683,7 +696,7 @@ function validatePassportIssued(e, trigger) {
     }
 
     errorsText += "<div>" + dateMustBeBeforeCurrentDate(passportIssued[index].val) + "</div>";
-    errorsText += "<div>" + valueCanNotBeEmpty(passportIssued[index].val) + "</div>";
+    errorsText += "<div>" + valueCanNotBeEmpty($(passportIssued[index].element).val()) + "</div>";
     $(e)
         .parent()
         .next()
@@ -708,6 +721,7 @@ function validatePassportExpired(e, trigger) {
     }
 
     errorsText += "<div>" + dateMustBeAfterCurrentDate(passportExpired[index].val) + "</div>";
+    errorsText += "<div>" + valueCanNotBeEmpty($(passportExpired[index].element).val()) + "</div>";
 
     $(e)
         .parent()
@@ -734,6 +748,7 @@ function validateArrival1(e, trigger) {
     if (typeof departureDate1 !== "undefined") {
         errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
         errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate1.val, departureDate1.val) + "</div>";
+        errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate1.element).val()) + "</div>";
     }
 
     let warningText = "";
@@ -765,6 +780,7 @@ function validateDeparture1(e, trigger) {
     if (typeof arrivalDate1 !== "undefined") {
         errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate1.val, departureDate1.val) + "</div>";
         errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
+        errorsText += "<div>" + valueCanNotBeEmpty($(departureDate1.element).val()) + "</div>";
     }
 
     if (passportExpired.length > 0) {
@@ -808,6 +824,7 @@ function validateArrival2(e, trigger) {
     if (typeof departureDate2 !== "undefined") {
         errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
         errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate2.val, departureDate2.val) + "</div>";
+        errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate2.element).val()) + "</div>";
     }
 
     if (typeof departureDate1 !== "undefined") {
@@ -850,6 +867,7 @@ function validateDeparture2(e, trigger) {
     if (typeof arrivalDate2 !== "undefined") {
         errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate2.val, departureDate2.val) + "</div>";
         errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
+        errorsText += "<div>" + valueCanNotBeEmpty($(departureDate2.element).val()) + "</div>";
     }
 
     if (passportExpired.length > 0) {
@@ -944,7 +962,7 @@ function validateBirthDate(e, trigger) {
     };
 
     let errorsText = '<div>' + dateMustBeBeforeCurrentDate(birthDate.val) + '</div>';
-    errorsText += '<div>' + valueCanNotBeEmpty(birthDate.val) + '</div>';
+    errorsText += '<div>' + valueCanNotBeEmpty($(e).val()) + '</div>';
     $(e)
         .parent()
         .next()
@@ -1128,9 +1146,11 @@ function validatePhone(e){
 function checkIfFieldCorrect(errorsText, e){
     if (errorsText.replace(/<div>/gi,'').replace(/<\/div>/gi, '').trim() === ''){
         $(e).parent().addClass("input__wrapper_correct");
+        $(e).closest('.input').addClass("input_correct");
     }
     else {
         $(e).parent().removeClass("input__wrapper_correct");
+        $(e).closest('.input').removeClass("input_correct");
     }
 }
 
@@ -1218,22 +1238,14 @@ function validateAgreeVisaSuitable(e){
         .html(errorsText);
 }
 
-$(".hint__tab").click(function(){
-    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
-    $(this).addClass("hint__tab_active");
-
-    $(this).closest('.hint').find('[data-tab]').removeClass('active');
-    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
-})
-
 function initializeDatepicker(){
 
     $( ".datepicker_jq").datepicker({
           changeMonth: true,
           changeYear: true,
-          dateFormat: 'yy-mm-dd'
+          dateFormat: 'dd-mm-yy'
           // yearRange: (typeof($(this).attr('data-minyear')) === "undefined") ? minDefaultYear + ":" + currentYear : $(this).attr('data-minyear') + ":" + currentYear
-    }).mask('9999-99-99')
+    }).mask('99-99-9999')
 }
 initializeDatepicker()
 
@@ -1241,6 +1253,14 @@ $( ".datepicker_jq").change(function(){
     if ($(this).datepicker('getDate') != null)
         if ($(this).datepicker('getDate').toDateString() === new Date().toDateString())
             $(this).datepicker("setDate", new Date());
+})
+
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
+
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
 })
 
 
@@ -1310,10 +1330,7 @@ setTimeout(function(){
             }
         // },200)
         //hide all steps
-        $("[data-step]").hide();
-        //show next step
-        $("[data-step="+currStep+"]").show();
-        $(window).scrollTop(0);
+        showCurrStep()
 
         $(".steps__item_active").addClass("steps__item_visited");
 

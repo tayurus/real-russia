@@ -3,6 +3,9 @@
     src: url('fonts/Open-Sans.ttf');
     font-family: "Open Sans";
 
+.tvsd-form
+    margin-bottom: 90px;
+
 .bg-gray
     background-color: #f7f7f7
 
@@ -59,7 +62,9 @@
 }
 
 .container_form-wrapper *{
+    outline: none !important;
     box-sizing: border-box !important;
+    font-family: "Open Sans"!important;
 }
 
 .container_form-wrapper .container{
@@ -74,10 +79,22 @@
     padding: 20px 0px;
     display: none
 
-@media (max-width:414px)
-  .top-22
-    top -22px!important
+.container-buttons
+    display: flex;
+    justify-content: space-between;
+    max-width: 695px;
+    margin-top: 20px;
+    margin-bottom: 35px;
 
 @media(max-width: 1200px)
     .button-wrap
         width: auto
+
+@media(max-width: 575px)
+    .container-buttons
+        flex-direction: column;
+
+
+@media (max-width:414px)
+  .top-22
+    top -22px!important
