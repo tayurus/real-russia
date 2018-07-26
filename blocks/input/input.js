@@ -5,13 +5,13 @@ $(".input__select, .input__field").on('focusin',function() {
     $(item).removeClass('active');
   });
 
-  $(".input__wrapper").each((i, item) => {
+  $(".input").each((i, item) => {
     $(item).removeClass('focus');
   });
 
   $(this).closest('.input').children('.hint').addClass('active');
-  $(this).closest('.input').children('.input__highlight').addClass('focus');
-  $(this).closest('.input__wrapper').addClass('focus');
+  // $(this).closest('.input').children('.input__highlight').addClass('focus');
+  $(this).closest('.input').addClass('focus');
 });
 
 

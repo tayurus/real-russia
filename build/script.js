@@ -312,9 +312,13 @@ $(document).on("blur propertychange change input paste", ".input-entries", funct
 
 $(document).on("blur propertychange change input paste", ".input-country", function() {
     let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry($(this).val());
-    text = text.replace("{Country}", $(this).val());
-    $(this).closest('.input').next().html("<b>CONSULAR NOTES</b>\
-                                            <div class='step__note-text'>" + text + "</div>")
+    if (text !== null){
+        text = text.replace("{Country}", $(this).val());
+        $(this).closest('.input').next().html("<b>CONSULAR NOTES</b>\
+                                                <div class='step__note-text'>" + text + "</div>")
+        $(this).closest('.input').next().removeClass('disabled');
+    }
+
 });
 
 $(document).on("blur propertychange change input paste", ".input-city", function() {
@@ -820,21 +824,27 @@ function validateArrival2(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = dateMustBeAfterCurrentDate(arrivalDate2.val);
-    if (typeof departureDate2 !== "undefined") {
-        errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
-        errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate2.val, departureDate2.val) + "</div>";
-        errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate2.element).val()) + "</div>";
-    }
-
-    if (typeof departureDate1 !== "undefined") {
-        errorsText += "<div>" + secondArrivalDateMustBeLaterThanFirstDepartureDate(arrivalDate2.val, departureDate1.val) + "</div>";
-    }
-
+    let errorsText = valueCanNotBeEmpty($(arrivalDate2.element).val());
     let warningText = "";
-    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
-        warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
+    if (valueCanNotBeEmpty($(arrivalDate2.element).val()) === ""){
+        errorsText = dateMustBeAfterCurrentDate(arrivalDate2.val);
+        if (typeof departureDate2 !== "undefined") {
+            errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate2.element).val()) + "</div>";
+            errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
+            errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate2.val, departureDate2.val) + "</div>";
+        }
+
+        if (typeof departureDate1 !== "undefined") {
+            errorsText += "<div>" + secondArrivalDateMustBeLaterThanFirstDepartureDate(arrivalDate2.val, departureDate1.val) + "</div>";
+        }
+
+
+        if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
+            warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
+        }
     }
+
+
     $(e)
         .parent()
         .next()
@@ -1145,11 +1155,11 @@ function validatePhone(e){
 
 function checkIfFieldCorrect(errorsText, e){
     if (errorsText.replace(/<div>/gi,'').replace(/<\/div>/gi, '').trim() === ''){
-        $(e).parent().addClass("input__wrapper_correct");
+        $(e).closest('.input__wrapper').addClass("input__wrapper_correct");
         $(e).closest('.input').addClass("input_correct");
     }
     else {
-        $(e).parent().removeClass("input__wrapper_correct");
+        $(e).closest('.input__wrapper').removeClass("input__wrapper_correct");
         $(e).closest('.input').removeClass("input_correct");
     }
 }
@@ -1270,13 +1280,13 @@ $(".input__select, .input__field").on('focusin',function() {
     $(item).removeClass('active');
   });
 
-  $(".input__wrapper").each((i, item) => {
+  $(".input").each((i, item) => {
     $(item).removeClass('focus');
   });
 
   $(this).closest('.input').children('.hint').addClass('active');
-  $(this).closest('.input').children('.input__highlight').addClass('focus');
-  $(this).closest('.input__wrapper').addClass('focus');
+  // $(this).closest('.input').children('.input__highlight').addClass('focus');
+  $(this).closest('.input').addClass('focus');
 });
 
 
@@ -1302,11 +1312,6 @@ $("#phone").intlTelInput({
   // preferredCountries: ['cn', 'jp'],
   separateDialCode: true
 });
-
-$(document).on("click", ".step__subtitle", function() {
-    $(this).toggleClass("step__subtitle_close")
-    $(this).next().toggle(1000)
-})
 
 setTimeout(function(){
     $('[data-steps]').click(function(){
@@ -1345,6 +1350,11 @@ setTimeout(function(){
     })
 
 },1000)
+
+$(document).on("click", ".step__subtitle", function() {
+    $(this).toggleClass("step__subtitle_close")
+    $(this).next().toggle(1000)
+})
 
 !function(n) {
     "function" == typeof define && define.amd

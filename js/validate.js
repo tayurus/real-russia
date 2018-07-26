@@ -267,21 +267,27 @@ function validateArrival2(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = dateMustBeAfterCurrentDate(arrivalDate2.val);
-    if (typeof departureDate2 !== "undefined") {
-        errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
-        errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate2.val, departureDate2.val) + "</div>";
-        errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate2.element).val()) + "</div>";
-    }
-
-    if (typeof departureDate1 !== "undefined") {
-        errorsText += "<div>" + secondArrivalDateMustBeLaterThanFirstDepartureDate(arrivalDate2.val, departureDate1.val) + "</div>";
-    }
-
+    let errorsText = valueCanNotBeEmpty($(arrivalDate2.element).val());
     let warningText = "";
-    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
-        warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
+    if (valueCanNotBeEmpty($(arrivalDate2.element).val()) === ""){
+        errorsText = dateMustBeAfterCurrentDate(arrivalDate2.val);
+        if (typeof departureDate2 !== "undefined") {
+            errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate2.element).val()) + "</div>";
+            errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
+            errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate2.val, departureDate2.val) + "</div>";
+        }
+
+        if (typeof departureDate1 !== "undefined") {
+            errorsText += "<div>" + secondArrivalDateMustBeLaterThanFirstDepartureDate(arrivalDate2.val, departureDate1.val) + "</div>";
+        }
+
+
+        if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined"  && validateWarningRegistration7Days(2) !== ""){
+            warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
+        }
     }
+
+
     $(e)
         .parent()
         .next()
@@ -592,11 +598,11 @@ function validatePhone(e){
 
 function checkIfFieldCorrect(errorsText, e){
     if (errorsText.replace(/<div>/gi,'').replace(/<\/div>/gi, '').trim() === ''){
-        $(e).parent().addClass("input__wrapper_correct");
+        $(e).closest('.input__wrapper').addClass("input__wrapper_correct");
         $(e).closest('.input').addClass("input_correct");
     }
     else {
-        $(e).parent().removeClass("input__wrapper_correct");
+        $(e).closest('.input__wrapper').removeClass("input__wrapper_correct");
         $(e).closest('.input').removeClass("input_correct");
     }
 }

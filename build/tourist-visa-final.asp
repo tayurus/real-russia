@@ -27,7 +27,7 @@
                <div>
                    <div class="title">Russian Tourist Visa Support Application</div>
 
-                   <div class="steps">
+                   <div class="steps ml-4">
                        <div class="steps__item steps__item_active" data-steps="1">
                            1
                            <div class="steps__item-text">SERVICE DETAILS</div>
@@ -66,7 +66,7 @@
                        </div>
                    </div>
                    <div class="total__result">
-                       <div class="total__label total__label_big mr-1">Total price</div>
+                       <div class="total__label total__label_big mr-2">Total price</div>
                        <div class="total__sum">
                            <span class="total__currency">£</span>
                            <span class="total__sum-value">15.30</span>
@@ -81,7 +81,7 @@
            <div class="d-flex align-items-center justify-content-center justify-content-sm-between">
                <div class="justify-content-between pt-4 pl-2 d-block d-sm-flex">
                    <div class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
-                       <div>
+                       <div class="ml-4">
                            <button type="button" class="button mr-3">retrieve saved application</button>
                            <div class="button__text">CONTINUE a saved existing application.</div>
                        </div>
@@ -117,6 +117,7 @@
                                </option>
                             <% next %>
                        </select>
+
                    </div>
                    <div class="input__highlight"></div>
                    <div class="hint">
@@ -175,8 +176,9 @@
                            </div>
                        </div>
                    </div>
+                   <div class="input__wrapper-highlight"></div>
                </div>
-               <div class="input input_correct mt-5">
+               <div class="input input_correct">
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Number of entries</label>
                        <select class="input__select input-entries" name="visaType">
@@ -190,6 +192,7 @@
                        </select>
                    </div>
                    <div class="input__highlight"></div>
+                   <div class="input__wrapper-highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -247,7 +250,7 @@
                        </div>
                    </div>
                </div>
-               <div class="input input_correct mt-5 mb-5">
+               <div class="input input_correct">
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Purpose of visit</label>
                        <select class="input__select input-purpose" name="purposeOfVisit">
@@ -266,6 +269,7 @@
                    </div>
 
                    <div class="input__highlight"></div>
+                   <div class="input__wrapper-highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -338,6 +342,7 @@
                    </div>
                    <div class="input__error-label"></div>
                    <div class="input__highlight"></div>
+                   <div class="input__wrapper-highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -395,7 +400,7 @@
                        </div>
                    </div>
                </div>
-               <div class="input  mt-5">
+               <div class="input">
                    <div class="input__wrapper">
                        <label class="input__label">Country applying in</label>
                        <br/>
@@ -411,6 +416,7 @@
                        </select>
                    </div>
                    <div class="input__error-label"></div>
+                   <div class="input__wrapper-highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -468,10 +474,10 @@
                        </div>
                    </div>
                </div>
-               <div class="step__note">
+               <div class="step__note disabled">
 
                </div>
-               <div class="input input_correct mt-5">
+               <div class="input input_correct">
                    <div class="input__wrapper input__wrapper_correct">
                        <label class="input__label">Delivery option</label>
                        <br/>
@@ -490,6 +496,7 @@
                        </select> -->
                    </div>
                    <div class="input__highlight"></div>
+                   <div class="input__wrapper-highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -560,16 +567,17 @@
                </div>
                <div class="visitor-wrapper">
                    <div class="step__subtitle">
-                       <div class="step__subtitle-text">Visitor 1</div>
+                       <div class="step__subtitle-text">Visitor 1 (Main Applicant)</div>
                        <div class="step__subtitle-icon"></div>
                    </div>
                    <div class="step__subtitle-content">
-                       <div class="input mt-4">
+                       <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">First name</label>
                                <input type="text" name="firstName" class="input__field input-firstname"/>
                            </div>
                            <div class="input__error-label"></div>
+                           <div class="input__wrapper-highlight"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -627,12 +635,13 @@
                                </div>
                            </div>
                        </div>
-                       <div class="input mb-3">
+                       <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Middle name</label>
                                <input type="text" name="middleName"  class="input__field input-middlename"/>
                            </div>
                            <div class="input__error-label"></div>
+                           <div class="input__wrapper-highlight"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -696,6 +705,7 @@
                                <input type="text" name="surName" class="input__field input-surname"/>
                            </div>
                            <div class="input__error-label"></div>
+                           <div class="input__wrapper-highlight"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -776,6 +786,7 @@
                                <input type="hidden" name="dobYear" />
                            </div>
                            <div class="input__error-label"></div>
+                           <div class="input__wrapper-highlight"></div>
                            <div class="hint">
                                <div class="hint__header">
                                    <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -834,10 +845,9 @@
                            </div>
                        </div>
                        <div class="d-block d-sm-flex justify-content-between mw-625">
-                           <div style="width: 50%" class="input mr-5 mb-4">
+                           <div style="width: 50%" class="input">
                                <div class="input__wrapper">
                                    <label class="input__label">Citizenship</label>
-                                   <br/>
                                    <select class="input input__select input-citizenship" name="passportCitzenship">
                                        <option selected disabled hidden>Please select</option>
                                        <%
@@ -849,6 +859,7 @@
                                    </select>
                                </div>
                                <div class="input__error-label"></div>
+                               <div class="input__wrapper-highlight"></div>
                                <div class="hint">
                                        <div class="hint__header">
                                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -912,6 +923,7 @@
                                    <input type="text" name="passportNumber" class="input__field input-passport-number"/>
                                </div>
                                <div class="input__error-label"></div>
+                               <div class="input__wrapper-highlight"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -980,6 +992,7 @@
                                   <input type="hidden" name="passportYearIssued" />
                                </div>
                                <div class="input__error-label"></div>
+                               <div class="input__wrapper-highlight"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -1046,6 +1059,7 @@
                                   <input type="hidden" name="passportYearExpires" />
                                </div>
                                <div class="input__error-label"></div>
+                               <div class="input__wrapper-highlight"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -1114,6 +1128,7 @@
                        <input type="text" name="email" class="input__field input-email"/>
                    </div>
                    <div class="input__error-label"></div>
+                   <div class="input__wrapper-highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -1177,6 +1192,7 @@
                        <input id="phone" class="input__field input-phone" type="tel" name="phone"/>
                    </div>
                    <div class="input__error-label"></div>
+                   <div class="input__wrapper-highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -1412,7 +1428,7 @@
                    </div>
 
                        <div class="step__subtitle-content">
-                           <div class="input input_correct mt-4">
+                           <div class="input input_correct">
                                <div class="input__wrapper">
                                    <label class="input__label">City</label>
                                    <select class="input__select input-city" name="visitCity1">
@@ -1428,6 +1444,7 @@
                                </div>
                                <div class="input__error-label"></div>
                                <div class="input__highlight"></div>
+                               <div class="input__wrapper-highlight"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -1485,7 +1502,7 @@
                                    </div>
                                </div>
                            </div>
-                           <div class="input input_correct mt-4">
+                           <div class="input input_correct">
                                <div class="input__wrapper">
                                    <label class="input__label">Hotel</label>
                                    <select class="input__select input-hotel" name="visitHotel1">
@@ -1493,6 +1510,7 @@
                                    </select>
                                </div>
                                <div class="input__error-label"></div>
+                               <div class="input__wrapper-highlight"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">

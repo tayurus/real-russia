@@ -4,13 +4,15 @@
     background: #ffffff;
     padding-bottom: 30px;
     box-shadow 0 0 16px rgba(0, 0, 0, 0.07)
-    border-top: 2px solid #cc091d
+    border-top: 1px solid #cc091d
     margin-left: 10px;
+    padding-top: 0
+    padding-left: 30px;
 
 
 .step__title
     background: #cc091d
-    padding: 6px 0px 6px 30px
+    padding: 6px 0px 6px 18px
     margin-top: 15px
     color #ffffff
     font-family "Open Sans"
@@ -18,11 +20,14 @@
     font-weight 400
     line-height 31.07px
     text-transform uppercase
+    margin-left: -30px;
+    margin-right: -15px;
+    margin-top: 9px;
 
 .step__description
     display: flex;
     max-width: 605px;
-    margin: 30px auto 28px auto;
+    margin: 30px auto 28px 16px
     align-items: flex-start;
 
 .step__text
@@ -44,6 +49,8 @@
     color #ffffff
     font-family "Open Sans"
     font-size 15px
+    text-transform: uppercase;
+    font-weight: 700;
 
 .step__subtitle-icon
     width 27px
@@ -52,6 +59,7 @@
     cursor: pointer
     transition: 1s;
     transform: rotate(180deg);
+    border-radius: 3px;
 
 .step__subtitle_close .step__subtitle-icon{
     transform: none;
@@ -62,6 +70,10 @@
     margin: 10px 0px;
     background: #f2f2f2
     padding: 16px 26px 20px 14px
+
+.step__note.disabled{
+    display: none;
+}
 
 .step__note-text, .step__note b
     color: #000000;
