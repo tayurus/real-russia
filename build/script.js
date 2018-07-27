@@ -183,7 +183,9 @@ $(".input-group-size").change(function(){
 
     //changing number-text of visitor
     $(".visitor-wrapper").each(function(index, item){
-        let newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
+        let newText = ""
+        if (index != 0)
+            newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
         $(item).find(".step__subtitle-text").text(newText);
         $(item).find(".radio-buttons__wrapper .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
         $(item).find('[id^=m]').attr("id", "m" + (index + 1))
@@ -559,22 +561,22 @@ let currentYear = new Date().getFullYear();
 let minDefaultYear = currentYear - 100;
 let currentDate = new Date();
 
-setTimeout(()=> {
-    $(".datepicker_jq").each(function(index, item) {
-        let minYearAttr = $(item).attr("data-minyear");
-        let maxYearAttr = $(item).attr("data-maxyear");
-
-        if (typeof minYearAttr === "undefined") $(item).datepicker("option", "yearRange", minDefaultYear + ":" + currentYear);
-        else $(item).datepicker("option", "yearRange", minYearAttr + ":" + currentYear);
-
-        if (typeof maxYearAttr === "undefined") $(item).datepicker("option", "yearRange", currentYear + ":" + currentYear + 20);
-        else $(item).datepicker("option", "yearRange", currentYear + ":" + maxYearAttr);
-
-        if (typeof minYearAttr === "undefined" && typeof maxYearAttr === "undefined")
-            $(item).datepicker("option", "yearRange", minDefaultYear + ":" + currentYear);
-        else $(item).datepicker("option", "yearRange", minYearAttr + ":" + maxYearAttr);
-    });
-},500)
+// setTimeout(()=> {
+//     $(".datepicker_jq").each(function(index, item) {
+//         let minYearAttr = $(item).attr("data-minyear");
+//         let maxYearAttr = $(item).attr("data-maxyear");
+//
+//         if (typeof minYearAttr === "undefined") $(item).datepicker("option", "yearRange", minDefaultYear + ":" + currentYear);
+//         else $(item).datepicker("option", "yearRange", minYearAttr + ":" + currentYear);
+//
+//         if (typeof maxYearAttr === "undefined") $(item).datepicker("option", "yearRange", currentYear + ":" + currentYear + 20);
+//         else $(item).datepicker("option", "yearRange", currentYear + ":" + maxYearAttr);
+//
+//         if (typeof minYearAttr === "undefined" && typeof maxYearAttr === "undefined")
+//             $(item).datepicker("option", "yearRange", minDefaultYear + ":" + currentYear);
+//         else $(item).datepicker("option", "yearRange", minYearAttr + ":" + maxYearAttr);
+//     });
+// },500)
 
 
 //ВАЛИДАЦИЯ СВЯЗКИ ДАТА ВЫДАЧИ/ОКОНЧАНИЯ ПАСПОРТА + ДАТА ПРИЕЗДА/ДАТА ВЫЕЗДА
