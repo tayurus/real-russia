@@ -76,6 +76,15 @@
                </div>
 
            </div>
+           <div class="sticky-errors">
+             <div class="sticky-errors__icon_error"></div>
+             <div class="sticky-errors__content">
+               <div class="sticky-errors__title">The following fields have problems</div>
+               <div class="sticky-errors__links">
+                   <a class="sticky-errors__link" href="#">Purpose of visit </a>
+               </div>
+             </div>
+           </div>
        </div>
        <div class="container bg-gray pb-4 px-0">
            <div class="d-flex align-items-center justify-content-center justify-content-sm-between">
@@ -117,7 +126,6 @@
                                </option>
                             <% next %>
                        </select>
-
                    </div>
                    <div class="input__error-label"></div>
                    <div class="input__highlight"></div>
@@ -1781,5 +1789,9 @@
    </div>
    <% call HoneyPot_HtmlHiddenField("") %>
     </form>
+
 </main>
+
+
+
 <% end sub %>

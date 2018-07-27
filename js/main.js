@@ -1,7 +1,7 @@
-
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!   FUNCTIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 //current showed step and max count of steps
-let currStep,  maxStepCount;
+let currStep, maxStepCount;
+
 function inititializeSteps() {
     $("[data-role='prevStep']").hide()
     currStep = 1;
@@ -10,80 +10,85 @@ function inititializeSteps() {
 }
 
 
-function checkIsStepCorrect(step){
+function checkIsStepCorrect(step) {
 
-    $('[data-step='+step+']').show();
-    $('[data-step='+step+'] input, [data-step='+step+'] select').each((index, item) => {
+    $('[data-step=' + step + ']').show();
+    $('[data-step=' + step + '] input, [data-step=' + step + '] select').each((index, item) => {
         if ($(item).val() === "" || $(item).val() === null || ($(item).val() === 'no' && $(item).is(":checked")))
             $(item).trigger('change')
     })
 
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
     let stepHasError = false;
-    $("[data-step="+step+"] .input__error-label").each(function(index, item){
-        if ($(item).text() !== "" && $(item).is(":visible")){
+    $("[data-step=" + step + "] .input__error-label").each(function(index, item) {
+        if ($(item).text() !== "" && $(item).is(":visible")) {
             stepHasError = true;
-            $("[data-steps="+step+"]").addClass("steps__item_incorrect");
-            $("[data-steps="+step+"]").removeClass("steps__item_correct");
+            $("[data-steps=" + step + "]").addClass("steps__item_incorrect");
+            $("[data-steps=" + step + "]").removeClass("steps__item_correct");
         }
     });
 
-    if (!stepHasError){
-        $("[data-steps="+step+"]").removeClass("steps__item_incorrect");
-        $("[data-steps="+step+"]").addClass("steps__item_correct");
+    if (!stepHasError) {
+        $("[data-steps=" + step + "]").removeClass("steps__item_incorrect");
+        $("[data-steps=" + step + "]").addClass("steps__item_correct");
     }
 
-    $('[data-step='+step+']').hide();
-    $('[data-step='+currStep+']').show();
+    $('[data-step=' + step + ']').hide();
+    $('[data-step=' + currStep + ']').show();
 
 }
 
-function showCurrStep(){
+function showCurrStep() {
     //если сейчас 4-ый шаг, то изменить "next step" на "continue" и сделать ее кнопкой отправки формы
     setTimeout(() => {
-        if (currStep == 4){
+        if (currStep == 4) {
             $("[data-role='nextStep']").text("Confirm!");
             $("[data-role='nextStep']").attr("type", "submit");
             $("[data-role='nextStep']").attr("data-role", "confirm");
-        }
-        else {
+        } else {
             //иначе сделать изменить "continue" на "next step"
             $("[data-role='confirm']").text("next step");
             $("[data-role='confirm']").attr("type", "button");
             $("[data-role='confirm']").attr("data-role", "nextStep");
         }
-    },200)
+    }, 200)
 
 
 
     //hide all steps
     $("[data-step]").hide();
     //show next step
-    $("[data-step="+currStep+"]").show();
+    $("[data-step=" + currStep + "]").show();
     $("[data-steps]").removeClass("steps__item_active");
-    $("[data-steps="+currStep+"]").addClass("steps__item_active");
+    $("[data-steps=" + currStep + "]").addClass("steps__item_active");
     $(window).scrollTop(0);
 
-    if (currStep != 1){
+    if (currStep != 1) {
         $("[data-role='prevStep']").show()
-    }
-    else {
+    } else {
         $("[data-role='prevStep']").hide()
     }
 }
 
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EVENT LISTENERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-$(document).on("click", '[data-role="confirm"]', function(e){
+$(document).on("click", '[data-role="confirm"]', function(e) {
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
+    errors = [];
     let stepsHasError = false;
-    for (let i = 1; i <= 4; i++){
+    for (let i = 1; i <= 4; i++) {
         $("[data-step=" + i + "]").show()
-        $(".input__error-label").each(function(index, item){
-            if ($(item).text() !== "" && $(item).is(":visible")){
+        $(".input__error-label").each(function(index, item) {
+            if ($(item).text() !== "" && $(item).is(":visible")) {
                 stepsHasError = true;
-                $("[data-steps="+currStep+"]").addClass("steps__item_incorrect");
-                $("[data-steps="+currStep+"]").removeClass("steps__item_correct");
+                $("[data-steps=" + currStep + "]").addClass("steps__item_incorrect");
+                $("[data-steps=" + currStep + "]").removeClass("steps__item_correct");
+                let error = {
+                    step: i,
+                    name: $(item).prev().find('[name]').attr('name'),
+                }
+
+                errors.push(error)
             }
         });
         $("[data-step=" + i + "]").hide();
@@ -96,19 +101,32 @@ $(document).on("click", '[data-role="confirm"]', function(e){
     // if ($("[name=haveRead]:checked").val() !== "yes")
     //     stepsHasError = true;
 
-    if (stepsHasError){
+    if (stepsHasError) {
         alert("Check steps. You have errors!");
+        $('.sticky-errors').addClass('active');
+        $(".sticky-errors__links").html("")
+        errors.forEach(function(error) {
+            $(".sticky-errors__links").append("<a class='sticky-errors__link' data-error-step=" + error.step + " href='#'>" + error.name + "</a>")
+        })
         e.preventDefault();
     }
+
+    console.log(errors);
 })
 
+$(document).on('click', '.sticky-errors__link', function() {
+    $('[data-steps= ' + $(this).attr('data-error-step') + ']').click();
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $('[name=' + $(this).text() + ']').parent().offset().top - 75
+    }, 1000)
+})
 //when user clicks on button "next-step"
-$("[data-role='nextStep']").click(function(){
+$("[data-role='nextStep']").click(function() {
 
     checkIsStepCorrect(currStep);
 
     //check - if next steps exist
-    if (currStep < maxStepCount){
+    if (currStep < maxStepCount) {
         currStep++;
         showCurrStep();
     }
@@ -117,11 +135,11 @@ $("[data-role='nextStep']").click(function(){
 });
 
 //when user clicks on button "prev-step"
-$("[data-role='prevStep']").click(function(){
+$("[data-role='prevStep']").click(function() {
 
     checkIsStepCorrect(currStep);
     //check - if prev steps exist
-    if (currStep != 1){
+    if (currStep != 1) {
         currStep--;
         showCurrStep();
     }
@@ -129,12 +147,12 @@ $("[data-role='prevStep']").click(function(){
 });
 
 //when user change groupSize
-$(".input-group-size").change(function(){
+$(".input-group-size").change(function() {
 
     let newVisitorsCount = $(this).val();
 
     //removes all visitors except one
-    $(".visitor-wrapper").each(function(index, item){
+    $(".visitor-wrapper").each(function(index, item) {
         if ((index + 1) > newVisitorsCount)
             $(item).remove()
     })
@@ -144,24 +162,24 @@ $(".input-group-size").change(function(){
 
     //add needed count of visitors-blocks
     for (let i = visitorsCount; i < newVisitorsCount; i++)
-        $(".visitor-wrapper:eq("+(visitorsCount -1 )+")")
-        .after($(".visitor-wrapper:eq("+(visitorsCount -1 )+")")
-        .clone(false))
+        $(".visitor-wrapper:eq(" + (visitorsCount - 1) + ")")
+        .after($(".visitor-wrapper:eq(" + (visitorsCount - 1) + ")")
+            .clone(false))
 
 
 
     $(".visitor-wrapper .datepicker_jq").attr("id", "")
-          .removeClass('hasDatepicker')
-          .removeData('datepicker')
-          .unbind()
-          .datepicker({
-                changeMonth: true,
-                changeYear: true,
-                dateFormat: 'yy-mm-dd'
-          });
+        .removeClass('hasDatepicker')
+        .removeData('datepicker')
+        .unbind()
+        .datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'yy-mm-dd'
+        });
 
     //changing number-text of visitor
-    $(".visitor-wrapper").each(function(index, item){
+    $(".visitor-wrapper").each(function(index, item) {
         let newText = ""
         if (index != 0)
             newText = "Visitor " + (index + 1);
@@ -175,15 +193,15 @@ $(".input-group-size").change(function(){
         $(item).find('[for^=f]').attr("for", "f" + (index + 1))
 
         //remove text from inputs
-        if ((index + 1) > visitorsCount){
+        if ((index + 1) > visitorsCount) {
             $(item).find('input').val("");
         }
     });
 
     //resurect last Sex
-     $("[name=gender_" + visitorsCount + "][value=" + lastSex + "]").prop("checked", true)
+    $("[name=gender_" + visitorsCount + "][value=" + lastSex + "]").prop("checked", true)
 
-     if (visitorsCount < newVisitorsCount)
+    if (visitorsCount < newVisitorsCount)
         $(".visitor-wrapper:last").find('input').prop("checked", false)
 
     initializeDatepicker()
@@ -195,7 +213,7 @@ $(".input-group-size").change(function(){
 });
 
 $('.input-entries').change(function() {
-    if( $(this).val() == 'Double entry visa' )
+    if ($(this).val() == 'Double entry visa')
         $('.second-entry').show();
     else $('.second-entry').hide();
 
@@ -203,23 +221,23 @@ $('.input-entries').change(function() {
 })
 
 $('.input-purpose').change(function() {
-    if($(this).val() == "Auto Tourist")
+    if ($(this).val() == "Auto Tourist")
         $('.auto-tourism-wrapper').show()
     else $('.auto-tourism-wrapper').hide()
 
 
     setTimeout(() => {
         checkIsStepCorrect(3)
-    },200)
+    }, 200)
 })
 
-$("[data-button='addLocation']").click(function(){
+$("[data-button='addLocation']").click(function() {
     $(this).before($(this).prev().clone(true));
     locationCount++;
     $(this).prev().find('.input-city').attr('name', 'visitCity' + locationCount);
     $(this).prev().find('.input-hotel').attr('name', 'visitHotel' + locationCount);
 
-    $(".location-wrapper").each(function(index, item){
+    $(".location-wrapper").each(function(index, item) {
         $(item).find('.button__remove-location').text("REMOVE LOCATION " + (index + 1));
         $(item).find('.step__subtitle-text').text("LOCATION " + (index + 1));
     })
@@ -228,8 +246,8 @@ $("[data-button='addLocation']").click(function(){
 })
 
 
-$(document).on("click", ".button__remove-location", function(){
-    if ($(".location-wrapper").length > 1){
+$(document).on("click", ".button__remove-location", function() {
+    if ($(".location-wrapper").length > 1) {
         let element = $(this).parent().find('.input-city');
         cities.forEach((item, index) => {
             if (item.element.is(element))
@@ -243,7 +261,7 @@ $(document).on("click", ".button__remove-location", function(){
     })
     locationCount = 0;
 
-    $(".location-wrapper").each(function(index, item){
+    $(".location-wrapper").each(function(index, item) {
         locationCount++;
         $(item).find('.input-city').attr('name', 'visitCity' + locationCount);
         $(item).find('.input-hotel').attr('name', 'visitHotel' + locationCount);
@@ -257,7 +275,7 @@ $(document).on("click", ".button__remove-location", function(){
 })
 
 $('.input-purpose').change(function() {
-    if( $(this).val() == 'Auto Tourist' )
+    if ($(this).val() == 'Auto Tourist')
         $('.auto-tourism-wrapper').show();
     else $('.auto-tourism-wrapper').hide();
 })
@@ -276,14 +294,14 @@ $(document).on("blur propertychange change input paste", ".input-arrival-date1",
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date1", function() {
-    if (numberOfEntries.val === "Single entry visa"){
+    if (numberOfEntries.val === "Single entry visa") {
         $('.departure-date-insert').text($('.input-departure-date1').val());
     }
 
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date2", function() {
-    if (numberOfEntries.val === "Double entry visa"){
+    if (numberOfEntries.val === "Double entry visa") {
         $('.departure-date-insert').text($('.input-departure-date2').val());
     }
 });
@@ -293,17 +311,16 @@ $(document).on("blur propertychange change input paste", ".input-entries", funct
         val: $(this).val()
     }
 
-    if ($(this).val() === "Double entry visa"){
+    if ($(this).val() === "Double entry visa") {
         $("#summary").html("The visa support document applied for will be valid for processing a visa for the named person to enter Russia (the first time) on or after <span class='arrival-date-insert'> &lt; not specified &gt; </span> and they must leave Russia (for the second time) on or before <span class='departure-date-insert'>&lt; not specified &gt;</span>. The visa will allow two entries into and two exits from Russia during this period. It is the applicant’s responsibility to confirm\ that the visa support document/visa meet their requirements before they process the visa, or travel or use the visa itself. Please note that once your visa is issued the pre-paid registration fees are non-refundable. Please note that once the visa support is issued, no refunds are possible.")
-    }
-    else{
+    } else {
         $("#summary").html("  The visa support document applied for will be valid for processing a visa for the named person to enter Russia on or after <span class='arrival-date-insert'> &lt; not specified &gt; </span> and they must leave Russia on or before <span class='departure-date-insert'>&lt; not specified &gt;</span>. The visa will allow one entry to and one exit from Russia during this period. It is the applicantâ€™s responsibility to confirm that the visa support document/visa meet their requirements before they process the visa, or travel or use the visa itself. Please note that once the visa support is issued, no refunds are possible.")
     }
 });
 
 $(document).on("blur propertychange change input paste", ".input-country", function() {
     let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry($(this).val());
-    if (text !== null){
+    if (text !== null) {
         text = text.replace("{Country}", $(this).val());
         $(this).closest('.input').next().html("<b>CONSULAR NOTES</b>\
                                                 <div class='step__note-text'>" + text + "</div>")
@@ -314,7 +331,7 @@ $(document).on("blur propertychange change input paste", ".input-country", funct
 
 $(document).on("blur propertychange change input paste", ".input-city", function() {
     let el = $(this);
-    Visas.Russian.HotelsServiceProxy.Current.getHotels($(this).val(), function(data){
+    Visas.Russian.HotelsServiceProxy.Current.getHotels($(this).val(), function(data) {
         $(el).closest('.input').next().find('select').find('option').remove();
         $(el).closest('.input').next().find('select').append("<option disabled selected hidden>Please select...</option>");
         data.forEach((hotel) => {
@@ -335,23 +352,23 @@ $(document).on("blur propertychange change input paste", ".input-registration", 
 })
 
 $(document).on("blur propertychange change input paste", ".total__select", function() {
-        let selectedCurrency = $(this).val();
-        if (selectedCurrency === "gbp")
-            $('.total__currency').text('£');
-        if (selectedCurrency === "usd")
-            $('.total__currency').text('$');
-        if (selectedCurrency === "eur")
-            $('.total__currency').text('€');
+    let selectedCurrency = $(this).val();
+    if (selectedCurrency === "gbp")
+        $('.total__currency').text('£');
+    if (selectedCurrency === "usd")
+        $('.total__currency').text('$');
+    if (selectedCurrency === "eur")
+        $('.total__currency').text('€');
 
-        let selectedRate = parseFloat($(this).find("option[value=" + selectedCurrency + "]").attr('rate')).toFixed(2);
-        $('.total__sum-value').text((totalPrice * selectedRate).toFixed(2))
+    let selectedRate = parseFloat($(this).find("option[value=" + selectedCurrency + "]").attr('rate')).toFixed(2);
+    $('.total__sum-value').text((totalPrice * selectedRate).toFixed(2))
 
-        // if($(this).val() === 'YES')
-        //     $('.total-table__registration').text()
+    // if($(this).val() === 'YES')
+    //     $('.total-table__registration').text()
 })
 
 
-Visas.Russian.EntryTypeId.parseFrom = function (val) {
+Visas.Russian.EntryTypeId.parseFrom = function(val) {
     val = val.toLowerCase();
     if (val.indexOf("single") >= 0) {
         return Visas.Russian.EntryTypeId.Single;
@@ -363,7 +380,7 @@ Visas.Russian.EntryTypeId.parseFrom = function (val) {
     throw new Error();
 };
 
-Visas.Russian.RegistrationTypeId.parseFrom = function (val) {
+Visas.Russian.RegistrationTypeId.parseFrom = function(val) {
     switch (val) {
         case "NO":
             return null;

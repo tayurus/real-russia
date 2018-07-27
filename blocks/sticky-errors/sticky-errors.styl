@@ -1,36 +1,44 @@
-.message
-    width: 100%
-    display: flex;
+.sticky-errors
+    width: calc(100% - -27px)
+    margin-left: -14px;
+    display: none;
+    // position: fixed;
+    z-index: 1000;
+    left: 67px;
+    width: 1100px;
+    top: 0
     align-items: center;
     padding: 20px
     background: #fed9dd
     border-top: 1px solid #cc091d
     border-bottom: 1px solid #cc091d
-    position: sticky;
-    z-index: 100
+    // position: sticky;
+    z-index: 1000
     top: 0
+    &.active
+        display: flex;
 
-.message__icon_error
+.sticky-errors__icon_error
     width: 33px;
     height: 33px;
-    background: url('img/message-error.png') no-repeat center / contain;
+    background: url('img/sticky-errors.png') no-repeat center / contain;
 
-.message__content
+.sticky-errors__content
     max-width: 600px
     margin-left: 31px
 
-.message__title
+.sticky-errors__title
     color #cc091d
     font-family "Open Sans"
     font-weight 700
     line-height 26px
 
-.message__links
+.sticky-errors__links
     display: flex;
     flex-wrap: wrap;
     align-items: center;
 
-.message__link
+.sticky-errors__link
     color #000000
     font-family "Open Sans"
     font-size 13px
