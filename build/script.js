@@ -185,7 +185,9 @@ $(".input-group-size").change(function(){
     $(".visitor-wrapper").each(function(index, item){
         let newText = ""
         if (index != 0)
-            newText = $(item).find(".step__subtitle-text").text().replace(/([0-9]{1,})/g, index + 1 )
+            newText = "Visitor " + (index + 1);
+        else
+            newText = "Visitor 1 (Main Applicant)"
         $(item).find(".step__subtitle-text").text(newText);
         $(item).find(".radio-buttons__wrapper .radio-buttons__radio").attr('name', 'gender_' + (index + 1));
         $(item).find('[id^=m]').attr("id", "m" + (index + 1))
@@ -237,6 +239,12 @@ $("[data-button='addLocation']").click(function(){
     locationCount++;
     $(this).prev().find('.input-city').attr('name', 'visitCity' + locationCount);
     $(this).prev().find('.input-hotel').attr('name', 'visitHotel' + locationCount);
+
+    $(".location-wrapper").each(function(index, item){
+        $(item).find('.button__remove-location').text("REMOVE LOCATION " + (index + 1));
+        $(item).find('.step__subtitle-text').text("LOCATION " + (index + 1));
+    })
+
     checkIsStepCorrect(3);
 })
 
@@ -260,6 +268,8 @@ $(document).on("click", ".button__remove-location", function(){
         locationCount++;
         $(item).find('.input-city').attr('name', 'visitCity' + locationCount);
         $(item).find('.input-hotel').attr('name', 'visitHotel' + locationCount);
+        $(item).find('.button__remove-location').text("REMOVE LOCATION " + (index + 1));
+        $(item).find('.step__subtitle-text').text("LOCATION " + (index + 1));
     })
 
     checkIsStepCorrect(3);
@@ -933,7 +943,7 @@ function validateCitizenship(e, trigger){
 
     let errorsText =  '<div>'+ valueCanNotBeEmpty(citizenship.val) +'</div>';
     if (typeof registration !== 'undefined')
-        errorsText = someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
+        errorsText += someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
 
     $(e)
         .parent()
@@ -1281,14 +1291,6 @@ $( ".datepicker_jq").change(function(){
             $(this).datepicker("setDate", new Date());
 })
 
-$(".hint__tab").click(function(){
-    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
-    $(this).addClass("hint__tab_active");
-
-    $(this).closest('.hint').find('[data-tab]').removeClass('active');
-    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
-})
-
 
 
 $(".input__select, .input__field").on('focusin',function() {
@@ -1328,6 +1330,14 @@ $("#phone").intlTelInput({
   // preferredCountries: ['cn', 'jp'],
   separateDialCode: true
 });
+
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
+
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
+})
 
 $(document).on("click", ".step__subtitle", function() {
     $(this).toggleClass("step__subtitle_close")

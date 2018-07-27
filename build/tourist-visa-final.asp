@@ -62,7 +62,7 @@
                        </div>
                        <div>
                            <div class="total__label">Language</div>
-                           <input type="text" readonly="readonly" class="total__select total__country"/>
+                           <input autocomplete="off"type="text" readonly="readonly" class="total__select total__country"/>
                        </div>
                    </div>
                    <div class="total__result">
@@ -577,7 +577,7 @@
                        <div class="input mt-5">
                            <div class="input__wrapper">
                                <label class="input__label">First name</label>
-                               <input type="text" name="firstName" class="input__field input-firstname"/>
+                               <input autocomplete="off"type="text" name="firstName" class="input__field input-firstname"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="input__wrapper-highlight"></div>
@@ -641,7 +641,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Middle name</label>
-                               <input type="text" name="middleName"  class="input__field input-middlename"/>
+                               <input autocomplete="off"type="text" name="middleName"  class="input__field input-middlename"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="input__wrapper-highlight"></div>
@@ -705,7 +705,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Surname</label>
-                               <input type="text" name="surName" class="input__field input-surname"/>
+                               <input autocomplete="off"type="text" name="surName" class="input__field input-surname"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="input__wrapper-highlight"></div>
@@ -772,11 +772,11 @@
                            <div class="radio-buttons">
 
                                <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="gender_1" value="Male" id="m1" class="radio-buttons__radio"/>
+                                   <input autocomplete="off"type="radio" name="gender_1" value="Male" id="m1" class="radio-buttons__radio"/>
                                    <label for="m1" class="radio-buttons__view">Male</label>
                                </div>
                                <div class="radio-buttons__wrapper">
-                                   <input type="radio" name="gender_1" value="Female" id="f1" class="radio-buttons__radio"/>
+                                   <input autocomplete="off"type="radio" name="gender_1" value="Female" id="f1" class="radio-buttons__radio"/>
                                    <label for="f1" class="radio-buttons__view">Female</label>
                                </div>
 
@@ -786,10 +786,10 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Date of birth</label>
-                               <input type="text" class="datepicker_jq input__field input__field_calendar input-birth-date"/>
-                                <input type="hidden" name="dobMonth" />
-                               <input type="hidden" name="dobDay" />
-                               <input type="hidden" name="dobYear" />
+                               <input autocomplete="off"type="text" class="datepicker_jq input__field input__field_calendar input-birth-date"/>
+                                <input autocomplete="off"type="hidden" name="dobMonth" />
+                               <input autocomplete="off"type="hidden" name="dobDay" />
+                               <input autocomplete="off"type="hidden" name="dobYear" />
                            </div>
                            <div class="input__error-label"></div>
                            <div class="input__wrapper-highlight"></div>
@@ -854,7 +854,7 @@
                            <div style="width: 50%" class="input mr-4">
                                <div class="input__wrapper">
                                    <label class="input__label">Citizenship</label>
-                                   <select class="input input__select input-citizenship mb-0" name="passportCitzenship">
+                                   <select class="input__select input-citizenship mb-0" name="passportCitzenship">
                                        <option selected disabled hidden>Please select</option>
                                        <%
                                        for each country in ViewBag.Countries %>
@@ -926,7 +926,7 @@
                            <div style="width: 50%" class="input">
                                <div class="input__wrapper">
                                    <label class="input__label">Passport number</label>
-                                   <input type="text" name="passportNumber" class="input__field input-passport-number"/>
+                                   <input autocomplete="off"type="text" name="passportNumber" class="input__field input-passport-number"/>
                                </div>
                                <div class="input__error-label"></div>
                                <div class="input__wrapper-highlight"></div>
@@ -992,10 +992,10 @@
                            <div class="input mr-4" style="position: static;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
-                                   <input class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
-                                   <input type="hidden" name="passportMonthIssued" />
-                                    <input type="hidden" name="passportDayIssued" />
-                                  <input type="hidden" name="passportYearIssued" />
+                                   <input autocomplete="off"class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
+                                   <input autocomplete="off"type="hidden" name="passportMonthIssued" />
+                                    <input autocomplete="off"type="hidden" name="passportDayIssued" />
+                                  <input autocomplete="off"type="hidden" name="passportYearIssued" />
                                </div>
                                <div class="input__error-label"></div>
                                <div class="input__wrapper-highlight"></div>
@@ -1059,10 +1059,10 @@
                            <div class="input" style="position: static;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport expires</label>
-                                   <input type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" />
-                                   <input type="hidden" name="passportMonthExpires" />
-                                    <input type="hidden" name="passportDayExpires" />
-                                  <input type="hidden" name="passportYearExpires" />
+                                   <input autocomplete="off"type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" />
+                                   <input autocomplete="off"type="hidden" name="passportMonthExpires" />
+                                    <input autocomplete="off"type="hidden" name="passportDayExpires" />
+                                  <input autocomplete="off"type="hidden" name="passportYearExpires" />
                                </div>
                                <div class="input__error-label"></div>
                                <div class="input__wrapper-highlight"></div>
@@ -1131,7 +1131,7 @@
                <div class="input">
                    <div class="input__wrapper">
                        <label class="input__label">Email address</label>
-                       <input type="text" name="email" class="input__field input-email"/>
+                       <input autocomplete="off"type="text" name="email" class="input__field input-email"/>
                    </div>
                    <div class="input__error-label"></div>
                    <div class="input__wrapper-highlight"></div>
@@ -1195,7 +1195,7 @@
                <div class="input">
                    <div class="input__wrapper">
                        <label class="input__label">Telephone</label>
-                       <input id="phone" class="input__field input-phone" type="tel" name="phone"/>
+                       <input autocomplete="off"id="phone" class="input__field input-phone" type="tel" name="phone"/>
                    </div>
                    <div class="input__error-label"></div>
                    <div class="input__wrapper-highlight"></div>
@@ -1259,18 +1259,18 @@
                <!-- <div class="auto-tourism-wrapper">
                    <div class="radio-buttons">
                        <div class="radio-buttons__wrapper">
-                           <input type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
+                           <input autocomplete="off"type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
                            <label for="Car" class="radio-buttons__view">Car</label>
                        </div>
                        <div class="radio-buttons__wrapper">
-                           <input type="radio" name="vehicleType" id="Motorcycle" class="radio-buttons__radio"/>
+                           <input autocomplete="off"type="radio" name="vehicleType" id="Motorcycle" class="radio-buttons__radio"/>
                            <label for="Motorcycle" class="radio-buttons__view">Motorcycle</label>
                        </div>
                    </div>
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Vehicle make</label>
-                           <input type="text" name="vehicleMake" class="input__field input-vehicle-make"/>
+                           <input autocomplete="off"type="text" name="vehicleMake" class="input__field input-vehicle-make"/>
                            <%
                            set attr = new cAssocArray
                             attr("name") = "visaType"
@@ -1299,7 +1299,7 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Licence Plate number</label>
-                           <input type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
+                           <input autocomplete="off"type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1324,10 +1324,10 @@
                    <div class="input mr-5 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
-                           <input type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
-                           <input type="hidden" name="visitMonthOfEntry" />
-                            <input type="hidden" name="visitDayOfEntry" />
-                          <input type="hidden" name="visitYearOfEntry" />
+                           <input autocomplete="off"type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
+                           <input autocomplete="off"type="hidden" name="visitMonthOfEntry" />
+                            <input autocomplete="off"type="hidden" name="visitDayOfEntry" />
+                          <input autocomplete="off"type="hidden" name="visitYearOfEntry" />
                        </div>
                        <div class="input__error-label"></div>
                        <div class="input__highlight"></div>
@@ -1335,10 +1335,10 @@
                    <div class="input mr-3 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
-                           <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
-                           <input type="hidden" name="visitMonthOfExit" />
-                            <input type="hidden" name="visitDayOfExit" />
-                          <input type="hidden" name="visitYearOfExit" />
+                           <input autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
+                           <input autocomplete="off"type="hidden" name="visitMonthOfExit" />
+                            <input autocomplete="off"type="hidden" name="visitDayOfExit" />
+                          <input autocomplete="off"type="hidden" name="visitYearOfExit" />
                        </div>
                        <div class="input__error-label"></div>
                        <div class="input__highlight"></div>
@@ -1351,10 +1351,10 @@
                    <div class="input mr-5 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
-                           <input name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
-                           <input type="hidden" name="visitMonthOfEntry2" />
-                          <input type="hidden" name="visitDayOfEntry2" />
-                          <input type="hidden" name="visitYearOfEntry2" />
+                           <input autocomplete="off"name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
+                           <input autocomplete="off"type="hidden" name="visitMonthOfEntry2" />
+                          <input autocomplete="off"type="hidden" name="visitDayOfEntry2" />
+                          <input autocomplete="off"type="hidden" name="visitYearOfEntry2" />
                        </div>
                        <div class="input__error-label"></div>
                        <div class="input__highlight"></div>
@@ -1362,10 +1362,10 @@
                    <div class="input mr-3 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
-                           <input type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date2"/>
-                           <input type="hidden" name="visitMonthOfExit2" />
-                          <input type="hidden" name="visitDayOfExit2" />
-                          <input type="hidden" name="visitYearOfExit2" />
+                           <input autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date2"/>
+                           <input autocomplete="off"type="hidden" name="visitMonthOfExit2" />
+                          <input autocomplete="off"type="hidden" name="visitDayOfExit2" />
+                          <input autocomplete="off"type="hidden" name="visitYearOfExit2" />
                        </div>
                        <div class="input__error-label"></div>
                        <div class="input__highlight"></div>
@@ -1375,11 +1375,11 @@
                <div class="auto-tourism-wrapper">
                    <div class="radio-buttons">
                        <div class="radio-buttons__wrapper">
-                           <input type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
+                           <input autocomplete="off"type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
                            <label for="Car" class="radio-buttons__view">Car</label>
                        </div>
                        <div class="radio-buttons__wrapper">
-                           <input type="radio" name="vehicleType" id="Motorcycle" class="radio-buttons__radio"/>
+                           <input autocomplete="off"type="radio" name="vehicleType" id="Motorcycle" class="radio-buttons__radio"/>
                            <label for="Motorcycle" class="radio-buttons__view">Motorcycle</label>
                        </div>
                    </div>
@@ -1422,7 +1422,7 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Licence Plate number</label>
-                           <input type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
+                           <input autocomplete="off"type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1592,22 +1592,22 @@
                <div class="radio-buttons__title">Would you like to join our monthly newsletter list?</div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="joinToNewsLetter" id="joinToNewsLetterYes" class="radio-buttons__radio"/>
+                       <input autocomplete="off"type="radio" name="joinToNewsLetter" id="joinToNewsLetterYes" class="radio-buttons__radio"/>
                        <label for="joinToNewsLetterYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="joinToNewsLetter" id="joinToNewsLetterNo" class="radio-buttons__radio"/>
+                       <input autocomplete="off"type="radio" checked="checked" name="joinToNewsLetter" id="joinToNewsLetterNo" class="radio-buttons__radio"/>
                        <label for="joinToNewsLetterNo" class="radio-buttons__view">No</label>
                    </div>
                </div>
                <div class="radio-buttons__title">Would you like to join our mailing list for special offers, news and information?     </div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="joinMailingList" id="joinMailingListYes" class="radio-buttons__radio"/>
+                       <input autocomplete="off"type="radio" name="joinMailingList" id="joinMailingListYes" class="radio-buttons__radio"/>
                        <label for="joinMailingListYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="joinMailingList" id="joinMailingListNo" class="radio-buttons__radio"/>
+                       <input autocomplete="off"type="radio" checked="checked" name="joinMailingList" id="joinMailingListNo" class="radio-buttons__radio"/>
                        <label for="joinMailingListNo" class="radio-buttons__view">No</label>
                    </div>
                </div>
@@ -1616,11 +1616,11 @@
                </div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="haveRead" id="haveReadYes" value="yes" class="radio-buttons__radio"/>
+                       <input autocomplete="off"type="radio" name="haveRead" id="haveReadYes" value="yes" class="radio-buttons__radio"/>
                        <label for="haveReadYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="haveRead" checked value="no" id="haveReadNo" class="radio-buttons__radio"/>
+                       <input autocomplete="off"type="radio" name="haveRead" checked value="no" id="haveReadNo" class="radio-buttons__radio"/>
                        <label for="haveReadNo" class="radio-buttons__view">No  </label>
                    </div>
                </div>
@@ -1658,11 +1658,11 @@
                <div class="radio-buttons__title font-weight-bold">Having completed my application, I agree that the above visa application is suitable.</div>
                <div class="radio-buttons">
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" checked="checked" name="agreeVisaSuitable" id="agreeVisaSuitableYes" value="yes" class="radio-buttons__radio"/>
+                       <input autocomplete="off"type="radio" checked="checked" name="agreeVisaSuitable" id="agreeVisaSuitableYes" value="yes" class="radio-buttons__radio"/>
                        <label for="agreeVisaSuitableYes" class="radio-buttons__view">Yes</label>
                    </div>
                    <div class="radio-buttons__wrapper">
-                       <input type="radio" name="agreeVisaSuitable" id="agreeVisaSuitableNo" value="no" class="radio-buttons__radio"/>
+                       <input autocomplete="off"type="radio" name="agreeVisaSuitable" id="agreeVisaSuitableNo" value="no" class="radio-buttons__radio"/>
                        <label for="agreeVisaSuitableNo" class="radio-buttons__view">No</label>
                    </div>
                </div>
@@ -1690,14 +1690,14 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">First name</label>
-                           <input type="text" name="" class="input__field"/>
+                           <input autocomplete="off"type="text" name="" class="input__field"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Surname</label>
-                           <input type="text" name="" class="input__field"/>
+                           <input autocomplete="off"type="text" name="" class="input__field"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1705,14 +1705,14 @@
                        <div class="input mr-0 mr-md-5">
                            <div class="input__wrapper">
                                <label class="input__label">House number/name</label>
-                               <input type="text" name="" class="input__field"/>
+                               <input autocomplete="off"type="text" name="" class="input__field"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>
                        <div class="input mr-0 mr-md-4">
                            <div class="input__wrapper">
                                <label class="input__label">Postcode</label>
-                               <input type="text" name="" class="input__field"/>
+                               <input autocomplete="off"type="text" name="" class="input__field"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>
@@ -1730,7 +1730,7 @@
                    <div class="input mt-4">
                        <div class="input__wrapper">
                            <label class="input__label">Card number</label>
-                           <input type="text" name="" class="input__field"/>
+                           <input autocomplete="off"type="text" name="" class="input__field"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1738,14 +1738,14 @@
                        <div class="input mr-0 mr-md-5">
                            <div class="input__wrapper">
                                <label class="input__label">Expiry date</label>
-                               <input type="text" class="datepicker_jq input__field input__field_calendar"/>
+                               <input autocomplete="off"type="text" class="datepicker_jq input__field input__field_calendar"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>
                        <div class="input mr-0 mr-md-4">
                            <div class="input__wrapper">
                                <label class="input__label">CCV</label>
-                               <input type="text" name="" class="input__field"/>
+                               <input autocomplete="off"type="text" name="" class="input__field"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>
@@ -1762,22 +1762,22 @@
        </div>
    </div>
    <div class="d-none">
-        <input type="hidden" name="reg_GBP_Moscow" />
-        <input type="hidden" name="reg_GBP_Piter" />
-        <input type="hidden" name="s_GBP" />
-        <input type="hidden" name="d_GBP" />
-        <input type="hidden" name="s_EUR" />
-        <input type="hidden" name="s_USD" />
-        <input type="hidden" name="reg_EUR_Moscow" />
-        <input type="hidden" name="reg_EUR_Piter" />
-        <input type="hidden" name="reg_USD_Moscow" />
-        <input type="hidden" name="reg_USD_Piter" />
-        <input type="hidden" name="d_EUR" />
-        <input type="hidden" name="d_USD" />
-        <input type="hidden" name="whoContacted" />
-        <input type="hidden" name="emailConfirm" />
-        <input type="hidden" name="comments" />
-        <input type="hidden" name="partnerId" />
+        <input autocomplete="off"type="hidden" name="reg_GBP_Moscow" />
+        <input autocomplete="off"type="hidden" name="reg_GBP_Piter" />
+        <input autocomplete="off"type="hidden" name="s_GBP" />
+        <input autocomplete="off"type="hidden" name="d_GBP" />
+        <input autocomplete="off"type="hidden" name="s_EUR" />
+        <input autocomplete="off"type="hidden" name="s_USD" />
+        <input autocomplete="off"type="hidden" name="reg_EUR_Moscow" />
+        <input autocomplete="off"type="hidden" name="reg_EUR_Piter" />
+        <input autocomplete="off"type="hidden" name="reg_USD_Moscow" />
+        <input autocomplete="off"type="hidden" name="reg_USD_Piter" />
+        <input autocomplete="off"type="hidden" name="d_EUR" />
+        <input autocomplete="off"type="hidden" name="d_USD" />
+        <input autocomplete="off"type="hidden" name="whoContacted" />
+        <input autocomplete="off"type="hidden" name="emailConfirm" />
+        <input autocomplete="off"type="hidden" name="comments" />
+        <input autocomplete="off"type="hidden" name="partnerId" />
    </div>
    <% call HoneyPot_HtmlHiddenField("") %>
     </form>

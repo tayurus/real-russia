@@ -374,7 +374,7 @@ function validateCitizenship(e, trigger){
 
     let errorsText =  '<div>'+ valueCanNotBeEmpty(citizenship.val) +'</div>';
     if (typeof registration !== 'undefined')
-        errorsText = someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
+        errorsText += someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
 
     $(e)
         .parent()
