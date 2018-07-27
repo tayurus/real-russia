@@ -694,13 +694,14 @@ function validatePassportIssued(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = "";
-    if (typeof passportExpired[index] != "undefined") {
-        errorsText = datePassportIssuedMustBeBeforeExpired(passportIssued[index].val, passportExpired[index].val);
+    let errorsText = "<div>" + valueCanNotBeEmpty($(passportIssued[index].element).val()) + "</div>";
+    if (valueCanNotBeEmpty($(passportIssued[index].element).val()) === ""){
+        if (typeof passportExpired[index] != "undefined") {
+            errorsText += datePassportIssuedMustBeBeforeExpired(passportIssued[index].val, passportExpired[index].val);
+        }
+        errorsText += "<div>" + dateMustBeBeforeCurrentDate(passportIssued[index].val) + "</div>";
     }
 
-    errorsText += "<div>" + dateMustBeBeforeCurrentDate(passportIssued[index].val) + "</div>";
-    errorsText += "<div>" + valueCanNotBeEmpty($(passportIssued[index].element).val()) + "</div>";
     $(e)
         .parent()
         .next()
@@ -719,13 +720,16 @@ function validatePassportExpired(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = "";
-    if (typeof passportIssued[index] != "undefined") {
-        errorsText = datePassportExpiredMustBeAfterIssued(passportIssued[index].val, passportExpired[index].val);
+    let errorsText = "<div>" + valueCanNotBeEmpty($(passportExpired[index].element).val()) + "</div>";
+
+    if ( valueCanNotBeEmpty($(passportExpired[index].element).val()) === ""){
+        if (typeof passportIssued[index] != "undefined") {
+            errorsText += datePassportExpiredMustBeAfterIssued(passportIssued[index].val, passportExpired[index].val);
+        }
+        errorsText += "<div>" + dateMustBeAfterCurrentDate(passportExpired[index].val) + "</div>";
     }
 
-    errorsText += "<div>" + dateMustBeAfterCurrentDate(passportExpired[index].val) + "</div>";
-    errorsText += "<div>" + valueCanNotBeEmpty($(passportExpired[index].element).val()) + "</div>";
+
 
     $(e)
         .parent()
@@ -748,17 +752,21 @@ function validateArrival1(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = dateMustBeAfterCurrentDate(arrivalDate1.val);
-    if (typeof departureDate1 !== "undefined") {
-        errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
-        errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate1.val, departureDate1.val) + "</div>";
-        errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate1.element).val()) + "</div>";
+    let warningText = "";
+    let errorsText = "<div>" + valueCanNotBeEmpty($(arrivalDate1.element).val()) + "</div>";
+    if (valueCanNotBeEmpty($(arrivalDate1.element).val()) === ""){
+        errorsText += dateMustBeAfterCurrentDate(arrivalDate1.val);
+        if (typeof departureDate1 !== "undefined") {
+            errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
+            errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate1.val, departureDate1.val) + "</div>";
+
+        }
+
+        if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined"  && validateWarningRegistration7Days(1) !== ""){
+            warningText += '<div>' + validateWarningRegistration7Days(1) + "</div>";
+        }
     }
 
-    let warningText = "";
-    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined"  && validateWarningRegistration7Days(1) !== ""){
-        warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
-    }
 
     $(e)
         .parent()
@@ -780,25 +788,30 @@ function validateDeparture1(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = dateMustBeAfterCurrentDate(departureDate1.val);
-    if (typeof arrivalDate1 !== "undefined") {
-        errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate1.val, departureDate1.val) + "</div>";
-        errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
-        errorsText += "<div>" + valueCanNotBeEmpty($(departureDate1.element).val()) + "</div>";
-    }
-
-    if (passportExpired.length > 0) {
-        let passportExpiredDates = [];
-        passportExpired.forEach(item => {
-            passportExpiredDates.push(extractObjectField(item, "val"));
-        });
-        errorsText += "<div>" + passportsMustBeValid6MonthsAfterDeparture(departureDate1.val, passportExpiredDates) + "</div>";
-    }
-
+    let errorsText = "<div>" + valueCanNotBeEmpty($(departureDate1.element).val()) + "</div>";
     let warningText = "";
-    if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
-        warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
+    if (valueCanNotBeEmpty($(departureDate1.element).val()) === ""){
+        errorsText += dateMustBeAfterCurrentDate(departureDate1.val);
+        if (typeof arrivalDate1 !== "undefined") {
+            errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate1.val, departureDate1.val) + "</div>";
+            errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
+            errorsText += "<div>" + valueCanNotBeEmpty($(departureDate1.element).val()) + "</div>";
+        }
+
+        if (passportExpired.length > 0) {
+            let passportExpiredDates = [];
+            passportExpired.forEach(item => {
+                passportExpiredDates.push(extractObjectField(item, "val"));
+            });
+            errorsText += "<div>" + passportsMustBeValid6MonthsAfterDeparture(departureDate1.val, passportExpiredDates) + "</div>";
+        }
+
+        if (registration.val !== "NO" && typeof validateWarningRegistration7Days(1) !== "undefined" && validateWarningRegistration7Days(1) !== ""){
+            warningText = '<div>' + validateWarningRegistration7Days(1) + "</div>";
+        }
     }
+
+
 
     $(e)
         .parent()
@@ -869,28 +882,29 @@ function validateDeparture2(e, trigger) {
         element: $(e)
     };
 
-    let errorsText = '';
-
-    if(typeof departureDate1 !== "undefined")
-        errorsText = dateMustBeAfterCurrentDate(departureDate1.val);
-
-    if (typeof arrivalDate2 !== "undefined") {
-        errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate2.val, departureDate2.val) + "</div>";
-        errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
-        errorsText += "<div>" + valueCanNotBeEmpty($(departureDate2.element).val()) + "</div>";
-    }
-
-    if (passportExpired.length > 0) {
-        let passportExpiredDates = [];
-        passportExpired.forEach(item => {
-            passportExpiredDates.push(extractObjectField(item, "val"));
-        });
-        errorsText += "<div>" + passportsMustBeValid6MonthsAfterDeparture(departureDate2.val, passportExpiredDates) + "</div>";
-    }
-
+    let errorsText = "<div>" + valueCanNotBeEmpty($(departureDate2.element).val()) + "</div>";
     let warningText = "";
+    if (valueCanNotBeEmpty($(departureDate2.element).val()) === ""){
+        if(typeof departureDate1 !== "undefined")
+            errorsText += dateMustBeAfterCurrentDate(departureDate1.val);
+
+        if (typeof arrivalDate2 !== "undefined") {
+            errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate2.val, departureDate2.val) + "</div>";
+            errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
+
+        }
+
+        if (passportExpired.length > 0) {
+            let passportExpiredDates = [];
+            passportExpired.forEach(item => {
+                passportExpiredDates.push(extractObjectField(item, "val"));
+            });
+            errorsText += "<div>" + passportsMustBeValid6MonthsAfterDeparture(departureDate2.val, passportExpiredDates) + "</div>";
+        }
+    }
+
     if (registration.val !== "NO" && typeof validateWarningRegistration7Days(2) !== "undefined" && validateWarningRegistration7Days(2) !== ""){
-        warningText = '<div>' + validateWarningRegistration7Days(2) + "</div>";
+        warningText += '<div>' + validateWarningRegistration7Days(2) + "</div>";
     }
 
     $(e)
@@ -905,7 +919,7 @@ function validateDeparture2(e, trigger) {
 
     checkIfFieldCorrect(errorsText, e)
 
-    if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival2(arrivalDate2.element, true);
+    if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);
     if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
 }
 
@@ -1313,6 +1327,11 @@ $("#phone").intlTelInput({
   separateDialCode: true
 });
 
+$(document).on("click", ".step__subtitle", function() {
+    $(this).toggleClass("step__subtitle_close")
+    $(this).next().toggle(1000)
+})
+
 setTimeout(function(){
     $('[data-steps]').click(function(){
 
@@ -1350,11 +1369,6 @@ setTimeout(function(){
     })
 
 },1000)
-
-$(document).on("click", ".step__subtitle", function() {
-    $(this).toggleClass("step__subtitle_close")
-    $(this).next().toggle(1000)
-})
 
 !function(n) {
     "function" == typeof define && define.amd
