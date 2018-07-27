@@ -119,6 +119,7 @@
                        </select>
 
                    </div>
+                   <div class="input__error-label"></div>
                    <div class="input__highlight"></div>
                    <div class="hint">
                        <div class="hint__header">
@@ -191,6 +192,7 @@
                             <% next %>
                        </select>
                    </div>
+                   <div class="input__error-label"></div>
                    <div class="input__highlight"></div>
                    <div class="input__wrapper-highlight"></div>
                    <div class="hint">
@@ -267,7 +269,7 @@
                             <% next %>
                        </select>
                    </div>
-
+                   <div class="input__error-label"></div>
                    <div class="input__highlight"></div>
                    <div class="input__wrapper-highlight"></div>
                    <div class="hint">
@@ -401,7 +403,7 @@
                    </div>
                </div>
                <div class="input">
-                   <div class="input__wrapper">
+                   <div class="input__wrapper mt-2">
                        <label class="input__label">Country applying in</label>
                        <br/>
                        <select value="" class="input__select input-country" name="consulateCountry">
@@ -495,6 +497,7 @@
                            <option value="">Another option</option>
                        </select> -->
                    </div>
+                   <div class="input__error-label"></div>
                    <div class="input__highlight"></div>
                    <div class="input__wrapper-highlight"></div>
                    <div class="hint">
@@ -571,7 +574,7 @@
                        <div class="step__subtitle-icon"></div>
                    </div>
                    <div class="step__subtitle-content">
-                       <div class="input">
+                       <div class="input mt-5">
                            <div class="input__wrapper">
                                <label class="input__label">First name</label>
                                <input type="text" name="firstName" class="input__field input-firstname"/>
@@ -764,7 +767,10 @@
                            </div>
                        </div>
                        <div class="input">
+                           <div class="input__label mb-1">Gender
+                           </div>
                            <div class="radio-buttons">
+
                                <div class="radio-buttons__wrapper">
                                    <input type="radio" name="gender_1" value="Male" id="m1" class="radio-buttons__radio"/>
                                    <label for="m1" class="radio-buttons__view">Male</label>
@@ -845,10 +851,10 @@
                            </div>
                        </div>
                        <div class="d-block d-sm-flex justify-content-between mw-625">
-                           <div style="width: 50%" class="input">
+                           <div style="width: 50%" class="input mr-4">
                                <div class="input__wrapper">
                                    <label class="input__label">Citizenship</label>
-                                   <select class="input input__select input-citizenship" name="passportCitzenship">
+                                   <select class="input input__select input-citizenship mb-0" name="passportCitzenship">
                                        <option selected disabled hidden>Please select</option>
                                        <%
                                        for each country in ViewBag.Countries %>
@@ -983,7 +989,7 @@
                            </div>
                        </div>
                        <div class="d-block d-sm-flex justify-content-between mw-625" style="position: relative;">
-                           <div class="input mr-5" style="position: static;">
+                           <div class="input mr-4" style="position: static;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
                                    <input class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
@@ -1377,7 +1383,7 @@
                            <label for="Motorcycle" class="radio-buttons__view">Motorcycle</label>
                        </div>
                    </div>
-                   <div class="input">
+                   <div class="input mt-4">
                        <div class="input__wrapper">
                            <label class="input__label">Vehicle make</label>
                            <%
@@ -1428,7 +1434,7 @@
                    </div>
 
                        <div class="step__subtitle-content">
-                           <div class="input input_correct">
+                           <div class="input input_correct mt-5">
                                <div class="input__wrapper">
                                    <label class="input__label">City</label>
                                    <select class="input__select input-city" name="visitCity1">
@@ -1569,7 +1575,7 @@
                                </div>
                            </div>
                        </div>
-                       <button type="button" name="button" class="button button__remove-location my-3">REMOVE LOCATION</button>
+                       <button type="button" name="button" class="button button__remove-location my-3 mr-5">REMOVE LOCATION</button>
                </div>
 
                <button type="button" name="button" class="button button__add-location my-3" data-button="addLocation">+ ADD ANOTHER LOCATION</button>

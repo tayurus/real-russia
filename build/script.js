@@ -905,7 +905,7 @@ function validateDeparture2(e, trigger) {
 
     checkIfFieldCorrect(errorsText, e)
 
-    if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival2(arrivalDate2.element, true);
+    if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);
     if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
 }
 
@@ -1313,6 +1313,11 @@ $("#phone").intlTelInput({
   separateDialCode: true
 });
 
+$(document).on("click", ".step__subtitle", function() {
+    $(this).toggleClass("step__subtitle_close")
+    $(this).next().toggle(1000)
+})
+
 setTimeout(function(){
     $('[data-steps]').click(function(){
 
@@ -1350,11 +1355,6 @@ setTimeout(function(){
     })
 
 },1000)
-
-$(document).on("click", ".step__subtitle", function() {
-    $(this).toggleClass("step__subtitle_close")
-    $(this).next().toggle(1000)
-})
 
 !function(n) {
     "function" == typeof define && define.amd

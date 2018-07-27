@@ -348,7 +348,7 @@ function validateDeparture2(e, trigger) {
 
     checkIfFieldCorrect(errorsText, e)
 
-    if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival2(arrivalDate2.element, true);
+    if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);
     if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
 }
 
