@@ -614,10 +614,12 @@ function checkIfFieldCorrect(errorsText, e){
     if (errorsText.replace(/<div>/gi,'').replace(/<\/div>/gi, '').trim() === ''){
         $(e).closest('.input__wrapper').addClass("input__wrapper_correct");
         $(e).closest('.input').addClass("input_correct");
+        $(e).closest('.input__wrapper').removeClass("input__wrapper_error");
     }
     else {
         $(e).closest('.input__wrapper').removeClass("input__wrapper_correct");
         $(e).closest('.input').removeClass("input_correct");
+        $(e).closest('.input__wrapper').addClass("input__wrapper_error");
     }
 }
 

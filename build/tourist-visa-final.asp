@@ -76,7 +76,31 @@
                </div>
 
            </div>
-           <div class="sticky-errors">
+       </div>
+       <div class="header-sticky">
+
+           <div class="header-price">
+               <div class="header-price__title">
+                   Russian Tourist Visa Support Application
+               </div>
+               <div class="header-price__total-result">
+                   <div class="header-price__total-label mr-2">Total price</div>
+                   <div class="header-price__total-sum">
+                       <span class="total__currency">£</span>
+                       <span class="total__sum-value">15.30</span>
+                   </div>
+               </div>
+               <div class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
+                   <div class="ml-4">
+                       <button type="button" class="button mr-3">retrieve saved application</button>
+                   </div>
+                   <div>
+                       <button type="button" class="button">save progress</button>
+                   </div>
+               </div>
+           </div>
+
+           <div class="sticky-errors mx-auto">
              <div class="sticky-errors__icon_error"></div>
              <div class="sticky-errors__content">
                <div class="sticky-errors__title">The following fields have problems</div>
@@ -85,7 +109,7 @@
                </div>
              </div>
            </div>
-       </div>
+        </div>
        <div class="container bg-gray pb-4 px-0">
            <div class="d-flex align-items-center justify-content-center justify-content-sm-between">
                <div class="justify-content-between pt-4 pl-2 d-block d-sm-flex">
@@ -858,23 +882,24 @@
                                </div>
                            </div>
                        </div>
-                       <div class="d-block d-sm-flex justify-content-between mw-625">
-                           <div style="width: 50%" class="input mr-4">
-                               <div class="input__wrapper">
-                                   <label class="input__label">Citizenship</label>
-                                   <select class="input__select input-citizenship mb-0" name="passportCitzenship">
-                                       <option selected disabled hidden>Please select</option>
-                                       <%
-                                       for each country in ViewBag.Countries %>
-                                            <option value="<%= country.name %>">
-                                                <%= country.name %>
-                                            </option>
-                                        <% next %>
-                                   </select>
-                               </div>
-                               <div class="input__error-label"></div>
-                               <div class="input__wrapper-highlight"></div>
-                               <div class="hint">
+                       <div class="d-block d-sm-flex justify-content-between mw-625" style="position: relative;">
+
+                               <div class="input mr-5" style="position: relative; width: 50%">
+                                   <div class="input__wrapper">
+                                       <label class="input__label">Citizenship</label>
+                                       <select class="input__select input-citizenship mb-0" name="passportCitzenship">
+                                           <option selected disabled hidden>Please select</option>
+                                           <%
+                                           for each country in ViewBag.Countries %>
+                                                <option value="<%= country.name %>">
+                                                    <%= country.name %>
+                                                </option>
+                                            <% next %>
+                                       </select>
+                                   </div>
+                                   <div class="input__error-label"></div>
+                                   <div class="input__wrapper-highlight"></div>
+                                   <div class="hint hint_right">
                                        <div class="hint__header">
                                            <div data-head-tab="1" class="hint__tab hint__tab_active">
                                                <div class="hint__header-text">Assistance</div>
@@ -931,7 +956,8 @@
                                        </div>
                                    </div>
                                </div>
-                           <div style="width: 50%" class="input">
+
+                           <div class="input" style="position: relative; width: 50%">
                                <div class="input__wrapper">
                                    <label class="input__label">Passport number</label>
                                    <input autocomplete="off"type="text" name="passportNumber" class="input__field input-passport-number"/>
@@ -997,7 +1023,7 @@
                            </div>
                        </div>
                        <div class="d-block d-sm-flex justify-content-between mw-625" style="position: relative;">
-                           <div class="input mr-4" style="position: static;">
+                           <div class="input mr-5" style="position: relative;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
                                    <input autocomplete="off"class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
@@ -1007,7 +1033,7 @@
                                </div>
                                <div class="input__error-label"></div>
                                <div class="input__wrapper-highlight"></div>
-                               <div class="hint">
+                               <div class="hint hint_right">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">
                                            <div class="hint__header-text">Assistance</div>
@@ -1064,7 +1090,7 @@
                                    </div>
                                </div>
                            </div>
-                           <div class="input" style="position: static;">
+                           <div class="input" style="position: relative;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport expires</label>
                                    <input autocomplete="off"type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" />
@@ -1264,54 +1290,6 @@
                        </div>
                    </div>
                </div>
-               <!-- <div class="auto-tourism-wrapper">
-                   <div class="radio-buttons">
-                       <div class="radio-buttons__wrapper">
-                           <input autocomplete="off"type="radio" name="vehicleType" id="Car" checked class="radio-buttons__radio"/>
-                           <label for="Car" class="radio-buttons__view">Car</label>
-                       </div>
-                       <div class="radio-buttons__wrapper">
-                           <input autocomplete="off"type="radio" name="vehicleType" id="Motorcycle" class="radio-buttons__radio"/>
-                           <label for="Motorcycle" class="radio-buttons__view">Motorcycle</label>
-                       </div>
-                   </div>
-                   <div class="input">
-                       <div class="input__wrapper">
-                           <label class="input__label">Vehicle make</label>
-                           <input autocomplete="off"type="text" name="vehicleMake" class="input__field input-vehicle-make"/>
-                           <%
-                           set attr = new cAssocArray
-                            attr("name") = "visaType"
-                            attr("class") = "input__select input-entries"
-                            call HtmlSelect_args8(ViewBag.CarBrands, "Title", "Title", attr, "", "", "Please select", true)
-                           %>
-
-                       </div>
-                       <div class="input__error-label"></div>
-                   </div>
-                   <div class="input">
-                       <div class="input__wrapper">
-                           <label class="input__label">Vehicle color</label>
-                           <select class="input__select input-vehicle-color" name="vehicleColor">
-                               <option selected hidden disabled>Please select...</option>
-                                <option value="black">Black
-                                </option>
-                                <option value="dark">Dark blue
-                                </option>
-                                <option value="golden">Golden
-                                </option>
-                           </select>
-                       </div>
-                       <div class="input__error-label"></div>
-                   </div>
-                   <div class="input">
-                       <div class="input__wrapper">
-                           <label class="input__label">Licence Plate number</label>
-                           <input autocomplete="off"type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
-                       </div>
-                       <div class="input__error-label"></div>
-                   </div>
-               </div> -->
            </div>
            <div data-step="3" class="step">
                <h2 class="step__title">details about your visit to russia</h2>
@@ -1437,7 +1415,7 @@
                </div>
                <div class="location-wrapper">
                    <div class="step__subtitle">
-                       <div class="step__subtitle-text">Location</div>
+                       <div class="step__subtitle-text">Location 1</div>
                        <div class="step__subtitle-icon"></div>
                    </div>
 
@@ -1583,7 +1561,7 @@
                                </div>
                            </div>
                        </div>
-                       <button type="button" name="button" class="button button__remove-location my-3 mr-5">REMOVE LOCATION</button>
+                       <button type="button" name="button" class="button button__remove-location my-3 mr-5">REMOVE LOCATION 1</button>
                </div>
 
                <button type="button" name="button" class="button button__add-location my-3" data-button="addLocation">+ ADD ANOTHER LOCATION</button>

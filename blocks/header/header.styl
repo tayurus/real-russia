@@ -1,0 +1,47 @@
+.header-sticky
+    position: sticky;
+    top: 41px;
+    z-index: 10;
+
+.header-price
+    display: flex;
+    background-color: #fff;
+    border-top: 3px solid #d89c22;
+    padding-left: 46px;
+    height: 47px;
+    align-items: center;
+    padding-right: 10px;
+    &__title
+        color: #cc091d;
+        font-family: "Open Sans";
+        font-size: 15px;
+        font-weight: 700;
+        line-height: 1;
+        width: 100%;
+    &__total-result
+        display: flex;
+        align-items: baseline;
+        width: 100%;
+    &__total-label
+        font-size: 12px;
+        color: #353535;
+        text-transform: uppercase;
+    &__total-sum
+        color: #cc091d;
+        font-family: "Open Sans";
+        font-size: 16px;
+        font-weight: 700;
+    &__result
+        padding: 0;
+        margin: 0;
+        height: auto;
+    .button
+        font-size: 12px;
+        font-weight: 300;
+        padding: 8px;
+
+@media (max-width:767px),(max-device-width:767px)
+    .header-price
+        display: none;
+    .header-sticky
+        position: static

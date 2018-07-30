@@ -117,7 +117,7 @@ $(document).on("click", '[data-role="confirm"]', function(e) {
 $(document).on('click', '.sticky-errors__link', function() {
     $('[data-steps= ' + $(this).attr('data-error-step') + ']').click();
     $([document.documentElement, document.body]).animate({
-        scrollTop: $('[name=' + $(this).text() + ']').parent().offset().top - 75
+        scrollTop: $('[name=' + $(this).text() + ']').parent().offset().top - 75 - $('.header-sticky').height()
     }, 1000)
 })
 //when user clicks on button "next-step"
@@ -319,13 +319,16 @@ $(document).on("blur propertychange change input paste", ".input-entries", funct
 });
 
 $(document).on("blur propertychange change input paste", ".input-country", function() {
-    let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry($(this).val());
-    if (text !== null) {
-        text = text.replace("{Country}", $(this).val());
-        $(this).closest('.input').next().html("<b>CONSULAR NOTES</b>\
-                                                <div class='step__note-text'>" + text + "</div>")
-        $(this).closest('.input').next().removeClass('disabled');
+    if ($(this).val() !== null){
+        let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry($(this).val());
+        if (text !== null) {
+            text = text.replace("{Country}", $(this).val());
+            $(this).closest('.input').next().html("<b>CONSULAR NOTES</b>\
+                                                    <div class='step__note-text'>" + text + "</div>")
+            $(this).closest('.input').next().removeClass('disabled');
+        }
     }
+
 
 });
 

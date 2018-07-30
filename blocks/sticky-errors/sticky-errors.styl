@@ -1,11 +1,10 @@
 .sticky-errors
-    width: calc(100% - -27px)
+    width: 100%
     margin-left: -14px;
     display: none;
     // position: fixed;
     z-index: 1000;
     left: 67px;
-    width: 1100px;
     top: 0
     align-items: center;
     padding: 20px
@@ -13,8 +12,9 @@
     border-top: 1px solid #cc091d
     border-bottom: 1px solid #cc091d
     // position: sticky;
-    z-index: 1000
-    top: 0
+    // top: 41px;
+    // z-index: 1000
+    // top: 0
     &.active
         display: flex;
 
@@ -43,4 +43,6 @@
     font-family "Open Sans"
     font-size 13px
     margin: 0px 5px
-    text-decoration: underline
+
+.container_form-wrapper a.sticky-errors__link
+    text-decoration: underline!important
