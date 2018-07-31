@@ -1,143 +1,61 @@
-.datepicker
-    z-index: 2;
-    width: 260px
-    border: 10px solid #e2e2e2
-    outline: 1px solid #acacac;
-    position: absolute;
-    bottom: -214px;
-    left: 50px;
-    background: #fff
+.datepicker{
+    background: #fff !important;
+    border: 10px solid #ccc !important;
+    outline: 1px solid #b0b0b0 !important;
+    border-radius: 0px !important;
+    font-family: "Open Sans"!important;
+}
+.datepicker--nav{
+    background: #cc091d !important
+}
+.datepicker--nav-title{
+    color: #fff !important;
+}
 
-.datepicker__month
-    width: 100%
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px
-    background: #cc091d
+.datepicker--nav-title i{
+    color: #fff !important;
+}
 
-.datepicker__prev
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    background: url('img/arrow-datepicker-left.png') no-repeat center / 6px 11px;
+.datepicker--content{
+    padding: 0px !important;
+}
 
-.datepicker__current
-    color: #ffffff;
-    font-family: "Open Sans";
-    font-size: 14px;
-
-.datepicker__next
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    background: url('img/arrow-datepicker-right.png') no-repeat center / 6px 11px;
-
-.datepicker__days
-    width: 100%;
-    text-align: center;
-
-.datepicker__days td
-    cursor: pointer;
-    user-select: none;
-
-.ui-widget.ui-widget-content
-    border-radius: 0
-    padding: 0
-    padding: 8px;
-    background-color: #EEEEEE;
-    width: auto;
-
-// .ui-widget.ui-widget-content::after
-//     content: "";
-//     position: absolute;
-//     top: -10px;
-//     left: 10%;
-//     transform: translate(-50%,-50%);
-//     border-top: 10px solid transparent;
-//     border-bottom: 10px solid #c5c5c5;
-//     border-left: 10px solid transparent;
-//     border-right: 10px solid transparent;
-
-.ui-datepicker .ui-datepicker-header
-    border-radius: 0
-    border: 0
-    background-color: #cc091d
-    padding: 7px 0;
-
-.ui-icon-circle-triangle-w
-    background-position: 50%;
-
-.ui-widget-header .ui-icon-circle-triangle-e.ui-icon
-    background-image: url(img/arrow-datepicker-right.png);
-    background-position: 50%;
-
-.ui-datepicker-next-hover,
-.ui-datepicker-prev-hover,
-.ui-datepicker-next-hover span,
-.ui-datepicker-prev-hover span
-    background-color: transparent!important
-    border 0!important
-
-.ui-datepicker .ui-datepicker-next
-    width: 16px
-    height: 16px
-    top: 9px;
-    right: 8px;
-    left: auto;
-
-.ui-datepicker .ui-datepicker-prev
-    width: 16px
-    height: 16px
-    top: 9px;
-    left: 8px;
-
-.ui-widget-header .ui-icon
-    background-image: url(img/arrow-datepicker-left.png);
-
-.ui-datepicker table
-    background-color: #fff;
-    margin: 0
-
-.ui-datepicker th
-    border-bottom: 1px solid #c5c5c5;
-
-.ui-datepicker th span
-    font-family: "Open Sans"!important
-    font-weight: normal;
-
-.ui-state-default, .ui-widget-content .ui-state-default
-    border: 0
-    background: none
-    font-family: "Open Sans"!important
-
-.ui-widget-content .ui-state-active
-    background-image: none!important;
-    border-radius: 50%;
-    background-color: #cc091d;
+.datepicker--cell.datepicker--cell-day.-selected-{
+    border-radius: 100%;
+    background: #cc091d !important;
     color: #fff;
+}
 
-.ui-datepicker-days-cell-over .ui-datepicker-today
-    background-color: transparent
+.datepicker--day-name{
+    color: #000 !important;
+    font-family: "Open Sans"!important;
+}
 
-.ui-state-highlight, .ui-widget-content .ui-state-highlight
-    background: #fffa90;
-    color: #777620;
-    border-radius: 50%
+.datepicker--nav-action path{
+    stroke: #fff !important;
+}
 
-.ui-state-default, .ui-widget-content .ui-state-default
-    padding: 0;
-    height: 30px;
-    width: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.datepicker--days-names{
+    border-bottom: 1px solid #ccc !important;
+    padding-bottom: 10px !important;
+}
 
-.ui-datepicker td
-    background-color: transparent;
+.datepicker--nav-action:hover, .datepicker--nav-title:hover {
+    background: transparent !important;
+}
 
-@media (max-width:430px),(max-device-width:430px) {
-    .datepicker{
-        left: 0px;
-    }
+.datepicker--nav-action:hover, .datepicker--nav-title:hover {
+    background: transparent !important;
+}
+
+.-bottom-left- .datepicker--pointer, .-top-left- .datepicker--pointer {
+    left: 10px;
+    top: -16px;
+    background: #ccc;
+    border-top: 1px solid #b0b0b0 !important;
+    border-right: 1px solid #b0b0b0 !important;
+}
+
+.datepicker--cell.datepicker--cell-year.-selected-, .datepicker--cell.datepicker--cell-month.-selected-{
+    background: #cc091d !important;
 }

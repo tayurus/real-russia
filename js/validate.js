@@ -133,7 +133,7 @@ $(document).on('blur propertychange change input paste', '[name=agreeVisaSuitabl
 function validatePassportIssued(e, trigger) {
     let index = $(".input-passport-issued").index(e) + 1;
     passportIssued[index] = {
-        val: $(e).datepicker("getDate"),
+        val:$(e).data('datepicker').date,
         element: $(e)
     };
 
@@ -159,7 +159,7 @@ function validatePassportIssued(e, trigger) {
 function validatePassportExpired(e, trigger) {
     let index = $(".input-passport-expired").index(e) + 1;
     passportExpired[index] = {
-        val: $(e).datepicker("getDate"),
+        val:$(e).data('datepicker').date,
         element: $(e)
     };
 
@@ -191,7 +191,7 @@ function validatePassportExpired(e, trigger) {
 //валидация даты вьезда
 function validateArrival1(e, trigger) {
     arrivalDate1 = {
-        val: $(e).datepicker("getDate"),
+        val:$(e).data('datepicker').date,
         element: $(e)
     };
 
@@ -227,7 +227,7 @@ function validateArrival1(e, trigger) {
 //валидация даты выезда
 function validateDeparture1(e, trigger) {
     departureDate1 = {
-        val: $(e).datepicker("getDate"),
+        val:$(e).data('datepicker').date,
         element: $(e)
     };
 
@@ -276,7 +276,7 @@ function validateDeparture1(e, trigger) {
 //валидация даты вьезда
 function validateArrival2(e, trigger) {
     arrivalDate2 = {
-        val: $(e).datepicker("getDate"),
+        val:$(e).data('datepicker').date,
         element: $(e)
     };
 
@@ -321,7 +321,7 @@ function validateArrival2(e, trigger) {
 //валидация даты выезда
 function validateDeparture2(e, trigger) {
     departureDate2 = {
-        val: $(e).datepicker("getDate"),
+        val:$(e).data('datepicker').date,
         element: $(e)
     };
 
@@ -424,12 +424,14 @@ function validateRegistration(e, trigger){
 
 function validateBirthDate(e, trigger) {
     birthDate = {
-        val: $(e).datepicker('getDate'),
+        val: $(e).data('datepicker').date,
         element: $(e)
     };
 
-    let errorsText = '<div>' + dateMustBeBeforeCurrentDate(birthDate.val) + '</div>';
-    errorsText += '<div>' + valueCanNotBeEmpty($(e).val()) + '</div>';
+    let errorsText =  '<div>' + valueCanNotBeEmpty($(e).val()) + '</div>';
+    if ( valueCanNotBeEmpty($(e).val()) === ""){
+         errorsText += '<div>' + dateMustBeBeforeCurrentDate(birthDate.val) + '</div>';
+    }
     $(e)
         .parent()
         .next()

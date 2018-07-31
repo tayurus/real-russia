@@ -1,6 +1,6 @@
 //////////////////////////////////////////helpers
 function parseDate(s) {
-    var b = s.split(/\D/);
+    var b = s.split('.').reverse();
     return new Date(b[0], parseInt(b[1]) - 1, b[2]);
 }
 

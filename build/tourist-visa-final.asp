@@ -4,13 +4,14 @@
 <% sub StyleSheetsSection %>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet" />
 <link href="styles.css" rel="stylesheet" />
 <% end sub %>
 
 <% sub ScriptsSection %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.js" type="text/javascript" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/13.0.2/js/utils.js" type="text/javascript" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.4.0/js/intlTelInput.min.js" type="text/javascript" ></script>
+
 <script src="/visas/belarusia/scripts/infrastructure.data.js" type="text/javascript"></script>
 <script src="/Russian/Scripts/Visas.Russian.js" type="text/javascript"></script>
 <script src="/Russian/Scripts/Visas.Russian.Prices.js" type="text/javascript"></script>
@@ -818,7 +819,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Date of birth</label>
-                               <input autocomplete="off"type="text" class="datepicker_jq input__field input__field_calendar input-birth-date"/>
+                               <input autocomplete="off"type="text" data-date-format="dd-mm-yyyy" class="datepicker-here input__field input__field_calendar input-birth-date"/>
                                 <input autocomplete="off"type="hidden" name="dobMonth" />
                                <input autocomplete="off"type="hidden" name="dobDay" />
                                <input autocomplete="off"type="hidden" name="dobYear" />
@@ -1026,7 +1027,7 @@
                            <div class="input mr-5" style="position: relative;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
-                                   <input autocomplete="off"class="datepicker_jq input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
+                                   <input autocomplete="off"class="datepicker-here input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
                                    <input autocomplete="off"type="hidden" name="passportMonthIssued" />
                                     <input autocomplete="off"type="hidden" name="passportDayIssued" />
                                   <input autocomplete="off"type="hidden" name="passportYearIssued" />
@@ -1093,7 +1094,7 @@
                            <div class="input" style="position: relative;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport expires</label>
-                                   <input autocomplete="off"type="text" class="datepicker_jq input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" />
+                                   <input autocomplete="off"type="text" class="datepicker-here input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" />
                                    <input autocomplete="off"type="hidden" name="passportMonthExpires" />
                                     <input autocomplete="off"type="hidden" name="passportDayExpires" />
                                   <input autocomplete="off"type="hidden" name="passportYearExpires" />
@@ -1310,7 +1311,7 @@
                    <div class="input mr-5 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
-                           <input autocomplete="off"type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date1"/>
+                           <input autocomplete="off"type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker-here input__field input__field_calendar input-arrival-date1"/>
                            <input autocomplete="off"type="hidden" name="visitMonthOfEntry" />
                             <input autocomplete="off"type="hidden" name="visitDayOfEntry" />
                           <input autocomplete="off"type="hidden" name="visitYearOfEntry" />
@@ -1321,7 +1322,7 @@
                    <div class="input mr-3 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
-                           <input autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date1"/>
+                           <input autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker-here input__field input__field_calendar input-departure-date1"/>
                            <input autocomplete="off"type="hidden" name="visitMonthOfExit" />
                             <input autocomplete="off"type="hidden" name="visitDayOfExit" />
                           <input autocomplete="off"type="hidden" name="visitYearOfExit" />
@@ -1337,7 +1338,7 @@
                    <div class="input mr-5 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
-                           <input autocomplete="off"name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker_jq input__field input__field_calendar input-arrival-date2"/>
+                           <input autocomplete="off"name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker-here input__field input__field_calendar input-arrival-date2"/>
                            <input autocomplete="off"type="hidden" name="visitMonthOfEntry2" />
                           <input autocomplete="off"type="hidden" name="visitDayOfEntry2" />
                           <input autocomplete="off"type="hidden" name="visitYearOfEntry2" />
@@ -1348,7 +1349,7 @@
                    <div class="input mr-3 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
-                           <input autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker_jq input__field input__field_calendar input-departure-date2"/>
+                           <input autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker-here input__field input__field_calendar input-departure-date2"/>
                            <input autocomplete="off"type="hidden" name="visitMonthOfExit2" />
                           <input autocomplete="off"type="hidden" name="visitDayOfExit2" />
                           <input autocomplete="off"type="hidden" name="visitYearOfExit2" />
@@ -1724,7 +1725,7 @@
                        <div class="input mr-0 mr-md-5">
                            <div class="input__wrapper">
                                <label class="input__label">Expiry date</label>
-                               <input autocomplete="off"type="text" class="datepicker_jq input__field input__field_calendar"/>
+                               <input autocomplete="off"type="text" class="datepicker-here input__field input__field_calendar"/>
                            </div>
                            <div class="input__error-label"></div>
                        </div>

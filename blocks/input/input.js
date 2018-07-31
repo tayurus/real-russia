@@ -19,10 +19,10 @@ $(".input__select, .input__field").on('focusin',function() {
 $("#phone").intlTelInput({
   // allowDropdown: false,
   // autoHideDialCode: false,
-  // autoPlaceholder: "off",
+  autoPlaceholder: "polite",
   // dropdownContainer: "body",
   // excludeCountries: ["us"],
-  // formatOnDisplay: false,
+  formatOnDisplay: true,
   // geoIpLookup: function(callback) {
   //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
   //     var countryCode = (resp && resp.country) ? resp.country : "";
@@ -33,7 +33,7 @@ $("#phone").intlTelInput({
   // initialCountry: "auto",
   // nationalMode: false,
   // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
-  // placeholderNumberType: "MOBILE",
+  placeholderNumberType: "MOBILE",
   // preferredCountries: ['cn', 'jp'],
   separateDialCode: true
 });
