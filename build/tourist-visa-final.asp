@@ -140,8 +140,8 @@
                        <span>We need to find out first a little about your upcoming visit.</span>
                    </div>
                </div>
-               <div class="input input_correct">
-                   <div class="input__wrapper input__wrapper_correct">
+               <div class="input ">
+                   <div class="input__wrapper ">
                        <label class="input__label">Group Size</label>
                        <select class="input__select input-group-size" name="groupNum">
                             <%
@@ -212,8 +212,8 @@
                    </div>
                    <div class="input__wrapper-highlight"></div>
                </div>
-               <div class="input input_correct">
-                   <div class="input__wrapper input__wrapper_correct">
+               <div class="input ">
+                   <div class="input__wrapper ">
                        <label class="input__label">Number of entries</label>
                        <select class="input__select input-entries" name="visaType">
                            <%
@@ -285,8 +285,8 @@
                        </div>
                    </div>
                </div>
-               <div class="input input_correct">
-                   <div class="input__wrapper input__wrapper_correct">
+               <div class="input ">
+                   <div class="input__wrapper ">
                        <label class="input__label">Purpose of visit</label>
                        <select class="input__select input-purpose" name="purposeOfVisit">
                            <% for each i in ViewBag.PurposesOfVisit %>
@@ -362,8 +362,8 @@
                        </div>
                    </div>
                </div>
-               <div class="input input_correct">
-                   <div class="input__wrapper input__wrapper_correct">
+               <div class="input ">
+                   <div class="input__wrapper ">
                        <label class="input__label">Registration</label>
                        <select class="input__select input-registration" name="regService">
                            <%
@@ -512,11 +512,11 @@
                <div class="step__note disabled">
 
                </div>
-               <div class="input input_correct">
-                   <div class="input__wrapper input__wrapper_correct">
+               <div class="input ">
+                   <div class="input__wrapper ">
                        <label class="input__label">Delivery option</label>
                        <br/>
-                       <select class="input__select" name="deliveryOption">
+                       <select class="input__select input-delivery" name="deliveryOption">
                            <!-- <option selected disabled hidden>Please select</option> -->
                            <%
                            for each key in ViewBag.Deliveries %>
@@ -899,7 +899,7 @@
                                        </select>
                                    </div>
                                    <div class="input__error-label"></div>
-                                   <div class="input__wrapper-highlight"></div>
+                                   <div class="input__wrapper-highlight input__wrapper-highlight_left"></div>
                                    <div class="hint hint_right">
                                        <div class="hint__header">
                                            <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -964,7 +964,7 @@
                                    <input autocomplete="off"type="text" name="passportNumber" class="input__field input-passport-number"/>
                                </div>
                                <div class="input__error-label"></div>
-                               <div class="input__wrapper-highlight"></div>
+                               <div class="input__wrapper-highlight input__wrapper-highlight_right"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -1033,7 +1033,7 @@
                                   <input autocomplete="off"type="hidden" name="passportYearIssued" />
                                </div>
                                <div class="input__error-label"></div>
-                               <div class="input__wrapper-highlight"></div>
+                               <div class="input__wrapper-highlight input__wrapper-highlight_left"></div>
                                <div class="hint hint_right">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -1100,7 +1100,7 @@
                                   <input autocomplete="off"type="hidden" name="passportYearExpires" />
                                </div>
                                <div class="input__error-label"></div>
-                               <div class="input__wrapper-highlight"></div>
+                               <div class="input__wrapper-highlight input__wrapper-highlight_right"></div>
                                <div class="hint">
                                    <div class="hint__header">
                                        <div data-head-tab="1" class="hint__tab hint__tab_active">
@@ -1421,7 +1421,7 @@
                    </div>
 
                        <div class="step__subtitle-content">
-                           <div class="input input_correct mt-5">
+                           <div class="input  mt-5">
                                <div class="input__wrapper">
                                    <label class="input__label">City</label>
                                    <select class="input__select input-city" name="visitCity1">
@@ -1495,7 +1495,7 @@
                                    </div>
                                </div>
                            </div>
-                           <div class="input input_correct">
+                           <div class="input ">
                                <div class="input__wrapper">
                                    <label class="input__label">Hotel</label>
                                    <select class="input__select input-hotel" name="visitHotel1">

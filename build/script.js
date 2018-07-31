@@ -1,7 +1,7 @@
 /////////////////////////////////////////////данные
-var numberOfEntries = { val: "Single entry visa"}, arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
+var numberOfEntries = { val: "Single entry visa"}, delivery, arrivalDate1, departureDate1, arrivalDate2, departureDate2, passportNumber, passportIssued = [],
     passportExpired = [], citizenship, countryApplyIn, registration = {element: $(".input-registration"),val:"NO"}, birthDate, processingCity, cities = [], hotels = [], vehicleMake, vehicleColor, vehicleLisence,
-    visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1, purpose, totalPrice, haveReadTerms, agreeVisaSuitable;
+    visitorsCount = 1, firstName, surname, middleName, email, phone, locationCount = 1, purpose, totalPrice, haveReadTerms, agreeVisaSuitable, groupSize = 1;
 var errors = [];
 
 ! function(t, e, i) {
@@ -1189,15 +1189,8 @@ $(".input-group-size").change(function() {
 
 
 
-    $(".visitor-wrapper .datepicker_jq").attr("id", "")
-        .removeClass('hasDatepicker')
-        .removeData('datepicker')
-        .unbind()
-        .datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'yy-mm-dd'
-        });
+    initializeVisitorsDatepickers();
+    initializeLocaleDatePicker();
 
     //changing number-text of visitor
     $(".visitor-wrapper").each(function(index, item) {
@@ -1225,7 +1218,6 @@ $(".input-group-size").change(function() {
     if (visitorsCount < newVisitorsCount)
         $(".visitor-wrapper:last").find('input').prop("checked", false)
 
-    initializeDatepicker()
 
     visitorsCount = newVisitorsCount;
 
@@ -1310,6 +1302,21 @@ function separationDateIntoThreeInputs(date) {
     }
 }
 
+function initializeVisitorsDatepickers(){
+    $(".input-birth-date").datepicker({
+        maxDate: new Date()
+    })
+    $(".input-passport-expired").datepicker({
+        minDate: new Date(new Date().setMonth(new Date().getMonth() + 6))
+    })
+    $(".input-passport-issued").datepicker({
+        maxDate: new Date()
+    })
+    $(".input-arrival-date1, .input-departure-date1").datepicker({
+        minDate: new Date()
+    })
+}
+
 $(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
     $('.arrival-date-insert').text($('.input-arrival-date1').val());
 });
@@ -1348,7 +1355,11 @@ $(document).on("blur propertychange change input paste", ".input-country", funct
                                                     <div class='step__note-text'>" + text + "</div>")
             $(this).closest('.input').next().removeClass('disabled');
         }
+        else{
+                $(this).closest('.input').next().html("");
+        }
     }
+
 
 
 });
@@ -1421,6 +1432,8 @@ Visas.Russian.RegistrationTypeId.parseFrom = function(val) {
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
 calculatePrice();
+initializeVisitorsDatepickers();
+initializeLocaleDatePicker();
 
 
 ///////////////////////////////////////////правила
@@ -1612,6 +1625,20 @@ let currentDate = new Date();
 //ВАЛИДАЦИЯ СВЯЗКИ ДАТА ВЫДАЧИ/ОКОНЧАНИЯ ПАСПОРТА + ДАТА ПРИЕЗДА/ДАТА ВЫЕЗДА
 
 /////////////////////////////////////////////обработчики изменений данных
+
+$(document).on("blur propertychange change input paste", ".input-group-size", function() {
+    validateGroupSize($(this));
+});
+$(document).on("blur propertychange change input paste", ".input-entries", function() {
+    validateEntries($(this));
+});
+$(document).on("blur propertychange change input paste", ".input-purpose", function() {
+    validatePurpose($(this));
+});
+$(document).on("blur propertychange change input paste", ".input-delivery", function() {
+    validateDelivery($(this));
+});
+
 
 $(document).on("blur propertychange change input paste", ".input-passport-issued", function() {
     validatePassportIssued($(this));
@@ -2298,36 +2325,86 @@ function validateAgreeVisaSuitable(e){
         .html(errorsText);
 }
 
-
-
-setTimeout(() => {
-    (function ($) { $.fn.datepicker.language['en'] = {
-    days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-    months: ['January','February','March','April','May','June', 'July','August','September','October','November','December'],
-    monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    today: 'Today',
-    clear: 'Clear',
-    dateFormat: 'mm/dd/yyyy',
-    timeFormat: 'hh:ii aa',
-    firstDay: 0
-}; })(jQuery);
-
-$('.datepicker-here').datepicker({
-    language: 'en',
-    onSelect: function(fd,date,inst){
-        console.log($(inst));
-        inst.hide();
+function validateGroupSize(e){
+    groupSize = {
+        element: $(e),
+        val: $(e).val()
     }
-})
-// .mask('99-99-9999')
-},500);
+    let errorsText = '<div>'+  userMustReadTerms(groupSize.val)  +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
+function validateEntries(e){
+    numberOfEntries = {
+        element: $(e),
+        val: $(e).val()
+    }
+    let errorsText = '<div>'+  userMustReadTerms(numberOfEntries.val)  +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
+function validatePurpose(e){
+     purpose = {
+        element: $(e),
+        val: $(e).val()
+    }
+    let errorsText = '<div>'+  userMustReadTerms(purpose.val)  +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
+function validateDelivery(e){
+    let delivery = {
+        element: $(e),
+        val: $(e).val()
+    }
+    let errorsText = '<div>'+  userMustReadTerms(delivery.val)  +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
 
-$('.datepicker-here').change(function(){
+function initializeLocaleDatePicker() {
+    setTimeout(() => {
+        (function($) {
+            $.fn.datepicker.language['en'] = {
+                days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+                daysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                daysMin: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+                months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                today: 'Today',
+                clear: 'Clear',
+                dateFormat: 'mm/dd/yyyy',
+                timeFormat: 'hh:ii aa',
+                firstDay: 0
+            };
+        })(jQuery);
+
+        $('.datepicker-here').datepicker({
+            language: 'en',
+            onSelect: function(fd, date, inst) {
+                inst.hide();
+            }
+        })
+        // .mask('99-99-9999')
+    }, 500);
+}
+
+$('.datepicker-here').change(function() {
     let date = $(this).val();
     let array = date.split("-").reverse();
-    if (date.length === 10 && new Date(array[0], array[1], array[2]) == "Invalid Date"){
+    if (date.length === 10 && new Date(array[0], array[1], array[2]) == "Invalid Date") {
 
     }
 })

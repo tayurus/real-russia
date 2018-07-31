@@ -24,6 +24,20 @@ let currentDate = new Date();
 
 /////////////////////////////////////////////обработчики изменений данных
 
+$(document).on("blur propertychange change input paste", ".input-group-size", function() {
+    validateGroupSize($(this));
+});
+$(document).on("blur propertychange change input paste", ".input-entries", function() {
+    validateEntries($(this));
+});
+$(document).on("blur propertychange change input paste", ".input-purpose", function() {
+    validatePurpose($(this));
+});
+$(document).on("blur propertychange change input paste", ".input-delivery", function() {
+    validateDelivery($(this));
+});
+
+
 $(document).on("blur propertychange change input paste", ".input-passport-issued", function() {
     validatePassportIssued($(this));
     separationDateIntoThreeInputs($(this));
@@ -707,4 +721,53 @@ function validateAgreeVisaSuitable(e){
         .closest('.radio-buttons')
         .next()
         .html(errorsText);
+}
+
+function validateGroupSize(e){
+    groupSize = {
+        element: $(e),
+        val: $(e).val()
+    }
+    let errorsText = '<div>'+  userMustReadTerms(groupSize.val)  +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
+function validateEntries(e){
+    numberOfEntries = {
+        element: $(e),
+        val: $(e).val()
+    }
+    let errorsText = '<div>'+  userMustReadTerms(numberOfEntries.val)  +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
+function validatePurpose(e){
+     purpose = {
+        element: $(e),
+        val: $(e).val()
+    }
+    let errorsText = '<div>'+  userMustReadTerms(purpose.val)  +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
+}
+function validateDelivery(e){
+    let delivery = {
+        element: $(e),
+        val: $(e).val()
+    }
+    let errorsText = '<div>'+  userMustReadTerms(delivery.val)  +'</div>';
+    $(e)
+        .closest('.input__wrapper')
+        .next()
+        .html(errorsText);
+    checkIfFieldCorrect(errorsText, e)
 }

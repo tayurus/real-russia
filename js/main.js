@@ -168,15 +168,8 @@ $(".input-group-size").change(function() {
 
 
 
-    $(".visitor-wrapper .datepicker_jq").attr("id", "")
-        .removeClass('hasDatepicker')
-        .removeData('datepicker')
-        .unbind()
-        .datepicker({
-            changeMonth: true,
-            changeYear: true,
-            dateFormat: 'yy-mm-dd'
-        });
+    initializeVisitorsDatepickers();
+    initializeLocaleDatePicker();
 
     //changing number-text of visitor
     $(".visitor-wrapper").each(function(index, item) {
@@ -204,7 +197,6 @@ $(".input-group-size").change(function() {
     if (visitorsCount < newVisitorsCount)
         $(".visitor-wrapper:last").find('input').prop("checked", false)
 
-    initializeDatepicker()
 
     visitorsCount = newVisitorsCount;
 
@@ -289,6 +281,21 @@ function separationDateIntoThreeInputs(date) {
     }
 }
 
+function initializeVisitorsDatepickers(){
+    $(".input-birth-date").datepicker({
+        maxDate: new Date()
+    })
+    $(".input-passport-expired").datepicker({
+        minDate: new Date(new Date().setMonth(new Date().getMonth() + 6))
+    })
+    $(".input-passport-issued").datepicker({
+        maxDate: new Date()
+    })
+    $(".input-arrival-date1, .input-departure-date1").datepicker({
+        minDate: new Date()
+    })
+}
+
 $(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
     $('.arrival-date-insert').text($('.input-arrival-date1').val());
 });
@@ -327,9 +334,11 @@ $(document).on("blur propertychange change input paste", ".input-country", funct
                                                     <div class='step__note-text'>" + text + "</div>")
             $(this).closest('.input').next().removeClass('disabled');
         }
+        else{
+                $(this).closest('.input').next().html("");
+                $(this).closest('.input').next().addClass('disabled');
+        }
     }
-
-
 });
 
 $(document).on("blur propertychange change input paste", ".input-city", function() {
@@ -400,3 +409,5 @@ Visas.Russian.RegistrationTypeId.parseFrom = function(val) {
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
 calculatePrice();
+initializeVisitorsDatepickers();
+initializeLocaleDatePicker();
