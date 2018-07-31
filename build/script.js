@@ -1092,6 +1092,8 @@ function showCurrStep() {
 }
 
 
+
+
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EVENT LISTENERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 $(document).on("click", '[data-role="confirm"]', function(e) {
     //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
@@ -1357,11 +1359,9 @@ $(document).on("blur propertychange change input paste", ".input-country", funct
         }
         else{
                 $(this).closest('.input').next().html("");
+                $(this).closest('.input').next().addClass('disabled');
         }
     }
-
-
-
 });
 
 $(document).on("blur propertychange change input paste", ".input-city", function() {
@@ -3299,5 +3299,13 @@ setTimeout(function(){
 
 $(".total__country").countrySelect({
     preferredCountries: [],
-    defaultCountry: "gb"
+    defaultCountry: "gb",
+    responsiveDropdown: "true"
+});
+
+
+$(".input-country").countrySelect({
+    preferredCountries: [],
+    defaultCountry: "gb",
+    responsiveDropdown: "true"
 });

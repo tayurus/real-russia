@@ -435,11 +435,12 @@
                        </div>
                    </div>
                </div>
-               <div class="input">
+               <div class="input" style="position:relative; z-index:1000">
                    <div class="input__wrapper mt-2">
                        <label class="input__label">Country applying in</label>
                        <br/>
-                       <select value="" class="input__select input-country" name="consulateCountry">
+                       <input readonly type="text" name="consulateCountry" value="" class="input-country input__select" style="background:none;">
+                       <!-- <select value="" class="input__select input-country" name="consulateCountry">
                            <option selected disabled hidden>Please select</option>
                            <%
                            dim country
@@ -448,7 +449,7 @@
                                     <%= country.name %>
                                 </option>
                             <% next %>
-                       </select>
+                       </select> -->
                    </div>
                    <div class="input__error-label"></div>
                    <div class="input__wrapper-highlight"></div>
