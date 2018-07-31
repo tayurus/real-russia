@@ -103,7 +103,7 @@ $(document).on("click", '[data-role="confirm"]', function(e) {
 
     if (stepsHasError) {
         alert("Check steps. You have errors!");
-        $('.sticky-errors').addClass('active');
+        $('.header-sticky').addClass('active');
         $(".sticky-errors__links").html("")
         errors.forEach(function(error) {
             $(".sticky-errors__links").append("<a class='sticky-errors__link' data-error-step=" + error.step + " href='#'>" + error.name + "</a>")

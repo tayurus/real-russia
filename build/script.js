@@ -125,7 +125,7 @@ $(document).on("click", '[data-role="confirm"]', function(e) {
 
     if (stepsHasError) {
         alert("Check steps. You have errors!");
-        $('.sticky-errors').addClass('active');
+        $('.header-sticky').addClass('active');
         $(".sticky-errors__links").html("")
         errors.forEach(function(error) {
             $(".sticky-errors__links").append("<a class='sticky-errors__link' data-error-step=" + error.step + " href='#'>" + error.name + "</a>")
@@ -1314,14 +1314,6 @@ $( ".datepicker_jq").change(function(){
             $(this).datepicker("setDate", new Date());
 })
 
-$(".hint__tab").click(function(){
-    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
-    $(this).addClass("hint__tab_active");
-
-    $(this).closest('.hint').find('[data-tab]').removeClass('active');
-    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
-})
-
 
 
 $(".input__select, .input__field").on('focusin',function() {
@@ -1361,6 +1353,14 @@ $("#phone").intlTelInput({
   // preferredCountries: ['cn', 'jp'],
   separateDialCode: true
 });
+
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
+
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
+})
 
 $(document).on("click", ".step__subtitle", function() {
     $(this).toggleClass("step__subtitle_close")
