@@ -63,8 +63,11 @@
                        </div>
                        <div>
                            <div class="total__label">Language</div>
-                           <input autocomplete="off"type="text" readonly="readonly" class="total__select total__country"/>
-                       </div>
+                           <select class="total__country">
+                                <option value="English">English</option>
+                                <option value="Russian">Russian</option>
+                            </select>
+                        </div>
                    </div>
                    <div class="total__result">
                        <div class="total__label total__label_big mr-2">Total price</div>
@@ -1167,7 +1170,7 @@
                <div class="input">
                    <div class="input__wrapper">
                        <label class="input__label">Email address</label>
-                       <input autocomplete="off"type="text" name="email" class="input__field input-email"/>
+                       <input placeholder="emailexample@gmail.com" autocomplete="off"type="text" name="email" class="input__field input-email"/>
                    </div>
                    <div class="input__error-label"></div>
                    <div class="input__wrapper-highlight"></div>
