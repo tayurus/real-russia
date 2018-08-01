@@ -85,7 +85,7 @@ $(document).on("blur propertychange change input paste", ".input-city", function
     validateProcessingCities($(this));
 });
 
-$(document).on("blur propertychange change input paste", "[name='gender_1']", function() {
+$(document).on("blur propertychange change input paste", "[name^='gender_']", function() {
     validateGenders($(this));
 });
 
@@ -526,10 +526,10 @@ function validateProcessingHotels(e, trigger) {
 function validateWarningRegistration7Days(entryNumber){
     let res;
     if (entryNumber == 1)
-        if (typeof arrivalDate1 !== 'undefined' && typeof departureDate1 !== 'undefined' && departureDate1.val != null && typeof registration !== "undefined")
+        if (typeof arrivalDate1 !== 'undefined' && typeof departureDate1 !== 'undefined' && $('.input-departure-date1').val() != "" &&  $('.input-arrival-date1').val() != "" && typeof registration !== "undefined")
             res = res || warningRegistration7Days(arrivalDate1.val, departureDate1.val, registration.val)
     if (entryNumber == 2)
-        if (typeof arrivalDate2 !== 'undefined' && typeof departureDate2 !== 'undefined' && departureDate2.val != null && typeof registration !== "undefined")
+        if (typeof arrivalDate2 !== 'undefined' && typeof departureDate2 !== 'undefined' && $('.input-departure-date2').val() != "" &&  $('.input-arrival-date2').val() != "" && typeof registration !== "undefined")
             res = res || warningRegistration7Days(arrivalDate2.val, departureDate2.val, registration.val)
 
     return res;

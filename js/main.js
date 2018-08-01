@@ -80,7 +80,7 @@ $(document).on("click", '[data-role="confirm"]', function(e) {
     let stepsHasError = false;
     for (let i = 1; i <= 4; i++) {
         $("[data-step=" + i + "]").show()
-        $(".input__error-label").each(function(index, item) {
+        $("[data-step=" + i + "] .input__error-label").each(function(index, item) {
             if ($(item).text() !== "" && $(item).is(":visible")) {
                 stepsHasError = true;
                 $("[data-steps=" + currStep + "]").addClass("steps__item_incorrect");
@@ -203,7 +203,7 @@ $(".input-group-size").change(function() {
     visitorsCount = newVisitorsCount;
 
     calculatePrice();
-    checkIsStepCorrect(2);
+    // checkIsStepCorrect(2);
 });
 
 $('.input-entries').change(function() {
