@@ -152,7 +152,7 @@
                <div class="input ">
                    <div class="input__wrapper ">
                        <label class="input__label">Group Size</label>
-                       <select class="input__select input-group-size" name="groupNum">
+                       <select data-visited="false" class="input__select input-group-size" name="groupNum">
                             <%
                                 for i = 1 to ViewBag.MaxGroupSize %>
                                <option value="<%= i %>">
@@ -224,7 +224,7 @@
                <div class="input ">
                    <div class="input__wrapper ">
                        <label class="input__label">Number of entries</label>
-                       <select class="input__select input-entries" name="visaType">
+                       <select data-visited="false" class="input__select input-entries" name="visaType">
                            <%
                            dim entryType
                            for each entryType in ViewBag.EntryTypes %>
@@ -297,7 +297,7 @@
                <div class="input ">
                    <div class="input__wrapper ">
                        <label class="input__label">Purpose of visit</label>
-                       <select class="input__select input-purpose" name="purposeOfVisit">
+                       <select data-visited="false" class="input__select input-purpose" name="purposeOfVisit">
                            <% for each i in ViewBag.PurposesOfVisit %>
                                <% if i = "Tourist" then  %>
                                    <option value="<%= i %>" selected>
@@ -374,7 +374,7 @@
                <div class="input ">
                    <div class="input__wrapper ">
                        <label class="input__label">Registration</label>
-                       <select class="input__select input-registration" name="regService">
+                       <select data-visited="false" class="input__select input-registration" name="regService">
                            <%
                            for each key in ViewBag.Registrations %>
                                 <option value="<%= key %>">
@@ -526,7 +526,7 @@
                    <div class="input__wrapper ">
                        <label class="input__label">Delivery option</label>
                        <br/>
-                       <select class="input__select input-delivery" name="deliveryOption">
+                       <select data-visited="false" class="input__select input-delivery" name="deliveryOption">
                            <!-- <option selected disabled hidden>Please select</option> -->
                            <%
                            for each key in ViewBag.Deliveries %>
@@ -620,7 +620,7 @@
                        <div class="input mt-5">
                            <div class="input__wrapper">
                                <label class="input__label">First name</label>
-                               <input autocomplete="off"type="text" name="firstName" class="input__field input-firstname"/>
+                               <input data-visited="false" autocomplete="off"type="text" name="firstName" class="input__field input-firstname"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="input__wrapper-highlight"></div>
@@ -684,7 +684,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Middle name</label>
-                               <input autocomplete="off"type="text" name="middleName"  class="input__field input-middlename"/>
+                               <input data-visited="false" autocomplete="off"type="text" name="middleName"  class="input__field input-middlename"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="input__wrapper-highlight"></div>
@@ -748,7 +748,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Surname</label>
-                               <input autocomplete="off"type="text" name="surName" class="input__field input-surname"/>
+                               <input data-visited="false" autocomplete="off"type="text" name="surName" class="input__field input-surname"/>
                            </div>
                            <div class="input__error-label"></div>
                            <div class="input__wrapper-highlight"></div>
@@ -829,7 +829,7 @@
                        <div class="input">
                            <div class="input__wrapper">
                                <label class="input__label">Date of birth</label>
-                               <input autocomplete="off"type="text" data-date-format="dd-mm-yyyy" class="datepicker-here input__field input__field_calendar input-birth-date"/>
+                               <input data-visited="false" autocomplete="off"type="text" data-date-format="dd-mm-yyyy" class="datepicker-here input__field input__field_calendar input-birth-date"/>
                                 <input autocomplete="off"type="hidden" name="dobMonth" />
                                <input autocomplete="off"type="hidden" name="dobDay" />
                                <input autocomplete="off"type="hidden" name="dobYear" />
@@ -898,7 +898,7 @@
                                <div class="input mr-5" style="position: relative; width: 50%">
                                    <div class="input__wrapper">
                                        <label class="input__label">Citizenship</label>
-                                       <select class="input__select input-citizenship mb-0" name="passportCitzenship">
+                                       <select data-visited="false" class="input__select input-citizenship mb-0" name="passportCitzenship">
                                            <option selected disabled hidden>Please select</option>
                                            <%
                                            for each country in ViewBag.Countries %>
@@ -971,7 +971,7 @@
                            <div class="input" style="position: relative; width: 50%">
                                <div class="input__wrapper">
                                    <label class="input__label">Passport number</label>
-                                   <input autocomplete="off"type="text" name="passportNumber" class="input__field input-passport-number"/>
+                                   <input data-visited="false" autocomplete="off"type="text" name="passportNumber" class="input__field input-passport-number"/>
                                </div>
                                <div class="input__error-label"></div>
                                <div class="input__wrapper-highlight input__wrapper-highlight_right"></div>
@@ -1037,7 +1037,7 @@
                            <div class="input mr-5" style="position: relative;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport issued</label>
-                                   <input autocomplete="off"class="datepicker-here input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
+                                   <input data-visited="false" autocomplete="off"class="datepicker-here input__field input__field_calendar input-passport-issued" name="passport-issued" type="text" data-minyear="<%= ViewBag.MinPassportIssyeYear %>"/>
                                    <input autocomplete="off"type="hidden" name="passportMonthIssued" />
                                     <input autocomplete="off"type="hidden" name="passportDayIssued" />
                                   <input autocomplete="off"type="hidden" name="passportYearIssued" />
@@ -1104,7 +1104,7 @@
                            <div class="input" style="position: relative;">
                                <div class="input__wrapper">
                                    <label class="input__label">Date passport expires</label>
-                                   <input autocomplete="off"type="text" class="datepicker-here input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" />
+                                   <input data-visited="false" autocomplete="off"type="text" class="datepicker-here input__field input__field_calendar input-passport-expired" name="passport-expired" data-maxyear="<%= ViewBag.MaxPassportExpireYear %>" />
                                    <input autocomplete="off"type="hidden" name="passportMonthExpires" />
                                     <input autocomplete="off"type="hidden" name="passportDayExpires" />
                                   <input autocomplete="off"type="hidden" name="passportYearExpires" />
@@ -1240,7 +1240,7 @@
                <div class="input">
                    <div class="input__wrapper">
                        <label class="input__label">Telephone</label>
-                       <input autocomplete="off"id="phone" class="input__field input-phone" type="tel" name="phone"/>
+                       <input data-visited="false" autocomplete="off"id="phone" class="input__field input-phone" type="tel" name="phone"/>
                    </div>
                    <div class="input__error-label"></div>
                    <div class="input__wrapper-highlight"></div>
@@ -1321,7 +1321,7 @@
                    <div class="input mr-5 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
-                           <input autocomplete="off"type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker-here input__field input__field_calendar input-arrival-date1"/>
+                           <input data-visited="false" autocomplete="off"type="text" name="arrival-date" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker-here input__field input__field_calendar input-arrival-date1"/>
                            <input autocomplete="off"type="hidden" name="visitMonthOfEntry" />
                             <input autocomplete="off"type="hidden" name="visitDayOfEntry" />
                           <input autocomplete="off"type="hidden" name="visitYearOfEntry" />
@@ -1332,7 +1332,7 @@
                    <div class="input mr-3 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
-                           <input autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker-here input__field input__field_calendar input-departure-date1"/>
+                           <input data-visited="false" autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker-here input__field input__field_calendar input-departure-date1"/>
                            <input autocomplete="off"type="hidden" name="visitMonthOfExit" />
                             <input autocomplete="off"type="hidden" name="visitDayOfExit" />
                           <input autocomplete="off"type="hidden" name="visitYearOfExit" />
@@ -1348,7 +1348,7 @@
                    <div class="input mr-5 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Arrival Date</label>
-                           <input autocomplete="off"name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker-here input__field input__field_calendar input-arrival-date2"/>
+                           <input data-visited="false" autocomplete="off"name="arrival-date" type="text" data-minYear="<%= ViewBag.MinVisitEntryYear %>" class="datepicker-here input__field input__field_calendar input-arrival-date2"/>
                            <input autocomplete="off"type="hidden" name="visitMonthOfEntry2" />
                           <input autocomplete="off"type="hidden" name="visitDayOfEntry2" />
                           <input autocomplete="off"type="hidden" name="visitYearOfEntry2" />
@@ -1359,7 +1359,7 @@
                    <div class="input mr-3 w-50">
                        <div class="input__wrapper">
                            <label class="input__label">Departure Date</label>
-                           <input autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker-here input__field input__field_calendar input-departure-date2"/>
+                           <input data-visited="false" autocomplete="off"type="text" name="departure-date"  data-maxYear="<%= ViewBag.MaxVisitExitYear %>" class="datepicker-here input__field input__field_calendar input-departure-date2"/>
                            <input autocomplete="off"type="hidden" name="visitMonthOfExit2" />
                           <input autocomplete="off"type="hidden" name="visitDayOfExit2" />
                           <input autocomplete="off"type="hidden" name="visitYearOfExit2" />
@@ -1419,7 +1419,7 @@
                    <div class="input">
                        <div class="input__wrapper">
                            <label class="input__label">Licence Plate number</label>
-                           <input autocomplete="off"type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
+                           <input data-visited="false" autocomplete="off"type="text" name="vehiclePlateNumber" class="input__field input-vehicle-lisence"/>
                        </div>
                        <div class="input__error-label"></div>
                    </div>
@@ -1434,7 +1434,7 @@
                            <div class="input  mt-5">
                                <div class="input__wrapper">
                                    <label class="input__label">City</label>
-                                   <select class="input__select input-city" name="visitCity1">
+                                   <select data-visited="false" class="input__select input-city" name="visitCity1">
                                        <option selected disabled hidden>Please select</option>
                                        <%
                                        dim city
@@ -1508,7 +1508,7 @@
                            <div class="input ">
                                <div class="input__wrapper">
                                    <label class="input__label">Hotel</label>
-                                   <select class="input__select input-hotel" name="visitHotel1">
+                                   <select data-visited="false" class="input__select input-hotel" name="visitHotel1">
                                        <option disabled hidden selected>Please select...</option>
                                    </select>
                                </div>
