@@ -53,7 +53,8 @@ $(document).on("blur propertychange change input paste", ".input-arrival-date1",
     separationDateIntoThreeInputs($(this));
 });
 
-$(document).on("blur propertychange change input paste", ".input-departure-date1", function() {
+$(document).on("blur propertychange change input paste", ".input-departure-date1", function(e) {
+    console.log(e);
     validateDeparture1($(this));
     separationDateIntoThreeInputs($(this));
 });
@@ -213,7 +214,7 @@ function validateArrival1(e, trigger) {
     let errorsText = "<div>" + valueCanNotBeEmpty($(arrivalDate1.element).val()) + "</div>";
     if (valueCanNotBeEmpty($(arrivalDate1.element).val()) === ""){
         errorsText += dateMustBeAfterCurrentDate(arrivalDate1.val);
-        if (typeof departureDate1 !== "undefined") {
+        if (typeof departureDate1 !== "undefined" && $(departureDate1.element).val() !== "")  {
             errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
             errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate1.val, departureDate1.val) + "</div>";
 
@@ -249,7 +250,7 @@ function validateDeparture1(e, trigger) {
     let warningText = "";
     if (valueCanNotBeEmpty($(departureDate1.element).val()) === ""){
         errorsText += dateMustBeAfterCurrentDate(departureDate1.val);
-        if (typeof arrivalDate1 !== "undefined") {
+        if (typeof arrivalDate1 !== "undefined" && $(arrivalDate1.element).val() !== "") {
             errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate1.val, departureDate1.val) + "</div>";
             errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
             errorsText += "<div>" + valueCanNotBeEmpty($(departureDate1.element).val()) + "</div>";
@@ -298,13 +299,13 @@ function validateArrival2(e, trigger) {
     let warningText = "";
     if (valueCanNotBeEmpty($(arrivalDate2.element).val()) === ""){
         errorsText = dateMustBeAfterCurrentDate(arrivalDate2.val);
-        if (typeof departureDate2 !== "undefined") {
+        if (typeof departureDate2 !== "undefined" && $(departureDate2.element).val() !== "") {
             errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate2.element).val()) + "</div>";
             errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
             errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate2.val, departureDate2.val) + "</div>";
         }
 
-        if (typeof departureDate1 !== "undefined") {
+        if (typeof departureDate1 !== "undefined" &&  $(departureDate1.element).val() !== "") {
             errorsText += "<div>" + secondArrivalDateMustBeLaterThanFirstDepartureDate(arrivalDate2.val, departureDate1.val) + "</div>";
         }
 
@@ -342,10 +343,10 @@ function validateDeparture2(e, trigger) {
     let errorsText = "<div>" + valueCanNotBeEmpty($(departureDate2.element).val()) + "</div>";
     let warningText = "";
     if (valueCanNotBeEmpty($(departureDate2.element).val()) === ""){
-        if(typeof departureDate1 !== "undefined")
+        if(typeof departureDate1 !== "undefined" && $(departureDate1.element).val() !== "")
             errorsText += dateMustBeAfterCurrentDate(departureDate1.val);
 
-        if (typeof arrivalDate2 !== "undefined") {
+        if (typeof arrivalDate2 !== "undefined" &&  $(arrivalDate2.element).val() !== "") {
             errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate2.val, departureDate2.val) + "</div>";
             errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
 
@@ -603,6 +604,7 @@ function validatePassportNumber(e){
 
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateEmail(e){
     email= {
         val: $(e).val(),
@@ -676,6 +678,7 @@ function validateVehicleMake(e){
 
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateVehicleColor(e){
     vehicleColor = {
         val: $(e).val(),
@@ -690,6 +693,7 @@ function validateVehicleColor(e){
 
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateVehicleLisence(e){
     vehicleLisence = {
         val: $(e).val(),
@@ -743,6 +747,7 @@ function validateGroupSize(e){
         .html(errorsText);
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateEntries(e){
     numberOfEntries = {
         element: $(e),
@@ -755,6 +760,7 @@ function validateEntries(e){
         .html(errorsText);
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validatePurpose(e){
      purpose = {
         element: $(e),
@@ -767,6 +773,7 @@ function validatePurpose(e){
         .html(errorsText);
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateDelivery(e){
     let delivery = {
         element: $(e),

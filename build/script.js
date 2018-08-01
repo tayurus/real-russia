@@ -1091,8 +1091,36 @@ function showCurrStep() {
     }
 }
 
+function separationDateIntoThreeInputs(date) {
+    let mass = date.val().split('/');
+    let next = date.next();
+    for (i = 0; i < mass.length; i++) {
+        next.val(mass[i]);
+        next = next.next();
+    }
+}
 
+function initializeVisitorsDatepickers(){
+    $(".input-birth-date").datepicker({
+        maxDate: new Date()
+    })
+    $(".input-passport-expired").datepicker({
+        minDate: new Date(new Date().setMonth(new Date().getMonth() + 6))
+    })
+    $(".input-passport-issued").datepicker({
+        maxDate: new Date()
+    })
+    $(".input-arrival-date1, .input-departure-date1").datepicker({
+        minDate: new Date()
+    })
+}
 
+function calculatePrice() {
+    Visas.Russian.Prices.CurrentPriceServiceProxy.GetTouristVSDOrderPrice(Visas.Russian.EntryTypeId.parseFrom(numberOfEntries.val), Visas.Russian.RegistrationTypeId.parseFrom(registration.val), visitorsCount, function(data) {
+        totalPrice = data.Total.toFixed(2);
+        $('.total__sum-value').text(data.Total.toFixed(2));
+    });
+}
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EVENT LISTENERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 $(document).on("click", '[data-role="confirm"]', function(e) {
@@ -1299,30 +1327,6 @@ $('.input-purpose').change(function() {
     else $('.auto-tourism-wrapper').hide();
 })
 
-function separationDateIntoThreeInputs(date) {
-    let mass = date.val().split('/');
-    let next = date.next();
-    for (i = 0; i < mass.length; i++) {
-        next.val(mass[i]);
-        next = next.next();
-    }
-}
-
-function initializeVisitorsDatepickers(){
-    $(".input-birth-date").datepicker({
-        maxDate: new Date()
-    })
-    $(".input-passport-expired").datepicker({
-        minDate: new Date(new Date().setMonth(new Date().getMonth() + 6))
-    })
-    $(".input-passport-issued").datepicker({
-        maxDate: new Date()
-    })
-    $(".input-arrival-date1, .input-departure-date1").datepicker({
-        minDate: new Date()
-    })
-}
-
 $(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
     $('.arrival-date-insert').text($('.input-arrival-date1').val());
 });
@@ -1379,13 +1383,6 @@ $(document).on("blur propertychange change input paste", ".input-city", function
     });
 });
 
-function calculatePrice() {
-    Visas.Russian.Prices.CurrentPriceServiceProxy.GetTouristVSDOrderPrice(Visas.Russian.EntryTypeId.parseFrom(numberOfEntries.val), Visas.Russian.RegistrationTypeId.parseFrom(registration.val), visitorsCount, function(data) {
-        totalPrice = data.Total.toFixed(2);
-        $('.total__sum-value').text(data.Total.toFixed(2));
-    });
-}
-
 $(document).on("blur propertychange change input paste", ".input-registration", function() {
     calculatePrice();
 })
@@ -1406,6 +1403,7 @@ $(document).on("blur propertychange change input paste", ".total__select", funct
     //     $('.total-table__registration').text()
 })
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FUNCTION EXPRESSIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Visas.Russian.EntryTypeId.parseFrom = function(val) {
     val = val.toLowerCase();
@@ -1665,7 +1663,8 @@ $(document).on("blur propertychange change input paste", ".input-arrival-date1",
     separationDateIntoThreeInputs($(this));
 });
 
-$(document).on("blur propertychange change input paste", ".input-departure-date1", function() {
+$(document).on("blur propertychange change input paste", ".input-departure-date1", function(e) {
+    console.log(e);
     validateDeparture1($(this));
     separationDateIntoThreeInputs($(this));
 });
@@ -1825,7 +1824,7 @@ function validateArrival1(e, trigger) {
     let errorsText = "<div>" + valueCanNotBeEmpty($(arrivalDate1.element).val()) + "</div>";
     if (valueCanNotBeEmpty($(arrivalDate1.element).val()) === ""){
         errorsText += dateMustBeAfterCurrentDate(arrivalDate1.val);
-        if (typeof departureDate1 !== "undefined") {
+        if (typeof departureDate1 !== "undefined" && $(departureDate1.element).val() !== "")  {
             errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
             errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate1.val, departureDate1.val) + "</div>";
 
@@ -1861,7 +1860,7 @@ function validateDeparture1(e, trigger) {
     let warningText = "";
     if (valueCanNotBeEmpty($(departureDate1.element).val()) === ""){
         errorsText += dateMustBeAfterCurrentDate(departureDate1.val);
-        if (typeof arrivalDate1 !== "undefined") {
+        if (typeof arrivalDate1 !== "undefined" && $(arrivalDate1.element).val() !== "") {
             errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate1.val, departureDate1.val) + "</div>";
             errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate1.val, departureDate1.val) + "</div>";
             errorsText += "<div>" + valueCanNotBeEmpty($(departureDate1.element).val()) + "</div>";
@@ -1910,13 +1909,13 @@ function validateArrival2(e, trigger) {
     let warningText = "";
     if (valueCanNotBeEmpty($(arrivalDate2.element).val()) === ""){
         errorsText = dateMustBeAfterCurrentDate(arrivalDate2.val);
-        if (typeof departureDate2 !== "undefined") {
+        if (typeof departureDate2 !== "undefined" && $(departureDate2.element).val() !== "") {
             errorsText += "<div>" + valueCanNotBeEmpty($(arrivalDate2.element).val()) + "</div>";
             errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
             errorsText += "<div>" + arrivalDateMustBeBeforeDeparture(arrivalDate2.val, departureDate2.val) + "</div>";
         }
 
-        if (typeof departureDate1 !== "undefined") {
+        if (typeof departureDate1 !== "undefined" &&  $(departureDate1.element).val() !== "") {
             errorsText += "<div>" + secondArrivalDateMustBeLaterThanFirstDepartureDate(arrivalDate2.val, departureDate1.val) + "</div>";
         }
 
@@ -1954,10 +1953,10 @@ function validateDeparture2(e, trigger) {
     let errorsText = "<div>" + valueCanNotBeEmpty($(departureDate2.element).val()) + "</div>";
     let warningText = "";
     if (valueCanNotBeEmpty($(departureDate2.element).val()) === ""){
-        if(typeof departureDate1 !== "undefined")
+        if(typeof departureDate1 !== "undefined" && $(departureDate1.element).val() !== "")
             errorsText += dateMustBeAfterCurrentDate(departureDate1.val);
 
-        if (typeof arrivalDate2 !== "undefined") {
+        if (typeof arrivalDate2 !== "undefined" &&  $(arrivalDate2.element).val() !== "") {
             errorsText += "<div>" + departureDateMustBeAfterArrivalDate(arrivalDate2.val, departureDate2.val) + "</div>";
             errorsText += "<div>" + maxDaysBetweenArrivalAndDeparture30(arrivalDate2.val, departureDate2.val) + "</div>";
 
@@ -2215,6 +2214,7 @@ function validatePassportNumber(e){
 
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateEmail(e){
     email= {
         val: $(e).val(),
@@ -2288,6 +2288,7 @@ function validateVehicleMake(e){
 
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateVehicleColor(e){
     vehicleColor = {
         val: $(e).val(),
@@ -2302,6 +2303,7 @@ function validateVehicleColor(e){
 
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateVehicleLisence(e){
     vehicleLisence = {
         val: $(e).val(),
@@ -2355,6 +2357,7 @@ function validateGroupSize(e){
         .html(errorsText);
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateEntries(e){
     numberOfEntries = {
         element: $(e),
@@ -2367,6 +2370,7 @@ function validateEntries(e){
         .html(errorsText);
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validatePurpose(e){
      purpose = {
         element: $(e),
@@ -2379,6 +2383,7 @@ function validatePurpose(e){
         .html(errorsText);
     checkIfFieldCorrect(errorsText, e)
 }
+
 function validateDelivery(e){
     let delivery = {
         element: $(e),
@@ -2411,6 +2416,8 @@ function initializeLocaleDatePicker() {
 
         $('.datepicker-here').datepicker({
             language: 'en',
+            minDate: new Date(new Date().setFullYear(1900)),
+            maxDate: new Date(new Date().setFullYear(new Date().getFullYear() + 20)),
             onSelect: (fd, date, inst) => {
                 inst.date = date;
                 inst.hide();

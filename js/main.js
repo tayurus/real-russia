@@ -70,8 +70,36 @@ function showCurrStep() {
     }
 }
 
+function separationDateIntoThreeInputs(date) {
+    let mass = date.val().split('/');
+    let next = date.next();
+    for (i = 0; i < mass.length; i++) {
+        next.val(mass[i]);
+        next = next.next();
+    }
+}
 
+function initializeVisitorsDatepickers(){
+    $(".input-birth-date").datepicker({
+        maxDate: new Date()
+    })
+    $(".input-passport-expired").datepicker({
+        minDate: new Date(new Date().setMonth(new Date().getMonth() + 6))
+    })
+    $(".input-passport-issued").datepicker({
+        maxDate: new Date()
+    })
+    $(".input-arrival-date1, .input-departure-date1").datepicker({
+        minDate: new Date()
+    })
+}
 
+function calculatePrice() {
+    Visas.Russian.Prices.CurrentPriceServiceProxy.GetTouristVSDOrderPrice(Visas.Russian.EntryTypeId.parseFrom(numberOfEntries.val), Visas.Russian.RegistrationTypeId.parseFrom(registration.val), visitorsCount, function(data) {
+        totalPrice = data.Total.toFixed(2);
+        $('.total__sum-value').text(data.Total.toFixed(2));
+    });
+}
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EVENT LISTENERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 $(document).on("click", '[data-role="confirm"]', function(e) {
@@ -278,30 +306,6 @@ $('.input-purpose').change(function() {
     else $('.auto-tourism-wrapper').hide();
 })
 
-function separationDateIntoThreeInputs(date) {
-    let mass = date.val().split('/');
-    let next = date.next();
-    for (i = 0; i < mass.length; i++) {
-        next.val(mass[i]);
-        next = next.next();
-    }
-}
-
-function initializeVisitorsDatepickers(){
-    $(".input-birth-date").datepicker({
-        maxDate: new Date()
-    })
-    $(".input-passport-expired").datepicker({
-        minDate: new Date(new Date().setMonth(new Date().getMonth() + 6))
-    })
-    $(".input-passport-issued").datepicker({
-        maxDate: new Date()
-    })
-    $(".input-arrival-date1, .input-departure-date1").datepicker({
-        minDate: new Date()
-    })
-}
-
 $(document).on("blur propertychange change input paste", ".input-arrival-date1", function() {
     $('.arrival-date-insert').text($('.input-arrival-date1').val());
 });
@@ -358,13 +362,6 @@ $(document).on("blur propertychange change input paste", ".input-city", function
     });
 });
 
-function calculatePrice() {
-    Visas.Russian.Prices.CurrentPriceServiceProxy.GetTouristVSDOrderPrice(Visas.Russian.EntryTypeId.parseFrom(numberOfEntries.val), Visas.Russian.RegistrationTypeId.parseFrom(registration.val), visitorsCount, function(data) {
-        totalPrice = data.Total.toFixed(2);
-        $('.total__sum-value').text(data.Total.toFixed(2));
-    });
-}
-
 $(document).on("blur propertychange change input paste", ".input-registration", function() {
     calculatePrice();
 })
@@ -385,6 +382,7 @@ $(document).on("blur propertychange change input paste", ".total__select", funct
     //     $('.total-table__registration').text()
 })
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FUNCTION EXPRESSIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Visas.Russian.EntryTypeId.parseFrom = function(val) {
     val = val.toLowerCase();
