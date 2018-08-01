@@ -64,8 +64,14 @@
                        <div>
                            <div class="total__label">Language</div>
                            <select class="total__country">
-                                <option value="English">English</option>
-                                <option value="Russian">Russian</option>
+                                <option value="English" class="total__country-item">
+                                    <span class="total__country-flag"></span>
+                                    English
+                                </option>
+                                <option value="Russian" class="total__country-item">
+                                    <span class="total__country-flag"></span>
+                                    Russian
+                                </option>
                             </select>
                         </div>
                    </div>

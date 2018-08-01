@@ -155,8 +155,12 @@ $(".input-group-size").change(function() {
 
     //removes all visitors except one
     $(".visitor-wrapper").each(function(index, item) {
-        if ((index + 1) > newVisitorsCount)
-            $(item).remove()
+        if ((index + 1) > newVisitorsCount){
+            $(item).remove();
+            passportIssued.splice(index, 1);
+            passportExpired.splice(index, 1);
+        }
+
     })
 
     //save last sex

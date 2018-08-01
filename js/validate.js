@@ -145,7 +145,7 @@ $(document).on('blur propertychange change input paste', '[name=agreeVisaSuitabl
 
 
 function validatePassportIssued(e, trigger) {
-    let index = $(".input-passport-issued").index(e) + 1;
+    let index = $(".input-passport-issued").index(e);
     passportIssued[index] = {
         val:$(e).data('datepicker').date,
         element: $(e)
@@ -171,7 +171,7 @@ function validatePassportIssued(e, trigger) {
 
 //валидация даты окончания действия паспорта
 function validatePassportExpired(e, trigger) {
-    let index = $(".input-passport-expired").index(e) + 1;
+    let index = $(".input-passport-expired").index(e);
     passportExpired[index] = {
         val:$(e).data('datepicker').date,
         element: $(e)
@@ -387,8 +387,16 @@ function validateCitizenship(e, trigger){
     };
 
     let errorsText =  '<div>'+ valueCanNotBeEmpty(citizenship.val) +'</div>';
-    if (typeof registration !== 'undefined')
-        errorsText += someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
+
+    if(valueCanNotBeEmpty(citizenship.val) == ''){
+        errorsText = '<div>' + someCountriesCanBeDangerous(false) + '</div>';
+        Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(citizenship.val, function(res) {
+            errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
+        })
+
+        if (typeof registration !== 'undefined')
+            errorsText += someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
+    }
 
     $(e)
         .parent()
@@ -459,7 +467,7 @@ function validateProcessingCities(e, trigger) {
         element: $(e)
     };
 
-    let index = $(".input-city").index(e) + 1;
+    let index = $(".input-city").index(e);
     cities[index] = {
         val: $(e).val(),
         element: $(e)
@@ -507,7 +515,7 @@ function validateProcessingCities(e, trigger) {
 
 function validateProcessingHotels(e, trigger) {
 
-    let index = $(".input-hotel").index(e) + 1;
+    let index = $(".input-hotel").index(e);
     hotels[index] = {
         val: $(e).val(),
         element: $(e)

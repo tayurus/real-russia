@@ -83,6 +83,12 @@ function processingDaysForCaucasusCities(city) {
     return ""
 }
 
+function someCountriesCanBeDangerous(canArrive) {
+    if(!canArrive)
+        return 'Unfortunally, your citizenship is not allowed in Russia'
+    return ""
+}
+
 function citiesCannotContainDuplicates(cities) {
     let isDuplicates = false;
     cities.forEach((city, index) => {
