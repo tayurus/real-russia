@@ -100,7 +100,7 @@
                        <span class="total__sum-value">15.30</span>
                    </div>
                </div>
-               <div class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
+               <div  class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
                    <div class="ml-4">
                        <button type="button" class="button mr-3">retrieve saved application</button>
                    </div>
@@ -123,7 +123,7 @@
        <div class="container bg-gray pb-4 px-0">
            <div class="d-flex align-items-center justify-content-center justify-content-sm-between">
                <div class="justify-content-between pt-4 pl-2 d-block d-sm-flex">
-                   <div class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
+                   <div id="savedButtons" class="flex-grow-1 button-wrap d-block flex-column flex-md-row d-sm-flex flex-grow-1">
                        <div class="ml-4">
                            <button type="button" class="button mr-3">retrieve saved application</button>
                            <div class="button__text">CONTINUE a saved existing application.</div>

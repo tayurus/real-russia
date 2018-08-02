@@ -24,78 +24,84 @@ let currentDate = new Date();
 
 /////////////////////////////////////////////обработчики изменений данных
 
+$(document).on("blur propertychange change input paste", 'input, select', function(e){
+    if (e.type === 'focusout'){
+        $(this).attr('data-visited', 'true');
+    }
+})
+
 $(document).on("blur propertychange change input paste", ".input-group-size", function(e) {
-    changeAttribute(e);
+
     validateGroupSize($(this));
 });
 $(document).on("blur propertychange change input paste", ".input-entries", function(e) {
-    changeAttribute(e);
+
     validateEntries($(this));
 });
 $(document).on("blur propertychange change input paste", ".input-purpose", function(e) {
-    changeAttribute(e);
+
     validatePurpose($(this));
 });
 $(document).on("blur propertychange change input paste", ".input-delivery", function(e) {
-    changeAttribute(e);
+
     validateDelivery($(this));
 });
 
 
 $(document).on("blur propertychange change input paste", ".input-passport-issued", function(e) {
-    changeAttribute(e);
+
     validatePassportIssued($(this));
     separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-passport-expired", function(e) {
-    changeAttribute(e);
+
     validatePassportExpired($(this));
     separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-arrival-date1", function(e) {
-    changeAttribute(e);
+
     validateArrival1($(this));
     separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date1", function(e) {
-    changeAttribute(e);
+
     validateDeparture1($(this));
     separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-departure-date2", function(e) {
-    changeAttribute(e);
+
     validateDeparture2($(this));
     separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-arrival-date2", function(e) {
-    changeAttribute(e);
+
     validateArrival2($(this));
     separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-citizenship", function(e) {
-    changeAttribute(e);
+
     validateCitizenship($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-registration", function(e) {
-    changeAttribute(e);
+
     validateRegistration($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-birth-date", function(e) {
-    changeAttribute(e);
+
     validateBirthDate($(this));
     separationDateIntoThreeInputs($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-city", function(e) {
-    changeAttribute(e);
+
     validateProcessingCities($(this));
 });
 
@@ -104,51 +110,51 @@ $(document).on("blur propertychange change input paste", "[name^='gender_']", fu
 });
 
 $(document).on('blur propertychange change input paste', '.input-firstname', function(e){
-    changeAttribute(e);
+
     validateFirstName($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-middlename', function(e){
-    changeAttribute(e);
+
     validateMiddleName($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-surname', function(e){
-    changeAttribute(e);
+
     validateSurname($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-passport-number', function(e){
-    changeAttribute(e);
+
     validatePassportNumber($(this));
 })
 
 $(document).on('blur propertychange change input paste', '.input-email', function(e){
-    changeAttribute(e);
+
     validateEmail($(this));
 })
 $(document).on('blur propertychange change input paste', '.input-phone', function(e){
-    changeAttribute(e);
+
     validatePhone($(this));
 })
 $(document).on('blur propertychange change input paste', '.input-country', function(e){
-    changeAttribute(e);
+
     validateCountryApply($(this));
 })
 $(document).on('blur propertychange change input paste', '.input-vehicle-make', function(e){
-    changeAttribute(e);
+
     validateVehicleMake($(this));
 })
 $(document).on('blur propertychange change input paste', '.input-vehicle-color', function(e){
-    changeAttribute(e);
+
     validateVehicleColor($(this));
 })
 $(document).on('blur propertychange change input paste', '.input-vehicle-lisence', function(e){
-    changeAttribute(e);
+
     validateVehicleLisence($(this));
 })
 $(document).on('blur propertychange change input paste', '.input-hotel', function(e){
-    changeAttribute(e);
+
     validateProcessingHotels($(this));
 })
 $(document).on('blur propertychange change input paste', '[name=haveRead]', function(){
@@ -596,7 +602,8 @@ function validateWarningRegistration7Days(entryNumber){
 }
 
 function validateGenders(e) {
-    $(e).closest('.radio-buttons').next('.input__error-label').text('');
+    if ($(e).is(':checked'))
+        $(e).closest('.radio-buttons').next('.input__error-label').text('');
 }
 
 function validateFirstName(e){
@@ -863,11 +870,5 @@ function validateDelivery(e){
             .next()
             .html(errorsText);
         checkIfFieldCorrect(errorsText, e)
-    }
-}
-
-function changeAttribute(e){
-    if (e.type === 'focusout'){
-        $(this).attr('data-visited', 'true');
     }
 }

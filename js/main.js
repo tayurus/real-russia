@@ -102,46 +102,55 @@ function calculatePrice() {
 }
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EVENT LISTENERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-$(document).on("click", '[data-role="confirm"]', function(e) {
-    //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
-    errors = [];
-    let stepsHasError = false;
-    for (let i = 1; i <= 4; i++) {
-        $("[data-step=" + i + "]").show()
-        $("[data-step=" + i + "] .input__error-label").each(function(index, item) {
-            if ($(item).text() !== "" && $(item).is(":visible")) {
-                stepsHasError = true;
-                $("[data-steps=" + currStep + "]").addClass("steps__item_incorrect");
-                $("[data-steps=" + currStep + "]").removeClass("steps__item_correct");
-                let error = {
-                    step: i,
-                    name: $(item).prev().find('[name]').attr('name'),
+$(document).on("click", '[data-role="confirm"], [data-role="nextStep"], [data-steps=4]', function(e) {
+    if (currStep >= 3){
+        $('input,select').attr('data-visited','true');
+        $('input,select').trigger('blur');
+
+        //идем по всем видимым строкам с ошибками и смотрим, есть ли ошибочный текст
+        errors = [];
+        let stepsHasError = false;
+        for (let i = 1; i <= 4; i++) {
+            $("[data-step=" + i + "]").show()
+            $("[data-step=" + i + "] .input__error-label").each(function(index, item) {
+                if ($(item).text() !== "" && $(item).is(":visible")) {
+                    stepsHasError = true;
+                    $("[data-steps=" + currStep + "]").addClass("steps__item_incorrect");
+                    $("[data-steps=" + currStep + "]").removeClass("steps__item_correct");
+                    let error = {
+                        step: i,
+                        name: $(item).prev().find('[name]').attr('name'),
+                    }
+
+                    errors.push(error)
                 }
+            });
+            $("[data-step=" + i + "]").hide();
+        }
 
-                errors.push(error)
-            }
-        });
-        $("[data-step=" + i + "]").hide();
+        $("[data-step=" + 4 + "]").show();
+
+        // if ($("[name=agreeVisaSuitable]:checked").val() !== "yes")
+        //     stepsHasError = true;
+        // if ($("[name=haveRead]:checked").val() !== "yes")
+        //     stepsHasError = true;
+
+        if (stepsHasError) {
+            $("#savedButtons").removeClass('d-block')
+            $("#savedButtons").removeClass('d-sm-flex')
+            $("#savedButtons").hide();
+            alert("Check steps. You have errors!");
+            $('.header-sticky').addClass('active');
+            $(".sticky-errors__links").html("")
+            errors.forEach(function(error) {
+                $(".sticky-errors__links").append("<a class='sticky-errors__link' data-error-step=" + error.step + " href='#'>" + error.name + "</a>")
+            })
+            e.preventDefault();
+        }
+
+        console.log(errors);
     }
 
-    $("[data-step=" + 4 + "]").show();
-
-    // if ($("[name=agreeVisaSuitable]:checked").val() !== "yes")
-    //     stepsHasError = true;
-    // if ($("[name=haveRead]:checked").val() !== "yes")
-    //     stepsHasError = true;
-
-    if (stepsHasError) {
-        alert("Check steps. You have errors!");
-        $('.header-sticky').addClass('active');
-        $(".sticky-errors__links").html("")
-        errors.forEach(function(error) {
-            $(".sticky-errors__links").append("<a class='sticky-errors__link' data-error-step=" + error.step + " href='#'>" + error.name + "</a>")
-        })
-        e.preventDefault();
-    }
-
-    console.log(errors);
 })
 
 $(document).on('click', '.sticky-errors__link', function() {
