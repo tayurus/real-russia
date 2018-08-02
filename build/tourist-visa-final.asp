@@ -13,9 +13,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.4.0/js/intlTelInput.min.js" type="text/javascript" ></script>
 
 <script src="/visas/belarusia/scripts/infrastructure.data.js" type="text/javascript"></script>
+<script src="/visas/belarusia/scripts/visas.belarusian.js" type="text/javascript"></script>
 <script src="/Russian/Scripts/Visas.Russian.js" type="text/javascript"></script>
 <script src="/Russian/Scripts/Visas.Russian.Prices.js" type="text/javascript"></script>
+<script src="/Russian/Areas/Rules/Scripts/Visas.Russian.Rules.js" type="text/javascript"></script>
 <script src="/services/consulateSettings.asp" type="text/javascript"></script>
+<script src="/api/countries.asp?action=GetAll&responseType=emit" type="text/javascript"></script>
 <script src="/inc/scripts/Visas.Russian.js" type="text/javascript"></script>
 <script src="script.js" defer="defer"></script>
 <% end sub %>
@@ -140,6 +143,9 @@
                </div>
            </div>
            <div data-step="1" class="step">
+               <!-- <div class="niceCountryInputSelector" style="width: 300px;" data-selectedcountry="US" data-showspecial="false" data-showflags="true" data-i18nall="All selected"
+                   data-i18nnofilter="No selection" data-i18nfilter="Filter" data-onchangecallback="onChangeCallback" />
+               </div> -->
                <h2 class="step__title">service details</h2>
                <div class="step__description">
                    <img src="img/portfolio.png" alt="" class="mr-4"/>
@@ -448,7 +454,10 @@
                    <div class="input__wrapper mt-2">
                        <label class="input__label">Country applying in</label>
                        <br/>
-                       <input readonly type="text" name="consulateCountry" value="" class="input-country input__select" style="background:none;">
+                       <div class="input-country" style="width: 300px;" data-selectedcountry="US" data-showspecial="false" data-showflags="true" data-i18nall="All selected" data-i18nnofilter="No selection" data-i18nfilter="Filter" data-onchangecallback="countryApplyInGetNotes" />
+                        <!-- <input readonly type="text" name="consulateCountry" value="" class="input-country input__select" style="background:none;"> -->
+                       </div>
+
                        <!-- <select value="" class="input__select input-country" name="consulateCountry">
                            <option selected disabled hidden>Please select</option>
                            <%
@@ -898,7 +907,10 @@
                                <div class="input mr-5" style="position: relative; width: 50%">
                                    <div class="input__wrapper">
                                        <label class="input__label">Citizenship</label>
-                                       <select data-visited="false" class="input__select input-citizenship mb-0" name="passportCitzenship">
+                                       <div class="input-citizenship input-country_citizenship" style="width: 300px;" data-selectedcountry="US" data-showspecial="false" data-showflags="true" data-i18nall="All selected" data-i18nnofilter="No selection" data-i18nfilter="Filter" data-onchangecallback="citizenshipApplyInGetNotes" />
+
+                                       </div>
+                                       <!-- <select data-visited="false" class="input__select input-citizenship mb-0" name="passportCitzenship">
                                            <option selected disabled hidden>Please select</option>
                                            <%
                                            for each country in ViewBag.Countries %>
@@ -906,7 +918,7 @@
                                                     <%= country.name %>
                                                 </option>
                                             <% next %>
-                                       </select>
+                                       </select> -->
                                    </div>
                                    <div class="input__error-label"></div>
                                    <div class="input__wrapper-highlight input__wrapper-highlight_left"></div>
@@ -1434,16 +1446,18 @@
                            <div class="input  mt-5">
                                <div class="input__wrapper">
                                    <label class="input__label">City</label>
-                                   <select data-visited="false" class="input__select input-city" name="visitCity1">
-                                       <option selected disabled hidden>Please select</option>
-                                       <%
-                                       dim city
-                                       for each city in ViewBag.Cities %>
-                                            <option value="<%= city %>">
-                                                <%= city %>
-                                            </option>
-                                        <% next %>
-                                   </select>
+
+                                   <input type=text list=browsers data-visited="false" class="input__select input-city" name="visitCity1">
+                                    <datalist id=browsers>
+                                      <option selected disabled hidden>Please select</option>
+                                          <%
+                                          dim city
+                                          for each city in ViewBag.Cities %>
+                                               <option value="<%= city %>">
+                                                   <%= city %>
+                                               </option>
+                                           <% next %>
+                                    </datalist>
                                </div>
                                <div class="input__error-label"></div>
                                <div class="input__highlight"></div>

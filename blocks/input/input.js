@@ -37,3 +37,9 @@ $("#phone").intlTelInput({
   // preferredCountries: ['cn', 'jp'],
   separateDialCode: true
 });
+
+$(document).ready(function () {
+    $(".input-country, .input-citizenship, .input-city").each(function(i,e){
+        new NiceCountryInput(e).init();
+    });
+});

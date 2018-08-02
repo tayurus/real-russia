@@ -103,7 +103,7 @@ function calculatePrice() {
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! EVENT LISTENERS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 $(document).on("click", '[data-role="confirm"], [data-role="nextStep"], [data-steps=4]', function(e) {
-    if (currStep >= 3){
+    if (currStep == 4){
         $('input,select').attr('data-visited','true');
         $('input,select').trigger('blur');
 
@@ -267,17 +267,20 @@ $('.input-purpose').change(function() {
 })
 
 $("[data-button='addLocation']").click(function() {
-    $(this).before($(this).prev().clone(true));
-    locationCount++;
-    $(this).prev().find('.input-city').attr('name', 'visitCity' + locationCount);
-    $(this).prev().find('.input-hotel').attr('name', 'visitHotel' + locationCount);
+    console.log(locationCount);
+    if(locationCount < 10) {
+        $(this).before($(this).prev().clone(true));
+        locationCount++;
+        $(this).prev().find('.input-city').attr('name', 'visitCity' + locationCount);
+        $(this).prev().find('.input-hotel').attr('name', 'visitHotel' + locationCount);
 
-    $(".location-wrapper").each(function(index, item) {
-        $(item).find('.button__remove-location').text("REMOVE LOCATION " + (index + 1));
-        $(item).find('.step__subtitle-text').text("LOCATION " + (index + 1));
-    })
+        $(".location-wrapper").each(function(index, item) {
+            $(item).find('.button__remove-location').text("REMOVE LOCATION " + (index + 1));
+            $(item).find('.step__subtitle-text').text("LOCATION " + (index + 1));
+        })
 
-    checkIsStepCorrect(3);
+        checkIsStepCorrect(3);
+    }
 })
 
 
@@ -344,21 +347,113 @@ $(document).on("blur propertychange change input paste", ".input-entries", funct
     }
 });
 
-$(document).on("blur propertychange change input paste", ".input-country", function() {
-    if ($(this).val() !== null){
-        let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry($(this).val());
-        if (text !== null) {
-            text = text.replace("{Country}", $(this).val());
-            $(this).closest('.input').next().html("<b>CONSULAR NOTES</b>\
-                                                    <div class='step__note-text'>" + text + "</div>")
-            $(this).closest('.input').next().removeClass('disabled');
-        }
-        else{
-                $(this).closest('.input').next().html("");
-                $(this).closest('.input').next().addClass('disabled');
+function cityInGetNotes(ctr) {
+    if (ctr !== null){
+        let country = Visas.Russian.CountryRepository.Current.getNameByIsoAlpha2Code(ctr)
+        console.log(country);
+
+        if ($(e).attr('data-visited') === "true"){
+            processingCity = {
+                val: $(e).val(),
+                element: $(e)
+            };
+
+            let index = $(".input-city").index(e);
+            cities[index] = {
+                val: $(e).val(),
+                element: $(e)
+            };
+
+            let citiesVal = []
+            cities.forEach((city) => {
+                citiesVal.push(extractObjectField(city, "val"))
+            })
+
+            let hasSiberianRailWay = false;
+            let anotherCitiesNotSelected = true;
+            citiesVal.forEach((item) => {
+                if (item === "Transsiberian Railway")
+                    hasSiberianRailWay = true;
+
+                else if (item !== null)
+                    anotherCitiesNotSelected = false;
+            })
+
+            let errorsText = '<div>' + valueCanNotBeEmpty(cities[index].val) + '</div>';
+            errorsText += '<div>' + transsiberianRailwayCanNotBeAlone(hasSiberianRailWay, anotherCitiesNotSelected) + '</div>';
+
+            errorsText += "<div>" + citiesCannotContainDuplicates(citiesVal) + "</div>";
+
+            let warningText = '<div>' + processingDaysForCaucasusCities(processingCity.val) + '</div>';
+
+            $(e)
+                .parent()
+                .next()
+                .html(errorsText);
+            $(e)
+                .parent()
+                .next()
+                .next()
+                .html(warningText);
+
+            checkIfFieldCorrect(errorsText, e)
+
+            if (!trigger)
+                cities.forEach((item) => {
+                    validateProcessingCities(item.element, true);
+                })
         }
     }
-});
+}
+
+function citizenshipApplyInGetNotes(ctr) {
+    if (ctr !== null){
+        let country = Visas.Russian.CountryRepository.Current.getNameByIsoAlpha2Code(ctr)
+        console.log(country);
+
+            let errorsText =  '<div>'+ valueCanNotBeEmpty(country) +'</div>';
+
+            if(valueCanNotBeEmpty(country) == ''){
+                errorsText = '<div>' + someCountriesCanBeDangerous(false) + '</div>';
+                Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(country, function(res) {
+                    errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
+                })
+
+                if (typeof registration !== 'undefined')
+                    errorsText += someCountriesCannotRegitsterInPiter(country, registration.val);
+            }
+
+            $('.input-citizenship')
+                .parent()
+                .next()
+                .html(errorsText);
+
+            checkIfFieldCorrect(errorsText, $('.input-citizenship'))
+
+            if (typeof registration !== "undefined") validateRegistration(registration.element, true);
+
+
+    }
+}
+
+function countryApplyInGetNotes(ctr){
+
+    if (ctr !== null){
+        let country = Visas.Russian.CountryRepository.Current.getNameByIsoAlpha2Code(ctr)
+        let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry(country);
+        if (text !== null) {
+            text = text.replace("{Country}",country);
+            $(".input-country").closest('.input').next().html("<b>CONSULAR NOTES</b>\
+                                                    <div class='step__note-text'>" + text + "</div>")
+            $(".input-country").closest('.input').next().removeClass('disabled');
+        }
+        else{
+                $(".input-country").closest('.input').next().html("");
+                $(".input-country").closest('.input').next().addClass('disabled');
+        }
+    }
+}
+
 
 $(document).on("blur propertychange change input paste", ".input-city", function() {
     let el = $(this);
