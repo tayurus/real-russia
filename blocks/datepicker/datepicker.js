@@ -15,15 +15,7 @@ function initializeLocaleDatePicker() {
             };
         })(jQuery);
 
-        $('.datepicker-here').datepicker({
-            language: 'en',
-            minDate: new Date(new Date().setFullYear(1900)),
-            maxDate: new Date(new Date().setFullYear(new Date().getFullYear() + 20)),
-            onSelect: (fd, date, inst) => {
-                inst.date = date;
-                inst.hide();
-            }
-        })
+        
         // .mask('99-99-9999')
     }, 500);
 }

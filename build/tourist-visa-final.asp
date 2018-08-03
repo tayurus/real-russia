@@ -66,6 +66,9 @@
                        </div>
                        <div>
                            <div class="total__label">Language</div>
+                           <!-- <div id="demoBasic">
+
+                           </div> -->
                            <select class="total__country">
                                 <option value="English" class="total__country-item">
                                     <span class="total__country-flag"></span>
@@ -454,7 +457,7 @@
                    <div class="input__wrapper mt-2">
                        <label class="input__label">Country applying in</label>
                        <br/>
-                       <div class="input-country" style="width: 300px;" data-selectedcountry="US" data-showspecial="false" data-showflags="true" data-i18nall="All selected" data-i18nnofilter="No selection" data-i18nfilter="Filter" data-onchangecallback="countryApplyInGetNotes" />
+                       <div class="input-country" data-visited="false" style="width: 300px;" data-selectedcountry="placeholder" data-showspecial="false" data-showflags="true" data-i18nall="All selected" data-i18nnofilter="No selection" data-i18nfilter="Filter" data-onchangecallback="countryApplyInGetNotes" />
                         <!-- <input readonly type="text" name="consulateCountry" value="" class="input-country input__select" style="background:none;"> -->
                        </div>
 

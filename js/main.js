@@ -79,7 +79,18 @@ function separationDateIntoThreeInputs(date) {
     }
 }
 
-function initializeVisitorsDatepickers(){
+function initializeDatepickers(){
+
+    $('.datepicker-here').datepicker({
+        language: 'en',
+        minDate: new Date(new Date().setFullYear(1900)),
+        maxDate: new Date(new Date().setFullYear(new Date().getFullYear() + 20)),
+        onSelect: (fd, date, inst) => {
+            inst.date = date;
+            inst.hide();
+        }
+    })
+
     $(".input-birth-date").datepicker({
         maxDate: new Date()
     })
@@ -211,8 +222,8 @@ $(".input-group-size").change(function() {
 
 
 
-    initializeVisitorsDatepickers();
-    initializeLocaleDatePicker();
+        initializeVisitorsDatepickers();
+        initializeLocaleDatePicker();
 
     //changing number-text of visitor
     $(".visitor-wrapper").each(function(index, item) {
@@ -438,7 +449,9 @@ function citizenshipApplyInGetNotes(ctr) {
 
 function countryApplyInGetNotes(ctr){
 
-    if (ctr !== null){
+    if (ctr !== null && ctr !== "PLACEHOLDER"){
+        // $(".input-country").parent().removeClass("input__wrapper_error");
+        $(".input-country").parent().next().html("")
         let country = Visas.Russian.CountryRepository.Current.getNameByIsoAlpha2Code(ctr)
         let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry(country);
         if (text !== null) {
@@ -451,6 +464,12 @@ function countryApplyInGetNotes(ctr){
                 $(".input-country").closest('.input').next().html("");
                 $(".input-country").closest('.input').next().addClass('disabled');
         }
+    }
+    else{
+        // $(".input-country").parent().addClass("input__wrapper_error");
+        $(".input-country").parent().next().html("This field can not be empty")
+        $(".input-country").closest('.input').next().html("");
+        $(".input-country").closest('.input').next().addClass('disabled');
     }
 }
 
@@ -517,5 +536,5 @@ Visas.Russian.RegistrationTypeId.parseFrom = function(val) {
 ///////////////////////////////////////// ACTIONS //////////////////////////////////////////////////
 inititializeSteps();
 calculatePrice();
-initializeVisitorsDatepickers();
 initializeLocaleDatePicker();
+initializeDatepickers();

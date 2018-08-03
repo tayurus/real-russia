@@ -562,10 +562,15 @@ function validateProcessingCities(e, trigger) {
 
         checkIfFieldCorrect(errorsText, e)
 
-        if (!trigger)
+        if (!trigger){
             cities.forEach((item) => {
                 validateProcessingCities(item.element, true);
             })
+            hotels.forEach((item) => {
+                validateProcessingHotels(item.element, true);
+            })
+        }
+
     }
 }
 
