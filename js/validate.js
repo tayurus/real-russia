@@ -86,7 +86,7 @@ $(document).on("blur propertychange change input paste", ".input-arrival-date2",
 
 $(document).on("blur propertychange change input paste", ".input-citizenship", function(e) {
 
-    validateCitizenship($(this));
+    // validateCitizenship($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-registration", function(e) {
@@ -428,35 +428,35 @@ function validateDeparture2(e, trigger) {
     }
 }
 
-function validateCitizenship(e, trigger){
-    if ($(e).attr('data-visited') === "true"){
-        citizenship = {
-            val: $(e).val(),
-            element: $(e)
-        };
-
-        let errorsText =  '<div>'+ valueCanNotBeEmpty(citizenship.val) +'</div>';
-
-        if(valueCanNotBeEmpty(citizenship.val) == ''){
-            errorsText = '<div>' + someCountriesCanBeDangerous(false) + '</div>';
-            Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(citizenship.val, function(res) {
-                errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
-            })
-
-            if (typeof registration !== 'undefined')
-                errorsText += someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
-        }
-
-        $(e)
-            .parent()
-            .next()
-            .html(errorsText);
-
-        checkIfFieldCorrect(errorsText, e)
-
-        if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
-    }
-}
+// function validateCitizenship(e, trigger){
+//     if ($(e).attr('data-visited') === "true"){
+//         citizenship = {
+//             val: $(e).val(),
+//             element: $(e)
+//         };
+//
+//         let errorsText =  '<div>'+ valueCanNotBeEmpty(citizenship.val) +'</div>';
+//
+//         if(valueCanNotBeEmpty(citizenship.val) == ''){
+//             errorsText = '<div>' + someCountriesCanBeDangerous(false) + '</div>';
+//             Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(citizenship.val, function(res) {
+//                 errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
+//             })
+//
+//             if (typeof registration !== 'undefined')
+//                 errorsText += someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
+//         }
+//
+//         $(e)
+//             .parent()
+//             .next()
+//             .html(errorsText);
+//
+//         checkIfFieldCorrect(errorsText, e)
+//
+//         if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
+//     }
+// }
 
 function validateRegistration(e, trigger){
     if ($(e).attr('data-visited') === "true"){
@@ -487,7 +487,7 @@ function validateRegistration(e, trigger){
 
         checkIfFieldCorrect(errorsText, e)
 
-        if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
+        // if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
 
         if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival1(arrivalDate1.element, true);
         if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);

@@ -420,12 +420,9 @@ function cityInGetNotes(ctr) {
 function citizenshipApplyInGetNotes(ctr) {
     if (ctr !== null){
         let country = Visas.Russian.CountryRepository.Current.getNameByIsoAlpha2Code(ctr)
-        console.log(country);
-
             let errorsText =  '<div>'+ valueCanNotBeEmpty(country) +'</div>';
 
             if(valueCanNotBeEmpty(country) == ''){
-                errorsText = '<div>' + someCountriesCanBeDangerous(false) + '</div>';
                 Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(country, function(res) {
                     errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
                 })

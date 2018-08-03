@@ -1441,12 +1441,15 @@ function cityInGetNotes(ctr) {
 function citizenshipApplyInGetNotes(ctr) {
     if (ctr !== null){
         let country = Visas.Russian.CountryRepository.Current.getNameByIsoAlpha2Code(ctr)
-        console.log(country);
-
             let errorsText =  '<div>'+ valueCanNotBeEmpty(country) +'</div>';
 
             if(valueCanNotBeEmpty(country) == ''){
-                errorsText = '<div>' + someCountriesCanBeDangerous(false) + '</div>';
+                Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(country, function(res) {
+                    errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
+                })
+                Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(country, function(res) {
+                    errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
+                })
                 Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(country, function(res) {
                     errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
                 })
@@ -1471,7 +1474,7 @@ function citizenshipApplyInGetNotes(ctr) {
 function countryApplyInGetNotes(ctr){
 
     if (ctr !== null && ctr !== "PLACEHOLDER"){
-        $(".input-country").parent().removeClass("input__wrapper_error");
+        // $(".input-country").parent().removeClass("input__wrapper_error");
         $(".input-country").parent().next().html("")
         let country = Visas.Russian.CountryRepository.Current.getNameByIsoAlpha2Code(ctr)
         let text = Visas.Russian.RussianConsulateSettignsRepository.Current.GetTouristNoteByCountry(country);
@@ -1487,7 +1490,7 @@ function countryApplyInGetNotes(ctr){
         }
     }
     else{
-        $(".input-country").parent().addClass("input__wrapper_error");
+        // $(".input-country").parent().addClass("input__wrapper_error");
         $(".input-country").parent().next().html("This field can not be empty")
         $(".input-country").closest('.input').next().html("");
         $(".input-country").closest('.input').next().addClass('disabled');
@@ -2333,7 +2336,7 @@ $(document).on("blur propertychange change input paste", ".input-arrival-date2",
 
 $(document).on("blur propertychange change input paste", ".input-citizenship", function(e) {
 
-    validateCitizenship($(this));
+    // validateCitizenship($(this));
 });
 
 $(document).on("blur propertychange change input paste", ".input-registration", function(e) {
@@ -2675,35 +2678,35 @@ function validateDeparture2(e, trigger) {
     }
 }
 
-function validateCitizenship(e, trigger){
-    if ($(e).attr('data-visited') === "true"){
-        citizenship = {
-            val: $(e).val(),
-            element: $(e)
-        };
-
-        let errorsText =  '<div>'+ valueCanNotBeEmpty(citizenship.val) +'</div>';
-
-        if(valueCanNotBeEmpty(citizenship.val) == ''){
-            errorsText = '<div>' + someCountriesCanBeDangerous(false) + '</div>';
-            Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(citizenship.val, function(res) {
-                errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
-            })
-
-            if (typeof registration !== 'undefined')
-                errorsText += someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
-        }
-
-        $(e)
-            .parent()
-            .next()
-            .html(errorsText);
-
-        checkIfFieldCorrect(errorsText, e)
-
-        if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
-    }
-}
+// function validateCitizenship(e, trigger){
+//     if ($(e).attr('data-visited') === "true"){
+//         citizenship = {
+//             val: $(e).val(),
+//             element: $(e)
+//         };
+//
+//         let errorsText =  '<div>'+ valueCanNotBeEmpty(citizenship.val) +'</div>';
+//
+//         if(valueCanNotBeEmpty(citizenship.val) == ''){
+//             errorsText = '<div>' + someCountriesCanBeDangerous(false) + '</div>';
+//             Visas.Russian.Rules.RuleChecker.Current.IsTouristVSDServiceAvailable(citizenship.val, function(res) {
+//                 errorsText = '<div>' + someCountriesCanBeDangerous(res) + '</div>'
+//             })
+//
+//             if (typeof registration !== 'undefined')
+//                 errorsText += someCountriesCannotRegitsterInPiter(citizenship.val, registration.val);
+//         }
+//
+//         $(e)
+//             .parent()
+//             .next()
+//             .html(errorsText);
+//
+//         checkIfFieldCorrect(errorsText, e)
+//
+//         if (!trigger && typeof registration !== "undefined") validateRegistration(registration.element, true);
+//     }
+// }
 
 function validateRegistration(e, trigger){
     if ($(e).attr('data-visited') === "true"){
@@ -2734,7 +2737,7 @@ function validateRegistration(e, trigger){
 
         checkIfFieldCorrect(errorsText, e)
 
-        if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
+        // if (!trigger && typeof citizenship !== "undefined") validateCitizenship(citizenship.element, true);
 
         if (!trigger && typeof arrivalDate1 !== "undefined") validateArrival1(arrivalDate1.element, true);
         if (!trigger && typeof arrivalDate2 !== "undefined") validateArrival2(arrivalDate2.element, true);
@@ -3155,14 +3158,6 @@ $('.datepicker-here').change(function() {
     }
 })
 
-$(".hint__tab").click(function(){
-    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
-    $(this).addClass("hint__tab_active");
-
-    $(this).closest('.hint').find('[data-tab]').removeClass('active');
-    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
-})
-
 
 
 $(".input__select, .input__field").on('focusin',function() {
@@ -3208,6 +3203,14 @@ $(document).ready(function () {
         new NiceCountryInput(e).init();
     });
 });
+
+$(".hint__tab").click(function(){
+    $(this).closest('.hint').find(".hint__tab").removeClass('hint__tab_active');
+    $(this).addClass("hint__tab_active");
+
+    $(this).closest('.hint').find('[data-tab]').removeClass('active');
+    $(this).closest('.hint').find('[data-tab=' + $(this).attr('data-head-tab') + ']').addClass('active')
+})
 
 $(document).on("click", ".step__subtitle", function() {
     $(this).toggleClass("step__subtitle_close")
